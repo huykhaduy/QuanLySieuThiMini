@@ -3,4 +3,4 @@
 - Run code ở file db.sql
 
 Hình ảnh database:
-<img src ="../git_img/database/chtl.png">
+<img src ="../git_img/database/chtl.PNG">
