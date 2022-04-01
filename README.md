@@ -8,3 +8,5 @@ Các bước để code chung:
 4. Thực hiện lệnh git push origin master để đẩy lên github riêng (nếu yêu cầu đăng nhập thì đăng nhập bth)
 5. Tạo pull request gửi đến project chính https://github.com/huykhaduy/QuanLySieuThiMini (nếu xảy ra xung đột, tìm các chỗ xung đột sửa)
 6. Chờ xác nhận
+
+Nếu có xảy ra lỗi liên hệ fb.com/huykhaduy
