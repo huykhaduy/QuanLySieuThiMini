@@ -9,4 +9,4 @@ Các bước để code chung:
 5. Tạo pull request gửi đến project chính https://github.com/huykhaduy/QuanLySieuThiMini (nếu xảy ra xung đột, tìm các chỗ xung đột sửa)
 6. Chờ xác nhận
 
-Nếu có xảy ra lỗi liên hệ <a href="www.facebook.com/huykhaduy">Facebook</a>
+Nếu có xảy ra lỗi liên hệ <a href="https://www.facebook.com/huykhaduy">Facebook</a>
