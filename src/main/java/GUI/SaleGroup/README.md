@@ -10,4 +10,4 @@ Các thành phần của frame chính bao gồm:
 Ngoài ra sẽ có các thành phần phụ như:
 - Frame dùng để thêm khách hàng
 
-<img src= "../../../../../git_img/chucnang/Slide2.png">
+<img src= "../../../../../git_img/chucnang/Slide2.PNG">
