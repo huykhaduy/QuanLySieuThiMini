@@ -7,7 +7,6 @@ public class TaiKhoan {
     private String matKhau;
     private int soLanSai;
     private Timestamp ngayTao;
-    private int maLoai;
     private boolean isDeleted;
     private boolean isActive;
 
@@ -15,13 +14,12 @@ public class TaiKhoan {
     public TaiKhoan() {
     }
 
-    public TaiKhoan(String tenTK, String matKhau, int soLanSai, Timestamp ngayTao, int maLoai, boolean isDeleted,
+    public TaiKhoan(String tenTK, String matKhau, int soLanSai, Timestamp ngayTao, boolean isDeleted,
             boolean isActive) {
         this.tenTK = tenTK;
         this.matKhau = matKhau;
         this.soLanSai = soLanSai;
         this.ngayTao = ngayTao;
-        this.maLoai = maLoai;
         this.isDeleted = isDeleted;
         this.isActive = isActive;
     }
@@ -58,14 +56,6 @@ public class TaiKhoan {
         this.ngayTao = ngayTao;
     }
 
-    public int getMaLoai() {
-        return this.maLoai;
-    }
-
-    public void setMaLoai(int maLoai) {
-        this.maLoai = maLoai;
-    }
-
     public boolean isIsDeleted() {
         return this.isDeleted;
     }
@@ -97,7 +87,6 @@ public class TaiKhoan {
             ", matKhau='" + getMatKhau() + "'" +
             ", soLanSai='" + getSoLanSai() + "'" +
             ", ngayTao='" + getNgayTao() + "'" +
-            ", maLoai='" + getMaLoai() + "'" +
             ", isDeleted='" + isIsDeleted() + "'" +
             ", isActive='" + isIsActive() + "'" +
             "}";

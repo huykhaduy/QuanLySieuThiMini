@@ -23,11 +23,11 @@ public class ConnectManager {
         }
     }
 
-    public Connection getConnect() {
+    public Connection getConnection() {
         return connect;
     }
 
-    public void closeConnect() {
+    public void closeConnection() {
         try {
             this.connect.close();
         } catch (SQLException e) {

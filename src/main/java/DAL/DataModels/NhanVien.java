@@ -2,10 +2,9 @@ package DAL.DataModels;
 
 import java.sql.Timestamp;
 
-public class NhanVien extends ConNguoi {
+public abstract class NhanVien extends ConNguoi {
 
     private int maNV;
-    private int maChucVu;
     private String cmnd;
     private Timestamp ngaySinh;
     private Timestamp ngayThamGia;
@@ -13,11 +12,10 @@ public class NhanVien extends ConNguoi {
     public NhanVien() {
     }
 
-    public NhanVien(int maNV, int maChucVu, String cmnd, Timestamp ngaySinh, Timestamp ngayThamGia, String hoTen,
+    public NhanVien(int maNV, String cmnd, Timestamp ngaySinh, Timestamp ngayThamGia, String hoTen,
             String diaChi, String sdt, String email, int gioiTinh) {
         super(hoTen, diaChi, sdt, email, gioiTinh);
         this.maNV = maNV;
-        this.maChucVu = maChucVu;
         this.cmnd = cmnd;
         this.ngaySinh = ngaySinh;
         this.ngayThamGia = ngayThamGia;
@@ -30,14 +28,6 @@ public class NhanVien extends ConNguoi {
 
     public void setMaNV(int maNV) {
         this.maNV = maNV;
-    }
-
-    public int getMaChucVu() {
-        return this.maChucVu;
-    }
-
-    public void setMaChucVu(int maChucVu) {
-        this.maChucVu = maChucVu;
     }
 
     public String getCmnd() {
@@ -64,9 +54,11 @@ public class NhanVien extends ConNguoi {
         this.ngayThamGia = ngayThamGia;
     }
 
+    public abstract int getMaChucVu();
+
     @Override
     public String toString() {
-        return "NhanVien{" + "maNV=" + maNV + ", maChucVu=" + maChucVu + ", cmnd=" + cmnd + ", ngaySinh=" + ngaySinh + ", ngayThamGia=" + ngayThamGia + ", ten=" + hoTen + ", diaChi=" + diaChi + ", sdt=" + sdt + ", email=" + email + ", gioiTinh=" + gioiTinh + '}';
+        return "NhanVien{" + "maNV=" + maNV + ", maChucVu=" + getMaChucVu() + ", cmnd=" + cmnd + ", ngaySinh=" + ngaySinh + ", ngayThamGia=" + ngayThamGia + ", ten=" + hoTen + ", diaChi=" + diaChi + ", sdt=" + sdt + ", email=" + email + ", gioiTinh=" + gioiTinh + '}';
     }
     
 }
