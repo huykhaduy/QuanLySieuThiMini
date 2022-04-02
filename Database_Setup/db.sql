@@ -2,8 +2,9 @@
 create database SieuThiMini;
 use SieuThiMini;
 
+-- Duy
 create table NHACUNGCAP(
-    MANCC varchar(50) not null primary key,
+    MANCC varchar(11) not null primary key,
     TENNCC varchar(50),
     DIACHI varchar(100),
     SDT varchar(11),
@@ -12,25 +13,26 @@ create table NHACUNGCAP(
 );
 
 create table LOAISANPHAM(
-    MALOAI int not null primary key,
+    MALOAI int not null auto_increment,
     TENLOAI varchar(50),
-    MOTA varchar(100)
+    MOTA varchar(100),
+    PRIMARY KEY (MALOAI)
 );
 
 create table SANPHAM(
-    MASP int not null primary key,
+    MASP int not null auto_increment primary key,
     TENSP varchar(50),
     MOTA varchar(100),
     SOLUONG int,
     HINHANH varchar(100),
     GIATIEN bigint,
     MALOAI int,
-    MANCC varchar(50),
+    MANCC varchar(11),
     IS_DELETED boolean
 );
 
 create table MAKHUYENMAI(
-    MAKM varchar(50) not null primary key,
+    MAKM varchar(11) not null primary key,
     LOAIKM int,
     MOTA varchar(100),
     NGAYBD datetime,
@@ -44,21 +46,21 @@ create table MAKHUYENMAI(
 );
 
 create table CHITIETKM_NCC(
-    MAKM varchar(50) not null,
-    MANCC varchar(50) not null,
+    MAKM varchar(11) not null,
+    MANCC varchar(11) not null,
     PRIMARY KEY (MAKM, MANCC)
 );
 
 create table CHITIETKM_SP(
-    MAKM varchar(50) not null,
+    MAKM varchar(11) not null,
     MASP INT not null,
     PRIMARY KEY (MAKM, MASP)
 );
 
 create table PHIEUHUY(
-    MAPHIEU int not null primary key,
+    MAPHIEU int not null auto_increment primary key,
     NGAYLAP datetime,
-    -- MANV int,
+    MANV int,
     IS_DELETED boolean
 );
 
@@ -70,9 +72,9 @@ create table CTPHIEUHUY_SP(
 );
 
 create table PHIEUNHAP(
-    MAPHIEU int not null primary key,
+    MAPHIEU int not null auto_increment primary key,
     NGAYLAP datetime,
-    -- MANV int,
+    MANV int,
     IS_DELETED boolean
 );
 
@@ -83,8 +85,76 @@ create table CTPHIEUNHAP_SP(
     PRIMARY KEY (MAPHIEU, MASP)
 );
 
+create table CTHOADON(
+    MAHD int not null,
+    MASP int not null,
+    SOLUONG int,
+    GIATIEN bigint
+);
 
+-- Thay doi khoa cua MANV va MAKH thanh INT
+-- Thay doi ma HD thanh INT
+-- Thay doi maChucVu thanh INT
 
+-- Tuan
+CREATE TABLE HOADON (
+    MAHD int NOT NULL auto_increment PRIMARY KEY,
+    NGAYHD DATETIME,
+    HINHTHUC VARCHAR(20),
+    MANV INT,
+    MAKH INT,
+    MAKM VARCHAR(11)
+);
+
+CREATE TABLE NHANVIEN (
+    MANV INT NOT NULL auto_increment PRIMARY KEY,
+    TENNV VARCHAR(50),
+    CMND VARCHAR(15),
+    NGAYSINH DATE,
+    SODIENTHOAI INT(11),
+    DIACHI VARCHAR(100),
+    NGAYTHAMGIA DATETIME,
+    IS_DELETED BOOLEAN,
+    TENTK VARCHAR(50),
+    MACHUCVU INT
+);
+
+CREATE TABLE KHACHHANG (
+    MAKH INT NOT NULL auto_increment PRIMARY KEY,
+    TENKH VARCHAR(50),
+    SODIENTHOAI INT(11),
+    EMAIL VARCHAR(50),
+    DIEMTHUONG BIGINT,
+    IS_DELETED BOOLEAN
+);
+
+CREATE TABLE TAIKHOAN (
+    TENTK VARCHAR(50) NOT NULL PRIMARY KEY,
+    MATKHAU VARCHAR(50),
+    SOLANSAI INT,
+    NGAYSUADOI DATETIME,
+    NGAYTAO DATETIME,
+    IS_DELETED BOOLEAN,
+    IS_ACTIVE BOOLEAN
+);
+
+CREATE TABLE CHUCVU (
+    MACHUCVU INT NOT NULL auto_increment PRIMARY KEY,
+    TENCHUCVU VARCHAR(50),
+    MOTA VARCHAR(100)
+);
+
+CREATE TABLE LOGIN_DETAIL (
+    LOGIN_ID INT NOT NULL auto_increment PRIMARY KEY,
+    AUTH_KEY VARCHAR(50),
+    IP_ADDRESS VARCHAR(20),
+    MAC_ADDRESS VARCHAR(20),
+    LOGIN_TIME DATETIME,
+    LOGOUT_TIME DATETIME,
+    TENTK VARCHAR(50)
+);
+
+-- Duy
 ALTER TABLE SANPHAM ADD CONSTRAINT FK_SANPHAM_LOAISANPHAM FOREIGN KEY (MALOAI) REFERENCES LOAISANPHAM(MALOAI);
 ALTER TABLE SANPHAM ADD CONSTRAINT FK_SANPHAM_NHACUNGCAP FOREIGN KEY (MANCC) REFERENCES NHACUNGCAP(MANCC);
 
@@ -102,3 +172,16 @@ ALTER TABLE CTPHIEUHUY_SP ADD CONSTRAINT FK_CHITIETPHIEUHUY_SP_MASP FOREIGN KEY 
 
 ALTER TABLE PHIEUNHAP ADD CONSTRAINT FK_PHIEUNHAP_MANV FOREIGN KEY (MANV) REFERENCES NHANVIEN(MANV);
 ALTER TABLE PHIEUHUY ADD CONSTRAINT FK_PHIEUHUY_MANV FOREIGN KEY (MANV) REFERENCES NHANVIEN(MANV);
+
+-- Tuan
+ALTER TABLE hoadon ADD CONSTRAINT FK_HOADON_NHANVIEN FOREIGN KEY (MANV) REFERENCES nhanvien(MANV);
+ALTER TABLE hoadon ADD CONSTRAINT FK_HOADON_KHACHHANG FOREIGN KEY (MAKH) REFERENCES khachhang(MAKH);
+ALTER TABLE hoadon ADD CONSTRAINT FK_HOADON_KM FOREIGN KEY (MAKM) REFERENCES makhuyenmai(MAKM);
+
+ALTER TABLE CTHOADON ADD CONSTRAINT FK_CTHOADON_HOADON FOREIGN KEY (MAHD) REFERENCES hoadon(MAHD);
+ALTER TABLE CTHOADON ADD CONSTRAINT FK_CTHOADON_SANPHAM FOREIGN KEY (MASP) REFERENCES sanpham(MASP);
+
+ALTER TABLE nhanvien ADD CONSTRAINT FK_NHANVIEN_TAIKHOAN FOREIGN KEY (TENTK) REFERENCES taikhoan(TENTK);
+ALTER TABLE nhanvien ADD CONSTRAINT FK_NHANVIEN_CHUCVU FOREIGN KEY (MACHUCVU) REFERENCES chucvu(MACHUCVU);
+
+ALTER TABLE login_detail ADD CONSTRAINT FK_LOGIN_TAIKHOAN FOREIGN KEY (TENTK) REFERENCES taikhoan(TENTK);
