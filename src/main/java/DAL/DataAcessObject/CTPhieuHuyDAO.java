@@ -8,23 +8,50 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CTPhieuHuyDAO extends AbtractDatabseAccess implements IAccessInterface<ChiTietPhieuHuy,Integer> {
+public class CTPhieuHuyDAO extends AbtractDatabseAccess implements IAccessDetail<ChiTietPhieuHuy,Integer,Integer> {
 
     @Override
-    public ChiTietPhieuHuy find(Integer maPhieuHuy) {
+    public List<ChiTietPhieuHuy> findType1(Integer maPhieuHuy) {
         final String sql = "SELECT * FROM CTPHIEUHUY WHERE MAPHIEU = ? AND IS_DELETED = 0";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, maPhieuHuy);
             ResultSet rs = ps.executeQuery();
+            List<ChiTietPhieuHuy> list = new ArrayList<>();
             if (rs.next()) {
                 int maPhieu = rs.getInt("MAPHIEU");
                 int maSP = rs.getInt("MAPHIEU");
                 int soLuong = rs.getInt("SOLUONG");
                 boolean isDeleted = rs.getBoolean("IS_DELETED");
                 ChiTietPhieuHuy chiTietPhieuHuy = new ChiTietPhieuHuy(maPhieu, maSP, soLuong, isDeleted);
-                return chiTietPhieuHuy;
+                list.add(chiTietPhieuHuy);
             }
+            return list;
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            connectManager.closeConnection();
+        }
+        return null;
+    }
+
+    @Override
+    public List<ChiTietPhieuHuy> findType2(Integer maSanPham) {
+        final String sql = "SELECT * FROM CTPHIEUHUY WHERE MASP = ? AND IS_DELETED = 0";
+        connectManager = getConnectManager();
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, maSanPham);
+            ResultSet rs = ps.executeQuery();
+            List<ChiTietPhieuHuy> list = new ArrayList<>();
+            if (rs.next()) {
+                int maPhieu = rs.getInt("MAPHIEU");
+                int maSP = rs.getInt("MAPHIEU");
+                int soLuong = rs.getInt("SOLUONG");
+                boolean isDeleted = rs.getBoolean("IS_DELETED");
+                ChiTietPhieuHuy chiTietPhieuHuy = new ChiTietPhieuHuy(maPhieu, maSP, soLuong, isDeleted);
+                list.add(chiTietPhieuHuy);
+            }
+            return list;
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
@@ -75,41 +102,17 @@ public class CTPhieuHuyDAO extends AbtractDatabseAccess implements IAccessInterf
     }
 
     @Override
-    public void delete(Integer integer) {
-        final String sql = "UPDATE CTPHIEUHUY SET IS_DELETED = 1 WHERE MAPHIEU = ?";
+    public void delete(Integer maPhieuHuy, Integer maSanPham) {
+        final String sql = "UPDATE CTPHIEUHUY SET IS_DELETED = 1 WHERE MAPHIEU = ? AND MASP = ?";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setInt(1, integer);
+            ps.setInt(1, maPhieuHuy);
+            ps.setInt(1, maSanPham);
             ps.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
             connectManager.closeConnection();
         }
-    }
-
-    @Override
-    public List<ChiTietPhieuHuy> findAll() {
-        final String sql = "SELECT * FROM CTPHIEUHUY WHERE IS_DELETED = 0";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
-            List<ChiTietPhieuHuy> chiTietPhieuHuys = new ArrayList<>();
-            while (rs.next()) {
-                int maPhieu = rs.getInt("MAPHIEU");
-                int maSP = rs.getInt("MASP");
-                int soLuong = rs.getInt("SOLUONG");
-                boolean isDeleted = rs.getBoolean("IS_DELETED");
-                ChiTietPhieuHuy chiTietPhieuHuy = new ChiTietPhieuHuy(maPhieu, maSP, soLuong, isDeleted);
-                chiTietPhieuHuys.add(chiTietPhieuHuy);
-            }
-            return chiTietPhieuHuys;
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        finally {
-            connectManager.closeConnection();
-        }
-        return null;
     }
 }

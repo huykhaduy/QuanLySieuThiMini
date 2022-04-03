@@ -5,7 +5,7 @@ import DAL.DataModels.TaiKhoan;
 import java.sql.*;
 import java.util.List;
 
-public class TaiKhoanDAO extends AbtractDatabseAccess implements IAccessInterface<TaiKhoan,String>{
+public class TaiKhoanDAO extends AbtractDatabseAccess implements IAccess<TaiKhoan,String> {
     public TaiKhoanDAO() {
         super();
     }

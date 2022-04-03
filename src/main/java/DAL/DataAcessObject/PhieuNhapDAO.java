@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhieuNhapDAO extends AbtractDatabseAccess implements IAccessInterface<PhieuNhap,Integer> {
+public class PhieuNhapDAO extends AbtractDatabseAccess implements IAccess<PhieuNhap,Integer> {
 
 
     @Override

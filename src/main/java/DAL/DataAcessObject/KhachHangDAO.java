@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KhachHangDAO extends AbtractDatabseAccess implements IAccessInterface<KhachHang, Integer> {
+public class KhachHangDAO extends AbtractDatabseAccess implements IAccess<KhachHang, Integer> {
 
     @Override
     public KhachHang find(Integer maKhachHang) {

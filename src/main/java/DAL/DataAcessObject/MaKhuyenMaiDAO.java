@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaKhuyenMaiDAO extends AbtractDatabseAccess implements IAccessInterface<MaKhuyenMai, String> {
+public class MaKhuyenMaiDAO extends AbtractDatabseAccess implements IAccess<MaKhuyenMai, String> {
     @Override
     public MaKhuyenMai find(String maKhuyenMai) {
         final String sql = "SELECT * FROM MAKHUYENMAI WHERE MAKM = ? AND IS_DELETED = 0";

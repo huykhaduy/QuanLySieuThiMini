@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhieuHuyDAO extends AbtractDatabseAccess implements IAccessInterface<PhieuHuy,Integer> {
+public class PhieuHuyDAO extends AbtractDatabseAccess implements IAccess<PhieuHuy,Integer> {
 
 
     @Override

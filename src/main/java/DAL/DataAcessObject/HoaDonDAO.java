@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoaDonDAO extends AbtractDatabseAccess implements IAccessInterface<HoaDon, Integer> {
+public class HoaDonDAO extends AbtractDatabseAccess implements IAccess<HoaDon, Integer> {
 
     @Override
     public HoaDon find(Integer maHoaDon) {

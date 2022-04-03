@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NhanVienDAO extends AbtractDatabseAccess implements IAccessInterface<NhanVien, Integer> {
+public class NhanVienDAO extends AbtractDatabseAccess implements IAccess<NhanVien, Integer> {
 
     @Override
     public NhanVien find(Integer maNhanVien) {

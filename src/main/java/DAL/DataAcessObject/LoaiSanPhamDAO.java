@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.ChucVu;
+import DAL.DataModels.LoaiSanPham;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,23 +8,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChucVuDAO extends AbtractDatabseAccess implements IAccess<ChucVu,Integer> {
+public class LoaiSanPhamDAO extends AbtractDatabseAccess implements IAccess<LoaiSanPham,Integer>{
 
     @Override
-    public ChucVu find(Integer integer) {
-        final String sql = "SELECT * FROM chucvu WHERE MACHUCVU = ?";
+    public LoaiSanPham find(Integer integer) {
+        final String sql = "SELECT * FROM loaisanpham WHERE MALOAI = ?";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, integer);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Integer maChucVu = rs.getInt("MACHUCVU");
-                String tenChucVu = rs.getString("TENCHUCVU");
+                Integer maLoai = rs.getInt("MALOAI");
+                String tenLoai = rs.getString("TENLOAI");
                 String moTa = rs.getString("MOTA");
-                ChucVu chucVu = new ChucVu(maChucVu, tenChucVu, moTa);
-                return chucVu;
+                return new LoaiSanPham(maLoai, tenLoai, moTa);
             }
-        } catch (SQLException e) {
+        } catch (SQLException e){
             e.printStackTrace();
         } finally {
             connectManager.closeConnection();
@@ -33,11 +32,11 @@ public class ChucVuDAO extends AbtractDatabseAccess implements IAccess<ChucVu,In
     }
 
     @Override
-    public ChucVu save(ChucVu entity) {
-        final String sql = "INSERT INTO chucvu(TENCHUCVU,MOTA) VALUES(?,?)";
+    public LoaiSanPham save(LoaiSanPham entity) {
+        final String sql = "INSERT INTO loaisanpham(TENLOAI, MOTA) VALUES(?,?)";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, entity.getTenChucVu());
+            ps.setString(1, entity.getTenLoai());
             ps.setString(2, entity.getMoTa());
             ps.executeUpdate();
             return entity;
@@ -45,18 +44,17 @@ public class ChucVuDAO extends AbtractDatabseAccess implements IAccess<ChucVu,In
             e.printStackTrace();
         } finally {
             connectManager.closeConnection();
-        }
-        return null;
+        } return null;
     }
 
     @Override
-    public ChucVu update(ChucVu entity) {
-        final String sql = "UPDATE chucvu SET TENCHUCVU = ?, MOTA = ? WHERE MACHUCVU = ?";
+    public LoaiSanPham update(LoaiSanPham entity) {
+        final String sql = "UPDATE loaisanpham SET TENLOAI = ?, MOTA = ? WHERE MALOAI = ?";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, entity.getTenChucVu());
+            ps.setString(1, entity.getTenLoai());
             ps.setString(2, entity.getMoTa());
-            ps.setInt(3, entity.getMaChucVu());
+            ps.setInt(3, entity.getMaLoai());
             ps.executeUpdate();
             return entity;
         } catch (SQLException e) {
@@ -69,7 +67,7 @@ public class ChucVuDAO extends AbtractDatabseAccess implements IAccess<ChucVu,In
 
     @Override
     public void delete(Integer integer) {
-        final String sql = "DELETE FROM chucvu WHERE MACHUCVU = ?";
+        final String sql = "DELETE FROM loaisanpham WHERE MALOAI = ?";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, integer);
@@ -82,25 +80,23 @@ public class ChucVuDAO extends AbtractDatabseAccess implements IAccess<ChucVu,In
     }
 
     @Override
-    public List<ChucVu> findAll() {
-        final String sql = "SELECT * FROM chucvu";
+    public List<LoaiSanPham> findAll() {
+        final String sql = "SELECT * FROM loaisanpham";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
-            List<ChucVu> list = new ArrayList<ChucVu>();
+            List<LoaiSanPham> list = new ArrayList<>();
             while (rs.next()) {
-                Integer maChucVu = rs.getInt("MACHUCVU");
-                String tenChucVu = rs.getString("TENCHUCVU");
+                Integer maLoai = rs.getInt("MALOAI");
+                String tenLoai = rs.getString("TENLOAI");
                 String moTa = rs.getString("MOTA");
-                ChucVu chucVu = new ChucVu(maChucVu, tenChucVu, moTa);
-                list.add(chucVu);
+                LoaiSanPham loaiSanPham = new LoaiSanPham(maLoai, tenLoai, moTa);
+                list.add(loaiSanPham);
             }
-            return list;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             connectManager.closeConnection();
-        }
-        return null;
+        } return null;
     }
 }

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginDetailDAO extends AbtractDatabseAccess implements IAccessInterface<LoginDetail,Integer> {
+public class LoginDetailDAO extends AbtractDatabseAccess implements IAccess<LoginDetail,Integer> {
     public LoginDetailDAO() {
         super();
     }

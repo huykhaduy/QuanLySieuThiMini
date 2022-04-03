@@ -1,11 +1,8 @@
 package DAL.DataAcessObject;
 
-import DAL.DatabaseConnector.ConnectManager;
-
-import java.sql.Connection;
 import java.util.List;
 
-public interface IAccessInterface<T,Id> {
+public interface IAccess<T,Id> {
     T find(Id id);
     T save(T entity);
     T update(T entity);
