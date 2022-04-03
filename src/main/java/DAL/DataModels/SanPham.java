@@ -8,13 +8,13 @@ public class SanPham {
     private long giaTien;
     private int soLuong;
     private int maLoai;
-    private int maNCC;
+    private String maNCC;
     private boolean isDeleted;
 
     public SanPham() {
     }
 
-    public SanPham(int maSP, String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, int maLoai, int maNCC, boolean isDeleted) {
+    public SanPham(int maSP, String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, int maLoai, String maNCC, boolean isDeleted) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.moTa = moTa;
@@ -82,11 +82,11 @@ public class SanPham {
         this.maLoai = maLoai;
     }
 
-    public int getMaNCC() {
+    public String getMaNCC() {
         return maNCC;
     }
 
-    public void setMaNCC(int maNCC) {
+    public void setMaNCC(String maNCC) {
         this.maNCC = maNCC;
     }
 

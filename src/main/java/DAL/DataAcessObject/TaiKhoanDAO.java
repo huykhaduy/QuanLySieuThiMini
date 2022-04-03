@@ -1,13 +1,12 @@
 package DAL.DataAcessObject;
 
 import DAL.DataModels.TaiKhoan;
-import DAL.DatabaseConnector.ConnectManager;
 
 import java.sql.*;
 import java.util.List;
 
-public class TaiKhoanDao extends AbtractDatabseAccess implements IAccessInterface<TaiKhoan,String>{
-    public TaiKhoanDao() {
+public class TaiKhoanDAO extends AbtractDatabseAccess implements IAccessInterface<TaiKhoan,String>{
+    public TaiKhoanDAO() {
         super();
     }
 
