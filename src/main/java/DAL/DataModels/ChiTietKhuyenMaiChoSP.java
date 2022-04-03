@@ -5,16 +5,14 @@ public class ChiTietKhuyenMaiChoSP extends ChiTietKhuyenMai<Integer> {
     public ChiTietKhuyenMaiChoSP() {
     }
 
-    public ChiTietKhuyenMaiChoSP(String maKM, int doituongKM) {
-        super(maKM, doituongKM);
+    public ChiTietKhuyenMaiChoSP(String maKM, Integer maId) {
+        super(maKM, maId);
     }
-    
+
     @Override
     public String toString() {
-        return "chiTietKhuyenMaiChoSP{" +
+        return "ChiTietKhuyenMaiChoSP{" +
                 "maKM='" + getMaKM() + '\'' +
-                ", doituongKM=" + getDoituongKM() +
-                "}";
+                ", maId='" + getMaId() + '\''+"}";
     }
-    
 }

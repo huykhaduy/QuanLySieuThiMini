@@ -7,8 +7,8 @@ public class KhachHang extends ConNguoi {
     public KhachHang() {
     }
 
-    public KhachHang(int maKH, long diemThuong, String hoTen, String diaChi, String sdt, String email, int gioiTinh) {
-        super(hoTen, diaChi, sdt, email, gioiTinh);
+    public KhachHang(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maKH, long diemThuong) {
+        super(hoTen, gioiTinh, diaChi, email, sdt);
         this.maKH = maKH;
         this.diemThuong = diemThuong;
     }
@@ -31,7 +31,14 @@ public class KhachHang extends ConNguoi {
 
     @Override
     public String toString() {
-        return "maKH=" + maKH + ", diemThuong=" + diemThuong + ", hoTen=" + hoTen + ", diaChi=" + diaChi + ", sdt=" + sdt + ", email=" + email + ", gioiTinh=" + gioiTinh;
+        return "KhachHang{" +
+                "hoTen='" + hoTen + '\'' +
+                ", gioiTinh=" + gioiTinh +
+                ", diaChi='" + diaChi + '\'' +
+                ", email='" + email + '\'' +
+                ", sdt='" + sdt + '\'' +
+                ", maKH=" + maKH +
+                ", diemThuong=" + diemThuong +
+                '}';
     }
-    
 }

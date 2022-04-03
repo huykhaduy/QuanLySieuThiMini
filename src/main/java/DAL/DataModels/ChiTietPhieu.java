@@ -9,10 +9,11 @@ public abstract class ChiTietPhieu {
     public ChiTietPhieu() {
     }
 
-    public ChiTietPhieu(int maPhieu, int maSP, int soLuong) {
+    public ChiTietPhieu(int maPhieu, int maSP, int soLuong, boolean isDeleted) {
         this.maPhieu = maPhieu;
         this.maSP = maSP;
         this.soLuong = soLuong;
+        this.isDeleted = isDeleted;
     }
 
     public int getMaPhieu() {

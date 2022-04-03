@@ -2,30 +2,30 @@ package DAL.DataModels;
 
 public abstract class ChiTietKhuyenMai<Id> {
     private String maKM;
-    private Id doituongKM;
+    private Id maId;
 
     public ChiTietKhuyenMai() {
     }
 
-    public ChiTietKhuyenMai(String maKM, Id doituongKM) {
+    public ChiTietKhuyenMai(String maKM, Id maId) {
         this.maKM = maKM;
-        this.doituongKM = doituongKM;
+        this.maId = maId;
     }
 
     public String getMaKM() {
-        return this.maKM;
+        return maKM;
     }
 
     public void setMaKM(String maKM) {
         this.maKM = maKM;
     }
 
-    public Id getDoituongKM() {
-        return this.doituongKM;
+    public Id getMaId() {
+        return maId;
     }
 
-    public void setDoituongKM(Id doituongKM) {
-        this.doituongKM = doituongKM;
+    public void setMaId(Id maId) {
+        this.maId = maId;
     }
 
     public abstract String toString();

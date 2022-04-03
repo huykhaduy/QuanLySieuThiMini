@@ -7,18 +7,22 @@ public class SanPham {
     private String hinhAnh;
     private long giaTien;
     private int soLuong;
+    private int maLoai;
+    private int maNCC;
     private boolean isDeleted;
 
     public SanPham() {
     }
 
-    public SanPham(int maSP, String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, boolean isDeleted) {
+    public SanPham(int maSP, String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, int maLoai, int maNCC, boolean isDeleted) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.moTa = moTa;
         this.hinhAnh = hinhAnh;
         this.giaTien = giaTien;
         this.soLuong = soLuong;
+        this.maLoai = maLoai;
+        this.maNCC = maNCC;
         this.isDeleted = isDeleted;
     }
 
@@ -70,6 +74,22 @@ public class SanPham {
         this.soLuong = soLuong;
     }
 
+    public int getMaLoai() {
+        return maLoai;
+    }
+
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
+    }
+
+    public int getMaNCC() {
+        return maNCC;
+    }
+
+    public void setMaNCC(int maNCC) {
+        this.maNCC = maNCC;
+    }
+
     public boolean isDeleted() {
         return this.isDeleted;
     }
@@ -80,14 +100,16 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return "{" +
-            " maSP='" + getMaSP() + "'" +
-            ", tenSP='" + getTenSP() + "'" +
-            ", moTa='" + getMoTa() + "'" +
-            ", hinhAnh='" + getHinhAnh() + "'" +
-            ", giaTien='" + getGiaTien() + "'" +
-            ", soLuong='" + getSoLuong() + "'" +
-            ", isDeleted='" + isDeleted() + "'" +
-            "}";
+        return "SanPham{" +
+                "maSP=" + maSP +
+                ", tenSP='" + tenSP + '\'' +
+                ", moTa='" + moTa + '\'' +
+                ", hinhAnh='" + hinhAnh + '\'' +
+                ", giaTien=" + giaTien +
+                ", soLuong=" + soLuong +
+                ", maLoai=" + maLoai +
+                ", maNCC=" + maNCC +
+                ", isDeleted=" + isDeleted +
+                '}';
     }
 }

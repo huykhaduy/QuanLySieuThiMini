@@ -5,15 +5,15 @@ public class ChiTietKhuyenMaiChoNCC extends ChiTietKhuyenMai<String> {
     public ChiTietKhuyenMaiChoNCC() {
     }
 
-    public ChiTietKhuyenMaiChoNCC(String maKM, String doituongKM) {
-        super(maKM, doituongKM);
+    public ChiTietKhuyenMaiChoNCC(String maKM, String maId) {
+        super(maKM, maId);
     }
 
     @Override
     public String toString() {
-        return "chiTietKhuyenMaiChoNCC{" +
+        return "ChiTietKhuyenMai{" +
                 "maKM='" + getMaKM() + '\'' +
-                ", doituongKM='" + getDoituongKM() + '\'' +
+                ", maId=" + getMaId() +
                 '}';
     }
 }

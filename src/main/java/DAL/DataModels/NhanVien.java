@@ -8,22 +8,22 @@ public abstract class NhanVien extends ConNguoi {
     private String cmnd;
     private Timestamp ngaySinh;
     private Timestamp ngayThamGia;
+    private String maTK;
     
     public NhanVien() {
     }
 
-    public NhanVien(int maNV, String cmnd, Timestamp ngaySinh, Timestamp ngayThamGia, String hoTen,
-            String diaChi, String sdt, String email, int gioiTinh) {
-        super(hoTen, diaChi, sdt, email, gioiTinh);
+    public NhanVien(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Timestamp ngaySinh, Timestamp ngayThamGia, String maTK) {
+        super(hoTen, gioiTinh, diaChi, email, sdt);
         this.maNV = maNV;
         this.cmnd = cmnd;
         this.ngaySinh = ngaySinh;
         this.ngayThamGia = ngayThamGia;
+        this.maTK = maTK;
     }
-    
 
     public int getMaNV() {
-        return this.maNV;
+        return maNV;
     }
 
     public void setMaNV(int maNV) {
@@ -31,7 +31,7 @@ public abstract class NhanVien extends ConNguoi {
     }
 
     public String getCmnd() {
-        return this.cmnd;
+        return cmnd;
     }
 
     public void setCmnd(String cmnd) {
@@ -39,7 +39,7 @@ public abstract class NhanVien extends ConNguoi {
     }
 
     public Timestamp getNgaySinh() {
-        return this.ngaySinh;
+        return ngaySinh;
     }
 
     public void setNgaySinh(Timestamp ngaySinh) {
@@ -47,18 +47,23 @@ public abstract class NhanVien extends ConNguoi {
     }
 
     public Timestamp getNgayThamGia() {
-        return this.ngayThamGia;
+        return ngayThamGia;
     }
 
     public void setNgayThamGia(Timestamp ngayThamGia) {
         this.ngayThamGia = ngayThamGia;
     }
 
+    public String getMaTK() {
+        return maTK;
+    }
+
+    public void setMaTK(String maTK) {
+        this.maTK = maTK;
+    }
+
     public abstract int getMaChucVu();
 
-    @Override
-    public String toString() {
-        return "NhanVien{" + "maNV=" + maNV + ", maChucVu=" + getMaChucVu() + ", cmnd=" + cmnd + ", ngaySinh=" + ngaySinh + ", ngayThamGia=" + ngayThamGia + ", ten=" + hoTen + ", diaChi=" + diaChi + ", sdt=" + sdt + ", email=" + email + ", gioiTinh=" + gioiTinh + '}';
-    }
+    public abstract String toString();
     
 }

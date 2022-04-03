@@ -2,22 +2,22 @@ package DAL.DataModels;
 
 public abstract class ConNguoi {
     protected String hoTen;
+    protected boolean gioiTinh;
     protected String diaChi;
     protected String email;
     protected String sdt;
-    protected int gioiTinh;
+
 
     public ConNguoi() {
     }
 
-    public ConNguoi(String hoTen, String diaChi, String email, String sdt, int gioiTinh) {
+    public ConNguoi(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt) {
         this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
         this.email = email;
         this.sdt = sdt;
-        this.gioiTinh = gioiTinh;
     }
-
 
     public String getHoTen() {
         return this.hoTen;
@@ -51,11 +51,11 @@ public abstract class ConNguoi {
         this.sdt = sdt;
     }
 
-    public int getGioiTinh() {
+    public boolean getGioiTinh() {
         return this.gioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
