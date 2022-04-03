@@ -9,23 +9,24 @@ public class TaiKhoan {
     private Timestamp ngayTao;
     private boolean isDeleted;
     private boolean isActive;
+    private int maNV;
 
 
     public TaiKhoan() {
     }
 
-    public TaiKhoan(String tenTK, String matKhau, int soLanSai, Timestamp ngayTao, boolean isDeleted,
-            boolean isActive) {
+    public TaiKhoan(String tenTK, String matKhau, int soLanSai, Timestamp ngayTao, boolean isDeleted, boolean isActive, int maNV) {
         this.tenTK = tenTK;
         this.matKhau = matKhau;
         this.soLanSai = soLanSai;
         this.ngayTao = ngayTao;
         this.isDeleted = isDeleted;
         this.isActive = isActive;
+        this.maNV = maNV;
     }
 
     public String getTenTK() {
-        return this.tenTK;
+        return tenTK;
     }
 
     public void setTenTK(String tenTK) {
@@ -33,7 +34,7 @@ public class TaiKhoan {
     }
 
     public String getMatKhau() {
-        return this.matKhau;
+        return matKhau;
     }
 
     public void setMatKhau(String matKhau) {
@@ -41,7 +42,7 @@ public class TaiKhoan {
     }
 
     public int getSoLanSai() {
-        return this.soLanSai;
+        return soLanSai;
     }
 
     public void setSoLanSai(int soLanSai) {
@@ -49,46 +50,47 @@ public class TaiKhoan {
     }
 
     public Timestamp getNgayTao() {
-        return this.ngayTao;
+        return ngayTao;
     }
 
     public void setNgayTao(Timestamp ngayTao) {
         this.ngayTao = ngayTao;
     }
 
-    public boolean isIsDeleted() {
-        return this.isDeleted;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public boolean getIsDeleted() {
-        return this.isDeleted;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public boolean isIsActive() {
-        return this.isActive;
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
-    public boolean getIsActive() {
-        return this.isActive;
+    public int getMaNV() {
+        return maNV;
     }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+    public void setMaNV(int maNV) {
+        this.maNV = maNV;
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " tenTK='" + getTenTK() + "'" +
-            ", matKhau='" + getMatKhau() + "'" +
-            ", soLanSai='" + getSoLanSai() + "'" +
-            ", ngayTao='" + getNgayTao() + "'" +
-            ", isDeleted='" + isIsDeleted() + "'" +
-            ", isActive='" + isIsActive() + "'" +
-            "}";
+        return "TaiKhoan{" +
+                "tenTK='" + tenTK + '\'' +
+                ", matKhau='" + matKhau + '\'' +
+                ", soLanSai=" + soLanSai +
+                ", ngayTao=" + ngayTao +
+                ", isDeleted=" + isDeleted +
+                ", isActive=" + isActive +
+                ", maNV=" + maNV +
+                '}';
     }
 }

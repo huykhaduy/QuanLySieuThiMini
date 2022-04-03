@@ -1,5 +1,6 @@
 package DAL.DataModels;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class NhanVienBanHang extends NhanVien{
@@ -9,8 +10,8 @@ public class NhanVienBanHang extends NhanVien{
     public NhanVienBanHang() {
     }
 
-    public NhanVienBanHang(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Timestamp ngaySinh, Timestamp ngayThamGia, String maTK, int maChucVu) {
-        super(hoTen, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, maTK);
+    public NhanVienBanHang(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Date ngaySinh, Date ngayThamGia, boolean isDeleted, int maChucVu) {
+        super(hoTen, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted);
         this.maChucVu = maChucVu;
     }
 

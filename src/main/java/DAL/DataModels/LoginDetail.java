@@ -8,19 +8,22 @@ public class LoginDetail {
     private String authKey;
     private Timestamp loginTime;
     private Timestamp logoutTime;
+    private String ipAddress;
+    private String macAddress;
 
     public LoginDetail() {
 
     }
-    
-    public LoginDetail(int loginID, String tenTK, String authKey, Timestamp loginTime, Timestamp logoutTime) {
+
+    public LoginDetail(int loginID, String tenTK, String authKey, Timestamp loginTime, Timestamp logoutTime, String ipAddress, String macAddress) {
         this.loginID = loginID;
         this.tenTK = tenTK;
         this.authKey = authKey;
         this.loginTime = loginTime;
         this.logoutTime = logoutTime;
+        this.ipAddress = ipAddress;
+        this.macAddress = macAddress;
     }
-
 
     public int getLoginID() {
         return this.loginID;
@@ -63,15 +66,32 @@ public class LoginDetail {
         this.logoutTime = logoutTime;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " loginID='" + getLoginID() + "'" +
-            ", maTK='" + getTenTK() + "'" +
-            ", authKey='" + getAuthKey() + "'" +
-            ", loginTime='" + getLoginTime() + "'" +
-            ", logoutTime='" + getLogoutTime() + "'" +
-            "}";
+    public String getIpAddress() {
+        return ipAddress;
     }
 
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public String getMacAddress() {
+        return macAddress;
+    }
+
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginDetail{" +
+                "loginID=" + loginID +
+                ", tenTK='" + tenTK + '\'' +
+                ", authKey='" + authKey + '\'' +
+                ", loginTime=" + loginTime +
+                ", logoutTime=" + logoutTime +
+                ", ipAddress='" + ipAddress + '\'' +
+                ", macAddress='" + macAddress + '\'' +
+                '}';
+    }
 }

@@ -1,25 +1,26 @@
 package DAL.DataModels;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public abstract class NhanVien extends ConNguoi {
 
     private int maNV;
     private String cmnd;
-    private Timestamp ngaySinh;
-    private Timestamp ngayThamGia;
-    private String maTK;
+    private Date ngaySinh;
+    private Date ngayThamGia;
+    private boolean isDeleted;
     
     public NhanVien() {
     }
 
-    public NhanVien(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Timestamp ngaySinh, Timestamp ngayThamGia, String maTK) {
+    public NhanVien(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Date ngaySinh, Date ngayThamGia, boolean isDeleted) {
         super(hoTen, gioiTinh, diaChi, email, sdt);
         this.maNV = maNV;
         this.cmnd = cmnd;
         this.ngaySinh = ngaySinh;
         this.ngayThamGia = ngayThamGia;
-        this.maTK = maTK;
+        this.isDeleted = isDeleted;
     }
 
     public int getMaNV() {
@@ -38,28 +39,28 @@ public abstract class NhanVien extends ConNguoi {
         this.cmnd = cmnd;
     }
 
-    public Timestamp getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(Timestamp ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
-    public Timestamp getNgayThamGia() {
+    public Date getNgayThamGia() {
         return ngayThamGia;
     }
 
-    public void setNgayThamGia(Timestamp ngayThamGia) {
+    public void setNgayThamGia(Date ngayThamGia) {
         this.ngayThamGia = ngayThamGia;
     }
 
-    public String getMaTK() {
-        return maTK;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public void setMaTK(String maTK) {
-        this.maTK = maTK;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public abstract int getMaChucVu();
