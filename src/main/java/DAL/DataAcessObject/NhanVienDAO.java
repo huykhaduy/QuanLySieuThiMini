@@ -32,10 +32,10 @@ public class NhanVienDAO extends AbtractDatabseAccess implements IAccess<NhanVie
                 Integer maChucVu = rs.getInt("MACHUCVU");
                 boolean isDeleted = rs.getBoolean("IS_DELETED");
                 if (maChucVu == ChucVu.NHANVIENQUANLY) {
-                    nhanVien = new NhanVienQuanLy(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted, maChucVu);
+                    nhanVien = new NhanVienQuanLy(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted);
                 }
                 else if (maChucVu == ChucVu.NHANVIENBANHANG) {
-                    nhanVien = new NhanVienBanHang(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted, maChucVu);
+                    nhanVien = new NhanVienBanHang(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted);
                 }
                 return nhanVien;
             }
@@ -133,15 +133,17 @@ public class NhanVienDAO extends AbtractDatabseAccess implements IAccess<NhanVie
                 int maChucVu = rs.getInt("MACHUCVU");
                 boolean isDeleted = rs.getBoolean("IS_DELETED");
                 if (maChucVu == ChucVu.NHANVIENQUANLY) {
-                    nhanViens.add(new NhanVienQuanLy(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted, maChucVu));
+                    nhanViens.add(new NhanVienQuanLy(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted));
                 }
                 else if (maChucVu == ChucVu.NHANVIENBANHANG) {
-                    nhanViens.add(new NhanVienBanHang(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted, maChucVu));
+                    nhanViens.add(new NhanVienBanHang(tenNV, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted));
                 }
             }
             return nhanViens;
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            connectManager.closeConnection();
         }
         return null;
     }

@@ -93,6 +93,7 @@ public class LoaiSanPhamDAO extends AbtractDatabseAccess implements IAccess<Loai
                 LoaiSanPham loaiSanPham = new LoaiSanPham(maLoai, tenLoai, moTa);
                 list.add(loaiSanPham);
             }
+            return list;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
