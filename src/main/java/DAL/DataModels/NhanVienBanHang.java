@@ -5,14 +5,13 @@ import java.sql.Timestamp;
 
 public class NhanVienBanHang extends NhanVien{
 
-    private int maChucVu;
+    private final int maChucVu = ChucVu.NHANVIENBANHANG;
 
     public NhanVienBanHang() {
     }
 
-    public NhanVienBanHang(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Date ngaySinh, Date ngayThamGia, boolean isDeleted, int maChucVu) {
+    public NhanVienBanHang(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Date ngaySinh, Date ngayThamGia, boolean isDeleted) {
         super(hoTen, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted);
-        this.maChucVu = maChucVu;
     }
 
     @Override
@@ -20,9 +19,6 @@ public class NhanVienBanHang extends NhanVien{
         return maChucVu;
     }
 
-    public void setMaChucVu(int maChucVu) {
-        this.maChucVu = maChucVu;
-    }
 
     @Override
     public String toString() {

@@ -90,6 +90,8 @@ public class CTHoaDonDAO extends AbtractDatabseAccess implements IAccessDetail<C
             return entity;
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            connectManager.closeConnection();
         }
         return null;
     }

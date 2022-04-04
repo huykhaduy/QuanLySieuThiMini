@@ -5,22 +5,17 @@ import java.sql.Timestamp;
 
 public class NhanVienQuanLy extends NhanVien{
 
-    private int maChucVu;
+    private final int maChucVu = ChucVu.NHANVIENQUANLY;
 
     public NhanVienQuanLy() {
     }
 
-    public NhanVienQuanLy(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Date ngaySinh, Date ngayThamGia, boolean isDeleted, int maChucVu) {
+    public NhanVienQuanLy(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Date ngaySinh, Date ngayThamGia, boolean isDeleted) {
         super(hoTen, gioiTinh, diaChi, email, sdt, maNV, cmnd, ngaySinh, ngayThamGia, isDeleted);
-        this.maChucVu = maChucVu;
     }
 
     public int getMaChucVu() {
         return maChucVu;
-    }
-
-    public void setMaChucVu(int maChucVu) {
-        this.maChucVu = maChucVu;
     }
 
     @Override

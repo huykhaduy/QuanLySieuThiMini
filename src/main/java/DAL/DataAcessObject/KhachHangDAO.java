@@ -12,7 +12,7 @@ public class KhachHangDAO extends AbtractDatabseAccess implements IAccess<KhachH
 
     @Override
     public KhachHang find(Integer maKhachHang) {
-        final String sql = "SELECT * FROM KHACHHANG WHERE MAKH = ? AND IS_DELETE = 0";
+        final String sql = "SELECT * FROM KHACHHANG WHERE MAKH = ? AND IS_DELETED = 0";
         connectManager = getConnectManager();
         try (PreparedStatement ps = connection.prepareStatement(sql)){
             ps.setInt(1, maKhachHang);
@@ -74,6 +74,8 @@ public class KhachHangDAO extends AbtractDatabseAccess implements IAccess<KhachH
             return entity;
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally{
+            connectManager.closeConnection();
         }
         return null;
     }
