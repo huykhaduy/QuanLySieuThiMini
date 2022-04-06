@@ -4,17 +4,17 @@ public class SanPham {
     private int maSP;
     private String tenSP;
     private String moTa;
+    private int soLuong;
     private String hinhAnh;
     private long giaTien;
-    private int soLuong;
     private int maLoai;
-    private String maNCC;
+    private int maNCC;
     private boolean isDeleted;
 
     public SanPham() {
     }
 
-    public SanPham(int maSP, String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, int maLoai, String maNCC, boolean isDeleted) {
+    public SanPham(int maSP, String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, int maLoai, int maNCC, boolean isDeleted) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.moTa = moTa;
@@ -82,11 +82,11 @@ public class SanPham {
         this.maLoai = maLoai;
     }
 
-    public String getMaNCC() {
+    public int getMaNCC() {
         return maNCC;
     }
 
-    public void setMaNCC(String maNCC) {
+    public void setMaNCC(int maNCC) {
         this.maNCC = maNCC;
     }
 

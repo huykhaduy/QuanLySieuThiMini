@@ -1,7 +1,7 @@
 package DAL.DataModels;
 
 public class NhaCungCap {
-    private String maNCC;
+    private int maNCC;
     private String tenNCC;
     private String diaChi;
     private String sdt;
@@ -11,7 +11,7 @@ public class NhaCungCap {
     public NhaCungCap() {
     }
 
-    public NhaCungCap(String maNCC, String tenNCC, String diaChi, String sdt, String email, boolean isDeleted) {
+    public NhaCungCap(int maNCC, String tenNCC, String diaChi, String sdt, String email, boolean isDeleted) {
         this.maNCC = maNCC;
         this.tenNCC = tenNCC;
         this.diaChi = diaChi;
@@ -20,11 +20,11 @@ public class NhaCungCap {
         this.isDeleted = isDeleted;
     }
 
-    public String getMaNCC() {
+    public int getMaNCC() {
         return this.maNCC;
     }
 
-    public void setMaNCC(String maNCC) {
+    public void setMaNCC(int maNCC) {
         this.maNCC = maNCC;
     }
 
@@ -74,13 +74,13 @@ public class NhaCungCap {
 
     @Override
     public String toString() {
-        return "{" +
-            " maNCC='" + getMaNCC() + "'" +
-            ", tenNCC='" + getTenNCC() + "'" +
-            ", diaChi='" + getDiaChi() + "'" +
-            ", sdt='" + getSdt() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", isDeleted='" + isIsDeleted() + "'" +
-            "}";
+        return "NhaCungCap{" +
+                "maNCC=" + maNCC +
+                ", tenNCC='" + tenNCC + '\'' +
+                ", diaChi='" + diaChi + '\'' +
+                ", sdt='" + sdt + '\'' +
+                ", email='" + email + '\'' +
+                ", isDeleted=" + isDeleted +
+                '}';
     }
 }

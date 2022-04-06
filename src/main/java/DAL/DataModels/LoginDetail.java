@@ -3,67 +3,41 @@ package DAL.DataModels;
 import java.sql.Timestamp;
 
 public class LoginDetail {
-    private int loginID;
-    private String tenTK;
+    private int loginId;
     private String authKey;
-    private Timestamp loginTime;
-    private Timestamp logoutTime;
     private String ipAddress;
     private String macAddress;
+    private Timestamp loginTime;
+    private Timestamp logoutTime;
+    private int soTK;
 
     public LoginDetail() {
-
     }
 
-    public LoginDetail(int loginID, String tenTK, String authKey, Timestamp loginTime, Timestamp logoutTime, String ipAddress, String macAddress) {
-        this.loginID = loginID;
-        this.tenTK = tenTK;
+    public LoginDetail(int loginId, String authKey, String ipAddress, String macAddress, Timestamp loginTime, Timestamp logoutTime, int soTK) {
+        this.loginId = loginId;
         this.authKey = authKey;
-        this.loginTime = loginTime;
-        this.logoutTime = logoutTime;
         this.ipAddress = ipAddress;
         this.macAddress = macAddress;
+        this.loginTime = loginTime;
+        this.logoutTime = logoutTime;
+        this.soTK = soTK;
     }
 
-    public int getLoginID() {
-        return this.loginID;
+    public int getLoginId() {
+        return loginId;
     }
 
-    public void setLoginID(int loginID) {
-        this.loginID = loginID;
+    public void setLoginId(int loginId) {
+        this.loginId = loginId;
     }
 
-
-    public String getTenTK() {
-        return this.tenTK;
-    }
-
-    public void setTenTK(String tenTK) {
-        this.tenTK = tenTK;
-    }
-    
     public String getAuthKey() {
-        return this.authKey;
+        return authKey;
     }
 
     public void setAuthKey(String authKey) {
         this.authKey = authKey;
-    }
-
-    public Timestamp getLoginTime() {
-        return this.loginTime;
-    }
-
-    public void setLoginTime(Timestamp loginTime) {
-        this.loginTime = loginTime;
-    }
-
-    public Timestamp getLogoutTime() {
-        return this.logoutTime;
-    }
-
-    public void setLogoutTime(Timestamp logoutTime) {
-        this.logoutTime = logoutTime;
     }
 
     public String getIpAddress() {
@@ -82,16 +56,40 @@ public class LoginDetail {
         this.macAddress = macAddress;
     }
 
+    public Timestamp getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(Timestamp loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public Timestamp getLogoutTime() {
+        return logoutTime;
+    }
+
+    public void setLogoutTime(Timestamp logoutTime) {
+        this.logoutTime = logoutTime;
+    }
+
+    public int getSoTK() {
+        return soTK;
+    }
+
+    public void setSoTK(int soTK) {
+        this.soTK = soTK;
+    }
+
     @Override
     public String toString() {
         return "LoginDetail{" +
-                "loginID=" + loginID +
-                ", tenTK='" + tenTK + '\'' +
+                "loginId=" + loginId +
                 ", authKey='" + authKey + '\'' +
-                ", loginTime=" + loginTime +
-                ", logoutTime=" + logoutTime +
                 ", ipAddress='" + ipAddress + '\'' +
                 ", macAddress='" + macAddress + '\'' +
+                ", loginTime=" + loginTime +
+                ", logoutTime=" + logoutTime +
+                ", soTK=" + soTK +
                 '}';
     }
 }
