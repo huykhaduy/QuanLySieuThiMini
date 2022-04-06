@@ -16,6 +16,9 @@ target/
 #intej files
 .idea/
 
+#vscode files
+.vscode/
+
 # Package Files #
 *.jar
 *.war
