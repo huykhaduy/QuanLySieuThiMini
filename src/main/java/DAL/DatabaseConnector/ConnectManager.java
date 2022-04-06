@@ -37,12 +37,4 @@ public class ConnectManager {
             e.printStackTrace();
         }
     }
-
-    // public static void main(String[] args) throws SQLException {
-    //     ConnectManager connectManager = new ConnectManager();
-    //     Connection connect = connectManager.getConnect();
-    //     System.out.println(connect.isClosed());
-    //     connectManager.closeConnect();
-    //     System.out.println(connect.isClosed());
-    // }
 }
