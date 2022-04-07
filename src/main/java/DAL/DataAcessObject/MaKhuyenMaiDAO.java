@@ -14,7 +14,7 @@ public class MaKhuyenMaiDAO extends AbtractAccessDatabase<MaKhuyenMai> implement
 //        return executeUpdate("INSERT INTO MAKHUYENMAI(LOAIKM, MOTA, NGAYBD, NGAYKT, GIATRITOITHIEU, KMTOITHIEU, KMTOIDA, PTGIAM, SOLUOTSD, IS_DELETED) VALUES(?,?,?,?,?)",
         return false;
     }
-    
+
     @Override
     public boolean delete(Integer id) {
         return false;

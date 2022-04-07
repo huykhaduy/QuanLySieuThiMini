@@ -10,14 +10,16 @@ import java.util.List;
 
 public abstract class AbtractAccessDatabase<T> {
     protected ConnectManager connectManager;
-    protected Class<T> clazz;
+    protected BeanListHandler<T> beanListHandler;
+    protected BeanHandler<T> beanHandler;
+
 
     //Simple query for table
     protected T executeQuery(String query, Object... params) {
         getNewConnectionManager();
         QueryRunner queryRunner = new QueryRunner();
         try{
-            return queryRunner.query(connectManager.getConnection(), query, new BeanHandler<T>(clazz), params);
+            return queryRunner.query(connectManager.getConnection(), query, beanHandler, params);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -44,7 +46,7 @@ public abstract class AbtractAccessDatabase<T> {
         getNewConnectionManager();
         QueryRunner queryRunner = new QueryRunner();
         try{
-            return queryRunner.query(connectManager.getConnection(), query, new BeanListHandler<T>(clazz));
+            return queryRunner.query(connectManager.getConnection(), query, beanListHandler);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -53,12 +55,9 @@ public abstract class AbtractAccessDatabase<T> {
         return null;
     }
 
-    protected Class<T> getClazz() {
-        return clazz;
-    }
-
     protected void setClazz(Class<T> clazz) {
-        this.clazz = clazz;
+        this.beanHandler = new BeanHandler<>(clazz);
+        this.beanListHandler = new BeanListHandler<>(clazz);
     }
 
     private void getNewConnectionManager(){
