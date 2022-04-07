@@ -6,25 +6,30 @@ public class HoaDon {
     private int maHD;
     private Timestamp ngayHD;
     private String hinhThuc;
+    private long tongTien;
+    private long tienGiam;
     private int maKH;
     private int maNV;
-    private String maKM;
+    private int soKM;
+    private boolean isDeleted;
 
     public HoaDon() {
     }
 
-    public HoaDon(int maHD, Timestamp ngayHD, String hinhThuc, int maKH, int maNV, String maKM) {
+    public HoaDon(int maHD, Timestamp ngayHD, String hinhThuc, long tongTien, long tienGiam, int maKH, int maNV, int soKM, boolean isDeleted) {
         this.maHD = maHD;
         this.ngayHD = ngayHD;
         this.hinhThuc = hinhThuc;
+        this.tongTien = tongTien;
+        this.tienGiam = tienGiam;
         this.maKH = maKH;
         this.maNV = maNV;
-        this.maKM = maKM;
+        this.soKM = soKM;
+        this.isDeleted = isDeleted;
     }
 
-
     public int getMaHD() {
-        return this.maHD;
+        return maHD;
     }
 
     public void setMaHD(int maHD) {
@@ -32,7 +37,7 @@ public class HoaDon {
     }
 
     public Timestamp getNgayHD() {
-        return this.ngayHD;
+        return ngayHD;
     }
 
     public void setNgayHD(Timestamp ngayHD) {
@@ -40,15 +45,31 @@ public class HoaDon {
     }
 
     public String getHinhThuc() {
-        return this.hinhThuc;
+        return hinhThuc;
     }
 
     public void setHinhThuc(String hinhThuc) {
         this.hinhThuc = hinhThuc;
     }
 
+    public long getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(long tongTien) {
+        this.tongTien = tongTien;
+    }
+
+    public long getTienGiam() {
+        return tienGiam;
+    }
+
+    public void setTienGiam(long tienGiam) {
+        this.tienGiam = tienGiam;
+    }
+
     public int getMaKH() {
-        return this.maKH;
+        return maKH;
     }
 
     public void setMaKH(int maKH) {
@@ -56,31 +77,41 @@ public class HoaDon {
     }
 
     public int getMaNV() {
-        return this.maNV;
+        return maNV;
     }
 
     public void setMaNV(int maNV) {
         this.maNV = maNV;
     }
 
-    public String getMaKM() {
-        return this.maKM;
+    public int getSoKM() {
+        return soKM;
     }
 
-    public void setMaKM(String maKM) {
-        this.maKM = maKM;
+    public void setSoKM(int soKM) {
+        this.soKM = soKM;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " maHD='" + getMaHD() + "'" +
-            ", ngayHD='" + getNgayHD() + "'" +
-            ", hinhThuc='" + getHinhThuc() + "'" +
-            ", maKH='" + getMaKH() + "'" +
-            ", maNV='" + getMaNV() + "'" +
-            ", maKM='" + getMaKM() + "'" +
-            "}";
+        return "HoaDon{" +
+                "maHD=" + maHD +
+                ", ngayHD=" + ngayHD +
+                ", hinhThuc='" + hinhThuc + '\'' +
+                ", tongTien=" + tongTien +
+                ", tienGiam=" + tienGiam +
+                ", maKH=" + maKH +
+                ", maNV=" + maNV +
+                ", soKM=" + soKM +
+                ", isDeleted=" + isDeleted +
+                '}';
     }
-
 }

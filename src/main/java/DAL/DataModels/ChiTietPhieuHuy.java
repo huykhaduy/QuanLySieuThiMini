@@ -5,8 +5,8 @@ public class ChiTietPhieuHuy extends ChiTietPhieu {
     public ChiTietPhieuHuy() {
     }
 
-    public ChiTietPhieuHuy(int maPhieu, int maSP, int soLuong, boolean isDeleted) {
-        super(maPhieu, maSP, soLuong, isDeleted);
+    public ChiTietPhieuHuy(int maPhieu, int maSP, int soLuong) {
+        super(maPhieu, maSP, soLuong);
     }
 
     @Override
@@ -15,7 +15,6 @@ public class ChiTietPhieuHuy extends ChiTietPhieu {
                 "maPhieu=" + maPhieu +
                 ", maSP=" + maSP +
                 ", soLuong=" + soLuong +
-                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

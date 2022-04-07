@@ -4,14 +4,16 @@ public class LoaiSanPham {
     private int maLoai;
     private String tenLoai;
     private String moTa;
+    private boolean isDeleted;
 
     public LoaiSanPham() {
     }
 
-    public LoaiSanPham(int maLoai, String tenLoai, String moTa) {
+    public LoaiSanPham(int maLoai, String tenLoai, String moTa, boolean isDeleted) {
         this.maLoai = maLoai;
         this.tenLoai = tenLoai;
         this.moTa = moTa;
+        this.isDeleted = isDeleted;
     }
 
     public int getMaLoai() {
@@ -38,12 +40,21 @@ public class LoaiSanPham {
         this.moTa = moTa;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Override
     public String toString() {
-        return "{" +
-            " maLoai='" + getMaLoai() + "'" +
-            ", tenLoai='" + getTenLoai() + "'" +
-            ", moTa='" + getMoTa() + "'" +
-            "}";
+        return "LoaiSanPham{" +
+                "maLoai=" + maLoai +
+                ", tenLoai='" + tenLoai + '\'' +
+                ", moTa='" + moTa + '\'' +
+                ", isDeleted=" + isDeleted +
+                '}';
     }
 }

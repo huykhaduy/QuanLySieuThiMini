@@ -6,11 +6,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import org.apache.commons.dbutils.DbUtils;
 
 public class ConnectManager {
     private Connection connect;
+    private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     public ConnectManager() {
+        DbUtils.loadDriver(JDBC_DRIVER);
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/main/java/DAL/DatabaseConnector/dbconfig.properties"));
@@ -29,17 +32,9 @@ public class ConnectManager {
 
     public void closeConnection() {
         try {
-            this.connect.close();
+            DbUtils.close(connect);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-    // public static void main(String[] args) throws SQLException {
-    //     ConnectManager connectManager = new ConnectManager();
-    //     Connection connect = connectManager.getConnect();
-    //     System.out.println(connect.isClosed());
-    //     connectManager.closeConnect();
-    //     System.out.println(connect.isClosed());
-    // }
 }

@@ -3,23 +3,33 @@ package DAL.DataModels;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public abstract class NhanVien extends ConNguoi {
-
+public class NhanVien{
     private int maNV;
+    private String tenNV;
+    private boolean gioiTinh;
     private String cmnd;
     private Date ngaySinh;
+    private String soDienThoai;
+    private String email;
+    private String diaChi;
     private Date ngayThamGia;
+    private int maChucVu;
     private boolean isDeleted;
-    
-    public NhanVien() {
+
+    public NhanVien(){
     }
 
-    public NhanVien(String hoTen, boolean gioiTinh, String diaChi, String email, String sdt, int maNV, String cmnd, Date ngaySinh, Date ngayThamGia, boolean isDeleted) {
-        super(hoTen, gioiTinh, diaChi, email, sdt);
+    public NhanVien(int maNV, String tenNV, boolean gioiTinh, String cmnd, Date ngaySinh, String soDienThoai, String email, String diaChi, Date ngayThamGia, int maChucVu, boolean isDeleted) {
         this.maNV = maNV;
+        this.tenNV = tenNV;
+        this.gioiTinh = gioiTinh;
         this.cmnd = cmnd;
         this.ngaySinh = ngaySinh;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
+        this.diaChi = diaChi;
         this.ngayThamGia = ngayThamGia;
+        this.maChucVu = maChucVu;
         this.isDeleted = isDeleted;
     }
 
@@ -29,6 +39,22 @@ public abstract class NhanVien extends ConNguoi {
 
     public void setMaNV(int maNV) {
         this.maNV = maNV;
+    }
+
+    public String getTenNV() {
+        return tenNV;
+    }
+
+    public void setTenNV(String tenNV) {
+        this.tenNV = tenNV;
+    }
+
+    public boolean isGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
     public String getCmnd() {
@@ -47,12 +73,44 @@ public abstract class NhanVien extends ConNguoi {
         this.ngaySinh = ngaySinh;
     }
 
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
     public Date getNgayThamGia() {
         return ngayThamGia;
     }
 
     public void setNgayThamGia(Date ngayThamGia) {
         this.ngayThamGia = ngayThamGia;
+    }
+
+    public int getMaChucVu() {
+        return maChucVu;
+    }
+
+    public void setMaChucVu(int maChucVu) {
+        this.maChucVu = maChucVu;
     }
 
     public boolean isDeleted() {
@@ -63,8 +121,20 @@ public abstract class NhanVien extends ConNguoi {
         isDeleted = deleted;
     }
 
-    public abstract int getMaChucVu();
-
-    public abstract String toString();
-    
+    @Override
+    public String toString() {
+        return "NhanVien{" +
+                "maNV=" + maNV +
+                ", tenNV='" + tenNV + '\'' +
+                ", gioiTinh=" + gioiTinh +
+                ", cmnd='" + cmnd + '\'' +
+                ", ngaySinh=" + ngaySinh +
+                ", soDienThoai='" + soDienThoai + '\'' +
+                ", email='" + email + '\'' +
+                ", diaChi='" + diaChi + '\'' +
+                ", ngayThamGia=" + ngayThamGia +
+                ", maChucVu=" + maChucVu +
+                ", isDeleted=" + isDeleted +
+                '}';
+    }
 }

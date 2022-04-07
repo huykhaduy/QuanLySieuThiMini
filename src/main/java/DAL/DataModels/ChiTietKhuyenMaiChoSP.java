@@ -1,18 +1,38 @@
 package DAL.DataModels;
 
-public class ChiTietKhuyenMaiChoSP extends ChiTietKhuyenMai<Integer> {
+public class ChiTietKhuyenMaiChoSP {
+    private int soKM;
+    private int maSP;
 
     public ChiTietKhuyenMaiChoSP() {
     }
 
-    public ChiTietKhuyenMaiChoSP(String maKM, Integer maId) {
-        super(maKM, maId);
+    public ChiTietKhuyenMaiChoSP(int soKM, int maSP) {
+        this.soKM = soKM;
+        this.maSP = maSP;
+    }
+
+    public int getSoKM() {
+        return soKM;
+    }
+
+    public void setSoKM(int soKM) {
+        this.soKM = soKM;
+    }
+
+    public int getMaSP() {
+        return maSP;
+    }
+
+    public void setMaSP(int maSP) {
+        this.maSP = maSP;
     }
 
     @Override
     public String toString() {
         return "ChiTietKhuyenMaiChoSP{" +
-                "maKM='" + getMaKM() + '\'' +
-                ", maId='" + getMaId() + '\''+"}";
+                "soKM=" + soKM +
+                ", maSP=" + maSP +
+                '}';
     }
 }
