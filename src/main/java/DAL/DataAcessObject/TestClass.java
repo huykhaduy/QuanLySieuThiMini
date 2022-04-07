@@ -1,17 +1,71 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.LoaiSanPham;
-import DAL.DataModels.NhaCungCap;
-import DAL.DataModels.SanPham;
+import DAL.DataModels.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class TestClass {
     public static void main(String[] args) {
-
+        testHoaDon();
     }
 
+    public static void testHoaDon(){
+        HoaDonDAO hoaDonDAO = new HoaDonDAO();
+        HoaDon hd = new HoaDon(1,new Timestamp(System.currentTimeMillis()),"Tien mat",1000,1,1,1,1,false);
+        System.out.println(hd);
 
+        if (hoaDonDAO.insert(hd)){
+            System.out.println("Insert success");
+        };
+
+        hd.setTongTien(333333);
+        if (hoaDonDAO.update(2,hd)){
+            System.out.println("Update success");
+        } else {
+            System.out.println("Update fail");
+        }
+
+        if (hoaDonDAO.delete(2)){
+            System.out.println("Delete success");
+        } else {
+            System.out.println("Delete fail");
+        }
+
+        List<HoaDon> list = hoaDonDAO.selectAll();
+        for (HoaDon hoaDon : list) {
+            System.out.println(hoaDon);
+        }
+    }
+
+    public static void testMaKhuyenMai(){
+        MaKhuyenMaiDAO maKhuyenMaiDAO = new MaKhuyenMaiDAO();
+        MaKhuyenMai mkm = new MaKhuyenMai(
+                1,"GIAMGIA","MOTA",2,new Timestamp(System.currentTimeMillis()),new Timestamp(System.currentTimeMillis()),
+                10000,0,5000,10,200,false);
+//        System.out.println(mkm);
+//        MaKhuyenMai mkm1 = maKhuyenMaiDAO.select("GIAMGIA");
+//        System.out.println(mkm1);
+//        if (maKhuyenMaiDAO.insert(mkm)){
+//            System.out.println("Insert success");
+//        }
+//
+//        mkm.setNgayKT(Timestamp.valueOf("2023-01-01 00:00:00"));
+//        if (maKhuyenMaiDAO.update("GIAMGIA",mkm)){
+//            System.out.println("Update success");
+//        }
+//
+//        if (maKhuyenMaiDAO.delete("GIAMGIA")){
+//            System.out.println("Delete success");
+//        }
+//
+//        List<MaKhuyenMai> list = maKhuyenMaiDAO.selectAll();
+//        for (MaKhuyenMai maKhuyenMai : list) {
+//            System.out.println(maKhuyenMai);
+//        }
+//
+
+    }
 
     public static void testSanPham(){
         SanPham sp = new SanPham(0,"Sua ong tho","Sua ong tho tiet trung vinamlik 100% sua bo","D:/img/image.png",36000,1,1,1,false);
@@ -42,7 +96,7 @@ public class TestClass {
     public static void testLoaiSanPham(){
         LoaiSanPhamDAO loaiSanPhamDAO = new LoaiSanPhamDAO();
         LoaiSanPham lsp = new LoaiSanPham(1,"Laptop","Laptop de nang cao",false);
-        System.out.println(lsp);
+//        System.out.println(lsp);
 
         if (loaiSanPhamDAO.insert(lsp)){
             System.out.println("Insert success");

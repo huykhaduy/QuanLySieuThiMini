@@ -28,11 +28,11 @@ public class MaKhuyenMaiDAO extends AbtractAccessDatabase<MaKhuyenMai> implement
 
     @Override
     public MaKhuyenMai select(String maKM) {
-        return null;
+        return executeQuery("SELECT * FROM MAKHUYENMAI WHERE MAKM = ? AND IS_DELETED = 0",maKM);
     }
 
     @Override
     public List<MaKhuyenMai> selectAll() {
-        return null;
+        return executeQueryList("SELECT * FROM MAKHUYENMAI WHERE IS_DELETED = 0");
     }
 }

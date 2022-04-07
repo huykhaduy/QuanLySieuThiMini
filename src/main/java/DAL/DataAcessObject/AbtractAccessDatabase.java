@@ -2,6 +2,7 @@ package DAL.DataAcessObject;
 
 import DAL.DatabaseConnector.ConnectManager;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
@@ -9,8 +10,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public abstract class AbtractAccessDatabase<T> {
-    protected BeanListHandler<T> beanListHandler;
-    protected BeanHandler<T> beanHandler;
+//    protected BeanListHandler<T> beanListHandler;
+//    protected BeanHandler<T> beanHandler;
+    protected ResultSetHandler<T> resultSetHandler;
+    protected ResultSetHandler<List<T>> resultSetHandlerList;
     protected final QueryRunner queryRunner = new QueryRunner();
     protected final ConnectManager connectManager = new ConnectManager();
 
@@ -18,7 +21,7 @@ public abstract class AbtractAccessDatabase<T> {
     protected T executeQuery(String query, Object... params) {
         getNewConnectionManager();
         try{
-            return queryRunner.query(connectManager.getConnection(), query, beanHandler, params);
+            return queryRunner.query(connectManager.getConnection(), query, resultSetHandler, params);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -43,7 +46,7 @@ public abstract class AbtractAccessDatabase<T> {
     protected List<T> executeQueryList(String query) {
         getNewConnectionManager();
         try{
-            return queryRunner.query(connectManager.getConnection(), query, beanListHandler);
+            return queryRunner.query(connectManager.getConnection(), query, resultSetHandlerList);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -53,8 +56,8 @@ public abstract class AbtractAccessDatabase<T> {
     }
 
     protected void setClazz(Class<T> clazz) {
-        this.beanHandler = new BeanHandler<>(clazz);
-        this.beanListHandler = new BeanListHandler<>(clazz);
+        this.resultSetHandler = new BeanHandler<>(clazz);
+        this.resultSetHandlerList = new BeanListHandler<>(clazz);
     }
 
     private void getNewConnectionManager(){
