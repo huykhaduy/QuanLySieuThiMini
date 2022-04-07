@@ -9,15 +9,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public abstract class AbtractAccessDatabase<T> {
-    protected ConnectManager connectManager;
     protected BeanListHandler<T> beanListHandler;
     protected BeanHandler<T> beanHandler;
-
+    protected final QueryRunner queryRunner = new QueryRunner();
+    protected final ConnectManager connectManager = new ConnectManager();
 
     //Simple query for table
     protected T executeQuery(String query, Object... params) {
         getNewConnectionManager();
-        QueryRunner queryRunner = new QueryRunner();
         try{
             return queryRunner.query(connectManager.getConnection(), query, beanHandler, params);
         } catch (SQLException e) {
@@ -30,7 +29,6 @@ public abstract class AbtractAccessDatabase<T> {
 
     protected boolean executeUpdate(String query, Object... params) {
         getNewConnectionManager();
-        QueryRunner queryRunner = new QueryRunner();
         try{
             int result = queryRunner.update(connectManager.getConnection(), query, params);
             return checkUpdateSuccess(result);
@@ -44,7 +42,6 @@ public abstract class AbtractAccessDatabase<T> {
 
     protected List<T> executeQueryList(String query) {
         getNewConnectionManager();
-        QueryRunner queryRunner = new QueryRunner();
         try{
             return queryRunner.query(connectManager.getConnection(), query, beanListHandler);
         } catch (SQLException e) {
@@ -61,7 +58,7 @@ public abstract class AbtractAccessDatabase<T> {
     }
 
     private void getNewConnectionManager(){
-        connectManager = new ConnectManager();
+        connectManager.openConnection();
     }
 
     private boolean checkUpdateSuccess(int result){

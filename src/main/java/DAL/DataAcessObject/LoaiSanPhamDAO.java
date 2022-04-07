@@ -4,7 +4,7 @@ import DAL.DataModels.LoaiSanPham;
 
 import java.util.List;
 
-public class LoaiSanPhamDAO extends AbtractAccessDatabase<LoaiSanPham> implements ISimpleAccess<LoaiSanPham> {
+public class LoaiSanPhamDAO extends AbtractAccessDatabase<LoaiSanPham> implements ISimpleAccess<LoaiSanPham, Integer> {
 
     {
         setClazz(LoaiSanPham.class);
