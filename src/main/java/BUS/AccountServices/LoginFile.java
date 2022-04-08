@@ -35,7 +35,8 @@ public class LoginFile {
         try {
             props.store(new java.io.FileOutputStream(path), "Authentication key for login");
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("Không thể thao tác file "+path);
         }
     }
 
@@ -50,8 +51,19 @@ public class LoginFile {
             byte[] decodedBytes = Base64.getDecoder().decode(authKey.getBytes());
             return new String(decodedBytes);
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("Không tìm thấy file "+path);
         }
         return null;
+    }
+
+    public String createAuthKey(int length){
+        StringBuilder sb = new StringBuilder();
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (int i = 0; i < length; i++) {
+            int index = (int) (Math.random() * characters.length());
+            sb.append(characters.charAt(index));
+        }
+        return sb.toString();
     }
 }
