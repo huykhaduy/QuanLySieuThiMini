@@ -35,4 +35,12 @@ public class LoginDetailDAO extends AbtractAccessDatabase<LoginDetail> implement
     public List<LoginDetail> selectAll() {
         return executeQueryList("SELECT * FROM LOGIN_DETAIL");
     }
+
+    public LoginDetail selectByNewestSoTK(int soTK) {
+        return executeQuery("SELECT * FROM LOGIN_DETAIL WHERE SOTK = ? ORDER BY LOGOUT_TIME DESC LIMIT 1",soTK);
+    }
+
+    public LoginDetail selectByAuthKey(String authKey) {
+        return executeQuery("SELECT * FROM LOGIN_DETAIL WHERE AUTH_KEY = ? AND LOGOUT_TIME>=NOW()",authKey);
+    }
 }

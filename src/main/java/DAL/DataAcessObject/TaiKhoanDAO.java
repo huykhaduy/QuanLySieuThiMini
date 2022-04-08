@@ -35,4 +35,8 @@ public class TaiKhoanDAO extends AbtractAccessDatabase<TaiKhoan> implements ISim
     public List<TaiKhoan> selectAll() {
         return executeQueryList("SELECT * FROM TAIKHOAN WHERE IS_DELETED = 0");
     }
+
+    public TaiKhoan selectByTenTK(String username){
+        return executeQuery("SELECT * FROM TAIKHOAN WHERE TENTK = ? AND IS_DELETED = 0",username);
+    }
 }
