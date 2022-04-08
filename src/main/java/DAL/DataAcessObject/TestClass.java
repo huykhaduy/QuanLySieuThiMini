@@ -7,30 +7,30 @@ import java.util.List;
 
 public class TestClass {
     public static void main(String[] args) {
-        testHoaDon();
+        testLoaiSanPham();
     }
 
     public static void testHoaDon(){
         HoaDonDAO hoaDonDAO = new HoaDonDAO();
-        HoaDon hd = new HoaDon(1,new Timestamp(System.currentTimeMillis()),"Tien mat",1000,1,1,1,1,false);
-        System.out.println(hd);
-
-        if (hoaDonDAO.insert(hd)){
-            System.out.println("Insert success");
-        };
-
-        hd.setTongTien(333333);
-        if (hoaDonDAO.update(2,hd)){
-            System.out.println("Update success");
-        } else {
-            System.out.println("Update fail");
-        }
-
-        if (hoaDonDAO.delete(2)){
-            System.out.println("Delete success");
-        } else {
-            System.out.println("Delete fail");
-        }
+//        HoaDon hd = new HoaDon(1,new Timestamp(System.currentTimeMillis()),"Tien mat",1000,1,1,1,1,false);
+//        System.out.println(hd);
+//
+//        if (hoaDonDAO.insert(hd)){
+//            System.out.println("Insert success");
+//        };
+//
+//        hd.setTongTien(333333);
+//        if (hoaDonDAO.update(2,hd)){
+//            System.out.println("Update success");
+//        } else {
+//            System.out.println("Update fail");
+//        }
+//
+//        if (hoaDonDAO.delete(2)){
+//            System.out.println("Delete success");
+//        } else {
+//            System.out.println("Delete fail");
+//        }
 
         List<HoaDon> list = hoaDonDAO.selectAll();
         for (HoaDon hoaDon : list) {
@@ -97,22 +97,22 @@ public class TestClass {
         LoaiSanPhamDAO loaiSanPhamDAO = new LoaiSanPhamDAO();
         LoaiSanPham lsp = new LoaiSanPham(1,"Laptop","Laptop de nang cao",false);
 //        System.out.println(lsp);
-
-        if (loaiSanPhamDAO.insert(lsp)){
-            System.out.println("Insert success");
-        };
-
-        if (loaiSanPhamDAO.update(1,lsp)){
-            System.out.println("Update success");
-        } else {
-            System.out.println("Update fail");
-        }
-
-        if (loaiSanPhamDAO.delete(1)){
-            System.out.println("Delete success");
-        } else {
-            System.out.println("Delete fail");
-        }
+//
+//        if (loaiSanPhamDAO.insert(lsp)){
+//            System.out.println("Insert success");
+//        };
+//
+//        if (loaiSanPhamDAO.update(1,lsp)){
+//            System.out.println("Update success");
+//        } else {
+//            System.out.println("Update fail");
+//        }
+//
+//        if (loaiSanPhamDAO.delete(1)){
+//            System.out.println("Delete success");
+//        } else {
+//            System.out.println("Delete fail");
+//        }
 
         List<LoaiSanPham> list = loaiSanPhamDAO.selectAll();
         for (LoaiSanPham loaiSanPham : list) {

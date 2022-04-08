@@ -43,10 +43,10 @@ public abstract class AbtractAccessDatabase<T> {
         return false;
     }
 
-    protected List<T> executeQueryList(String query) {
+    protected List<T> executeQueryList(String query, Object... params) {
         getNewConnectionManager();
         try{
-            return queryRunner.query(connectManager.getConnection(), query, resultSetHandlerList);
+            return queryRunner.query(connectManager.getConnection(), query, resultSetHandlerList,params);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
