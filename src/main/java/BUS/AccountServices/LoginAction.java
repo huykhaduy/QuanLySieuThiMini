@@ -103,7 +103,7 @@ public class LoginAction{
     public static void main(String[] args){
 //        LoginFile loginFile = new LoginFile("DUYHECKER");
 //        loginFile.writeToFile();
-        LoginAction loginAction = new LoginAction();
-        loginAction.initLogin();
+//        LoginAction loginAction = new LoginAction();
+//        loginAction.initLogin();
     }
 }
