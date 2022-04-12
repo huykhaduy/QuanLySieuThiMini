@@ -4,7 +4,7 @@ import DAL.DataModels.NhaCungCap;
 
 import java.util.List;
 
-public class NhaCungCapDAO extends AbtractAccessDatabase<NhaCungCap> implements ISimpleAccess<NhaCungCap> {
+public class NhaCungCapDAO extends AbtractAccessDatabase<NhaCungCap> implements ISimpleAccess<NhaCungCap,Integer> {
 
     //Set class for DAO action
     {

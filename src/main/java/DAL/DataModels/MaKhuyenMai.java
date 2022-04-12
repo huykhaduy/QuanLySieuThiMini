@@ -7,7 +7,7 @@ public class MaKhuyenMai {
     private String maKM;
     private int loaiKM;
     private String moTa;
-    private Timestamp ngayDB;
+    private Timestamp ngayBD;
     private Timestamp ngayKT;
     private long giaTriToiThieu;
     private long kmToiThieu;
@@ -19,12 +19,12 @@ public class MaKhuyenMai {
     public MaKhuyenMai() {
     }
 
-    public MaKhuyenMai(int soKM, String maKM, String moTa, int loaiKM, Timestamp ngayDB, Timestamp ngayKT, long giaTriToiThieu, long kmToiThieu, long kmToiDa, int ptGiam, int soLuotSD, boolean isDeleted) {
+    public MaKhuyenMai(int soKM, String maKM, String moTa, int loaiKM, Timestamp ngayBD, Timestamp ngayKT, long giaTriToiThieu, long kmToiThieu, long kmToiDa, int ptGiam, int soLuotSD, boolean isDeleted) {
         this.soKM = soKM;
         this.maKM = maKM;
         this.moTa = moTa;
         this.loaiKM = loaiKM;
-        this.ngayDB = ngayDB;
+        this.ngayBD = ngayBD;
         this.ngayKT = ngayKT;
         this.giaTriToiThieu = giaTriToiThieu;
         this.kmToiThieu = kmToiThieu;
@@ -66,12 +66,12 @@ public class MaKhuyenMai {
         this.loaiKM = loaiKM;
     }
 
-    public Timestamp getNgayDB() {
-        return ngayDB;
+    public Timestamp getNgayBD() {
+        return ngayBD;
     }
 
-    public void setNgayDB(Timestamp ngayDB) {
-        this.ngayDB = ngayDB;
+    public void setNgayBD(Timestamp ngayBD) {
+        this.ngayBD = ngayBD;
     }
 
     public Timestamp getNgayKT() {
@@ -137,7 +137,7 @@ public class MaKhuyenMai {
                 ", maKM='" + maKM + '\'' +
                 ", moTa='" + moTa + '\'' +
                 ", loaiKM=" + loaiKM +
-                ", ngayDB=" + ngayDB +
+                ", ngayDB=" + ngayBD +
                 ", ngayKT=" + ngayKT +
                 ", giaTriToiThieu=" + giaTriToiThieu +
                 ", kmToiThieu=" + kmToiThieu +

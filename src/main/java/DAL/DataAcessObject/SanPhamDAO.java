@@ -4,7 +4,7 @@ import DAL.DataModels.SanPham;
 
 import java.util.List;
 
-public class SanPhamDAO extends AbtractAccessDatabase<SanPham> implements ISimpleAccess<SanPham> {
+public class SanPhamDAO extends AbtractAccessDatabase<SanPham> implements ISimpleAccess<SanPham, Integer> {
 
     {
         setClazz(SanPham.class);
