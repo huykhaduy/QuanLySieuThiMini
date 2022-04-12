@@ -3,26 +3,33 @@ package DAL.DataModels;
 import java.sql.Timestamp;
 
 public class TaiKhoan {
+    private int soTK;
     private String tenTK;
     private String matKhau;
+    private int maNV;
     private int soLanSai;
     private Timestamp ngayTao;
     private boolean isDeleted;
-    private boolean isActive;
-    private int maNV;
-
 
     public TaiKhoan() {
     }
 
-    public TaiKhoan(String tenTK, String matKhau, int soLanSai, Timestamp ngayTao, boolean isDeleted, boolean isActive, int maNV) {
+    public TaiKhoan(int soTK, String tenTK, String matKhau, int maNV, int soLanSai, Timestamp ngayTao, boolean isDeleted) {
+        this.soTK = soTK;
         this.tenTK = tenTK;
         this.matKhau = matKhau;
+        this.maNV = maNV;
         this.soLanSai = soLanSai;
         this.ngayTao = ngayTao;
         this.isDeleted = isDeleted;
-        this.isActive = isActive;
-        this.maNV = maNV;
+    }
+
+    public int getSoTK() {
+        return soTK;
+    }
+
+    public void setSoTK(int soTK) {
+        this.soTK = soTK;
     }
 
     public String getTenTK() {
@@ -39,6 +46,14 @@ public class TaiKhoan {
 
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
+    }
+
+    public int getMaNV() {
+        return maNV;
+    }
+
+    public void setMaNV(int maNV) {
+        this.maNV = maNV;
     }
 
     public int getSoLanSai() {
@@ -65,32 +80,16 @@ public class TaiKhoan {
         isDeleted = deleted;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public int getMaNV() {
-        return maNV;
-    }
-
-    public void setMaNV(int maNV) {
-        this.maNV = maNV;
-    }
-
     @Override
     public String toString() {
         return "TaiKhoan{" +
-                "tenTK='" + tenTK + '\'' +
+                "soTK=" + soTK +
+                ", tenTK='" + tenTK + '\'' +
                 ", matKhau='" + matKhau + '\'' +
+                ", maNV=" + maNV +
                 ", soLanSai=" + soLanSai +
                 ", ngayTao=" + ngayTao +
                 ", isDeleted=" + isDeleted +
-                ", isActive=" + isActive +
-                ", maNV=" + maNV +
                 '}';
     }
 }

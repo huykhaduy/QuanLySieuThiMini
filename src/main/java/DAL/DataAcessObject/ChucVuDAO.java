@@ -2,105 +2,38 @@ package DAL.DataAcessObject;
 
 import DAL.DataModels.ChucVu;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ChucVuDAO extends AbtractDatabseAccess implements IAccess<ChucVu,Integer> {
+public class ChucVuDAO extends AbtractAccessDatabase<ChucVu> implements ISimpleAccess<ChucVu,Integer> {
 
-    @Override
-    public ChucVu find(Integer integer) {
-        final String sql = "SELECT * FROM chucvu WHERE MACHUCVU = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setInt(1, integer);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                Integer maChucVu = rs.getInt("MACHUCVU");
-                String tenChucVu = rs.getString("TENCHUCVU");
-                String moTa = rs.getString("MOTA");
-                ChucVu chucVu = new ChucVu(maChucVu, tenChucVu, moTa);
-                return chucVu;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    {
+        setClazz(ChucVu.class);
     }
 
     @Override
-    public ChucVu save(ChucVu entity) {
-        final String sql = "INSERT INTO chucvu(TENCHUCVU,MOTA) VALUES(?,?)";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, entity.getTenChucVu());
-            ps.setString(2, entity.getMoTa());
-            ps.executeUpdate();
-            return entity;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public boolean insert(ChucVu chucVu) {
+        return executeUpdate("INSERT INTO CHUCVU(TENCHUCVU,MOTA,IS_DELETED) VALUES(?,?,?)",
+                chucVu.getTenChucVu(),chucVu.getMoTa(),chucVu.isDeleted());
     }
 
     @Override
-    public ChucVu update(ChucVu entity) {
-        final String sql = "UPDATE chucvu SET TENCHUCVU = ?, MOTA = ? WHERE MACHUCVU = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, entity.getTenChucVu());
-            ps.setString(2, entity.getMoTa());
-            ps.setInt(3, entity.getMaChucVu());
-            ps.executeUpdate();
-            return entity;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public boolean delete(Integer maChucVu) {
+        return executeUpdate("UPDATE CHUCVU SET IS_DELETED = 1 WHERE MACHUCVU = ?",maChucVu);
     }
 
     @Override
-    public void delete(Integer integer) {
-        final String sql = "DELETE FROM chucvu WHERE MACHUCVU = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setInt(1, integer);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
+    public boolean update(Integer maChucVu, ChucVu chucVu) {
+        return executeUpdate("UPDATE CHUCVU SET TENCHUCVU = ?, MOTA = ? WHERE MACHUCVU = ?",
+                chucVu.getTenChucVu(),chucVu.getMoTa(),maChucVu);
     }
 
     @Override
-    public List<ChucVu> findAll() {
-        final String sql = "SELECT * FROM chucvu";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
-            List<ChucVu> list = new ArrayList<ChucVu>();
-            while (rs.next()) {
-                Integer maChucVu = rs.getInt("MACHUCVU");
-                String tenChucVu = rs.getString("TENCHUCVU");
-                String moTa = rs.getString("MOTA");
-                ChucVu chucVu = new ChucVu(maChucVu, tenChucVu, moTa);
-                list.add(chucVu);
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public ChucVu select(Integer maChucVu) {
+        return executeQuery("SELECT * FROM CHUCVU WHERE MACHUCVU = ? AND IS_DELETED = 0",maChucVu);
+    }
+
+    @Override
+    public List<ChucVu> selectAll() {
+        return executeQueryList("SELECT * FROM CHUCVU WHERE IS_DELETED = 0");
     }
 }

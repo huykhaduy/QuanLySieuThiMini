@@ -4,6 +4,7 @@ public class ChucVu {
     private int maChucVu;
     private String tenChucVu;
     private String moTa;
+    private boolean isDeleted;
     public static final int NHANVIENBANHANG = 1;
     public static final int NHANVIENQUANLY = 2;
     
@@ -41,14 +42,21 @@ public class ChucVu {
         this.moTa = moTa;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " maChucVu='" + getMaChucVu() + "'" +
-            ", tenChucVu='" + getTenChucVu() + "'" +
-            ", moTa='" + getMoTa() + "'" +
-            "}";
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 
+    @Override
+    public String toString() {
+        return "ChucVu{" +
+                "maChucVu=" + maChucVu +
+                ", tenChucVu='" + tenChucVu + '\'' +
+                ", moTa='" + moTa + '\'' +
+                ", isDeleted=" + isDeleted +
+                '}';
+    }
 }

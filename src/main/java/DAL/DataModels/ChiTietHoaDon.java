@@ -1,23 +1,23 @@
 package DAL.DataModels;
 
 public class ChiTietHoaDon {
-    protected int maSP;
-    protected int maHD;
-    protected int soLuong;
-    protected long giaBan;
+    private int maSP;
+    private int maHD;
+    private int soLuong;
+    private long giaTien;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(int maSP, int maHD, int soLuong, long giaBan) {
+    public ChiTietHoaDon(int maSP, int maHD, int soLuong, long giaTien) {
         this.maSP = maSP;
         this.maHD = maHD;
         this.soLuong = soLuong;
-        this.giaBan = giaBan;
+        this.giaTien = giaTien;
     }
 
     public int getMaSP() {
-        return this.maSP;
+        return maSP;
     }
 
     public void setMaSP(int maSP) {
@@ -25,7 +25,7 @@ public class ChiTietHoaDon {
     }
 
     public int getMaHD() {
-        return this.maHD;
+        return maHD;
     }
 
     public void setMaHD(int maHD) {
@@ -33,29 +33,28 @@ public class ChiTietHoaDon {
     }
 
     public int getSoLuong() {
-        return this.soLuong;
+        return soLuong;
     }
 
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
 
-    public long getGiaBan() {
-        return this.giaBan;
+    public long getGiaTien() {
+        return giaTien;
     }
 
-    public void setGiaBan(long giaBan) {
-        this.giaBan = giaBan;
+    public void setGiaTien(long giaTien) {
+        this.giaTien = giaTien;
     }
 
     @Override
     public String toString() {
-        return "{" +
-                " maSP='" + getMaSP() + "'" +
-                ", maHD='" + getMaHD() + "'" +
-                ", soLuong='" + getSoLuong() + "'" +
-                ", giaBan='" + getGiaBan() + "'" +
-                "}";
+        return "ChiTietHoaDon{" +
+                "maSP=" + maSP +
+                ", maHD=" + maHD +
+                ", soLuong=" + soLuong +
+                ", giaTien=" + giaTien +
+                '}';
     }
-
 }

@@ -2,106 +2,46 @@ package DAL.DataAcessObject;
 
 import DAL.DataModels.ChiTietKhuyenMaiChoNCC;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CTKhuyenMaiChoNCCDAO extends AbtractDatabseAccess implements IAccessDetail<ChiTietKhuyenMaiChoNCC, String, String> {
+public class CTKhuyenMaiChoNCCDAO extends AbtractAccessDatabase<ChiTietKhuyenMaiChoNCC> implements ISimpleAccessDetail<ChiTietKhuyenMaiChoNCC,Integer,Integer> {
+    {
+        setClazz(ChiTietKhuyenMaiChoNCC.class);
+    }
+
+
     @Override
-    public List<ChiTietKhuyenMaiChoNCC> findType1(String maKhuyenMai) {
-        final String sql = "SELECT * FROM chitietkm_ncc WHERE MAKM = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, maKhuyenMai);
-            ResultSet rs = ps.executeQuery();
-            List<ChiTietKhuyenMaiChoNCC> list = new ArrayList<>();
-            while (rs.next()) {
-                String maKM = rs.getString("MAKM");
-                String maNCC = rs.getString("MANCC");
-                list.add(new ChiTietKhuyenMaiChoNCC(maKM, maNCC));
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public ChiTietKhuyenMaiChoNCC select(Integer soKhuyenMai, Integer maNhaCungCap) {
+        return executeQuery("SELECT * FROM CHITIETKM_NCC WHERE SOKM = ? AND MANCC = ?",soKhuyenMai,maNhaCungCap);
     }
 
     @Override
-    public List<ChiTietKhuyenMaiChoNCC> findType2(String maNhaCungCap) {
-        final String sql = "SELECT * FROM chitietkm_ncc WHERE MANCC = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, maNhaCungCap);
-            ResultSet rs = ps.executeQuery();
-            List<ChiTietKhuyenMaiChoNCC> list = new ArrayList<>();
-            while (rs.next()) {
-                String maKM = rs.getString("MAKM");
-                String maNCC = rs.getString("MANCC");
-                list.add(new ChiTietKhuyenMaiChoNCC(maKM, maNCC));
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public boolean insert(ChiTietKhuyenMaiChoNCC chiTietKhuyenMaiChoNCC) {
+        return executeUpdate("INSERT INTO CHITIETKM_NCC(SOKM,MANCC) VALUES(?,?)",chiTietKhuyenMaiChoNCC.getSoKM(),chiTietKhuyenMaiChoNCC.getMaNCC());
     }
 
     @Override
-    public ChiTietKhuyenMaiChoNCC save(ChiTietKhuyenMaiChoNCC chiTietKhuyenMaiChoNCC) {
-        final String sql = "INSERT INTO chitietkm_ncc(MAKM, MANCC) VALUES(?, ?)";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, chiTietKhuyenMaiChoNCC.getMaKM());
-            ps.setString(2, chiTietKhuyenMaiChoNCC.getMaId());
-            ps.executeUpdate();
-            return chiTietKhuyenMaiChoNCC;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
-    }
-
-    //Dump function
-    @Override
-    public ChiTietKhuyenMaiChoNCC update(ChiTietKhuyenMaiChoNCC chiTietKhuyenMaiChoNCC) {
-        final String sql = "UPDATE chitietkm_ncc SET MAKM = ?, MANCC = ? WHERE MAKM = ? AND MANCC = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, chiTietKhuyenMaiChoNCC.getMaKM());
-            ps.setString(2, chiTietKhuyenMaiChoNCC.getMaId());
-            ps.setString(3, chiTietKhuyenMaiChoNCC.getMaKM());
-            ps.setString(4, chiTietKhuyenMaiChoNCC.getMaId());
-            ps.executeUpdate();
-            return chiTietKhuyenMaiChoNCC;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally{
-            connectManager.closeConnection();
-        }
-        return null;
+    public boolean update(Integer soKhuyenMai, Integer maNhaCungCap, ChiTietKhuyenMaiChoNCC chiTietKhuyenMaiChoNCC) {
+        return executeUpdate("UPDATE CHITIETKM_NCC SET SOKM = ?, MANCC = ? WHERE SOKM = ? AND MANCC = ?",chiTietKhuyenMaiChoNCC.getSoKM(),chiTietKhuyenMaiChoNCC.getMaNCC(),soKhuyenMai,maNhaCungCap);
     }
 
     @Override
-    public void delete(String maKhuyenMai, String maNhaCungCap) {
-        final String sql = "DELETE FROM chitietkm_ncc WHERE MAKM = ? AND MANCC = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, maKhuyenMai);
-            ps.setString(2, maNhaCungCap);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally{
-            connectManager.closeConnection();
-        }
+    public boolean delete(Integer soKhuyenMai, Integer maNhaCungCap) {
+        return executeUpdate("DELETE FROM CHITIETKM_NCC WHERE SOKM = ? AND MANCC = ?",soKhuyenMai,maNhaCungCap);
+    }
+
+    @Override
+    public List<ChiTietKhuyenMaiChoNCC> selectAllById1(Integer soKhuyenMai) {
+        return executeQueryList("SELECT * FROM CHITIETKM_NCC WHERE SOKM = ?",soKhuyenMai);
+    }
+
+    @Override
+    public List<ChiTietKhuyenMaiChoNCC> selectAllById2(Integer maNhaCungCap) {
+        return executeQueryList("SELECT * FROM CHITIETKM_NCC WHERE MANCC = ?",maNhaCungCap);
+    }
+
+    @Override
+    public List<ChiTietKhuyenMaiChoNCC> selectAll() {
+        return executeQueryList("SELECT * FROM CHITIETKM_NCC");
     }
 }

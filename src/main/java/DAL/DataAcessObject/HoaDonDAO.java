@@ -2,118 +2,38 @@ package DAL.DataAcessObject;
 
 import DAL.DataModels.HoaDon;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
-public class HoaDonDAO extends AbtractDatabseAccess implements IAccess<HoaDon, Integer> {
+public class HoaDonDAO extends AbtractAccessDatabase<HoaDon> implements ISimpleAccess<HoaDon,Integer> {
 
-    @Override
-    public HoaDon find(Integer maHoaDon) {
-        final String sql = "SELECT * FROM hoadon WHERE id = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setInt(1, maHoaDon);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()){
-                int maHD = rs.getInt("MAHD");
-                int maKH = rs.getInt("MAKH");
-                int maNV = rs.getInt("MANV");
-                Timestamp ngayHD = rs.getTimestamp("NGAYHD");
-                String hinhThuc = rs.getString("HINHTHUC");
-                String maKM = rs.getString("MAKM");
-                return new HoaDon(maHD, ngayHD, hinhThuc,maKH,maNV,maKM);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    {
+        setClazz(HoaDon.class);
     }
 
     @Override
-    public HoaDon save(HoaDon entity) {
-        final String sql = "INSERT INTO hoadon(MAHD, NGAYHD, HINHTHUC, MAKH, MANV, MAKM) VALUES (?,?,?,?,?,?)";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setInt(1, entity.getMaHD());
-            ps.setTimestamp(2, entity.getNgayHD());
-            ps.setString(3, entity.getHinhThuc());
-            ps.setInt(4, entity.getMaKH());
-            ps.setInt(5, entity.getMaNV());
-            ps.setString(6, entity.getMaKM());
-            ps.executeUpdate();
-            return entity;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public boolean insert(HoaDon hoaDon) {
+        return executeUpdate("INSERT INTO HOADON(NGAYHD,HINHTHUC,TONGTIEN,TIENGIAM,MANV,MAKH,SOKM,IS_DELETED) VALUES(?,?,?,?,?,?,?,?)",
+                hoaDon.getNgayHD(),hoaDon.getHinhThuc(),hoaDon.getTongTien(),hoaDon.getTienGiam(),hoaDon.getMaNV(),hoaDon.getMaKH(),hoaDon.getSoKM(),hoaDon.isDeleted());
     }
 
     @Override
-    public HoaDon update(HoaDon entity) {
-        final String sql = "UPDATE hoadon SET MAHD = ?, NGAYHD = ?, HINHTHUC = ?, MAKH = ?, MANV = ?, MAKM = ? WHERE MAHD = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setInt(1, entity.getMaHD());
-            ps.setTimestamp(2, entity.getNgayHD());
-            ps.setString(3, entity.getHinhThuc());
-            ps.setInt(4, entity.getMaKH());
-            ps.setInt(5, entity.getMaNV());
-            ps.setString(6, entity.getMaKM());
-            ps.setInt(7, entity.getMaHD());
-            return entity;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public boolean delete(Integer maHoaDon) {
+        return executeUpdate("UPDATE HOADON SET IS_DELETED = 1 WHERE MAHD = ?",maHoaDon);
     }
 
     @Override
-    public void delete(Integer integer) {
-        final String sql = "DELETE FROM hoadon WHERE MAHD = ?";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setInt(1, integer);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
+    public boolean update(Integer maHoaDon, HoaDon hoaDon) {
+        return executeUpdate("UPDATE HOADON SET NGAYHD = ?,HINHTHUC = ?,TONGTIEN = ?,TIENGIAM = ?,MANV = ?,MAKH = ?,SOKM = ?,IS_DELETED = ? WHERE MAHD = ?",
+                hoaDon.getNgayHD(),hoaDon.getHinhThuc(),hoaDon.getTongTien(),hoaDon.getTienGiam(),hoaDon.getMaNV(),hoaDon.getMaKH(),hoaDon.getSoKM(),hoaDon.isDeleted(),maHoaDon);
     }
 
     @Override
-    public List<HoaDon> findAll() {
-        final String sql = "SELECT * FROM hoadon";
-        connectManager = getConnectManager();
-        try (PreparedStatement ps = connection.prepareStatement(sql)){
-            ResultSet rs = ps.executeQuery();
-            List<HoaDon> list = new ArrayList<HoaDon>();
-            while (rs.next()){
-                int maHD = rs.getInt("MAHD");
-                int maKH = rs.getInt("MAKH");
-                int maNV = rs.getInt("MANV");
-                Timestamp ngayHD = rs.getTimestamp("NGAYHD");
-                String hinhThuc = rs.getString("HINHTHUC");
-                String maKM = rs.getString("MAKM");
-                HoaDon hoaDon = new HoaDon(maHD, ngayHD, hinhThuc,maKH,maNV,maKM);
-                list.add(hoaDon);
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connectManager.closeConnection();
-        }
-        return null;
+    public HoaDon select(Integer maHoaDon) {
+        return executeQuery("SELECT * FROM HOADON WHERE MAHD = ? AND IS_DELETED = 0",maHoaDon);
+    }
+
+    @Override
+    public List<HoaDon> selectAll() {
+        return executeQueryList("SELECT * FROM HOADON WHERE IS_DELETED = 0");
     }
 }

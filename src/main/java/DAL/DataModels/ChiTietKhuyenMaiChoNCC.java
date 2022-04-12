@@ -1,19 +1,38 @@
 package DAL.DataModels;
 
-public class ChiTietKhuyenMaiChoNCC extends ChiTietKhuyenMai<String> {
+public class ChiTietKhuyenMaiChoNCC {
+    private int soKM;
+    private int maNCC;
 
     public ChiTietKhuyenMaiChoNCC() {
     }
 
-    public ChiTietKhuyenMaiChoNCC(String maKM, String maId) {
-        super(maKM, maId);
+    public ChiTietKhuyenMaiChoNCC(int soKM, int maNCC) {
+        this.soKM = soKM;
+        this.maNCC = maNCC;
+    }
+
+    public int getSoKM() {
+        return soKM;
+    }
+
+    public void setSoKM(int soKM) {
+        this.soKM = soKM;
+    }
+
+    public int getMaNCC() {
+        return maNCC;
+    }
+
+    public void setMaNCC(int maNCC) {
+        this.maNCC = maNCC;
     }
 
     @Override
     public String toString() {
-        return "ChiTietKhuyenMai{" +
-                "maKM='" + getMaKM() + '\'' +
-                ", maId=" + getMaId() +
+        return "ChiTietKhuyenMaiChoNCC{" +
+                "soKM=" + soKM +
+                ", maNCC=" + maNCC +
                 '}';
     }
 }

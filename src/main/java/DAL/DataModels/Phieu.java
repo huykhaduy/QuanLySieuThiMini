@@ -9,6 +9,7 @@ public abstract class Phieu {
     protected boolean isDeleted;
 
     public Phieu() {
+     
     }
 
     public Phieu(int maPhieu, Timestamp ngayLap, int maNV, boolean isDeleted) {

@@ -3,10 +3,11 @@ package DAL.DataModels;
 import java.sql.Timestamp;
 
 public class MaKhuyenMai {
+    private int soKM;
     private String maKM;
-    private String moTa;
     private int loaiKM;
-    private Timestamp ngayDB;
+    private String moTa;
+    private Timestamp ngayBD;
     private Timestamp ngayKT;
     private long giaTriToiThieu;
     private long kmToiThieu;
@@ -18,12 +19,12 @@ public class MaKhuyenMai {
     public MaKhuyenMai() {
     }
 
-    public MaKhuyenMai(String maKM, String moTa, int loaiKM, Timestamp ngayDB, Timestamp ngayKT, long giaTriToiThieu,
-            long kmToiThieu, long kmToiDa, int ptGiam, int soLuotSD, boolean isDeleted) {
+    public MaKhuyenMai(int soKM, String maKM, String moTa, int loaiKM, Timestamp ngayBD, Timestamp ngayKT, long giaTriToiThieu, long kmToiThieu, long kmToiDa, int ptGiam, int soLuotSD, boolean isDeleted) {
+        this.soKM = soKM;
         this.maKM = maKM;
         this.moTa = moTa;
         this.loaiKM = loaiKM;
-        this.ngayDB = ngayDB;
+        this.ngayBD = ngayBD;
         this.ngayKT = ngayKT;
         this.giaTriToiThieu = giaTriToiThieu;
         this.kmToiThieu = kmToiThieu;
@@ -32,10 +33,17 @@ public class MaKhuyenMai {
         this.soLuotSD = soLuotSD;
         this.isDeleted = isDeleted;
     }
-    
+
+    public int getSoKM() {
+        return soKM;
+    }
+
+    public void setSoKM(int soKM) {
+        this.soKM = soKM;
+    }
 
     public String getMaKM() {
-        return this.maKM;
+        return maKM;
     }
 
     public void setMaKM(String maKM) {
@@ -43,7 +51,7 @@ public class MaKhuyenMai {
     }
 
     public String getMoTa() {
-        return this.moTa;
+        return moTa;
     }
 
     public void setMoTa(String moTa) {
@@ -51,23 +59,23 @@ public class MaKhuyenMai {
     }
 
     public int getLoaiKM() {
-        return this.loaiKM;
+        return loaiKM;
     }
 
     public void setLoaiKM(int loaiKM) {
         this.loaiKM = loaiKM;
     }
 
-    public Timestamp getNgayDB() {
-        return this.ngayDB;
+    public Timestamp getNgayBD() {
+        return ngayBD;
     }
 
-    public void setNgayDB(Timestamp ngayDB) {
-        this.ngayDB = ngayDB;
+    public void setNgayBD(Timestamp ngayBD) {
+        this.ngayBD = ngayBD;
     }
 
     public Timestamp getNgayKT() {
-        return this.ngayKT;
+        return ngayKT;
     }
 
     public void setNgayKT(Timestamp ngayKT) {
@@ -75,7 +83,7 @@ public class MaKhuyenMai {
     }
 
     public long getGiaTriToiThieu() {
-        return this.giaTriToiThieu;
+        return giaTriToiThieu;
     }
 
     public void setGiaTriToiThieu(long giaTriToiThieu) {
@@ -83,7 +91,7 @@ public class MaKhuyenMai {
     }
 
     public long getKmToiThieu() {
-        return this.kmToiThieu;
+        return kmToiThieu;
     }
 
     public void setKmToiThieu(long kmToiThieu) {
@@ -91,7 +99,7 @@ public class MaKhuyenMai {
     }
 
     public long getKmToiDa() {
-        return this.kmToiDa;
+        return kmToiDa;
     }
 
     public void setKmToiDa(long kmToiDa) {
@@ -99,7 +107,7 @@ public class MaKhuyenMai {
     }
 
     public int getPtGiam() {
-        return this.ptGiam;
+        return ptGiam;
     }
 
     public void setPtGiam(int ptGiam) {
@@ -107,32 +115,29 @@ public class MaKhuyenMai {
     }
 
     public int getSoLuotSD() {
-        return this.soLuotSD;
+        return soLuotSD;
     }
 
     public void setSoLuotSD(int soLuotSD) {
         this.soLuotSD = soLuotSD;
     }
 
-    public boolean isIsDeleted() {
-        return this.isDeleted;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public boolean getIsDeleted() {
-        return this.isDeleted;
-    }
-
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     @Override
     public String toString() {
         return "MaKhuyenMai{" +
-                "maKM='" + maKM + '\'' +
+                "soKM=" + soKM +
+                ", maKM='" + maKM + '\'' +
                 ", moTa='" + moTa + '\'' +
                 ", loaiKM=" + loaiKM +
-                ", ngayDB=" + ngayDB +
+                ", ngayDB=" + ngayBD +
                 ", ngayKT=" + ngayKT +
                 ", giaTriToiThieu=" + giaTriToiThieu +
                 ", kmToiThieu=" + kmToiThieu +
@@ -142,5 +147,4 @@ public class MaKhuyenMai {
                 ", isDeleted=" + isDeleted +
                 '}';
     }
-
 }
