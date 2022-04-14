@@ -28,78 +28,93 @@ public class LoginGui extends javax.swing.JFrame {
 
         backGroundLoginGui1 = new GUI.SaleGroup.LoginGui.Background.backGroundLoginGui();
         phoneGui1 = new GUI.SaleGroup.LoginGui.Background.PhoneGui();
-        phoneGui21 = new GUI.SaleGroup.LoginGui.Background.PhoneGui2();
-        button1 = new GUI.SaleGroup.LoginGui.Component.Button();
+        jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        button1.setBackground(new java.awt.Color(255, 255, 255));
-        button1.setText("Login");
-        button1.setFont(new java.awt.Font("Itim", 0, 24)); // NOI18N
-        button1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        button1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        button1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        phoneGui1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Barlow", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(121, 170, 181));
+        jLabel3.setText("Tài khoản: ");
+
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout phoneGui21Layout = new javax.swing.GroupLayout(phoneGui21);
-        phoneGui21.setLayout(phoneGui21Layout);
-        phoneGui21Layout.setHorizontalGroup(
-            phoneGui21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(phoneGui21Layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addGroup(phoneGui21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, phoneGui21Layout.createSequentialGroup()
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, phoneGui21Layout.createSequentialGroup()
-                        .addGroup(phoneGui21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(29, 29, 29))))
-        );
-        phoneGui21Layout.setVerticalGroup(
-            phoneGui21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, phoneGui21Layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-        );
+        jLabel4.setFont(new java.awt.Font("Barlow", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(121, 170, 181));
+        jLabel4.setText("ĐĂNG NHẬP");
+
+        jLabel5.setFont(new java.awt.Font("Barlow", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(121, 170, 181));
+        jLabel5.setText("Mật khẩu:");
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Barlow", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(121, 170, 181));
+        jButton1.setText("Đăng nhập");
+
+        jCheckBox1.setText("Lưu trạng thái đăng nhập");
 
         javax.swing.GroupLayout phoneGui1Layout = new javax.swing.GroupLayout(phoneGui1);
         phoneGui1.setLayout(phoneGui1Layout);
         phoneGui1Layout.setHorizontalGroup(
             phoneGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(phoneGui1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(phoneGui21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addGroup(phoneGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, phoneGui1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(phoneGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, phoneGui1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(113, 113, 113))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, phoneGui1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(118, 118, 118))))
         );
         phoneGui1Layout.setVerticalGroup(
             phoneGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(phoneGui1Layout.createSequentialGroup()
-                .addComponent(phoneGui21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel4)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox1)
+                .addGap(29, 29, 29)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -186,6 +201,10 @@ public class LoginGui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,14 +242,16 @@ public class LoginGui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Background.backGroundLoginGui backGroundLoginGui1;
-    private GUI.SaleGroup.LoginGui.Component.Button button1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private GUI.SaleGroup.LoginGui.Background.PhoneGui phoneGui1;
-    private GUI.SaleGroup.LoginGui.Background.PhoneGui2 phoneGui21;
     // End of variables declaration//GEN-END:variables
 }
