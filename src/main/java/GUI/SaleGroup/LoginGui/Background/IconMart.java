@@ -7,7 +7,7 @@ package GUI.SaleGroup.LoginGui.Background;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,7 +20,7 @@ public class IconMart extends javax.swing.JPanel {
     }
      protected void paintComponent(Graphics g){ 
         Graphics2D g2d = (Graphics2D) g.create();
-        image = Toolkit.getDefaultToolkit().getImage( ".\\src\\main\\java\\GUI\\SaleGroup\\LoginGui\\Image\\miniMart_resize.png");
+        image = new ImageIcon( ".\\src\\main\\java\\GUI\\SaleGroup\\LoginGui\\Image\\miniMart_resize.png").getImage();
         g2d.drawImage(image, 0, 0,  this);     
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

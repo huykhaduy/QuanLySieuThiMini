@@ -4,6 +4,8 @@
  */
 package GUI.SaleGroup.LoginGui.LoginFrame;
 
+import com.formdev.flatlaf.FlatLightLaf;
+
 /**
  *
  * @author ACER
@@ -256,6 +258,7 @@ public class LoginGui extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        FlatLightLaf.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
