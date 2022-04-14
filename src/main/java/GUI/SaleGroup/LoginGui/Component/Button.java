@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Button extends JButton{
    
 public Button(){
-   
+    
        Color xanhDam =  Color.decode("#A9F0A8");
         setFont(new Font("Calibri", Font.PLAIN, 14));
         setBackground(xanhDam);

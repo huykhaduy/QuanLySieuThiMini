@@ -22,7 +22,7 @@ public class PhoneGui2 extends javax.swing.JPanel {
         setOpaque(false);
     }
     public PhoneGui2() {
-        initComponents();
+        initComponents(); 
     }
 
    protected void paintComponent(Graphics g) {

@@ -19,7 +19,7 @@ public class PhoneGui extends javax.swing.JPanel {
     }
 
     public PhoneGui() {
-        initComponents();
+        initComponents(); 
     }
 
     protected void paintComponent(Graphics g) {

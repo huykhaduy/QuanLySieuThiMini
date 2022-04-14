@@ -18,7 +18,7 @@ public class IconMart extends javax.swing.JPanel {
     public IconMart() {
         initComponents();
     }
-     protected void paintComponent(Graphics g){
+     protected void paintComponent(Graphics g){ 
          Graphics2D g2d = (Graphics2D) g.create();
         
         

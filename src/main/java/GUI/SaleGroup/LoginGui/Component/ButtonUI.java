@@ -21,7 +21,7 @@ import javax.swing.plaf.basic.BasicTextFieldUI;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.RenderingHints; 
 import javax.swing.AbstractButton;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
