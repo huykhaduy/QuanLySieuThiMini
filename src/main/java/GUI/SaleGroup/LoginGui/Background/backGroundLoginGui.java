@@ -5,6 +5,7 @@
 package GUI.SaleGroup.LoginGui.Background;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -15,6 +16,7 @@ public class backGroundLoginGui extends javax.swing.JPanel {
      */
     public backGroundLoginGui() {
         initComponents();
+        setPreferredSize(new Dimension(1093,605));
     }
      {
         setOpaque(false);
@@ -22,19 +24,17 @@ public class backGroundLoginGui extends javax.swing.JPanel {
    protected void paintComponent(Graphics g){
          
   
-         Graphics2D g2d = (Graphics2D) g.create();
-  
-        setSize(1080, 660);
-        Color xanh =  Color.decode("#66D9FF");
-        Color trang =  Color.decode("#FFFFFF");
+        Graphics2D g2d = (Graphics2D) g.create();
+        Color vang =  Color.decode("#fcdca9");//F8D49B
+        Color xanh =  Color.decode("#62C4C3");
        int polyX[]={0,getWidth()/2,getWidth()/2,0};
        int polyY[]={0,0,getHeight(),getHeight()};
        int polyX2[]={getWidth()/2,getWidth(),getWidth(),getWidth()/2};
        int polyY2[]={0,0,getHeight(),getHeight()};
 
-        g2d.setColor(xanh);
+        g2d.setColor(vang);
         g2d.fillPolygon(polyX,polyY,4);
-         g2d.setColor(trang);
+         g2d.setColor(xanh);
         g2d.fillPolygon(polyX2,polyY2,4);
         g2d.dispose();
 

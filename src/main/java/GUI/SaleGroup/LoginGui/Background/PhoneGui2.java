@@ -28,12 +28,12 @@ public class PhoneGui2 extends javax.swing.JPanel {
    protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
-        Color xanh = Color.decode("#66D9FF");
-        Color xanhdam = Color.decode("#66A5BA");
+        Color xanh = Color.decode("#c8e9fa");
+        Color xanhdam = Color.decode("#b5dff5");
         g2d.setColor(xanhdam);
-        g2d.fillRoundRect(0, getHeight()/10, getWidth()-getWidth()/10, getHeight()- getHeight()/10, 120, 120);
+        g2d.fillRoundRect(20, getHeight()/14 + 10, getWidth()-getWidth()/14, getHeight()- getHeight()/10, 120, 120);
         g2d.setColor(xanh);
-        g2d.fillRoundRect(getWidth()/10, 0, getWidth() - getWidth() / 10, getHeight() - getHeight() / 17, 120, 120);
+        g2d.fillRoundRect(getWidth()/14, 10, getWidth() - getWidth() / 14, getHeight() - getHeight() / 17, 120, 120);
         g2d.dispose();
        
         super.paintComponent(g);
