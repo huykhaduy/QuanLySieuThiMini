@@ -19,10 +19,8 @@ public class IconMart extends javax.swing.JPanel {
         initComponents();
     }
      protected void paintComponent(Graphics g){ 
-         Graphics2D g2d = (Graphics2D) g.create();
-        
-        
-image = Toolkit.getDefaultToolkit().getImage( "C:\\Users\\ACER\\Documents\\NetBeansProjects\\QuanLySieuThiMini\\src\\main\\java\\GUI\\SaleGroup\\LoginGui\\Image\\miniMart_resize.png");
+        Graphics2D g2d = (Graphics2D) g.create();
+        image = Toolkit.getDefaultToolkit().getImage( ".\\src\\main\\java\\GUI\\SaleGroup\\LoginGui\\Image\\miniMart_resize.png");
         g2d.drawImage(image, 0, 0,  this);     
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
