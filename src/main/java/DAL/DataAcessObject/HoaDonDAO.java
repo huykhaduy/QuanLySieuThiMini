@@ -12,8 +12,8 @@ public class HoaDonDAO extends AbtractAccessDatabase<HoaDon> implements ISimpleA
 
     @Override
     public boolean insert(HoaDon hoaDon) {
-        return executeUpdate("INSERT INTO HOADON(NGAYHD,HINHTHUC,TONGTIEN,TIENGIAM,MANV,MAKH,SOKM,IS_DELETED) VALUES(?,?,?,?,?,?,?,?)",
-                hoaDon.getNgayHD(),hoaDon.getHinhThuc(),hoaDon.getTongTien(),hoaDon.getTienGiam(),hoaDon.getMaNV(),hoaDon.getMaKH(),hoaDon.getSoKM(),hoaDon.isDeleted());
+        return executeUpdate("INSERT INTO HOADON(NGAYHD,HINHTHUC,TONGTIEN,TIENGIAM,MANV,MAKH,SOVOUCHER,IS_DELETED) VALUES(?,?,?,?,?,?,?,?)",
+                hoaDon.getNgayHD(),hoaDon.getHinhThuc(),hoaDon.getTongTien(),hoaDon.getTienGiam(),hoaDon.getMaNV(),hoaDon.getMaKH(),hoaDon.getSoVoucher(),hoaDon.isDeleted());
     }
 
     @Override
@@ -23,8 +23,8 @@ public class HoaDonDAO extends AbtractAccessDatabase<HoaDon> implements ISimpleA
 
     @Override
     public boolean update(Integer maHoaDon, HoaDon hoaDon) {
-        return executeUpdate("UPDATE HOADON SET NGAYHD = ?,HINHTHUC = ?,TONGTIEN = ?,TIENGIAM = ?,MANV = ?,MAKH = ?,SOKM = ?,IS_DELETED = ? WHERE MAHD = ?",
-                hoaDon.getNgayHD(),hoaDon.getHinhThuc(),hoaDon.getTongTien(),hoaDon.getTienGiam(),hoaDon.getMaNV(),hoaDon.getMaKH(),hoaDon.getSoKM(),hoaDon.isDeleted(),maHoaDon);
+        return executeUpdate("UPDATE HOADON SET NGAYHD = ?,HINHTHUC = ?,TONGTIEN = ?,TIENGIAM = ?,MANV = ?,MAKH = ?,SOVOUCHER = ?,IS_DELETED = ? WHERE MAHD = ?",
+                hoaDon.getNgayHD(),hoaDon.getHinhThuc(),hoaDon.getTongTien(),hoaDon.getTienGiam(),hoaDon.getMaNV(),hoaDon.getMaKH(),hoaDon.getSoVoucher(),hoaDon.isDeleted(),maHoaDon);
     }
 
     @Override
