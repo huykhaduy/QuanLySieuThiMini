@@ -10,7 +10,7 @@ public class HoaDon {
     private long tienGiam;
     private int maKH;
     private int maNV;
-    private int soKM;
+    private int soVoucher;
     private boolean isDeleted;
 
     public HoaDon() {
@@ -24,7 +24,7 @@ public class HoaDon {
         this.tienGiam = tienGiam;
         this.maKH = maKH;
         this.maNV = maNV;
-        this.soKM = soKM;
+        this.soVoucher = soKM;
         this.isDeleted = isDeleted;
     }
 
@@ -84,12 +84,12 @@ public class HoaDon {
         this.maNV = maNV;
     }
 
-    public int getSoKM() {
-        return soKM;
+    public int getSoVoucher() {
+        return soVoucher;
     }
 
-    public void setSoKM(int soKM) {
-        this.soKM = soKM;
+    public void setSoVoucher(int soVoucher) {
+        this.soVoucher = soVoucher;
     }
 
     public boolean isDeleted() {
@@ -110,7 +110,7 @@ public class HoaDon {
                 ", tienGiam=" + tienGiam +
                 ", maKH=" + maKH +
                 ", maNV=" + maNV +
-                ", soKM=" + soKM +
+                ", soKM=" + soVoucher +
                 ", isDeleted=" + isDeleted +
                 '}';
     }

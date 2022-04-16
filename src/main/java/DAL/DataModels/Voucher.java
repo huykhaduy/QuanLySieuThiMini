@@ -2,52 +2,48 @@ package DAL.DataModels;
 
 import java.sql.Timestamp;
 
-public class MaKhuyenMai {
-    private int soKM;
-    private String maKM;
-    private int loaiKM;
+public class Voucher {
+    private int soVoucher;
+    private String maVoucher;
     private String moTa;
     private Timestamp ngayBD;
     private Timestamp ngayKT;
     private long giaTriToiThieu;
-    private long kmToiThieu;
     private long kmToiDa;
     private int ptGiam;
     private int soLuotSD;
     private boolean isDeleted;
 
-    public MaKhuyenMai() {
+    public Voucher() {
     }
 
-    public MaKhuyenMai(int soKM, String maKM, String moTa, int loaiKM, Timestamp ngayBD, Timestamp ngayKT, long giaTriToiThieu, long kmToiThieu, long kmToiDa, int ptGiam, int soLuotSD, boolean isDeleted) {
-        this.soKM = soKM;
-        this.maKM = maKM;
+    public Voucher(int soKM, String maKM, String moTa, int loaiKM, Timestamp ngayBD, Timestamp ngayKT, long giaTriToiThieu, long kmToiThieu, long kmToiDa, int ptGiam, int soLuotSD, boolean isDeleted) {
+        this.soVoucher = soKM;
+        this.maVoucher = maKM;
         this.moTa = moTa;
-        this.loaiKM = loaiKM;
         this.ngayBD = ngayBD;
         this.ngayKT = ngayKT;
         this.giaTriToiThieu = giaTriToiThieu;
-        this.kmToiThieu = kmToiThieu;
         this.kmToiDa = kmToiDa;
         this.ptGiam = ptGiam;
         this.soLuotSD = soLuotSD;
         this.isDeleted = isDeleted;
     }
 
-    public int getSoKM() {
-        return soKM;
+    public int getSoVoucher() {
+        return soVoucher;
     }
 
-    public void setSoKM(int soKM) {
-        this.soKM = soKM;
+    public void setSoVoucher(int soVoucher) {
+        this.soVoucher = soVoucher;
     }
 
-    public String getMaKM() {
-        return maKM;
+    public String getMaVoucher() {
+        return maVoucher;
     }
 
-    public void setMaKM(String maKM) {
-        this.maKM = maKM;
+    public void setMaVoucher(String maVoucher) {
+        this.maVoucher = maVoucher;
     }
 
     public String getMoTa() {
@@ -56,14 +52,6 @@ public class MaKhuyenMai {
 
     public void setMoTa(String moTa) {
         this.moTa = moTa;
-    }
-
-    public int getLoaiKM() {
-        return loaiKM;
-    }
-
-    public void setLoaiKM(int loaiKM) {
-        this.loaiKM = loaiKM;
     }
 
     public Timestamp getNgayBD() {
@@ -88,14 +76,6 @@ public class MaKhuyenMai {
 
     public void setGiaTriToiThieu(long giaTriToiThieu) {
         this.giaTriToiThieu = giaTriToiThieu;
-    }
-
-    public long getKmToiThieu() {
-        return kmToiThieu;
-    }
-
-    public void setKmToiThieu(long kmToiThieu) {
-        this.kmToiThieu = kmToiThieu;
     }
 
     public long getKmToiDa() {
@@ -133,14 +113,12 @@ public class MaKhuyenMai {
     @Override
     public String toString() {
         return "MaKhuyenMai{" +
-                "soKM=" + soKM +
-                ", maKM='" + maKM + '\'' +
+                "soKM=" + soVoucher +
+                ", maKM='" + maVoucher + '\'' +
                 ", moTa='" + moTa + '\'' +
-                ", loaiKM=" + loaiKM +
                 ", ngayDB=" + ngayBD +
                 ", ngayKT=" + ngayKT +
                 ", giaTriToiThieu=" + giaTriToiThieu +
-                ", kmToiThieu=" + kmToiThieu +
                 ", kmToiDa=" + kmToiDa +
                 ", ptGiam=" + ptGiam +
                 ", soLuotSD=" + soLuotSD +
