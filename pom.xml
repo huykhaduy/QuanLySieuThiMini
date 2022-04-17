@@ -34,6 +34,11 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE130</version>
         </dependency>
+        <dependency>
+            <groupId>org.imgscalr</groupId>
+            <artifactId>imgscalr-lib</artifactId>
+            <version>4.2</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

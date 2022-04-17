@@ -40,11 +40,22 @@ public class LoginGui extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
-        iconMart1 = new GUI.SaleGroup.LoginGui.Background.IconMart();
         jLabel5 = new javax.swing.JLabel();
+        imagePanel1 = new GUI.SaleGroup.LoginGui.Background.ImagePanel();
+        imagePanel3 = new GUI.SaleGroup.LoginGui.Background.ImagePanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        imagePanel2 = new GUI.SaleGroup.LoginGui.Background.ImagePanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1080, 626));
+
+        backGroundLoginGui1.setBackground(new java.awt.Color(98, 196, 195));
 
         button1.setBackground(new java.awt.Color(255, 255, 255));
         button1.setForeground(new java.awt.Color(96, 191, 190));
@@ -83,6 +94,7 @@ public class LoginGui extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ĐĂNG NHẬP");
 
+        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Lưu trạng thái đăng nhập");
 
@@ -131,9 +143,9 @@ public class LoginGui extends javax.swing.JFrame {
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jCheckBox1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(41, 41, 41))
         );
 
         javax.swing.GroupLayout phoneGui1Layout = new javax.swing.GroupLayout(phoneGui1);
@@ -152,53 +164,165 @@ public class LoginGui extends javax.swing.JFrame {
                 .addGap(0, 24, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout iconMart1Layout = new javax.swing.GroupLayout(iconMart1);
-        iconMart1.setLayout(iconMart1Layout);
-        iconMart1Layout.setHorizontalGroup(
-            iconMart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
-        );
-        iconMart1Layout.setVerticalGroup(
-            iconMart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
-        );
-
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("QUẢN LÝ SIÊU THỊ MINI");
+
+        imagePanel1.setBackground(new java.awt.Color(252, 220, 169));
+        imagePanel1.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/LoginGui/Image/miniMart.png"))); // NOI18N
+
+        javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
+        imagePanel1.setLayout(imagePanel1Layout);
+        imagePanel1Layout.setHorizontalGroup(
+            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 394, Short.MAX_VALUE)
+        );
+        imagePanel1Layout.setVerticalGroup(
+            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
+
+        imagePanel3.setBackground(new java.awt.Color(252, 220, 169));
+        imagePanel3.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/LoginGui/Image/icons8-support-100.png"))); // NOI18N
+
+        javax.swing.GroupLayout imagePanel3Layout = new javax.swing.GroupLayout(imagePanel3);
+        imagePanel3.setLayout(imagePanel3Layout);
+        imagePanel3Layout.setHorizontalGroup(
+            imagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 93, Short.MAX_VALUE)
+        );
+        imagePanel3Layout.setVerticalGroup(
+            imagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 86, Short.MAX_VALUE)
+        );
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("Phần mềm được thiết kế và xây dựng bởi ");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("Duy, Tuấn, Lâm, Phúc, Đạt");
+
+        jLabel8.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel8.setText("K20 ĐẠI HỌC SÀI GÒN");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Dễ Dàng - Bảo Mật - Nhanh Chóng");
+
+        imagePanel2.setBackground(new java.awt.Color(98, 196, 195));
+        imagePanel2.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/LoginGui/Image/icons8-user-100.png"))); // NOI18N
+
+        javax.swing.GroupLayout imagePanel2Layout = new javax.swing.GroupLayout(imagePanel2);
+        imagePanel2.setLayout(imagePanel2Layout);
+        imagePanel2Layout.setHorizontalGroup(
+            imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 84, Short.MAX_VALUE)
+        );
+        imagePanel2Layout.setVerticalGroup(
+            imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 81, Short.MAX_VALUE)
+        );
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("<html>TRUY CẬP CỬA HÀNG THÔNG QUA TÀI KHOẢN CỦA BẠN");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Nếu bạn gặp khó khăn hay hệ thống xảy ra lỗi");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Liên hệ: 0123.456.789");
 
         javax.swing.GroupLayout backGroundLoginGui1Layout = new javax.swing.GroupLayout(backGroundLoginGui1);
         backGroundLoginGui1.setLayout(backGroundLoginGui1Layout);
         backGroundLoginGui1Layout.setHorizontalGroup(
             backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(iconMart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(phoneGui1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112))
-            .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
-                    .addGap(147, 147, 147)
-                    .addComponent(jLabel5)
-                    .addContainerGap(671, Short.MAX_VALUE)))
+                .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                        .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                                .addGap(176, 176, 176)
+                                .addComponent(jLabel9))
+                            .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(imagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(288, 288, 288))
+                    .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backGroundLoginGui1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                        .addComponent(imagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(jLabel7))
+                            .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(jLabel8)))
+                        .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                                .addGap(200, 200, 200)
+                                .addComponent(phoneGui1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backGroundLoginGui1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)
+                                .addGap(86, 86, 86)))))
+                .addGap(151, 151, 151))
         );
         backGroundLoginGui1Layout.setVerticalGroup(
             backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backGroundLoginGui1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(iconMart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135))
             .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addContainerGap()
+                .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                        .addComponent(imagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backGroundLoginGui1Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(phoneGui1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
-            .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
-                    .addGap(57, 57, 57)
-                    .addComponent(jLabel5)
-                    .addContainerGap(516, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backGroundLoginGui1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addGap(37, 37, 37)
+                .addComponent(imagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(backGroundLoginGui1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(backGroundLoginGui1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel3)
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -270,13 +394,22 @@ public class LoginGui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Background.backGroundLoginGui backGroundLoginGui1;
     private GUI.SaleGroup.LoginGui.Component.Button button1;
-    private GUI.SaleGroup.LoginGui.Background.IconMart iconMart1;
+    private GUI.SaleGroup.LoginGui.Background.ImagePanel imagePanel1;
+    private GUI.SaleGroup.LoginGui.Background.ImagePanel imagePanel2;
+    private GUI.SaleGroup.LoginGui.Background.ImagePanel imagePanel3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private GUI.SaleGroup.LoginGui.Background.PhoneGui phoneGui1;
