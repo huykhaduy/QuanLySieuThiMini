@@ -4,7 +4,9 @@
  */
 package GUI.SaleGroup.LoginGui.LoginFrame;
 
+import BUS.AccountServices.LoginAction;
 import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +20,7 @@ public class LoginGui extends javax.swing.JFrame {
     public LoginGui() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -124,7 +127,7 @@ public class LoginGui extends javax.swing.JFrame {
                         .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, phoneGui21Layout.createSequentialGroup()
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))))
+                        .addGap(66, 66, 66))))
         );
         phoneGui21Layout.setVerticalGroup(
             phoneGui21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,9 +146,9 @@ public class LoginGui extends javax.swing.JFrame {
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout phoneGui1Layout = new javax.swing.GroupLayout(phoneGui1);
@@ -349,6 +352,19 @@ public class LoginGui extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
+        LoginAction loginAct = new LoginAction();
+        String username = jTextField1.getText();
+        String password = String.valueOf(jPasswordField1.getPassword());
+        boolean isSaved = jCheckBox1.isSelected();
+        boolean isAccess = loginAct.loginInput(username, password, isSaved);
+        if (!isAccess){
+            JOptionPane.showMessageDialog(this, "Login fail, your password or username is wrong");
+        }
+        else {
+            //Remove login frame
+            setVisible(false);
+            dispose();
+        }
     }//GEN-LAST:event_button1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed

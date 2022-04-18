@@ -7,8 +7,11 @@ import DAL.DataModels.ChucVu;
 import DAL.DataModels.LoginDetail;
 import DAL.DataModels.NhanVien;
 import DAL.DataModels.TaiKhoan;
+import GUI.SaleGroup.LoginGui.LoginFrame.LoginGui;
+import com.formdev.flatlaf.FlatLightLaf;
 
 import java.sql.Timestamp;
+import javax.swing.JOptionPane;
 
 public class LoginAction{
     private final TaiKhoanDAO taiKhoanDAO;
@@ -28,12 +31,16 @@ public class LoginAction{
         TaiKhoan tk = taiKhoanDAO.selectByTenTK(username);
         if (tk == null)
             return false;
-        if (!tk.getMatKhau().equals(password))
+        if (!tk.getMatKhau().equals(password)){
+            setWrongPasswordTime(tk.getSoTK(),tk,tk.getSoLanSai()+1);
             return false;
+        }
         soTK = tk.getSoTK();
+        setWrongPasswordTime(tk.getSoTK(),tk,0);
         if (rememberMe){
             storeLoginAuth();
         }
+        showFrame();
         return true;
     }
 
@@ -60,12 +67,18 @@ public class LoginAction{
     //Khởi tạo frame khi login thành công
     protected void showFrame(){
         int maChucVu = getChucVuNguoiDung(soTK);
-        if (maChucVu == ChucVu.NHANVIENBANHANG)
-//            new NhanVienBanHangFrame(soTK);
+        if (maChucVu == ChucVu.NHANVIENBANHANG){
             System.out.println("Khoi tao frame nhan vien ban hang");
-        else if (maChucVu == ChucVu.NHANVIENQUANLY)
-//            new NhanVienQuanLyFrame(soTK);
+            JOptionPane.showMessageDialog(null,"Hien thi form nhan vien ban hang","Auto login success",JOptionPane.CLOSED_OPTION);
+            //            new NhanVienBanHangFrame(soTK);
+        }
+
+            
+        else if (maChucVu == ChucVu.NHANVIENQUANLY){
             System.out.println("Khoi tao frame nhan vien quan ly");
+            JOptionPane.showMessageDialog(null, "Hien thi form nhan vien ban hang", "Auto login success", JOptionPane.CLOSED_OPTION);
+            //            new NhanVienQuanLyFrame(soTK);
+        }
 
     }
 
@@ -85,9 +98,14 @@ public class LoginAction{
             showFrame();
         else{
             System.out.println("Hien thi form dang nhap!");
-            loginInput("duy","duy",true);
+//            loginInput("duy","duy",true);
             //Initalize login form
             //new login form here: new LoginForm();
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new LoginGui().setVisible(true);
+                }
+            });
         }
 
     }
@@ -99,11 +117,17 @@ public class LoginAction{
     public void setSoTK(int soTK) {
         this.soTK = soTK;
     }
+    
+    //Tang so lan password nhap sai
+    public void setWrongPasswordTime(int soTK, TaiKhoan tk,int times){
+        tk.setSoLanSai(times);
+        taiKhoanDAO.update(soTK, tk);
+    }
 
-    public static void main(String[] args){
+//    public static void main(String[] args){
 //        LoginFile loginFile = new LoginFile("DUYHECKER");
 //        loginFile.writeToFile();
 //        LoginAction loginAction = new LoginAction();
 //        loginAction.initLogin();
-    }
+//    }
 }
