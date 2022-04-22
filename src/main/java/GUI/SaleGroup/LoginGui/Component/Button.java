@@ -20,7 +20,8 @@ public Button(){
         setBackground(xanhDam);
         setForeground(Color.BLACK);
         // customize the button with your own look
-        setUI(new ButtonUI());
+        this.setUI(new ButtonUI());
+        
         
     }
 
