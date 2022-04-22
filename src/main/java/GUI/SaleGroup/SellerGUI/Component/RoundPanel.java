@@ -32,7 +32,7 @@ public class RoundPanel extends JPanel{
         super.paintComponent(g);
     }
     
-    private int radius = 50;
+    protected int radius = 50;
 
     public int getRadius() {
         return radius;
