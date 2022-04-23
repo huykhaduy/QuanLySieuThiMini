@@ -17,6 +17,7 @@ public class LoginAction{
     private final TaiKhoanDAO taiKhoanDAO;
     private final LoginDetailDAO loginDetailDAO;
     private final NhanVienDAO nhanVienDAO;
+    private LoginDetail loginDetail;
     private final int AUTH_KEY_EXPIRE_TIME = 1000*60*60*2; // 2 hours
     private int soTK;
 
@@ -37,9 +38,15 @@ public class LoginAction{
         }
         soTK = tk.getSoTK();
         setWrongPasswordTime(tk.getSoTK(),tk,0);
+        
+        
         if (rememberMe){
             storeLoginAuth();
-        }
+        } else storeLoginDetail("");
+        //Đoạn trên có thể thay thế thành
+        storeLoginAuth(rememberMe);
+        
+        
         showFrame();
         return true;
     }
@@ -50,9 +57,13 @@ public class LoginAction{
         String authKey = loginFile.readFromFile();
         if (authKey == null)
             return false;
-        LoginDetail loginDetail = loginDetailDAO.selectByAuthKey(authKey);
+        loginDetail = loginDetailDAO.selectByAuthKey(authKey);
         if (loginDetail == null)
             return false;
+        
+        //Dòng này để tăng thời gian hết hạn sau khi vào lại chương trình
+        loginDetail.setLogoutTime(new Timestamp(System.currentTimeMillis() + AUTH_KEY_EXPIRE_TIME));
+        
         soTK = loginDetail.getSoTK();
         return true;
     }
@@ -88,8 +99,25 @@ public class LoginAction{
         String authKey = loginFile.createAuthKey(50);
         loginFile.setAuthKey(authKey);
         loginFile.writeToFile();
+        storeLoginDetail(authKey);
+    }
+    
+    protected void storeLoginAuth(boolean remember){
+        //Generate auth key and store it to file
+        LoginFile loginFile = new LoginFile();
+        String authKey = loginFile.createAuthKey(50);
+        loginFile.setAuthKey(authKey);
+        loginFile.writeToFile();
         //Store to database
-        LoginDetail loginDetail = new LoginDetail(0,authKey,"192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()+AUTH_KEY_EXPIRE_TIME),soTK);
+        if(remember)
+            loginDetail = new LoginDetail(0,authKey,"192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()+AUTH_KEY_EXPIRE_TIME),soTK);
+        else 
+            loginDetail = new LoginDetail(0,"","192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()),soTK);
+    }
+    
+    protected void storeLoginDetail(String authKey){
+        //Store to database
+        loginDetail = new LoginDetail(0,authKey,"192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()+AUTH_KEY_EXPIRE_TIME),soTK);
         loginDetailDAO.insert(loginDetail);
     }
 
@@ -117,6 +145,15 @@ public class LoginAction{
     public void setSoTK(int soTK) {
         this.soTK = soTK;
     }
+
+    public LoginDetail getLoginDetail() {
+        return loginDetail;
+    }
+
+    public void setLoginDetail(LoginDetail loginDetail) {
+        this.loginDetail = loginDetail;
+    }
+    
     
     //Tang so lan password nhap sai
     public void setWrongPasswordTime(int soTK, TaiKhoan tk,int times){
