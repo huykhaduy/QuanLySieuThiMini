@@ -44,7 +44,7 @@ public class LoginAction{
             storeLoginAuth();
         } else storeLoginDetail("");
         //Đoạn trên có thể thay thế thành
-        storeLoginAuth(rememberMe);
+//        storeLoginAuth(rememberMe);
         
         
         showFrame();
@@ -102,18 +102,18 @@ public class LoginAction{
         storeLoginDetail(authKey);
     }
     
-    protected void storeLoginAuth(boolean remember){
-        //Generate auth key and store it to file
-        LoginFile loginFile = new LoginFile();
-        String authKey = loginFile.createAuthKey(50);
-        loginFile.setAuthKey(authKey);
-        loginFile.writeToFile();
-        //Store to database
-        if(remember)
-            loginDetail = new LoginDetail(0,authKey,"192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()+AUTH_KEY_EXPIRE_TIME),soTK);
-        else 
-            loginDetail = new LoginDetail(0,"","192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()),soTK);
-    }
+//    protected void storeLoginAuth(boolean remember){
+//        //Generate auth key and store it to file
+//        LoginFile loginFile = new LoginFile();
+//        String authKey = loginFile.createAuthKey(50);
+//        loginFile.setAuthKey(authKey);
+//        loginFile.writeToFile();
+//        //Store to database
+//        if(remember)
+//            loginDetail = new LoginDetail(0,authKey,"192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()+AUTH_KEY_EXPIRE_TIME),soTK);
+//        else 
+//            loginDetail = new LoginDetail(0,"","192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()),soTK);
+//    }
     
     protected void storeLoginDetail(String authKey){
         //Store to database
