@@ -46,11 +46,10 @@ public class TextFieldIcon extends JTextField{
     
     @Override
     protected void paintComponent(Graphics g){
-        
         Graphics2D g2d = (Graphics2D) g.create();
-         g2d.fillRoundRect(0, 0, getWidth(), getHeight(), getHeight(), getHeight());
+        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), getHeight(), getHeight());
         g2d.setRenderingHint(java.awt.RenderingHints.KEY_INTERPOLATION, java.awt.RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-        
+
         g2d.dispose();
         super.paintComponent(g);
     }
