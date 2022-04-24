@@ -12,6 +12,16 @@ import java.awt.Graphics2D;
  * @author MY ACER
  */
 public class MenuItem extends RoundPanel {
+    private int maSP = 0;
+
+    public int getMaSP() {
+        return maSP;
+    }
+
+    public void setMaSP(int maSP) {
+        this.maSP = maSP;
+    }
+   
 
     /**
      * Creates new form MenuItem
