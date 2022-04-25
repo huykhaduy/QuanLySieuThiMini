@@ -4,11 +4,24 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author MY ACER
  */
 public class MenuItem extends RoundPanel {
+    private int maSP = 0;
+
+    public int getMaSP() {
+        return maSP;
+    }
+
+    public void setMaSP(int maSP) {
+        this.maSP = maSP;
+    }
+   
 
     /**
      * Creates new form MenuItem
@@ -16,7 +29,12 @@ public class MenuItem extends RoundPanel {
     public MenuItem() {
         initComponents();
     }
-  
+
+    public MenuItem(String string) {
+        initComponents();
+      
+    }
+    
        
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +45,83 @@ public class MenuItem extends RoundPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setPreferredSize(new java.awt.Dimension(150, 100));
+        imagePanel1 = new GUI.SaleGroup.SellerGUI.Component.ImagePanel();
+        imagePanel3 = new GUI.SaleGroup.SellerGUI.Component.ImagePanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
+        imagePanel1.setLayout(imagePanel1Layout);
+        imagePanel1Layout.setHorizontalGroup(
+            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        imagePanel1Layout.setVerticalGroup(
+            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        setPreferredSize(new java.awt.Dimension(260, 108));
+
+        imagePanel3.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/LoginGui/Image/icons8-user-100.png"))); // NOI18N
+
+        javax.swing.GroupLayout imagePanel3Layout = new javax.swing.GroupLayout(imagePanel3);
+        imagePanel3.setLayout(imagePanel3Layout);
+        imagePanel3Layout.setHorizontalGroup(
+            imagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 85, Short.MAX_VALUE)
+        );
+        imagePanel3Layout.setVerticalGroup(
+            imagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 84, Short.MAX_VALUE)
+        );
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Coca");
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("10.000");
+
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(imagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private GUI.SaleGroup.SellerGUI.Component.ImagePanel imagePanel1;
+    private GUI.SaleGroup.SellerGUI.Component.ImagePanel imagePanel3;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

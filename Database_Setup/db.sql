@@ -185,3 +185,9 @@ ALTER TABLE nhanvien ADD CONSTRAINT FK_NHANVIEN_CHUCVU FOREIGN KEY (MACHUCVU) RE
 ALTER TABLE TAIKHOAN ADD CONSTRAINT FK_TAIKHOAN_NHANVIEN FOREIGN KEY (MANV) REFERENCES NHANVIEN(MANV);
 
 ALTER TABLE login_detail ADD CONSTRAINT FK_LOGIN_TAIKHOAN FOREIGN KEY (SOTK) REFERENCES taikhoan(SOTK);
+
+
+INSERT INTO `loaisanpham`(`MALOAI`, `TENLOAI`, `MOTA`, `IS_DELETED`) VALUES ('1','Đồ uống','Nước khoáng, nước đóng chai, nước ngọt, nước tăng lực, rượu bia, ....',0), ('2','Đồ ăn vặt','Bánh, kẹo, socola,....',0), ('3','Đồ ăn chế biến','mì, bánh mì, cơm, ....',0), ('4','Nhu yếu phẩm','Trứng, thịt, cá, rau,....',0),('5','Đồ dùng khác','Kem đánh răng, áo mưa, dù, dầu gội, sữa tắm....',0);
+
+INSERT INTO sanpham ('MASP', 'TENSP', 'MOTA', 'SOLUONG', 'HINHANH', 'GIATIEN', 'MALOAI', 'MANCC', 'IS_DELETED') VALUES
+					(Null, 'Pepsi', 'Từ thương hiệu nước ngọt có gas nổi tiếng toàn cầu với mùi vị thơm ngon với hỗn hợp hương tự nhiên cùng chất tạo ngọt tổng hợp, giúp xua tan cơn khát và cảm giác mệt mỏi.  Nước ngọt bổ sung năng lượng làm việc mỗi ngày. Cam kết sản phẩm chính hãng, chất lượng và an toàn', '30', 'pepsi', 10000, 'Đồ uống'         

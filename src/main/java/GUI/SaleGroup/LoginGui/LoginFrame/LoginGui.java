@@ -74,14 +74,12 @@ public class LoginGui extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
