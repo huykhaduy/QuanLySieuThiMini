@@ -18,7 +18,7 @@ import java.awt.Graphics2D;
  */
 public class PhoneGui2 extends javax.swing.JPanel {
 
-   {
+    {
         setOpaque(false);
     }
     public PhoneGui2() {
