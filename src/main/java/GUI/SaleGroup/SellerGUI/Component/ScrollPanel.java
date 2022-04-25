@@ -34,9 +34,13 @@ public class ScrollPanel extends JScrollPane{
         this.setViewportBorder(BorderFactory.createEmptyBorder());
         this.width = width;
         this.height = height;
+        this.getVerticalScrollBar().setUnitIncrement(6);
+//        this.getVerticalScrollBar().putClientProperty("JScrollBar.showButtons", true);
         panel.setPreferredSize(new Dimension(this.width,this.height));
+        this.setBounds(0,0,width,height);
         panel.setLayout(new FlowLayout(FlowLayout.LEFT,wGap,hGap));
-        panel.setBackground(Color.white);
+        panel.setBackground(Color.decode("#E9F0F3"));
+ 
 //        this.putClientProperty("JScrollBar.width", 50);
 //        this.setBorder(null);
 //        setOpaque(false);
@@ -46,15 +50,16 @@ public class ScrollPanel extends JScrollPane{
         Component com = panel.add(comp);
         panel.revalidate();
         panel.repaint();
-        System.out.println(panel.getPreferredSize());
+        panel.setPreferredSize(new Dimension((int)panel.getPreferredSize().getWidth(),calculateHeight()));
+//        System.out.println(panel.getPreferredSize());
         return com;
     }
+ 
     
-    
-    private Dimension getChildComponentSize(){
+    public Dimension getChildComponentSize(){
         if (panel.getComponentCount() == 0)
             return new Dimension(0,0);
-        return new Dimension((int) panel.getComponent(0).getPreferredSize().getWidth(), calculateHeight());
+        return panel.getComponent(0).getPreferredSize();
     }
     
     private int calculateHeight(){
@@ -63,7 +68,7 @@ public class ScrollPanel extends JScrollPane{
         int maxInCol = (int) (panel.getPreferredSize().getWidth() / getChildComponentSize().getWidth());
         int maxInRow = (int) (panel.getComponentCount() / maxInCol);
         maxInRow = maxInCol == 0 ? 1 : maxInRow;
-        int weight = (int) (maxInRow*(getChildComponentSize().getHeight()+1));
+        int weight = (int) (maxInRow*((getChildComponentSize().getHeight()+1)+(hGap+1)));
         return weight;
     }
 
@@ -105,13 +110,13 @@ public class ScrollPanel extends JScrollPane{
         return panel;
     }
     
-    @Override
-    protected void paintComponent(Graphics g){
-        Graphics2D g2d = (Graphics2D) g.create();
-        g2d.setColor(getBackground());
-        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 50, 50);
-        g2d.dispose();
-        super.paintComponent(g);
-    }
+//    @Override
+//    protected void paintComponent(Graphics g){
+//        Graphics2D g2d = (Graphics2D) g.create();
+//        g2d.setColor(getBackground());
+//        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 50, 50);
+//        g2d.dispose();
+//        super.paintComponent(g);
+//    }
     
 }
