@@ -46,6 +46,8 @@ public class VoucherAdd extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        shape1.setBackground(new java.awt.Color(0, 220, 128));
+
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Xác Nhận");
@@ -66,6 +68,8 @@ public class VoucherAdd extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(16, 16, 16))
         );
+
+        shape2.setBackground(new java.awt.Color(0, 220, 128));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));

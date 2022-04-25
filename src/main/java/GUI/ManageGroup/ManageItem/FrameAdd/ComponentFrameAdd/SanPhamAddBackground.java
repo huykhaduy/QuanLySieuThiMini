@@ -12,21 +12,23 @@ import java.awt.Graphics2D;
  *
  * @author ACER
  */
-public class Shape extends javax.swing.JPanel {
+public class SanPhamAddBackground extends javax.swing.JPanel {
 
     /**
-     * Creates new form Shape
+     * Creates new form SanPhamAddBackground
      */
-    public Shape() {
+    public SanPhamAddBackground() {
         initComponents();
     }
-
-       protected void paintComponent(Graphics g){
+     protected void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g.create();
-      
+        Color xanh = Color.decode("#F69E18");
        g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(getBackground());
-        g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 80, 80);
+        g2d.fillRoundRect(0, 0, getWidth(), getHeight()/4, 0, 0);
+        g2d.setColor(Color.WHITE);
+        g2d.fillRoundRect(0, getHeight()/4, getWidth(), getHeight()-getHeight()/4, 0, 0);
+
         g2d.dispose();
         super.paintComponent(g);
         
@@ -34,6 +36,8 @@ public class Shape extends javax.swing.JPanel {
         setOpaque(false);
     
     }
+
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

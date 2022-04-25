@@ -172,6 +172,11 @@
       </Layout>
       <SubComponents>
         <Container class="GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape" name="shape1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="80" green="dc" red="0" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -208,6 +213,11 @@
           </SubComponents>
         </Container>
         <Container class="GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape" name="shape2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="80" green="dc" red="0" type="rgb"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
