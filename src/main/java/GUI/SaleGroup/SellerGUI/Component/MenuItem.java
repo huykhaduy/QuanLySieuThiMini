@@ -29,7 +29,7 @@ public class MenuItem extends RoundPanel {
     public MenuItem() {
         initComponents();
     }
-
+    
     public MenuItem(String string) {
         initComponents();
       
@@ -67,7 +67,7 @@ public class MenuItem extends RoundPanel {
         setPreferredSize(new java.awt.Dimension(205, 108));
 
         imagePanel3.setBackground(new java.awt.Color(255, 255, 255));
-        imagePanel3.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/7up.jpg"))); // NOI18N
+        imagePanel3.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/marineboy.png"))); // NOI18N
 
         javax.swing.GroupLayout imagePanel3Layout = new javax.swing.GroupLayout(imagePanel3);
         imagePanel3.setLayout(imagePanel3Layout);
