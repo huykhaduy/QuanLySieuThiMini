@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI.ManageGroup.ManageItem.FrameAdd;
+package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 
+import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.NhapHangSanPham;
 import com.formdev.flatlaf.FlatLightLaf;
 
 /**
@@ -473,19 +474,18 @@ public class NhapHangSanPham extends javax.swing.JFrame {
                         .addGap(203, 203, 203))))
             .addGroup(sanPhamAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
-                    .addGap(39, 39, 39)
                     .addGroup(sanPhamAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
-                            .addGap(225, 225, 225)
-                            .addComponent(jLabel29))
-                        .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
-                            .addComponent(shape13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(shape14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(42, Short.MAX_VALUE))
-                .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
-                    .addGroup(sanPhamAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGap(39, 39, 39)
+                            .addGroup(sanPhamAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
+                                    .addGap(225, 225, 225)
+                                    .addComponent(jLabel29))
+                                .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
+                                    .addComponent(shape13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(shape14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
                             .addGap(196, 196, 196)
                             .addGroup(sanPhamAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -495,13 +495,12 @@ public class NhapHangSanPham extends javax.swing.JFrame {
                                 .addComponent(jTextField3)))
                         .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
                             .addGap(298, 298, 298)
-                            .addComponent(shape12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(188, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sanPhamAddBackground1Layout.createSequentialGroup()
-                    .addGap(14, 14, 14)
-                    .addComponent(jLabel21)
-                    .addGap(447, 447, 447)
-                    .addComponent(jLabel23)
+                            .addComponent(shape12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(sanPhamAddBackground1Layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel21)
+                            .addGap(447, 447, 447)
+                            .addComponent(jLabel23)))
                     .addContainerGap(14, Short.MAX_VALUE)))
         );
         sanPhamAddBackground1Layout.setVerticalGroup(
@@ -612,10 +611,6 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -655,10 +650,6 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape14;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape2;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape3;
-    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape4;
-    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape5;
-    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape6;
-    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape7;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape8;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape9;
     // End of variables declaration//GEN-END:variables
