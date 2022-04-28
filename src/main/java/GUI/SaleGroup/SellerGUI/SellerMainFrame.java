@@ -30,15 +30,10 @@ public class SellerMainFrame extends javax.swing.JFrame {
      */
     public SellerMainFrame() {
         initComponents();
-        mainContainer.setLayout(null);
-        ScrollPanel scrollPanel = new ScrollPanel(665, 505);
-        this.scrollPanel = scrollPanel;
-        mainContainer.add(scrollPanel);
         init();
         this.getContentPane().setBackground(Color.decode("#189AB4"));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
     }
 
     /**
@@ -74,7 +69,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        roundPanel1 = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
+        leftPanel = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         imagePanel1 = new GUI.SaleGroup.SellerGUI.Component.ImagePanel();
@@ -344,9 +339,9 @@ public class SellerMainFrame extends javax.swing.JFrame {
 
         getContentPane().add(paymentPanel, java.awt.BorderLayout.EAST);
 
-        roundPanel1.setBackground(new java.awt.Color(43, 133, 161));
-        roundPanel1.setPreferredSize(new java.awt.Dimension(80, 631));
-        roundPanel1.setRadius(0);
+        leftPanel.setBackground(new java.awt.Color(43, 133, 161));
+        leftPanel.setPreferredSize(new java.awt.Dimension(80, 631));
+        leftPanel.setRadius(0);
 
         jButton3.setBackground(new java.awt.Color(43, 133, 161));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/SellerGUI/Image/logout.png"))); // NOI18N
@@ -379,33 +374,33 @@ public class SellerMainFrame extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("BÁN HÀNG");
 
-        javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
-        roundPanel1.setLayout(roundPanel1Layout);
-        roundPanel1Layout.setHorizontalGroup(
-            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
+        leftPanel.setLayout(leftPanelLayout);
+        leftPanelLayout.setHorizontalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(roundPanel1Layout.createSequentialGroup()
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(leftPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(roundPanel1Layout.createSequentialGroup()
+                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(leftPanelLayout.createSequentialGroup()
                                 .addGap(0, 2, Short.MAX_VALUE)
                                 .addComponent(jLabel1))
                             .addComponent(imagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(roundPanel1Layout.createSequentialGroup()
+                    .addGroup(leftPanelLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(roundPanel1Layout.createSequentialGroup()
+            .addGroup(leftPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        roundPanel1Layout.setVerticalGroup(
-            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel1Layout.createSequentialGroup()
+        leftPanelLayout.setVerticalGroup(
+            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(imagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -419,7 +414,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        getContentPane().add(roundPanel1, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(leftPanel, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -492,45 +487,37 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lbTotalMoney;
     private javax.swing.JLabel lbVoucher;
     private javax.swing.JLabel lbsoDt;
+    private GUI.SaleGroup.SellerGUI.Component.RoundPanel leftPanel;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel mainContainer;
     private javax.swing.JPanel paymentInfo;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel paymentPanel;
-    private GUI.SaleGroup.SellerGUI.Component.RoundPanel roundPanel1;
     private javax.swing.JPanel spaceBottom;
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon textFieldIcon1;
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtPhoneNumber;
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtVoucher;
     // End of variables declaration//GEN-END:variables
-    private final ScrollPanel scrollPanel;
+    private ScrollPanel scrollPanelMenu;
+    private ScrollPanel scrollPanelOrder;
        
     private void init() {
-//        mainContainer.setLayout(null);
-//        System.out.println(mainContainer.getPreferredSize());
-
-//        ScrollPanel scroll = new ScrollPanel(665, 505);
-//        scroll.setPreferredSize(new Dimension(645, 490));
-
-//        mainContainer.add(scroll);
-//        MenuItem menuItem = new MenuItem();
-//        menuItem.setPreferredSize(new Dimension(200,100));
-//        MenuItem menuItem2 = new MenuItem();
-//        menuItem2.setPreferredSize(new Dimension(200,100));
-//        scroll.addToPanel(menuItem2);
-
-//        JPanel panel = scroll.getPanel();
-        for (int i=0;i<20;i++){
-            MenuItem menuItem = new MenuItem();
-            scrollPanel.addToPanel(menuItem);
-        }
+        mainContainer.setLayout(null);
         
-        ScrollPanel scroll = new ScrollPanel(271, 350);
+        this.scrollPanelMenu = new ScrollPanel(665, 505);
+        mainContainer.add(this.scrollPanelMenu);
+        
+//        for (int i=0;i<20;i++){
+//            MenuItem menuItem = new MenuItem();
+//            scrollPanelMenu.addToPanel(menuItem);
+//        }
+//        
+        this.scrollPanelOrder = new ScrollPanel(271, 350);
         jPanel1.setLayout(null);
-        jPanel1.add(scroll);
+        jPanel1.add(this.scrollPanelOrder);
         
-        for (int i=0;i<20;i++){
-            OrderItem item = new OrderItem();
-            scroll.addToPanel(item);
-        }
+//        for (int i=0;i<20;i++){
+//            OrderItem item = new OrderItem();
+//            scrollPanelOrder.addToPanel(item);
+//        }
     }
         
         

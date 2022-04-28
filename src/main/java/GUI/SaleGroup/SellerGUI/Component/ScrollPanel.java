@@ -8,8 +8,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -67,9 +65,9 @@ public class ScrollPanel extends JScrollPane{
             return (int) panel.getPreferredSize().getHeight();
         int maxInCol = (int) (panel.getPreferredSize().getWidth() / getChildComponentSize().getWidth());
         int maxInRow = (int) (panel.getComponentCount() / maxInCol);
-        maxInRow = maxInCol == 0 ? 1 : maxInRow;
-        int weight = (int) (maxInRow*((getChildComponentSize().getHeight()+1)+(hGap+1)));
-        return weight;
+        maxInRow = maxInRow == 0 ? 1 : maxInRow;
+        int height = (int) (maxInRow*((getChildComponentSize().getHeight()+1)+(hGap+1)));
+        return height;
     }
 
     public int gethGap() {

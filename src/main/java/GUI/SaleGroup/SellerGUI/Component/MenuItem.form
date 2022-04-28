@@ -43,7 +43,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="imagePanel3" max="32767" attributes="0"/>
+              <Component id="productImage" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -51,8 +51,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbPrice" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel1" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
+                  <Component id="productName" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                  <Component id="btnAdd" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -61,32 +61,32 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="productName" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbTextGiaTien" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lbPrice" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" pref="26" max="32767" attributes="0"/>
+              <Component id="btnAdd" pref="26" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="imagePanel3" min="-2" max="-2" attributes="0"/>
+              <Component id="productImage" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="GUI.SaleGroup.SellerGUI.Component.ImagePanel" name="imagePanel3">
+    <Container class="GUI.SaleGroup.SellerGUI.Component.ImagePanel" name="productImage">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="image" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Assets/Image/marineboy.png"/>
+          <Image iconType="3" name="/Assets/Image/mitrontrungxucxich.png"/>
         </Property>
       </Properties>
 
@@ -103,7 +103,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="productName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
@@ -122,7 +122,7 @@
         <Property name="text" type="java.lang.String" value="Gi&#xe1; ti&#x1ec1;n:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnAdd">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="da" green="ba" red="1d" type="rgb"/>
