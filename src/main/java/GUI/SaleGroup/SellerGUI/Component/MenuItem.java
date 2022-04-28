@@ -4,21 +4,15 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import DAL.DataModels.SanPham;
+
 /**
  *
  * @author MY ACER
  */
-public class MenuItem extends RoundPanel {
+public class MenuItem extends RoundPanel implements IGetData<SanPham>{
+    private SanPham sp;
     private int maSP;
-
-    public int getMaSP() {
-        return maSP;
-    }
-
-    public void setMaSP(int maSP) {
-        this.maSP = maSP;
-    }
-   
 
     /**
      * Creates new form MenuItem
@@ -27,15 +21,37 @@ public class MenuItem extends RoundPanel {
         initComponents();
     }
     
-    public MenuItem(int maSP, String tenSP, String description, long giaTien, String imgPath) {
-        this.maSP = maSP;
+    public MenuItem(SanPham sp){
+        this.sp = sp;
         initComponents();
-        this.productName.setText(tenSP);
-        this.lbPrice.setText(Long.toString(giaTien));
-        this.productImage.setToolTipText(description);
-        this.productImage.setImagePath(imgPath);
+        setGuiText(this.sp);
+        this.maSP = sp.getMaSP();
+        
     }
     
+    private void setGuiText(SanPham sanpham){
+        this.productName.setText(sanpham.getTenSP());
+        this.lbPrice.setText(Long.toString(sanpham.getGiaTien()));
+        this.productImage.setImagePath(sanpham.getHinhAnh());
+        this.productImage.setToolTipText(sanpham.getMoTa());
+    }
+
+    public SanPham getSp() {
+        return sp;
+    }
+
+    public void setSp(SanPham sp) {
+        this.sp = sp;
+        setGuiText(this.sp);
+    }
+
+    public int getMaSP() {
+        return maSP;
+    }
+
+    public void setMaSP(int maSP) {
+        this.maSP = maSP;
+    }
        
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,4 +158,9 @@ public class MenuItem extends RoundPanel {
     private GUI.SaleGroup.SellerGUI.Component.ImagePanel productImage;
     private javax.swing.JLabel productName;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public SanPham getData() {
+        return this.sp;
+    }
 }

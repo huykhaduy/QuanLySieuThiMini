@@ -1,5 +1,8 @@
 package GUI.SaleGroup.SellerGUI;
 
+import DAL.DataAcessObject.SanPhamDAO;
+import DAL.DataModels.ChiTietHoaDon;
+import DAL.DataModels.SanPham;
 import GUI.SaleGroup.LoginGui.Component.Button;
 import GUI.SaleGroup.LoginGui.Component.ButtonUI;
 import GUI.SaleGroup.SellerGUI.Component.MenuItem;
@@ -12,6 +15,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.ScrollPane;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -496,8 +500,8 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtPhoneNumber;
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtVoucher;
     // End of variables declaration//GEN-END:variables
-    private ScrollPanel scrollPanelMenu;
-    private ScrollPanel scrollPanelOrder;
+    private ScrollPanel<SanPham, MenuItem> scrollPanelMenu;
+    private ScrollPanel<ChiTietHoaDon, OrderItem> scrollPanelOrder;
        
     private void init() {
         mainContainer.setLayout(null);
@@ -509,7 +513,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
 //            MenuItem menuItem = new MenuItem();
 //            scrollPanelMenu.addToPanel(menuItem);
 //        }
-//        
+        
         this.scrollPanelOrder = new ScrollPanel(271, 350);
         jPanel1.setLayout(null);
         jPanel1.add(this.scrollPanelOrder);
@@ -518,6 +522,18 @@ public class SellerMainFrame extends javax.swing.JFrame {
 //            OrderItem item = new OrderItem();
 //            scrollPanelOrder.addToPanel(item);
 //        }
+//        getMenuItemFromDatabase();
+    }
+    
+    // Insert du lieu moi chay dc
+    private void getMenuItemFromDatabase(){
+        SanPhamDAO spdao = new SanPhamDAO();
+        List<SanPham> list = spdao.selectAll();
+        for (SanPham sp:list){
+            MenuItem menuItem = new MenuItem(sp);
+            System.out.println(sp);
+            scrollPanelMenu.addToPanel(menuItem);
+        }
     }
         
         

@@ -4,18 +4,53 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import DAL.DataModels.ChiTietHoaDon;
+import javax.swing.SpinnerNumberModel;
+
 /**
  *
  * @author huykh
  */
-public class OrderItem extends RoundPanel {
+public class OrderItem extends RoundPanel implements IGetData<ChiTietHoaDon>{ 
+    private int productId;
+    private long productPrice;
 
     /**
      * Creates new form OrderItem
      */
     public OrderItem() {
         initComponents();
+        SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, 1.0, 50.0, 1.0);
+        productOrderQuantity.setModel(model1);
     }
+    
+    public OrderItem(int productId, String productName, String imgPath, long productPrice, int productQuantity) {
+        this.productId = productId;
+        this.productPrice = productPrice;
+        initComponents();
+        SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, 1.0, 50.0, 1.0);
+        productOrderQuantity.setModel(model1);
+        setGuiText(productName,imgPath,productPrice,productQuantity);
+    }
+    
+    private void setGuiText(String productName, String imgPath, long productPrice, int productQuantity){
+        this.productOrderName.setText(productName);
+        this.productOrderImage.setImagePath(imgPath);
+        this.productOrderPrice.setText(Long.toString(productPrice));
+        this.productOrderQuantity.setValue(productQuantity);
+        this.productOrderTotal.setText(Long.toString(productPrice*(long) productQuantity));
+    }
+    
+    //Chua bao gom ma hoa don
+    public ChiTietHoaDon getChiTietHoaDon(){
+        return new ChiTietHoaDon(this.productId, 0, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.productPrice);
+    }
+    
+    //Truyen ma hoa don bang ham
+    public ChiTietHoaDon getChiTietHoaDon(int maHD){
+        return new ChiTietHoaDon(this.productId, maHD, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.productPrice);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,12 +61,12 @@ public class OrderItem extends RoundPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        imagePanel1 = new GUI.SaleGroup.SellerGUI.Component.ImagePanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        productOrderImage = new GUI.SaleGroup.SellerGUI.Component.ImagePanel();
+        productOrderName = new javax.swing.JLabel();
+        productOrderTotal = new javax.swing.JLabel();
+        productOrderQuantity = new javax.swing.JSpinner();
+        btnRemoveOrderItem = new javax.swing.JButton();
+        productOrderPrice = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -39,68 +74,74 @@ public class OrderItem extends RoundPanel {
         setRadius(30);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imagePanel1.setBackground(new java.awt.Color(255, 255, 255));
-        imagePanel1.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/LoginGui/Image/icons8-user-100.png"))); // NOI18N
+        productOrderImage.setBackground(new java.awt.Color(255, 255, 255));
+        productOrderImage.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/LoginGui/Image/icons8-user-100.png"))); // NOI18N
 
-        javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
-        imagePanel1.setLayout(imagePanel1Layout);
-        imagePanel1Layout.setHorizontalGroup(
-            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout productOrderImageLayout = new javax.swing.GroupLayout(productOrderImage);
+        productOrderImage.setLayout(productOrderImageLayout);
+        productOrderImageLayout.setHorizontalGroup(
+            productOrderImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
-        imagePanel1Layout.setVerticalGroup(
-            imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        productOrderImageLayout.setVerticalGroup(
+            productOrderImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        add(imagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 60));
+        add(productOrderImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 60));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(29, 186, 218));
-        jLabel1.setText("<html>Nước ngọt cocacola 500ml + ly đá rat ngon");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 140, 30));
+        productOrderName.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        productOrderName.setForeground(new java.awt.Color(29, 186, 218));
+        productOrderName.setText("<html>Nước ngọt cocacola 500ml + ly đá rat ngon");
+        add(productOrderName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 140, 30));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(29, 186, 218));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("30.000");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 100, 20));
-        add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 80, -1));
+        productOrderTotal.setBackground(new java.awt.Color(255, 255, 255));
+        productOrderTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        productOrderTotal.setForeground(new java.awt.Color(29, 186, 218));
+        productOrderTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        productOrderTotal.setText("30.000");
+        add(productOrderTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 100, 20));
+        add(productOrderQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 80, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("X");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveOrderItem.setBackground(new java.awt.Color(255, 153, 153));
+        btnRemoveOrderItem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRemoveOrderItem.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoveOrderItem.setText("X");
+        btnRemoveOrderItem.setBorder(null);
+        btnRemoveOrderItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRemoveOrderItemActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 30, 20));
+        add(btnRemoveOrderItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 30, 20));
 
-        jLabel3.setForeground(new java.awt.Color(29, 186, 218));
-        jLabel3.setText("30.000");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 160, 20));
+        productOrderPrice.setForeground(new java.awt.Color(29, 186, 218));
+        productOrderPrice.setText("30.000");
+        add(productOrderPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 140, 20));
 
         jLabel4.setForeground(new java.awt.Color(29, 186, 218));
         jLabel4.setText("Giá:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 30, 20));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRemoveOrderItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveOrderItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRemoveOrderItemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.SaleGroup.SellerGUI.Component.ImagePanel imagePanel1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnRemoveOrderItem;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSpinner jSpinner1;
+    private GUI.SaleGroup.SellerGUI.Component.ImagePanel productOrderImage;
+    private javax.swing.JLabel productOrderName;
+    private javax.swing.JLabel productOrderPrice;
+    private javax.swing.JSpinner productOrderQuantity;
+    private javax.swing.JLabel productOrderTotal;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public ChiTietHoaDon getData() {
+        //Chua bao gom ma hoa don, can phai set ma hoa don lai nha
+        return getChiTietHoaDon();
+    }
 }
