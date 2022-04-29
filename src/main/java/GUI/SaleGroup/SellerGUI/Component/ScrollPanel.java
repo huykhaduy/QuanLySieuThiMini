@@ -8,8 +8,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,13 +17,20 @@ import javax.swing.JScrollPane;
 /**
  *
  * @author huykh
+ * @param <MyData>
+ * @param <MyPanel>
  */
-public class ScrollPanel extends JScrollPane{
+
+// MyPanel is a class to contain data (like OrderItem, MenuItem). MyPanel extend Component so we can use panel.add (at line 57)
+// MyPanel extends interface IGetData because we need a function that call to get data from MyPanel
+// MyData is data type that we get from MyPanel (like ChiTietSanPham, SanPham).
+public class ScrollPanel<MyData,MyPanel extends Component & IGetData<MyData>> extends JScrollPane{
     private final JPanel panel;
     private int width;
     private int height;
     private int hGap = 10;
     private int wGap = 10;
+    private final List<MyData> listData = new ArrayList<>();
     
     public ScrollPanel(int width, int height){
         panel = new JPanel();
@@ -46,13 +53,14 @@ public class ScrollPanel extends JScrollPane{
 //        setOpaque(false);
     }
     
-    public Component addToPanel(Component comp){
+    public MyPanel addToPanel(MyPanel comp){
         Component com = panel.add(comp);
         panel.revalidate();
         panel.repaint();
         panel.setPreferredSize(new Dimension((int)panel.getPreferredSize().getWidth(),calculateHeight()));
+        this.listData.add(comp.getData());
 //        System.out.println(panel.getPreferredSize());
-        return com;
+        return (MyPanel) com;
     }
  
     
@@ -67,9 +75,9 @@ public class ScrollPanel extends JScrollPane{
             return (int) panel.getPreferredSize().getHeight();
         int maxInCol = (int) (panel.getPreferredSize().getWidth() / getChildComponentSize().getWidth());
         int maxInRow = (int) (panel.getComponentCount() / maxInCol);
-        maxInRow = maxInCol == 0 ? 1 : maxInRow;
-        int weight = (int) (maxInRow*((getChildComponentSize().getHeight()+1)+(hGap+1)));
-        return weight;
+        maxInRow = maxInRow == 0 ? 1 : maxInRow;
+        int height = (int) (maxInRow*((getChildComponentSize().getHeight()+1)+(hGap+1)));
+        return height;
     }
 
     public int gethGap() {
@@ -108,6 +116,10 @@ public class ScrollPanel extends JScrollPane{
     
     public JPanel getPanel(){
         return panel;
+    }
+    
+    public List<MyData> getListData(){
+        return listData;
     }
     
 //    @Override

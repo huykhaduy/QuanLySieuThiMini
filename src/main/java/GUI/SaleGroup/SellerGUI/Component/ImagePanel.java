@@ -18,13 +18,28 @@ import org.imgscalr.Scalr;
  */
 public class ImagePanel extends JPanel{
     private ImageIcon image;
-
-    public Icon getImage() {
-        return image;
+    public final static String imgDirectory = "src/main/java/Assets/Image/";
+    public final static String imgExtension = ".png";
+    
+    public ImagePanel (String url){
+        image = new ImageIcon(imgDirectory+url+imgExtension);
+    }
+    
+    public ImagePanel(){
+        image = new ImageIcon();
     }
 
     public void setImage(ImageIcon image) {
         this.image = image;
+    }
+    
+    public Icon getImage() {
+        return image;
+    }
+    
+    public void setImagePath(String url){
+        this.image = new ImageIcon(imgDirectory+url+imgExtension);
+        System.out.println(imgDirectory+url+imgExtension);
     }
     
     @Override

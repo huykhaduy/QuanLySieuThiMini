@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI.ManageGroup.ManageItem.FrameAdd;
+package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 
 /**
  *
@@ -60,6 +60,8 @@ public class SanPhamAdd extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        sanPhamAddBackground1.setBackground(new java.awt.Color(246, 158, 24));
 
         javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
         imagePanel1.setLayout(imagePanel1Layout);

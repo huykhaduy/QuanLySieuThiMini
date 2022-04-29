@@ -96,7 +96,7 @@ create table CTHOADON(
 
 -- Tuan
 CREATE TABLE HOADON (
-                        MAHD int NOT NULL auto_increment PRIMARY KEY,
+                        MAHD int NOT null auto_increment PRIMARY KEY,
                         NGAYHD DATETIME,
                         HINHTHUC VARCHAR(20),
                         TONGTIEN bigint,
@@ -108,7 +108,7 @@ CREATE TABLE HOADON (
 );
 
 CREATE TABLE NHANVIEN (
-                          MANV INT NOT NULL auto_increment PRIMARY KEY,
+                          MANV INT NOT null auto_increment PRIMARY KEY,
                           TENNV VARCHAR(50),
                           GIOITINH BOOLEAN,
                           CMND VARCHAR(15),
@@ -122,7 +122,7 @@ CREATE TABLE NHANVIEN (
 );
 
 CREATE TABLE KHACHHANG (
-                           MAKH INT NOT NULL auto_increment PRIMARY KEY,
+                           MAKH INT NOT null auto_increment PRIMARY KEY,
                            TENKH VARCHAR(50),
                            GIOITINH BOOLEAN,
                            SODIENTHOAI INT(11),
@@ -133,7 +133,7 @@ CREATE TABLE KHACHHANG (
 );
 
 CREATE TABLE TAIKHOAN (
-                          SOTK INT NOT NULL auto_increment PRIMARY KEY,
+                          SOTK INT NOT null auto_increment PRIMARY KEY,
                           TENTK VARCHAR(50),
                           MATKHAU VARCHAR(50),
                           MANV INT,
@@ -143,14 +143,14 @@ CREATE TABLE TAIKHOAN (
 );
 
 CREATE TABLE CHUCVU (
-                        MACHUCVU INT NOT NULL auto_increment PRIMARY KEY,
+                        MACHUCVU INT NOT null auto_increment PRIMARY KEY,
                         TENCHUCVU VARCHAR(50),
                         MOTA VARCHAR(100),
                         IS_DELETED boolean
 );
 
 CREATE TABLE LOGIN_DETAIL (
-                              LOGIN_ID INT NOT NULL auto_increment PRIMARY KEY,
+                              LOGIN_ID INT NOT null auto_increment PRIMARY KEY,
                               AUTH_KEY VARCHAR(50),
                               IP_ADDRESS VARCHAR(20),
                               MAC_ADDRESS VARCHAR(20),
@@ -200,7 +200,7 @@ INSERT INTO  NHACUNGCAP (MANCC, TENNCC, DIACHI, SDT,  EMAIL, IS_DELETED) VALUES 
                                                                                                                                                                       (3, 'Chương Dương' , 'Việt Nam', '( 84-8) 3836 751', 'info@cdbeco.com.vn',0 ),
                                                                                                                                                                       (4, 'Masan' , 'Việt Nam', '+84 28 62563862', 'pr@msn.masangroup.com',0 ),
                                                                                                                                                                       (5, 'Red Bull' , 'Thái Lan', '+84 28 9232862', 'customerservice@redbullshopus.com',0 ),
-                                                                                                                                                                      (6,'Casper', 'Dan mach', '23286', 'phuc@email.com.vn',0),
+                                                                                                                                                                      (6, 'Carlsberg', 'Đan Mạch', '+84 28 62563862', 'trangthanhphuc91@gmail.com',0),
                                                                                                                                                                       (7, 'Lotte' , 'Hàn Quốc', '1900 6778', 'cs@lotte.vn',0 ),
                                                                                                                                                                       (8,'Trident', 'Hoa Kỳ','1900 6998', 'cs@trident.vn',0),
                                                                                                                                                                       (9, 'Perfetti Van Melle SPA', 'Italy','1900 6798', 'cs@perfertti.vn',0),
@@ -215,8 +215,6 @@ INSERT INTO  NHACUNGCAP (MANCC, TENNCC, DIACHI, SDT,  EMAIL, IS_DELETED) VALUES 
                                                                                                                                                                       (18,'3M  ', 'Hoa Kỳ', '0323921302', 'cs@3M.com.vn',0),
                                                                                                                                                                       (19,'Colgate   ', 'Hoa Kỳ', '0321231302', 'cs@Colgate .com.vn',0);
                                                                                                                                                                     
-
-
 
 
 INSERT INTO sanpham   VALUES
@@ -283,33 +281,6 @@ INSERT INTO sanpham   VALUES
 (Null, 'Bộ 2 kem đánh răng Colgate MaxFresh bạc hà 350g' , ' Colgate là nhãn hiệu của Mỹ chuyên về các sản phẩm vệ sinh răng miệng bao gồm sản phẩm kem đánh răng. Bộ 2 kem đánh răng Colgate MaxFresh hương bạc hà 350g công thức đặc biệt giúp diệt khuẩn hiệu quả, ngừa sâu răng tối đa, cho răng chắc khỏe và hơi thở thơm mát.', 90,  'kemdanhrang', 60000,5, 19,0),
 (Null, 'Bàn chải đánh răng Colgate 360 Charcoal Spiral xoắn kép' , 'Bàn chải đánh răng xuất xứ thương hiệu Mỹ. Bàn chải đánh răng Colgate có lông chải xoắn, phủ than hoạt tính. Bàn chải Colgate 360 Charcoal Spiral xoắn kép có đầu bàn chải to với 30% diện tích lông chải tăng thêm, giúp chải sạch hiệu quả.', 50,  'banchay', 42000, 5, 19,0),
 (Null, 'Nước súc miệng Colgate Plax Peppermint Fresh 750ml' , 'Nước súc miệng Colgate được sản xuất tại Thái Lan. Nước súc miệng giúp làm sạch khoang miệng hiệu quả, chăm sóc nướu và mang lại hơi thở thơm ngát tự nhiên. Nước súc miệng Colgate Plax Peppermint Fresh 750ml cho khoang miệng sạch sẽ, diệt vi khuẩn gây hôi miệng.', 23,  'nuocsucmieng', 126000, 5, 19,0);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,7 @@
 
-package GUI.ManageGroup.ManageItem.FrameAdd;
+package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
+
+import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.VoucherAdd;
 
 /**
  *
