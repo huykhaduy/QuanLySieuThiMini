@@ -219,7 +219,7 @@ INSERT INTO  NHACUNGCAP (MANCC, TENNCC, DIACHI, SDT,  EMAIL, IS_DELETED) VALUES 
 
 
 
-INSERT INTO sanpham ('MASP', 'TENSP', 'MOTA', 'SOLUONG', 'HINHANH', 'GIATIEN', 'MALOAI', 'MANCC', 'IS_DELETED') VALUES
+INSERT INTO sanpham   VALUES
 (Null, 'Pepsi', 'Từ thương hiệu nước ngọt có gas nổi tiếng toàn cầu với mùi vị thơm ngon với hỗn hợp hương tự nhiên cùng chất tạo ngọt tổng hợp, giúp xua tan cơn khát và cảm giác mệt mỏi.  Nước ngọt bổ sung năng lượng làm việc mỗi ngày. Cam kết sản phẩm chính hãng, chất lượng và an toàn', 30, 'pepsi', 10600, 1, 1,0),
 (Null, 'Sprite', 'Hương vị được ưa chuộng tại hơn 190 quốc gia và lọt top những nước giải khát được yêu thích nhất toàn cầu. Với vị chanh tươi mát cùng những bọt ga sảng khoái tê đầu lưỡi giúp bạn đập tan cơn khát ngay tức thì. Sản phẩm cam kết chính hãng, chất lượng và an toàn từ nhà Sprite', 50, 'sprite', 8800, 1 , 2,0),
 (Null, 'Coca', 'Là loại nước ngọt được nhiều người yêu thích với hương vị thơm ngon, sảng khoái. 6 lon nước ngọt Coca Cola 320ml với lượng gas lớn sẽ giúp bạn xua tan mọi cảm giác mệt mỏi, căng thẳng, đem lại cảm giác thoải mái sau khi hoạt động ngoài trời.', 100, 'coca', 10500, 1, 2,0),
@@ -267,7 +267,7 @@ INSERT INTO sanpham ('MASP', 'TENSP', 'MOTA', 'SOLUONG', 'HINHANH', 'GIATIEN', '
 (Null, 'Hộp trứng vịt' , 'Hộp 10 trứng gà tươi G có thể luộc chín chế biến thành một số món ăn khác như: thịt kho trứng, cơm chiên trứng,...', 99,  'trungvit', 39000, 4 , 13,0),
 (Null, 'Cá hồi 300g' , 'Cá hồi cắt khúc đông lạnh vẫn giữ được độ tươi ngon, màu sắc bắt mắt, được sơ chế sạch sẽ an toàn', 99,  'cahoi', 39000, 4, 13,0),
 (Null, 'Nấm kim châm 150g' , 'Nấm kim châm Hàn Quốc được nuôi trồng và đóng gói theo những tiêu chuẩn nghiêm ngặt, bảo đảm các tiêu chuẩn xanh - sạch, chất lượng và an toàn với người dùng. Sợi nấm dai, giòn và ngọt, khi nấu chín rất thơm nên thường được lăn bột chiên giòn, nấu súp hoặc để nướng ăn kèm.', 99,  'namkimcham', 14300, 4 , 13,0),
-(Null, 'Ớt hiểm 50g' , 'Với vị cay nồng, thơm, kích thích vị giác của người ăn, ớt là một trong những gia vị không thể thiếu trong nấu ăn cũng như mâm cơm của người Việt. Ớt hiểm luôn giữ được độ tươi mỗi ngày, được nuôi trồng theo quy trình nghiêm ngặt, bảo đảm các chỉ tiêu về an toàn và chất lượng.', 99,  'othiem', 2800, 4 13,0),
+(Null, 'Ớt hiểm 50g' , 'Với vị cay nồng, thơm, kích thích vị giác của người ăn, ớt là một trong những gia vị không thể thiếu trong nấu ăn cũng như mâm cơm của người Việt. Ớt hiểm luôn giữ được độ tươi mỗi ngày, được nuôi trồng theo quy trình nghiêm ngặt, bảo đảm các chỉ tiêu về an toàn và chất lượng.', 99,  'othiem', 2800, 4 ,13,0),
 (Null, 'Chanh 500g' , 'Chanh túi 500g với từng trái to, tròn và mọng nước, chanh giúp tạo nên vị chua đậm đà cho nhiều món ăn hay nước uống, khiến cho nhiều người thích mê. Chanh có thể làm nước đá chanh giải nhiệt mùa hè, tạo nên vị chua cho các món như canh chua, lẩu chua,....', 99,  'chanh', 15300, 4 , 13,0),
 (Null, 'Dưa leo 500g' , 'Dưa leo baby trồng tại Lâm Đồng là một giống dưa mới, được trồng khá nhiều ở nước ta, đây là một loại rau củ rất ngon, gần như là quen thuộc trong tất cả bữa ăn ở mọi gia đình. Dưa leo chứa rất nhiều chất dinh dưỡng và vitamin rất tốt cho cơ thể. Dưa leo còn có thể dụng để làm đẹp cũng rất hiệu quả.', 99,  'dualeo', 17100,4, 13,0),
 
@@ -283,7 +283,6 @@ INSERT INTO sanpham ('MASP', 'TENSP', 'MOTA', 'SOLUONG', 'HINHANH', 'GIATIEN', '
 (Null, 'Bộ 2 kem đánh răng Colgate MaxFresh bạc hà 350g' , ' Colgate là nhãn hiệu của Mỹ chuyên về các sản phẩm vệ sinh răng miệng bao gồm sản phẩm kem đánh răng. Bộ 2 kem đánh răng Colgate MaxFresh hương bạc hà 350g công thức đặc biệt giúp diệt khuẩn hiệu quả, ngừa sâu răng tối đa, cho răng chắc khỏe và hơi thở thơm mát.', 90,  'kemdanhrang', 60000,5, 19,0),
 (Null, 'Bàn chải đánh răng Colgate 360 Charcoal Spiral xoắn kép' , 'Bàn chải đánh răng xuất xứ thương hiệu Mỹ. Bàn chải đánh răng Colgate có lông chải xoắn, phủ than hoạt tính. Bàn chải Colgate 360 Charcoal Spiral xoắn kép có đầu bàn chải to với 30% diện tích lông chải tăng thêm, giúp chải sạch hiệu quả.', 50,  'banchay', 42000, 5, 19,0),
 (Null, 'Nước súc miệng Colgate Plax Peppermint Fresh 750ml' , 'Nước súc miệng Colgate được sản xuất tại Thái Lan. Nước súc miệng giúp làm sạch khoang miệng hiệu quả, chăm sóc nướu và mang lại hơi thở thơm ngát tự nhiên. Nước súc miệng Colgate Plax Peppermint Fresh 750ml cho khoang miệng sạch sẽ, diệt vi khuẩn gây hôi miệng.', 23,  'nuocsucmieng', 126000, 5, 19,0);
-
 
 
 
