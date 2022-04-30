@@ -16,12 +16,12 @@ import java.util.List;
  *
  * @author huykh
  */
-public class MenuItemPanel extends ScrollPanel<SanPham>{
+public class MenuPanel extends ScrollPanel{
     private final SanPhamDAO spDAO = new SanPhamDAO();
     private List<SanPham> listData;
     private final OrderPanel orderpanel;
     
-    public MenuItemPanel(int width, int height, OrderPanel orderPanel){
+    public MenuPanel(int width, int height, OrderPanel orderPanel){
         super(width, height);
         this.orderpanel = orderPanel;
         listData = new ArrayList<>();
@@ -52,7 +52,6 @@ public class MenuItemPanel extends ScrollPanel<SanPham>{
         addToPanel(list);
     }
 
-    @Override
     public void addToPanel(SanPham sp) {
         MenuItem item = new MenuItem(sp);
         item.getButtonAdd().addActionListener(new HandleClickAddEvent(sp, orderpanel));
@@ -63,7 +62,6 @@ public class MenuItemPanel extends ScrollPanel<SanPham>{
         this.panel.setPreferredSize(new Dimension((int)this.panel.getPreferredSize().getWidth(),calculateHeight()));
     }
     
-    @Override
     public void addToPanel(List<SanPham> list) {
         this.listData = list;
         for (SanPham sp: list){
@@ -79,7 +77,6 @@ public class MenuItemPanel extends ScrollPanel<SanPham>{
         this.panel.setPreferredSize(new Dimension((int)this.panel.getPreferredSize().getWidth(),calculateHeight()));
     }
 
-    @Override
     public List<SanPham> getListData() {
        return this.listData;
     }

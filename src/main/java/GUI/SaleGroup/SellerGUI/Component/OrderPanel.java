@@ -16,13 +16,12 @@ import java.util.List;
  *
  * @author huykh
  */
-public class OrderPanel extends ScrollPanel<SanPham>{
+public class OrderPanel extends ScrollPanel{
     
     public OrderPanel(int width, int height){
         super(width, height);
     }
     
-    @Override
     public void addToPanel(SanPham sp) {
         OrderItem item = new OrderItem(sp);
         item.getButtonRemove().addActionListener(new RemoveOrderItemAction(sp, this));
@@ -33,14 +32,12 @@ public class OrderPanel extends ScrollPanel<SanPham>{
         this.panel.setPreferredSize(new Dimension((int)this.panel.getPreferredSize().getWidth(),calculateHeight()));
     }
 
-    @Override
     public void addToPanel(List<SanPham> list) {
         for (SanPham sp: list){
             addToPanel(sp);
         }
     }
 
-    @Override
     public List<SanPham> getListData() {
         return new ArrayList<>();
     }

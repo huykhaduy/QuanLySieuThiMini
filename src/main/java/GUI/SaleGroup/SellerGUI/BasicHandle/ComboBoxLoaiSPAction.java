@@ -5,7 +5,7 @@
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
 import DAL.DataModels.LoaiSanPham;
-import GUI.SaleGroup.SellerGUI.Component.MenuItemPanel;
+import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
 import GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,11 +17,11 @@ import javax.swing.JTextField;
  * @author huykh
  */
 public class ComboBoxLoaiSPAction implements ActionListener{
-    private MenuItemPanel menu;
+    private MenuPanel menu;
     private JTextField searchField;
     private MyLoaiSPComboBox bx;
 
-    public ComboBoxLoaiSPAction(MyLoaiSPComboBox bx, MenuItemPanel menu, JTextField searchField) {
+    public ComboBoxLoaiSPAction(MyLoaiSPComboBox bx, MenuPanel menu, JTextField searchField) {
         this.menu = menu;
         this.bx = bx;
         this.searchField = searchField;

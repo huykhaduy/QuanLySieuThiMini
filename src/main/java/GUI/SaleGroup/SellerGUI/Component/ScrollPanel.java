@@ -24,7 +24,7 @@ import javax.swing.JScrollPane;
 // MyData is data type that we get from MyPanel (like ChiTietSanPham, SanPham).
 // public class ScrollPanel<MyData,MyPanel extends Component & IGetData<MyData>> extends JScrollPane{
 // Use abstact intead of generic
-public abstract class ScrollPanel<DataType> extends JScrollPane{
+public class ScrollPanel extends JScrollPane{
     protected final JPanel panel;
     protected int width;
     protected int height;
@@ -58,10 +58,6 @@ public abstract class ScrollPanel<DataType> extends JScrollPane{
 //        System.out.println(panel.getPreferredSize());
 //        return (MyPanel) com;
 //    }
-    
-    public abstract void addToPanel(DataType comp);
-    public abstract void addToPanel(List<DataType> comp);
-    public abstract List<DataType> getListData();
     
     public Dimension getChildComponentSize(){
         if (panel.getComponentCount() == 0)

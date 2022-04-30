@@ -4,7 +4,7 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
-import GUI.SaleGroup.SellerGUI.Component.MenuItemPanel;
+import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
 import GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -15,11 +15,11 @@ import javax.swing.event.DocumentListener;
  * @author huykh
  */
 public class SearchMenuListener implements DocumentListener{
-    private MenuItemPanel menu;
+    private MenuPanel menu;
     private MyLoaiSPComboBox bx;
     private JTextField searchField;
 
-    public SearchMenuListener(MenuItemPanel menu, MyLoaiSPComboBox bx, JTextField searchField) {
+    public SearchMenuListener(MenuPanel menu, MyLoaiSPComboBox bx, JTextField searchField) {
         this.menu = menu;
         this.bx = bx;
         this.searchField = searchField;

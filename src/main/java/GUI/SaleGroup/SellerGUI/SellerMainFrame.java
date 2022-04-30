@@ -11,7 +11,7 @@ import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.SearchMenuListener;
 import GUI.SaleGroup.SellerGUI.Component.MenuItem;
 import GUI.SaleGroup.SellerGUI.Component.OrderItem;
-import GUI.SaleGroup.SellerGUI.Component.MenuItemPanel;
+import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
 import GUI.SaleGroup.SellerGUI.Component.ScrollPanel;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -505,7 +505,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtPhoneNumber;
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtVoucher;
     // End of variables declaration//GEN-END:variables
-    private MenuItemPanel scrollPanelMenu;
+    private MenuPanel scrollPanelMenu;
     private OrderPanel scrollPanelOrder;
        
     private void init() {  
@@ -516,7 +516,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         myLoaiSPComboBox1.getLoaiSPFromDatabase();
         
         mainContainer.setLayout(null);
-        this.scrollPanelMenu = new MenuItemPanel(665, 505, scrollPanelOrder);
+        this.scrollPanelMenu = new MenuPanel(665, 505, scrollPanelOrder);
         mainContainer.add(this.scrollPanelMenu);
         this.scrollPanelMenu.getAllProduct();
     }
