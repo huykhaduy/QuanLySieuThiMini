@@ -18,11 +18,13 @@ import org.imgscalr.Scalr;
  */
 public class ImagePanel extends JPanel{
     private ImageIcon image;
+    private BufferedImage bufferedImage;
     public final static String imgDirectory = "src/main/java/Assets/Image/";
+    public final static String noImageProduct = "no-product";
     public final static String imgExtension = ".png";
     
     public ImagePanel (String url){
-        image = new ImageIcon(imgDirectory+url+imgExtension);
+        setImagePath(url);
     }
     
     public ImagePanel(){
@@ -37,9 +39,10 @@ public class ImagePanel extends JPanel{
         return image;
     }
     
-    public void setImagePath(String url){
+    public final void setImagePath(String url){
         this.image = new ImageIcon(imgDirectory+url+imgExtension);
-        System.out.println(imgDirectory+url+imgExtension);
+        this.revalidate();
+        this.repaint();
     }
     
     @Override
@@ -48,14 +51,19 @@ public class ImagePanel extends JPanel{
         if (this.image != null){
             Graphics2D g2d = (Graphics2D) g.create();
             g2d.setRenderingHint(java.awt.RenderingHints.KEY_INTERPOLATION, java.awt.RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-            BufferedImage imageBuffer = getImgBuffer(this.image);
-            BufferedImage buff = Scalr.resize(imageBuffer, getWidth());
-            g2d.drawImage(buff,0,0,null);
+            if (this.bufferedImage == null){
+                BufferedImage imageBuffer = getImgBuffer(this.image);
+                this.bufferedImage = Scalr.resize(imageBuffer, getWidth());
+            }
+            g2d.drawImage(this.bufferedImage,0,0,null);
             g2d.dispose();
         }
     }
     
     private BufferedImage getImgBuffer(ImageIcon icon){
+        //Change image if it not found
+        if (icon.getIconWidth() == -1 || icon.getIconHeight() == -1)
+            icon = new ImageIcon(imgDirectory + noImageProduct + imgExtension);
         BufferedImage bi = new BufferedImage(
                 icon.getIconWidth(),
                 icon.getIconHeight(),

@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -17,20 +16,21 @@ import javax.swing.JScrollPane;
 /**
  *
  * @author huykh
- * @param <MyData>
- * @param <MyPanel>
+ * @param <DataType> 
  */
 
 // MyPanel is a class to contain data (like OrderItem, MenuItem). MyPanel extend Component so we can use panel.add (at line 57)
 // MyPanel extends interface IGetData because we need a function that call to get data from MyPanel
 // MyData is data type that we get from MyPanel (like ChiTietSanPham, SanPham).
-public class ScrollPanel<MyData,MyPanel extends Component & IGetData<MyData>> extends JScrollPane{
-    private final JPanel panel;
-    private int width;
-    private int height;
-    private int hGap = 10;
-    private int wGap = 10;
-    private final List<MyData> listData = new ArrayList<>();
+// public class ScrollPanel<MyData,MyPanel extends Component & IGetData<MyData>> extends JScrollPane{
+// Use abstact intead of generic
+public abstract class ScrollPanel<DataType> extends JScrollPane{
+    protected final JPanel panel;
+    protected int width;
+    protected int height;
+    protected int hGap = 10;
+    protected int wGap = 10;
+//    private final List<MyData> listData = new ArrayList<>();
     
     public ScrollPanel(int width, int height){
         panel = new JPanel();
@@ -42,27 +42,26 @@ public class ScrollPanel<MyData,MyPanel extends Component & IGetData<MyData>> ex
         this.width = width;
         this.height = height;
         this.getVerticalScrollBar().setUnitIncrement(6);
-//        this.getVerticalScrollBar().putClientProperty("JScrollBar.showButtons", true);
         panel.setPreferredSize(new Dimension(this.width,this.height));
         this.setBounds(0,0,width,height);
         panel.setLayout(new FlowLayout(FlowLayout.LEFT,wGap,hGap));
         panel.setBackground(Color.decode("#E9F0F3"));
  
-//        this.putClientProperty("JScrollBar.width", 50);
-//        this.setBorder(null);
-//        setOpaque(false);
     }
     
-    public MyPanel addToPanel(MyPanel comp){
-        Component com = panel.add(comp);
-        panel.revalidate();
-        panel.repaint();
-        panel.setPreferredSize(new Dimension((int)panel.getPreferredSize().getWidth(),calculateHeight()));
-        this.listData.add(comp.getData());
+//    public MyPanel addToPanel(MyPanel comp){
+//        Component com = panel.add(comp);
+//        panel.revalidate();
+//        panel.repaint();
+//        panel.setPreferredSize(new Dimension((int)panel.getPreferredSize().getWidth(),calculateHeight()));
+//        this.listData.add(comp.getData());
 //        System.out.println(panel.getPreferredSize());
-        return (MyPanel) com;
-    }
- 
+//        return (MyPanel) com;
+//    }
+    
+    public abstract void addToPanel(DataType comp);
+    public abstract void addToPanel(List<DataType> comp);
+    public abstract List<DataType> getListData();
     
     public Dimension getChildComponentSize(){
         if (panel.getComponentCount() == 0)
@@ -70,14 +69,23 @@ public class ScrollPanel<MyData,MyPanel extends Component & IGetData<MyData>> ex
         return panel.getComponent(0).getPreferredSize();
     }
     
-    private int calculateHeight(){
+    protected int calculateHeight(){
         if (panel.getComponentCount() == 0 || getChildComponentSize().getWidth() == 0 || getChildComponentSize().getHeight() == 0)
             return (int) panel.getPreferredSize().getHeight();
         int maxInCol = (int) (panel.getPreferredSize().getWidth() / getChildComponentSize().getWidth());
-        int maxInRow = (int) (panel.getComponentCount() / maxInCol);
+        int maxInRow = roundToNextInt(panel.getComponentCount()*1.0 / maxInCol);
+//        System.out.println("Max row: "+maxInRow);
         maxInRow = maxInRow == 0 ? 1 : maxInRow;
-        int height = (int) (maxInRow*((getChildComponentSize().getHeight()+1)+(hGap+1)));
+        int height = (int) (maxInRow*((getChildComponentSize().getHeight())+(hGap+1)));
+//        System.out.println("Height: "+height);
         return height;
+    }
+    
+    protected int roundToNextInt(double num){
+        if (num % 1==0){
+            return (int) num;
+        }
+        return (int) num +1;
     }
 
     public int gethGap() {
@@ -116,10 +124,6 @@ public class ScrollPanel<MyData,MyPanel extends Component & IGetData<MyData>> ex
     
     public JPanel getPanel(){
         return panel;
-    }
-    
-    public List<MyData> getListData(){
-        return listData;
     }
     
 //    @Override

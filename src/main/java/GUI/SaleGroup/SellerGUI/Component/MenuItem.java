@@ -10,9 +10,8 @@ import DAL.DataModels.SanPham;
  *
  * @author MY ACER
  */
-public class MenuItem extends RoundPanel implements IGetData<SanPham>{
+public class MenuItem extends RoundPanel{
     private SanPham sp;
-    private int maSP;
 
     /**
      * Creates new form MenuItem
@@ -25,15 +24,14 @@ public class MenuItem extends RoundPanel implements IGetData<SanPham>{
         this.sp = sp;
         initComponents();
         setGuiText(this.sp);
-        this.maSP = sp.getMaSP();
         
     }
     
     private void setGuiText(SanPham sanpham){
-        this.productName.setText(sanpham.getTenSP());
+        this.productName.setText("<html>"+sanpham.getTenSP());
         this.lbPrice.setText(Long.toString(sanpham.getGiaTien()));
         this.productImage.setImagePath(sanpham.getHinhAnh());
-        this.productImage.setToolTipText(sanpham.getMoTa());
+        this.productImage.setToolTipText("<html><p width=\"300\">"+sanpham.getMoTa()+"</p></html>");
     }
 
     public SanPham getSp() {
@@ -46,11 +44,7 @@ public class MenuItem extends RoundPanel implements IGetData<SanPham>{
     }
 
     public int getMaSP() {
-        return maSP;
-    }
-
-    public void setMaSP(int maSP) {
-        this.maSP = maSP;
+        return sp.getMaSP();
     }
        
     /**
@@ -159,8 +153,4 @@ public class MenuItem extends RoundPanel implements IGetData<SanPham>{
     private javax.swing.JLabel productName;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public SanPham getData() {
-        return this.sp;
-    }
 }

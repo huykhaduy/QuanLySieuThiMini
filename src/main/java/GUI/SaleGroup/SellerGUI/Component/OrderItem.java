@@ -5,15 +5,19 @@
 package GUI.SaleGroup.SellerGUI.Component;
 
 import DAL.DataModels.ChiTietHoaDon;
+import DAL.DataModels.SanPham;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
  * @author huykh
  */
-public class OrderItem extends RoundPanel implements IGetData<ChiTietHoaDon>{ 
-    private int productId;
-    private long productPrice;
+public class OrderItem extends RoundPanel{ 
+    private SanPham sp;
 
     /**
      * Creates new form OrderItem
@@ -22,35 +26,46 @@ public class OrderItem extends RoundPanel implements IGetData<ChiTietHoaDon>{
         initComponents();
         SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, 1.0, 50.0, 1.0);
         productOrderQuantity.setModel(model1);
+        jspinerEventAdd();
     }
     
-    public OrderItem(int productId, String productName, String imgPath, long productPrice, int productQuantity) {
-        this.productId = productId;
-        this.productPrice = productPrice;
+    public OrderItem(SanPham sp) {
+        this.sp = sp;
         initComponents();
         SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, 1.0, 50.0, 1.0);
         productOrderQuantity.setModel(model1);
-        setGuiText(productName,imgPath,productPrice,productQuantity);
+        setGuiText(sp.getTenSP(),sp.getHinhAnh(),sp.getGiaTien());
+        jspinerEventAdd();
     }
     
-    private void setGuiText(String productName, String imgPath, long productPrice, int productQuantity){
-        this.productOrderName.setText(productName);
+    private void setGuiText(String productName, String imgPath, long productPrice){
+        this.productOrderName.setText("<html>"+productName);
         this.productOrderImage.setImagePath(imgPath);
         this.productOrderPrice.setText(Long.toString(productPrice));
-        this.productOrderQuantity.setValue(productQuantity);
-        this.productOrderTotal.setText(Long.toString(productPrice*(long) productQuantity));
+        this.productOrderTotal.setText(Long.toString(productPrice*(long) productOrderQuantity.getValue()));
     }
     
     //Chua bao gom ma hoa don
     public ChiTietHoaDon getChiTietHoaDon(){
-        return new ChiTietHoaDon(this.productId, 0, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.productPrice);
+        return new ChiTietHoaDon(this.sp.getMaSP(), 0, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.sp.getGiaTien());
     }
     
     //Truyen ma hoa don bang ham
     public ChiTietHoaDon getChiTietHoaDon(int maHD){
-        return new ChiTietHoaDon(this.productId, maHD, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.productPrice);
+        return new ChiTietHoaDon(this.sp.getMaSP(), maHD, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.sp.getGiaTien());
+    }
+
+    public SanPham getSp() {
+        return sp;
+    }
+
+    public void setSp(SanPham sp) {
+        this.sp = sp;
     }
     
+    public int getMaSP(){
+        return this.sp.getMaSP();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,9 +154,34 @@ public class OrderItem extends RoundPanel implements IGetData<ChiTietHoaDon>{
     private javax.swing.JLabel productOrderTotal;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public ChiTietHoaDon getData() {
-        //Chua bao gom ma hoa don, can phai set ma hoa don lai nha
-        return getChiTietHoaDon();
+    private void jspinerEventAdd() {
+         final JTextField jtf = ((JSpinner.DefaultEditor) productOrderQuantity.getEditor()).getTextField();
+         jtf.getDocument().addDocumentListener(new DocumentListener() {
+             @Override
+             public void insertUpdate(DocumentEvent e) {
+                 showUpdateTotalPrice();
+             }
+
+             @Override
+             public void removeUpdate(DocumentEvent e) {
+                 showUpdateTotalPrice();
+             }
+
+             @Override
+             public void changedUpdate(DocumentEvent e) {
+                 showUpdateTotalPrice();
+             }
+         });
+         
     }
+    
+    protected void showUpdateTotalPrice(){
+        this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*(long) productOrderQuantity.getValue()));
+    }
+    
+    public void changeQuantity(int amout){
+        this.productOrderQuantity.setValue(amout);
+        showUpdateTotalPrice();
+    }
+
 }

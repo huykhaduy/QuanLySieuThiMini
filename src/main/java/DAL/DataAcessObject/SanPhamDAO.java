@@ -37,4 +37,18 @@ public class SanPhamDAO extends AbtractAccessDatabase<SanPham> implements ISimpl
     public List<SanPham> selectAll() {
         return executeQueryList("SELECT * FROM SanPham WHERE IS_DELETED = 0");
     }
+    
+    public List<SanPham> selectByLoaiSP(int maLoai){
+        return executeQueryList("SELECT * FROM SanPham WHERE MALOAI = ? ", maLoai);
+    }
+    
+    public List<SanPham> selectByTenSP(String tenSP){
+        String searchStr = "%"+tenSP+"%";
+        return executeQueryList("SELECT * FROM SanPham WHERE TENSP LIKE ?", searchStr);
+    }
+    
+    public List<SanPham> selectByTenSPAndLoaiSP(int maLoai,String tenSP){
+        String searchStr = "%"+tenSP+"%";
+        return executeQueryList("SELECT * FROM SanPham WHERE MALOAI = ? AND TENSP LIKE ?", maLoai, searchStr);
+    }
 }
