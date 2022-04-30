@@ -6,6 +6,7 @@ package GUI.SaleGroup.SellerGUI.Component;
 
 import DAL.DataModels.ChiTietHoaDon;
 import DAL.DataModels.SanPham;
+import GUI.SaleGroup.SellerGUI.BasicHandle.RemoveOrderItemAction;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -24,10 +25,11 @@ public class OrderPanel extends ScrollPanel<SanPham>{
     @Override
     public void addToPanel(SanPham sp) {
         OrderItem item = new OrderItem(sp);
+        item.getButtonRemove().addActionListener(new RemoveOrderItemAction(sp, this));
         this.panel.add(item);
         this.panel.revalidate();
         this.panel.repaint();
-        System.out.println("Calculate height");
+//        System.out.println("Calculate height");
         this.panel.setPreferredSize(new Dimension((int)this.panel.getPreferredSize().getWidth(),calculateHeight()));
     }
 
@@ -77,12 +79,12 @@ public class OrderPanel extends ScrollPanel<SanPham>{
         return true;
     }
     
-    public boolean changeOrderItemQuantity(int maSP, int amout){
-        OrderItem orderitem = getOrderItem(maSP);
+    public void addOrderItemOrIncrementByOne(SanPham sp){
+        OrderItem orderitem = getOrderItem(sp.getMaSP());
         if (orderitem == null){
-            return false;
+            this.addToPanel(sp);
+            return;
         }
-        orderitem.changeQuantity(amout);
-        return true;
+        orderitem.changeQuantity(orderitem.getQuantity()+1L);
     }
 }

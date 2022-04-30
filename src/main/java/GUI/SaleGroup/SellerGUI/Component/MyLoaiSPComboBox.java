@@ -33,7 +33,7 @@ public class MyLoaiSPComboBox extends JComboBox<LoaiSanPham>{
         return this.getSelectedItem().getMaLoai();
     }
 
-    private void getLoaiSPFromDatabase(){
+    public void getLoaiSPFromDatabase(){
         List<LoaiSanPham> list = loaispdao.selectAll();
         for (LoaiSanPham loaisp:list){
             this.addItem(loaisp);

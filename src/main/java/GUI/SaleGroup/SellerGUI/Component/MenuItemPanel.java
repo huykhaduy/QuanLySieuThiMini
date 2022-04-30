@@ -6,6 +6,7 @@ package GUI.SaleGroup.SellerGUI.Component;
 
 import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataModels.SanPham;
+import GUI.SaleGroup.SellerGUI.BasicHandle.HandleClickAddEvent;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -18,9 +19,11 @@ import java.util.List;
 public class MenuItemPanel extends ScrollPanel<SanPham>{
     private final SanPhamDAO spDAO = new SanPhamDAO();
     private List<SanPham> listData;
+    private final OrderPanel orderpanel;
     
-    public MenuItemPanel(int width, int height){
+    public MenuItemPanel(int width, int height, OrderPanel orderPanel){
         super(width, height);
+        this.orderpanel = orderPanel;
         listData = new ArrayList<>();
     }
     
@@ -52,6 +55,7 @@ public class MenuItemPanel extends ScrollPanel<SanPham>{
     @Override
     public void addToPanel(SanPham sp) {
         MenuItem item = new MenuItem(sp);
+        item.getButtonAdd().addActionListener(new HandleClickAddEvent(sp, orderpanel));
         this.panel.add(item);
         this.panel.revalidate();
         this.panel.repaint();

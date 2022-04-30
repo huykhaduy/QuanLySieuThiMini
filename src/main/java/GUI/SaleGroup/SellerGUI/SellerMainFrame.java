@@ -508,17 +508,17 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private MenuItemPanel scrollPanelMenu;
     private OrderPanel scrollPanelOrder;
        
-    private void init() {
-        mainContainer.setLayout(null);
-        this.scrollPanelMenu = new MenuItemPanel(665, 505);
-        mainContainer.add(this.scrollPanelMenu);
-        
-        this.scrollPanelMenu.getAllProduct();
-        
+    private void init() {  
         this.scrollPanelOrder = new OrderPanel(271, 350);
         orderContainer.setLayout(null);
         orderContainer.add(this.scrollPanelOrder);
+        //Get list loai sp
+        myLoaiSPComboBox1.getLoaiSPFromDatabase();
         
+        mainContainer.setLayout(null);
+        this.scrollPanelMenu = new MenuItemPanel(665, 505, scrollPanelOrder);
+        mainContainer.add(this.scrollPanelMenu);
+        this.scrollPanelMenu.getAllProduct();
     }
     
     private void addEventFilterAndSearch(){

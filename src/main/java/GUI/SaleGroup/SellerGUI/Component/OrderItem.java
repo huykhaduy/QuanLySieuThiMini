@@ -6,7 +6,9 @@ package GUI.SaleGroup.SellerGUI.Component;
 
 import DAL.DataModels.ChiTietHoaDon;
 import DAL.DataModels.SanPham;
+import javax.swing.JButton;
 import javax.swing.JSpinner;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.DocumentEvent;
@@ -24,7 +26,7 @@ public class OrderItem extends RoundPanel{
      */
     public OrderItem() {
         initComponents();
-        SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, 1.0, 50.0, 1.0);
+        SpinnerNumberModel model1 = new SpinnerNumberModel(1, 1, 50, 1);
         productOrderQuantity.setModel(model1);
         jspinerEventAdd();
     }
@@ -32,7 +34,7 @@ public class OrderItem extends RoundPanel{
     public OrderItem(SanPham sp) {
         this.sp = sp;
         initComponents();
-        SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, 1.0, 50.0, 1.0);
+        SpinnerNumberModel model1 = new SpinnerNumberModel(1, 1, 50, 1);
         productOrderQuantity.setModel(model1);
         setGuiText(sp.getTenSP(),sp.getHinhAnh(),sp.getGiaTien());
         jspinerEventAdd();
@@ -42,17 +44,17 @@ public class OrderItem extends RoundPanel{
         this.productOrderName.setText("<html>"+productName);
         this.productOrderImage.setImagePath(imgPath);
         this.productOrderPrice.setText(Long.toString(productPrice));
-        this.productOrderTotal.setText(Long.toString(productPrice*(long) productOrderQuantity.getValue()));
+        this.productOrderTotal.setText(Long.toString(productPrice*getQuantity()));
     }
     
     //Chua bao gom ma hoa don
     public ChiTietHoaDon getChiTietHoaDon(){
-        return new ChiTietHoaDon(this.sp.getMaSP(), 0, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.sp.getGiaTien());
+        return new ChiTietHoaDon(this.sp.getMaSP(), 0, Integer.valueOf(this.productOrderQuantity.getValue()+""), this.sp.getGiaTien());
     }
     
     //Truyen ma hoa don bang ham
     public ChiTietHoaDon getChiTietHoaDon(int maHD){
-        return new ChiTietHoaDon(this.sp.getMaSP(), maHD, Integer.valueOf((String) this.productOrderQuantity.getValue()), this.sp.getGiaTien());
+        return new ChiTietHoaDon(this.sp.getMaSP(), maHD, Integer.valueOf(this.productOrderQuantity.getValue()+"") , this.sp.getGiaTien());
     }
 
     public SanPham getSp() {
@@ -172,16 +174,27 @@ public class OrderItem extends RoundPanel{
                  showUpdateTotalPrice();
              }
          });
+           ((DefaultEditor) productOrderQuantity.getEditor()).getTextField().setEditable(false);
          
     }
     
     protected void showUpdateTotalPrice(){
-        this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*(long) productOrderQuantity.getValue()));
+        this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*getQuantity()));
+        System.out.println(this.sp.getGiaTien()*getQuantity());
     }
     
-    public void changeQuantity(int amout){
+    public void changeQuantity(long amout){
         this.productOrderQuantity.setValue(amout);
         showUpdateTotalPrice();
     }
+    
+    public long getQuantity(){
+        return Long.valueOf(this.productOrderQuantity.getValue()+"");
+    }
+    
+    public JButton getButtonRemove(){
+        return btnRemoveOrderItem;
+    }
+    
 
 }

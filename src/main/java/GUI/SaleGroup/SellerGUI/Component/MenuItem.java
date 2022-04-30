@@ -5,6 +5,7 @@
 package GUI.SaleGroup.SellerGUI.Component;
 
 import DAL.DataModels.SanPham;
+import javax.swing.JButton;
 
 /**
  *
@@ -45,6 +46,10 @@ public class MenuItem extends RoundPanel{
 
     public int getMaSP() {
         return sp.getMaSP();
+    }
+    
+    public JButton getButtonAdd(){
+        return btnAdd;
     }
        
     /**
