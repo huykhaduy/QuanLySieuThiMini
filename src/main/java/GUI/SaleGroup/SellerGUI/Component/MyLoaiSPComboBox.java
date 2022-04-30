@@ -21,7 +21,7 @@ public class MyLoaiSPComboBox extends JComboBox<LoaiSanPham>{
     
     public MyLoaiSPComboBox() {
         this.setRenderer(new ComboboxLoaiSanPhamRender());
-        getLoaiSPFromDatabase();
+//        getLoaiSPFromDatabase();
     }
     
     @Override
