@@ -180,7 +180,7 @@ public class OrderItem extends RoundPanel{
     
     protected void showUpdateTotalPrice(){
         this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*getQuantity()));
-        System.out.println(this.sp.getGiaTien()*getQuantity());
+//        System.out.println(this.sp.getGiaTien()*getQuantity());
     }
     
     public void changeQuantity(long amout){
