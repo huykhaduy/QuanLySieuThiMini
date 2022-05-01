@@ -35,4 +35,8 @@ public class KhachHangDAO extends AbtractAccessDatabase<KhachHang> implements IS
     public List<KhachHang> selectAll() {
         return executeQueryList("SELECT * FROM KHACHHANG WHERE IS_DELETED = 0");
     }
+    
+    public KhachHang selectByPhoneNumber(String sdt){
+        return executeQuery("SELECT * FROM KHACHHANG WHERE SODIENTHOAI = ? AND IS_DELETED = 0", sdt);
+    }
 }

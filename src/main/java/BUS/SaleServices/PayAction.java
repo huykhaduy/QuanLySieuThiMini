@@ -7,6 +7,7 @@ package BUS.SaleServices;
 import DAL.DataAcessObject.ChiTietHoaDonDAO;
 import DAL.DataAcessObject.GiamGiaSPDAO;
 import DAL.DataAcessObject.HoaDonDAO;
+import DAL.DataAcessObject.KhachHangDAO;
 import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataAcessObject.VoucherDAO;
 import DAL.DataModels.ChiTietHoaDon;
@@ -14,10 +15,8 @@ import DAL.DataModels.GiamGiaSP;
 import DAL.DataModels.HoaDon;
 import DAL.DataModels.SanPham;
 import DAL.DataModels.Voucher;
-import GUI.SaleGroup.SellerGUI.Component.MenuItem;
-import java.awt.Component;
 import java.sql.Timestamp;
-import javax.swing.JPanel;
+import java.util.List;
 
 /**
  *
@@ -29,10 +28,10 @@ public class PayAction {
     private final HoaDonDAO hoaDonDAO = new HoaDonDAO();
     private final ChiTietHoaDonDAO CTHoaDonDAO = new ChiTietHoaDonDAO();
     private final VoucherDAO voucherDAO = new VoucherDAO();
+    private final KhachHangDAO khachHangDAO = new KhachHangDAO();
     private final CheckInfoSale check = new CheckInfoSale();
     
     private HoaDon hoaDon;
-    private ChiTietHoaDon CTHoaDon;
     private int maHD;
     private int maKH, maNV, soVoucher;
     private long total;
@@ -72,30 +71,29 @@ public class PayAction {
     
     
     
+//    //Hàm tính giá trị giảm của sản phẩm
+//    public double discountProduct(int maSP){
+//        GiamGiaSP giamGiaSP = giamGiaDAO.selectByMaSP(maSP);
+//        SanPham sanPham = sanPhamDAO.select(maSP);
+//        return (giamGiaSP == null) ? 0 : ((giamGiaSP.getPtGiam() * sanPham.getGiaTien())*1.0 / 100);
+//    }
+    
     //Hàm tính giá trị giảm của sản phẩm
-    public double discountProduct(int maSP){
+    public double discountProductPrice(int maSP){
         GiamGiaSP giamGiaSP = giamGiaDAO.selectByMaSP(maSP);
         SanPham sanPham = sanPhamDAO.select(maSP);
-        return (giamGiaSP == null) ? 0 : ((giamGiaSP.getPtGiam() * sanPham.getGiaTien())*1.0 / 100);
-    }
+        return sanPham.getGiaTien() - ((giamGiaSP == null) ? 0 : ((giamGiaSP.getPtGiam() * sanPham.getGiaTien())*1.0 / 100));
+    }    
     
-    //Hàm tính tổng giá trị hóa đơn
-    public double totalBill(JPanel PaymentPanel){
-        //tạm thời để không lỗi
-        double sum  = 0;
-        for(Component c : PaymentPanel.getComponents()){
-            if(c instanceof MenuItem menuItem){
-                c = menuItem;
-//                sanPham = sanPhamDAO.select(c.getMaSP);
-//                sum += sanPham.getGiaTien()*c.getSoLuong();
-            }
+    public double totalBill(List<ChiTietHoaDon> orderList){
+        for(ChiTietHoaDon item : orderList){
+            total += discountProductPrice(item.getMaSP()) * item.getSoLuong();
         }
-        total = (long)sum;
-        return sum;
+        return total;
     }
     
     //Hàm tính giá trị giảm của voucher
-    public long discountBill(String maVoucher){
+    public long discountBillByVoucher(String maVoucher){
         Voucher voucher = voucherDAO.select(maVoucher);
         if(check.hasVoucher(maVoucher))
             if(total >= voucher.getGiaTriToiThieu())
@@ -103,10 +101,20 @@ public class PayAction {
         return 0;
     }
     
+    public long discountBillByPoint(String sdt){
+        if(check.isPassengerExist(sdt) && check.canUsePoint(sdt)){
+            long diemThuong = khachHangDAO.selectByPhoneNumber(sdt).getDiemThuong();
+            khachHangDAO.selectByPhoneNumber(sdt).setDiemThuong(diemThuong - 1000);
+            total = (long) (total*(0.9));
+        }
+        return total;
+    }
+    
     //Lưu hóa đơn
-    public boolean storeBill(String hinhthuc, String maVoucher){
+    public boolean storeBill(String hinhthuc, int maNV, int maKH, String maVoucher){
+        this.setSoVoucher(maVoucher);
         hoaDon = new HoaDon(0,new Timestamp(System.currentTimeMillis()),hinhthuc,
-                total, discountBill(maVoucher), this.maNV, this.maKH, this.soVoucher,false);
+                total, discountBillByVoucher(maVoucher), maNV, maKH, this.soVoucher,false);
         if(hoaDonDAO.insert(hoaDon)){
             this.setMaHD();
             return true;
@@ -115,22 +123,14 @@ public class PayAction {
     }
     
     //Lưu danh sách sản phẩm vào chi tiết hóa đơn
-    public boolean storeBillDetail(JPanel PaymentPanel,int maHD){
+    public boolean storeBillDetail(List<ChiTietHoaDon> orderList){
         //cờ kiểm tra xem có lưu được dữ liệu không
         boolean flag = true;
-        long giaSP, giaGiamSP;
-        int maSP;
-        for( Component c : PaymentPanel.getComponents()){
-            if(c instanceof MenuItem){
-                
-                MenuItem menuItem = (MenuItem) c;
-                maSP = menuItem.getMaSP();
-                giaGiamSP = (long) discountProduct(maSP);
-                giaSP = sanPhamDAO.select(maSP).getGiaTien();
-                
-                //CTHoaDon = new ChiTietHoaDon(maSP,maHD,menuItem.getSoLuong(),(giaSP - giaGiamSP));
-                flag = CTHoaDonDAO.insert(CTHoaDon);
-            }
+        for(ChiTietHoaDon item : orderList){
+            
+            item.setGiaTien((long)discountProductPrice(item.getMaSP()));
+            item.setMaHD(maHD);
+            flag = CTHoaDonDAO.insert(item);
         }
         return flag;
     }
