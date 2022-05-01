@@ -48,7 +48,7 @@ public class ImagePanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        if (this.image != null){
+        if (this.image != null && this.image.getIconWidth() > 0 && this.image.getIconHeight()> 0){
             Graphics2D g2d = (Graphics2D) g.create();
             g2d.setRenderingHint(java.awt.RenderingHints.KEY_INTERPOLATION, java.awt.RenderingHints.VALUE_INTERPOLATION_BICUBIC);
             if (this.bufferedImage == null){
