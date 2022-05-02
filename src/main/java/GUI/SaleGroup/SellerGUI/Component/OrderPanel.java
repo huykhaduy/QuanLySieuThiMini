@@ -24,7 +24,7 @@ public class OrderPanel extends ScrollPanel{
     
     public void addToPanel(SanPham sp) {
         OrderItem item = new OrderItem(sp);
-        item.getButtonRemove().addActionListener(new RemoveOrderItemAction(sp, this));
+        item.getButtonRemove().addActionListener(new RemoveOrderItemAction(item, this));
         this.panel.add(item);
         this.panel.revalidate();
         this.panel.repaint();
@@ -65,16 +65,26 @@ public class OrderPanel extends ScrollPanel{
         return null;
     }
     
-    public boolean removeOrderItemHasProductId(int maSP){
-        OrderItem orderitem = getOrderItem(maSP);
-        if (orderitem == null){
-            return false;
-        }
-        this.panel.remove(orderitem);
-        this.revalidate();
-        this.repaint();
-        return true;
-    }
+//    public boolean removeOrderItemHasProductId(int maSP){
+//        OrderItem orderitem = getOrderItem(maSP);
+//        if (orderitem == null){
+//            return false;
+//        }
+//        this.panel.remove(orderitem);
+//        this.revalidate();
+//        this.repaint();
+//        return true;
+//    }
+    
+//    public boolean removeOrderItem(OrderItem orderItem){
+//        if (orderItem == null){
+//            return false;
+//        }
+//        this.panel.remove(orderItem);
+//        this.revalidate();
+//        this.repaint();
+//        return true;
+//    }
     
     public void addOrderItemOrIncrementByOne(SanPham sp){
         OrderItem orderitem = getOrderItem(sp.getMaSP());

@@ -17,20 +17,29 @@ import java.util.List;
  * @author huykh
  */
 public class RemoveOrderItemAction implements ActionListener{
-    private SanPham sp;
+//    private SanPham sp;
     private OrderPanel orderpanel;
+    private OrderItem orderItem;
 
-    public RemoveOrderItemAction(SanPham sp, OrderPanel orderpanel) {
-        this.sp = sp;
+//    public RemoveOrderItemAction(SanPham sp, OrderPanel orderpanel) {
+//        this.sp = sp;
+//        this.orderpanel = orderpanel;
+//    }
+    
+     public RemoveOrderItemAction(OrderItem orderItem, OrderPanel orderpanel) {
+        this.orderItem = orderItem;
         this.orderpanel = orderpanel;
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        orderpanel.removeOrderItemHasProductId(sp.getMaSP());
+//        orderpanel.removeOrderItemHasProductId(sp.getMaSP());
 //        List<ChiTietHoaDon> cthd = orderpanel.getListChiTietHoaDon(0);
 //        for (ChiTietHoaDon CTHD : cthd)
 //            System.out.println(CTHD);
+        orderpanel.getPanel().remove(orderItem);
+        orderpanel.revalidate();
+        orderpanel.repaint();
     }
     
 }
