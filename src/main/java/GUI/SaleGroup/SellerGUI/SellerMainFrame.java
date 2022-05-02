@@ -7,6 +7,7 @@ import DAL.DataModels.LoaiSanPham;
 import DAL.DataModels.SanPham;
 import GUI.SaleGroup.LoginGui.Component.Button;
 import GUI.SaleGroup.LoginGui.Component.ButtonUI;
+import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.SearchMenuListener;
 import GUI.SaleGroup.SellerGUI.Component.MenuItem;
@@ -100,6 +101,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1083, 630));
         getContentPane().setLayout(new java.awt.BorderLayout(15, 0));
 
         itemContainer.setBackground(new java.awt.Color(24, 154, 180));
@@ -495,9 +497,9 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbDiscount;
     private javax.swing.JLabel lbMoney;
-    private javax.swing.JLabel lbTextDiscount;
-    private javax.swing.JLabel lbTextMoney;
-    private javax.swing.JLabel lbTextTotal;
+    public static javax.swing.JLabel lbTextDiscount;
+    public static javax.swing.JLabel lbTextMoney;
+    public static javax.swing.JLabel lbTextTotal;
     private javax.swing.JLabel lbTotalMoney;
     private javax.swing.JLabel lbVoucher;
     private javax.swing.JLabel lbsoDt;
@@ -516,7 +518,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private OrderPanel scrollPanelOrder;
        
     private void init() {  
-        this.scrollPanelOrder = new OrderPanel(271, 350);
+        this.scrollPanelOrder = new OrderPanel(271, 350, new ChangePaymentInfo(this.txtPhoneNumber.getText(), this.txtVoucher.getText()));
         orderContainer.setLayout(null);
         orderContainer.add(this.scrollPanelOrder);
         //Get list loai sp
@@ -532,5 +534,5 @@ public class SellerMainFrame extends javax.swing.JFrame {
         myLoaiSPComboBox1.addActionListener(new ComboBoxLoaiSPAction(myLoaiSPComboBox1, scrollPanelMenu, textFieldIcon1));
         textFieldIcon1.getDocument().addDocumentListener(new SearchMenuListener(scrollPanelMenu, myLoaiSPComboBox1, textFieldIcon1));
     }
-    
+     
 }
