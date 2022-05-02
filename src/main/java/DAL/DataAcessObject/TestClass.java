@@ -7,10 +7,16 @@ import java.util.List;
 
 public class TestClass {
     public static void main(String[] args) {
-        testLoaiSanPham();
-        testNhaCungCap();
-        testSanPham();
-        testGiamGiaSP();
+//        testLoaiSanPham();
+//        testNhaCungCap();
+//        testSanPham();
+//        testGiamGiaSP();
+        SanPhamDAO sp = new SanPhamDAO();
+        List<SanPham> list = sp.selectByTenSP("");
+        for (SanPham mysp:list){
+            System.out.println(mysp);
+        }
+        
         
     }
 

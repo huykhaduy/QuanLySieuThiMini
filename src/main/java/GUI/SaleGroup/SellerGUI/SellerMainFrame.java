@@ -1,9 +1,19 @@
 package GUI.SaleGroup.SellerGUI;
 
+import DAL.DataAcessObject.LoaiSanPhamDAO;
+import DAL.DataAcessObject.SanPhamDAO;
+import DAL.DataModels.ChiTietHoaDon;
+import DAL.DataModels.LoaiSanPham;
+import DAL.DataModels.SanPham;
 import GUI.SaleGroup.LoginGui.Component.Button;
 import GUI.SaleGroup.LoginGui.Component.ButtonUI;
+import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
+import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
+import GUI.SaleGroup.SellerGUI.BasicHandle.SearchMenuListener;
 import GUI.SaleGroup.SellerGUI.Component.MenuItem;
 import GUI.SaleGroup.SellerGUI.Component.OrderItem;
+import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
+import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
 import GUI.SaleGroup.SellerGUI.Component.ScrollPanel;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.BorderLayout;
@@ -12,6 +22,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.ScrollPane;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -34,6 +45,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.decode("#189AB4"));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        addEventFilterAndSearch();
     }
 
     /**
@@ -45,10 +57,11 @@ public class SellerMainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         itemContainer = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
         filterPanel = new javax.swing.JPanel();
         textFieldIcon1 = new GUI.SaleGroup.SellerGUI.Component.TextFieldIcon();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        myLoaiSPComboBox1 = new GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox();
         mainContainer = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
         spaceBottom = new javax.swing.JPanel();
         paymentPanel = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
@@ -68,7 +81,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         lbsoDt = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        orderContainer = new javax.swing.JPanel();
         leftPanel = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -76,8 +89,19 @@ public class SellerMainFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 620));
+        setPreferredSize(new java.awt.Dimension(1083, 630));
         getContentPane().setLayout(new java.awt.BorderLayout(15, 0));
 
         itemContainer.setBackground(new java.awt.Color(24, 154, 180));
@@ -95,16 +119,14 @@ public class SellerMainFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "đồ uống", "đồ ăn vặt", "đồ ăn chế biến", "nhu yếu phẩm", "đồ dùng khác" }));
-
         javax.swing.GroupLayout filterPanelLayout = new javax.swing.GroupLayout(filterPanel);
         filterPanel.setLayout(filterPanelLayout);
         filterPanelLayout.setHorizontalGroup(
             filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filterPanelLayout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addComponent(myLoaiSPComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(textFieldIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
         );
@@ -114,7 +136,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(textFieldIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(myLoaiSPComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -181,10 +203,6 @@ public class SellerMainFrame extends javax.swing.JFrame {
         lbTextMoney.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbTextMoney.setForeground(new java.awt.Color(255, 255, 255));
         lbTextMoney.setText("tien phai thu");
-
-        txtPhoneNumber.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtVoucher.setBackground(new java.awt.Color(255, 255, 255));
 
         lbVoucher.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbVoucher.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,7 +288,6 @@ public class SellerMainFrame extends javax.swing.JFrame {
                         .addComponent(lbMoney))))
         );
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(43, 133, 161));
         jButton2.setText("THANH TOÁN");
@@ -280,16 +297,16 @@ public class SellerMainFrame extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(271, 350));
+        orderContainer.setPreferredSize(new java.awt.Dimension(271, 350));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout orderContainerLayout = new javax.swing.GroupLayout(orderContainer);
+        orderContainer.setLayout(orderContainerLayout);
+        orderContainerLayout.setHorizontalGroup(
+            orderContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        orderContainerLayout.setVerticalGroup(
+            orderContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 350, Short.MAX_VALUE)
         );
 
@@ -315,7 +332,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(paymentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(orderContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         paymentPanelLayout.setVerticalGroup(
@@ -329,7 +346,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(orderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(paymentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -471,7 +488,6 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -481,14 +497,16 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbDiscount;
     private javax.swing.JLabel lbMoney;
-    private javax.swing.JLabel lbTextDiscount;
-    private javax.swing.JLabel lbTextMoney;
-    private javax.swing.JLabel lbTextTotal;
+    public static javax.swing.JLabel lbTextDiscount;
+    public static javax.swing.JLabel lbTextMoney;
+    public static javax.swing.JLabel lbTextTotal;
     private javax.swing.JLabel lbTotalMoney;
     private javax.swing.JLabel lbVoucher;
     private javax.swing.JLabel lbsoDt;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel leftPanel;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel mainContainer;
+    private GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox myLoaiSPComboBox1;
+    private javax.swing.JPanel orderContainer;
     private javax.swing.JPanel paymentInfo;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel paymentPanel;
     private javax.swing.JPanel spaceBottom;
@@ -496,35 +514,25 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtPhoneNumber;
     private GUI.SaleGroup.SellerGUI.Component.TextFieldIcon txtVoucher;
     // End of variables declaration//GEN-END:variables
-    private ScrollPanel scrollPanelMenu;
-    private ScrollPanel scrollPanelOrder;
+    private MenuPanel scrollPanelMenu;
+    private OrderPanel scrollPanelOrder;
        
-    private void init() {
+    private void init() {  
+        this.scrollPanelOrder = new OrderPanel(271, 350, new ChangePaymentInfo(this.txtPhoneNumber.getText(), this.txtVoucher.getText()));
+        orderContainer.setLayout(null);
+        orderContainer.add(this.scrollPanelOrder);
+        //Get list loai sp
+        myLoaiSPComboBox1.getLoaiSPFromDatabase();
+        
         mainContainer.setLayout(null);
-        
-        this.scrollPanelMenu = new ScrollPanel(665, 505);
+        this.scrollPanelMenu = new MenuPanel(665, 505, scrollPanelOrder);
         mainContainer.add(this.scrollPanelMenu);
-        
-//        for (int i=0;i<20;i++){
-//            MenuItem menuItem = new MenuItem();
-//            scrollPanelMenu.addToPanel(menuItem);
-//        }
-//        
-        this.scrollPanelOrder = new ScrollPanel(271, 350);
-        jPanel1.setLayout(null);
-        jPanel1.add(this.scrollPanelOrder);
-        
-//        for (int i=0;i<20;i++){
-//            OrderItem item = new OrderItem();
-//            scrollPanelOrder.addToPanel(item);
-//        }
+        this.scrollPanelMenu.getAllProduct();
     }
-        
-        
-            
-        
-        
-
-
     
+    private void addEventFilterAndSearch(){
+        myLoaiSPComboBox1.addActionListener(new ComboBoxLoaiSPAction(myLoaiSPComboBox1, scrollPanelMenu, textFieldIcon1));
+        textFieldIcon1.getDocument().addDocumentListener(new SearchMenuListener(scrollPanelMenu, myLoaiSPComboBox1, textFieldIcon1));
+    }
+     
 }
