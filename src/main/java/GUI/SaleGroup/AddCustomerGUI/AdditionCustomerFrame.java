@@ -15,12 +15,12 @@ import java.awt.event.WindowEvent;
  *
  * @author huykh
  */
-public class AddtionCusomerFrame extends javax.swing.JFrame {
+public class AdditionCustomerFrame extends javax.swing.JFrame {
     private Point point = new Point();
     /**
      * Creates new form AddtionCusomerFrame
      */
-    public AddtionCusomerFrame() {
+    public AdditionCustomerFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
         addMouseListener(new MouseAdapter() {
@@ -30,6 +30,7 @@ public class AddtionCusomerFrame extends javax.swing.JFrame {
                     point.x = e.getX();
                     point.y = e.getY();
                 }
+                
             }
         });
         addMouseMotionListener(new MouseMotionAdapter() {
@@ -37,8 +38,13 @@ public class AddtionCusomerFrame extends javax.swing.JFrame {
             public void mouseDragged(MouseEvent e) {
                 if (!e.isMetaDown()) {
                     Point p = getLocation();
+//                    System.out.println(p);
+//                    System.out.println("Point with click 1: ");
+//                    System.out.println(point);
                     setLocation(p.x + e.getX() - point.x,
                             p.y + e.getY() - point.y);
+//                    System.out.println("Point with click 2: ");
+//                    System.out.println(String.format("E[%d,%d]",e.getX(), e.getY()));
                 }
             }
         });
@@ -76,7 +82,6 @@ public class AddtionCusomerFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(650, 388));
 
         jPanel1.setBackground(new java.awt.Color(108, 195, 200));
         jPanel1.setPreferredSize(new java.awt.Dimension(328, 400));
@@ -320,20 +325,20 @@ public class AddtionCusomerFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddtionCusomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdditionCustomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddtionCusomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdditionCustomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddtionCusomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdditionCustomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddtionCusomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdditionCustomerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         FlatLightLaf.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddtionCusomerFrame().setVisible(true);
+                new AdditionCustomerFrame().setVisible(true);
             }
         });
     }

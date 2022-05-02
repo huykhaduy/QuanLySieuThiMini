@@ -6,6 +6,7 @@ package GUI.SaleGroup.SellerGUI.Component;
 
 import DAL.DataModels.ChiTietHoaDon;
 import DAL.DataModels.SanPham;
+import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DefaultEditor;
@@ -20,7 +21,8 @@ import javax.swing.event.DocumentListener;
  */
 public class OrderItem extends RoundPanel{ 
     private SanPham sp;
-
+    private ChiTietHoaDon CTHD;
+    private JTextField jtf;
     /**
      * Creates new form OrderItem
      */
@@ -28,6 +30,7 @@ public class OrderItem extends RoundPanel{
         initComponents();
         SpinnerNumberModel model1 = new SpinnerNumberModel(1, 1, 50, 1);
         productOrderQuantity.setModel(model1);
+        this.CTHD = new ChiTietHoaDon(this.sp.getMaSP(), 0, Integer.valueOf(this.productOrderQuantity.getValue()+""), this.sp.getGiaTien());
         jspinerEventAdd();
     }
     
@@ -37,6 +40,7 @@ public class OrderItem extends RoundPanel{
         SpinnerNumberModel model1 = new SpinnerNumberModel(1, 1, 50, 1);
         productOrderQuantity.setModel(model1);
         setGuiText(sp.getTenSP(),sp.getHinhAnh(),sp.getGiaTien());
+        this.CTHD = new ChiTietHoaDon(this.sp.getMaSP(), 0, Integer.valueOf(this.productOrderQuantity.getValue()+""), this.sp.getGiaTien());
         jspinerEventAdd();
     }
     
@@ -49,12 +53,13 @@ public class OrderItem extends RoundPanel{
     
     //Chua bao gom ma hoa don
     public ChiTietHoaDon getChiTietHoaDon(){
-        return new ChiTietHoaDon(this.sp.getMaSP(), 0, Integer.valueOf(this.productOrderQuantity.getValue()+""), this.sp.getGiaTien());
+        return CTHD;
     }
     
     //Truyen ma hoa don bang ham
     public ChiTietHoaDon getChiTietHoaDon(int maHD){
-        return new ChiTietHoaDon(this.sp.getMaSP(), maHD, Integer.valueOf(this.productOrderQuantity.getValue()+"") , this.sp.getGiaTien());
+        CTHD.setMaHD(maHD);
+        return CTHD;
     }
 
     public SanPham getSp() {
@@ -157,34 +162,39 @@ public class OrderItem extends RoundPanel{
     // End of variables declaration//GEN-END:variables
 
     private void jspinerEventAdd() {
-         final JTextField jtf = ((JSpinner.DefaultEditor) productOrderQuantity.getEditor()).getTextField();
-         jtf.getDocument().addDocumentListener(new DocumentListener() {
-             @Override
-             public void insertUpdate(DocumentEvent e) {
-                 showUpdateTotalPrice();
-             }
-
-             @Override
-             public void removeUpdate(DocumentEvent e) {
-                 showUpdateTotalPrice();
-             }
-
-             @Override
-             public void changedUpdate(DocumentEvent e) {
-                 showUpdateTotalPrice();
-             }
-         });
-           ((DefaultEditor) productOrderQuantity.getEditor()).getTextField().setEditable(false);
+         jtf = ((JSpinner.DefaultEditor) productOrderQuantity.getEditor()).getTextField();
+//         jtf.getDocument().addDocumentListener(new DocumentListener() {
+//             @Override
+//             public void insertUpdate(DocumentEvent e) {
+//                 showUpdateTotalPrice();
+//             }
+//
+//             @Override
+//             public void removeUpdate(DocumentEvent e) {
+//                 showUpdateTotalPrice();
+//             }
+//
+//             @Override
+//             public void changedUpdate(DocumentEvent e) {
+//                 showUpdateTotalPrice();
+//             }
+//         });
+         ((DefaultEditor) productOrderQuantity.getEditor()).getTextField().setEditable(false);
          
     }
     
-    protected void showUpdateTotalPrice(){
+    public void showUpdateTotalPrice(){
         this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*getQuantity()));
+        this.CTHD.setSoLuong((int)getQuantity());
 //        System.out.println(this.sp.getGiaTien()*getQuantity());
     }
     
-    public void changeQuantity(long amout){
-        this.productOrderQuantity.setValue(amout);
+    public JTextField getJTextFieldQuantity(){
+        return this.jtf;
+    }
+    
+    public void changeQuantity(long amount){
+        this.productOrderQuantity.setValue(amount);
         showUpdateTotalPrice();
     }
     

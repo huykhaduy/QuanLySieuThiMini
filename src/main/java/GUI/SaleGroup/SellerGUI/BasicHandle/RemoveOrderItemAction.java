@@ -37,9 +37,9 @@ public class RemoveOrderItemAction implements ActionListener{
 //        List<ChiTietHoaDon> cthd = orderpanel.getListChiTietHoaDon(0);
 //        for (ChiTietHoaDon CTHD : cthd)
 //            System.out.println(CTHD);
-        orderpanel.getPanel().remove(orderItem);
-        orderpanel.revalidate();
-        orderpanel.repaint();
+        orderpanel.removeOrderItem(orderItem);
+//        orderpanel.revalidate();
+//        orderpanel.repaint();
     }
     
 }

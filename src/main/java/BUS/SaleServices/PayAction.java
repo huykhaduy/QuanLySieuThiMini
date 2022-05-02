@@ -78,7 +78,7 @@ public class PayAction {
 //        return (giamGiaSP == null) ? 0 : ((giamGiaSP.getPtGiam() * sanPham.getGiaTien())*1.0 / 100);
 //    }
     
-    //Hàm tính giá trị giảm của sản phẩm
+    //Hàm tính giá trị của sản phẩm sau khi giảm
     public double discountProductPrice(int maSP){
         GiamGiaSP giamGiaSP = giamGiaDAO.selectByMaSP(maSP);
         SanPham sanPham = sanPhamDAO.select(maSP);
@@ -86,6 +86,7 @@ public class PayAction {
     }    
     
     public double totalBill(List<ChiTietHoaDon> orderList){
+        total = 0;
         for(ChiTietHoaDon item : orderList){
             total += discountProductPrice(item.getMaSP()) * item.getSoLuong();
         }
@@ -105,9 +106,13 @@ public class PayAction {
         if(check.isPassengerExist(sdt) && check.canUsePoint(sdt)){
             long diemThuong = khachHangDAO.selectByPhoneNumber(sdt).getDiemThuong();
             khachHangDAO.selectByPhoneNumber(sdt).setDiemThuong(diemThuong - 1000);
-            total = (long) (total*(0.9));
+            return (long) (total*(0.1));
         }
-        return total;
+        return 0;
+    }
+    
+    public long payForBillAfterDiscount(String maVoucher, String sdt){
+        return total - (discountBillByVoucher(maVoucher) + discountBillByPoint(sdt));
     }
     
     //Lưu hóa đơn

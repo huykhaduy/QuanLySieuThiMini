@@ -6,7 +6,9 @@ package GUI.SaleGroup.SellerGUI.Component;
 
 import DAL.DataModels.ChiTietHoaDon;
 import DAL.DataModels.SanPham;
+import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
 import GUI.SaleGroup.SellerGUI.BasicHandle.RemoveOrderItemAction;
+import GUI.SaleGroup.SellerGUI.BasicHandle.SpinQuantityAction;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -17,14 +19,17 @@ import java.util.List;
  * @author huykh
  */
 public class OrderPanel extends ScrollPanel{
+    private final ChangePaymentInfo changePayment;
     
-    public OrderPanel(int width, int height){
+    public OrderPanel(int width, int height, ChangePaymentInfo changePayment){
         super(width, height);
+        this.changePayment = changePayment;
     }
     
     public void addToPanel(SanPham sp) {
         OrderItem item = new OrderItem(sp);
         item.getButtonRemove().addActionListener(new RemoveOrderItemAction(item, this));
+        item.getJTextFieldQuantity().getDocument().addDocumentListener(new SpinQuantityAction(item, this));
         this.panel.add(item);
         this.panel.revalidate();
         this.panel.repaint();
@@ -76,22 +81,28 @@ public class OrderPanel extends ScrollPanel{
 //        return true;
 //    }
     
-//    public boolean removeOrderItem(OrderItem orderItem){
-//        if (orderItem == null){
-//            return false;
-//        }
-//        this.panel.remove(orderItem);
-//        this.revalidate();
-//        this.repaint();
-//        return true;
-//    }
+    public boolean removeOrderItem(OrderItem orderItem){
+        if (orderItem == null){
+            return false;
+        }
+        this.panel.remove(orderItem);
+        this.revalidate();
+        this.repaint();
+        this.calculatePayment();
+        return true;
+    }
     
     public void addOrderItemOrIncrementByOne(SanPham sp){
         OrderItem orderitem = getOrderItem(sp.getMaSP());
         if (orderitem == null){
-            this.addToPanel(sp);
-            return;
-        }
-        orderitem.changeQuantity(orderitem.getQuantity()+1L);
+            this.addToPanel(sp);   
+        }else orderitem.changeQuantity(orderitem.getQuantity()+1L);
+        
+        this.calculatePayment();
+    }
+    
+    
+    public void calculatePayment(){
+        this.changePayment.calculatePayment(getListChiTietHoaDon(0));
     }
 }
