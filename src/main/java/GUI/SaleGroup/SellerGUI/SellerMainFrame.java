@@ -522,7 +522,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
 //            OrderItem item = new OrderItem();
 //            scrollPanelOrder.addToPanel(item);
 //        }
-//        getMenuItemFromDatabase();
+        getMenuItemFromDatabase();
     }
     
     // Insert du lieu moi chay dc
