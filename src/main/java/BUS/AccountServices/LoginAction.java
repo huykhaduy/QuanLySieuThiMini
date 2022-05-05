@@ -18,7 +18,7 @@ public class LoginAction{
     private final LoginDetailDAO loginDetailDAO;
     private final NhanVienDAO nhanVienDAO;
     private LoginDetail loginDetail;
-    private final int AUTH_KEY_EXPIRE_TIME = 1000*60*60*2; // 2 hours
+    private final int AUTH_KEY_EXPIRE_TIME = 1000*60*60*2; // 2 hours // Thời gian hết hạn account
     private int soTK;
 
     public LoginAction() {
