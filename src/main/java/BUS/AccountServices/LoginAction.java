@@ -45,8 +45,6 @@ public class LoginAction{
 //        } else storeLoginDetail("");
         //Đoạn trên có thể thay thế thành
         storeLoginAuth(rememberMe);
-        
-        
         showFrame();
         return true;
     }
