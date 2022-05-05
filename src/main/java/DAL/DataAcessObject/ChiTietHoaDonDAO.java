@@ -44,4 +44,5 @@ public class ChiTietHoaDonDAO extends AbtractAccessDatabase<ChiTietHoaDon> imple
     public List<ChiTietHoaDon> selectAll() {
         return executeQueryList("SELECT * FROM CTHOADON");
     }
+    
 }

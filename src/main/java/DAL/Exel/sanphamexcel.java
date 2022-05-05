@@ -3,48 +3,44 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAL.Exel;
-import  DAL.Exel.sanphamexcel;
-import  DAL.DataModels.GiamGiaSP;
+
+import DAL.DataModels.GiamGiaSP;
 import DAL.DataModels.SanPham;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;/**
+/**
  *
  * @author tiend
  */
-public class GiamgiaSPexcel {
-   
-   
-    public static void laydulieutuexcel() throws FileNotFoundException, IOException{
-         ArrayList<GiamGiaSP> giamgiaspList=new ArrayList<GiamGiaSP>();
-         File f= new File("src\\main\\java\\DAL\\Exel\\giamgiasp.xlsx");
-         System.out.println("TEST:"+f.getAbsoluteFile());
-         FileInputStream file = new FileInputStream(f.getAbsoluteFile());
-         XSSFWorkbook workbook=new XSSFWorkbook(file);
-         XSSFSheet  sheet=workbook.getSheetAt(0);
-         DataFormatter fmt = new DataFormatter();
-         for(Row row:sheet){
-             GiamGiaSP test1= new GiamGiaSP();
+public class sanphamexcel {
+    public static ArrayList<SanPham> spList=new ArrayList<SanPham>();
+
+    public static void sanphamtuexcel() throws FileNotFoundException, IOException{
+       
+        File f= new File("src\\main\\java\\DAL\\Exel\\sp.xlsx");
+        FileInputStream file = new FileInputStream(f.getAbsoluteFile());
+        XSSFWorkbook workbook=new XSSFWorkbook(file);
+        XSSFSheet  sheet=workbook.getSheetAt(0);
+        DataFormatter fmt = new DataFormatter();
+        for(Row row:sheet){
+             SanPham test1= new SanPham();
              if(row.getCell(0)!= null){
                  Cell cell = row.getCell(0);
                  if(cell!=null) {
                     String value = fmt.formatCellValue(cell);
                     
                     if (! value.trim().isEmpty()) {
-                        test1.setSoPhieu(Integer.parseInt(value));
+                        test1.setMaSP(Integer.parseInt(value));
                     }
                  }
              }
@@ -53,10 +49,9 @@ public class GiamgiaSPexcel {
                 Cell cell = row.getCell(1);
                  if(cell!=null) {
                     String value = fmt.formatCellValue(cell);
-//                    Timestamp ts1= new Timestamp(Long.parseLong(value));
                    if (! value.trim().isEmpty()) {
                        
-                       test1.setNgayBD(Timestamp.valueOf(value));
+                       test1.setTenSP(value);
                        
                    }
                 }
@@ -68,7 +63,7 @@ public class GiamgiaSPexcel {
                   String value = fmt.formatCellValue(cell);
                      
                     if (! value.trim().isEmpty()) {
-                       test1.setNgayKT(Timestamp.valueOf(value));
+                       test1.setMoTa(value);
                     }
                  }
              }
@@ -77,7 +72,7 @@ public class GiamgiaSPexcel {
                  if(cell!=null) {
                     String value = fmt.formatCellValue(cell);
                     if (! value.trim().isEmpty()) {
-                        test1.setPtGiam(Integer.parseInt(value));
+                        test1.setHinhAnh(value);
                     }
                  }
              }
@@ -86,7 +81,7 @@ public class GiamgiaSPexcel {
                  if(cell!=null) {
                     String value = fmt.formatCellValue(cell);
                     if (! value.trim().isEmpty()) {
-                        test1.setMaSP(Integer.parseInt(value));
+                        test1.setGiaTien(Long.parseLong(value));
                     }
                  }
              }
@@ -95,38 +90,54 @@ public class GiamgiaSPexcel {
                  if(cell!=null) {
                     String value = fmt.formatCellValue(cell);
                     if (! value.trim().isEmpty()) {
-                        test1.setIsDeleted(Boolean.getBoolean(value));
+                        test1.setSoLuong(Integer.parseInt(value));
                     }
                  }
              }
-             giamgiaspList.add(test1);
+             if(row.getCell(6)!= null){
+                 Cell cell = row.getCell(6);
+                 if(cell!=null) {
+                    String value = fmt.formatCellValue(cell);
+                    if (! value.trim().isEmpty()) {
+                        test1.setMaLoai(Integer.parseInt(value));
+                    }
+                 }
+             }
+             if(row.getCell(7)!= null){
+                 Cell cell = row.getCell(7);
+                 if(cell!=null) {
+                    String value = fmt.formatCellValue(cell);
+                    if (! value.trim().isEmpty()) {
+                        test1.setMaNCC(Integer.parseInt(value));
+                    }
+                 }
+             }
+             if(row.getCell(8)!= null){
+                 Cell cell = row.getCell(8);
+                 if(cell!=null) {
+                    String value = fmt.formatCellValue(cell);
+                    if (! value.trim().isEmpty()) {
+                        test1.setDeleted(Boolean.getBoolean(value));
+                    }
+                 }
+             }
+             spList.add(test1);
          }
-//         for (Row row : sheet) {
-//            Cell cell = row.getCell(0);
-//            if(cell!=null) {
-//            String value = fmt.formatCellValue(cell);
-//            if (! value.trim().isEmpty()) {
-//             System.out.println("Cell as string is " + value);
-//            }
-//         }
-//         }
-         Timestamp ts= new Timestamp(System.currentTimeMillis());
-         System.out.println("TS:"+ts);
-         for(int i=0;i<giamgiaspList.size();i++){
-                GiamGiaSP s=giamgiaspList.get(i);
+         for(int i=0;i<spList.size();i++){
+                SanPham s=spList.get(i);
                 
                 System.out.println(s.toString());
                
             }   
          workbook.close();
          file.close();
-         
 
     }
-     public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         
-        laydulieutuexcel();
+        sanphamtuexcel();
        
+        System.out.println(spList.get(0).getHinhAnh());
         
     }
 }
