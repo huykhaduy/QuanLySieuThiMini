@@ -26,7 +26,7 @@ public class CheckInfoSale {
     }
     
     //hàm này được gọi khi nhấn button thêm để kiểm tra mã khách hàng
-    public boolean isPassengerExist(String sdt){
+    public boolean isPassengerExist(String sdt){ 
         return khDAO.selectByPhoneNumber(sdt) != null;
     }
     

@@ -4,12 +4,17 @@
  */
 package GUI.SaleGroup.AddCustomerGUI;
 
+;
+import BUS.AccountCustomer.AddCustomer;
+import BUS.AccountCustomer.UserRegisterValidate;
+import BUS.SaleServices.CheckInfoSale;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -147,7 +152,7 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(108, 195, 200));
         jLabel2.setText("Họ tên:");
 
-        jTextField2.setText("jTextField1");
+        jTextField2.setText("0");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(108, 195, 200));
@@ -159,9 +164,7 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
         jLabel6.setText("Giới tính:");
         jLabel6.setToolTipText("");
 
-        jTextField3.setText("jTextField1");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -176,18 +179,19 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(108, 195, 200));
         jSeparator1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jTextField4.setText("jTextField1");
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(108, 195, 200));
         jLabel5.setText("Địa chỉ:");
-
-        jTextField5.setText("jTextField1");
 
         jButton2.setBackground(new java.awt.Color(108, 195, 200));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("LƯU");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(244, 138, 114));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -301,12 +305,41 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        UserRegisterValidate userRegisterValidate = new UserRegisterValidate();
+        CheckInfoSale checkInfoSale = new CheckInfoSale();
+//        AddDataAction action = new AddDataAction();
+//        AddDataAction.addUser(name,
+//        ....);
+        
+        String name = jTextField5.getText();
+        String numberPhone = jTextField2.getText();
+        String sex = jComboBox1.getSelectedItem().toString();
+        String email = jTextField3.getText();
+        String address = jTextField4.getText();
+
+        boolean isAccess = checkInfoSale.isPassengerExist(numberPhone);
+        boolean isCheckEmail = userRegisterValidate.checkEmail(email);
+        boolean isCheckSex = userRegisterValidate.checkSex(sex);
+        boolean isCheckName = userRegisterValidate.checkName(name);
+        boolean isCheckNumber = userRegisterValidate.checkNumber(numberPhone);
+        System.out.println(isAccess+" "+isCheckEmail+" "+isCheckSex+" "+isCheckName+" "+isCheckNumber);
+        if (isAccess || isCheckEmail || isCheckName || isCheckNumber) {
+            JOptionPane.showMessageDialog(this, "The customer already exists or illegal");
+        } else {
+            AddCustomer themKH = new AddCustomer();
+            themKH.AddCustomer(name, isCheckSex, numberPhone, email, address);
+            dispose();
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,4 +398,6 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+
+  
 }
