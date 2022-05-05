@@ -5,8 +5,8 @@
 package GUI.SaleGroup.AddCustomerGUI;
 
 ;
-import BUS.AccountCustomer.AddCustomer;
-import BUS.AccountCustomer.UserRegisterValidate;
+import BUS.CustomerHandle.CustomerBUS;
+import BUS.CustomerHandle.UserRegisterValidate;
 import BUS.SaleServices.CheckInfoSale;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Point;
@@ -315,9 +315,6 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         UserRegisterValidate userRegisterValidate = new UserRegisterValidate();
         CheckInfoSale checkInfoSale = new CheckInfoSale();
-//        AddDataAction action = new AddDataAction();
-//        AddDataAction.addUser(name,
-//        ....);
         
         String name = jTextField5.getText();
         String numberPhone = jTextField2.getText();
@@ -330,11 +327,11 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
         boolean isCheckSex = userRegisterValidate.checkSex(sex);
         boolean isCheckName = userRegisterValidate.checkName(name);
         boolean isCheckNumber = userRegisterValidate.checkNumber(numberPhone);
-        System.out.println(isAccess+" "+isCheckEmail+" "+isCheckSex+" "+isCheckName+" "+isCheckNumber);
+//        System.out.println(isAccess+" "+isCheckEmail+" "+isCheckSex+" "+isCheckName+" "+isCheckNumber);
         if (isAccess || isCheckEmail || isCheckName || isCheckNumber) {
             JOptionPane.showMessageDialog(this, "The customer already exists or illegal");
         } else {
-            AddCustomer themKH = new AddCustomer();
+            CustomerBUS themKH = new CustomerBUS();
             themKH.AddCustomer(name, isCheckSex, numberPhone, email, address);
             dispose();
         }
