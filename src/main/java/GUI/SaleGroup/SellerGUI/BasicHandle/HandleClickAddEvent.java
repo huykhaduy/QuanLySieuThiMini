@@ -4,11 +4,12 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
+import BUS.SaleServices.CheckInfoSale;
 import DAL.DataModels.SanPham;
-import GUI.SaleGroup.SellerGUI.Component.OrderItem;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ import java.awt.event.ActionListener;
 public class HandleClickAddEvent implements ActionListener{
     private SanPham sp;
     private OrderPanel orderpanel;
+    private final CheckInfoSale check = new CheckInfoSale();
 
     public HandleClickAddEvent(SanPham sp, OrderPanel orderpanel) {
         this.sp = sp;
@@ -25,7 +27,9 @@ public class HandleClickAddEvent implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        orderpanel.addOrderItemOrIncrementByOne(sp);
+        if(check.hasProduct(sp.getMaSP()))
+            orderpanel.addOrderItemOrIncrementByOne(sp);
+        else JOptionPane.showMessageDialog(orderpanel, "Hết hàng!", "Chú ý", JOptionPane.INFORMATION_MESSAGE);
     }
     
 }

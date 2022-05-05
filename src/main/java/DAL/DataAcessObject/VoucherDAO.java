@@ -12,7 +12,7 @@ public class VoucherDAO extends AbtractAccessDatabase<Voucher> implements ISimpl
     @Override
     public boolean insert(Voucher vouvher) {
         return executeUpdate("INSERT INTO VOUCHER(MAVOUCHER,MOTA,NGAYBD,NGAYKT,GIATRITOITHIEU,KMTOIDA,PTGIAM,SOLUOTSD,IS_DELETED) VALUES(?,?,?,?,?,?,?,?,?)",
-                vouvher.getMaVoucher(),vouvher.getMoTa(),vouvher.getNgayBD(),vouvher.getNgayKT(),vouvher.getGiaTriToiThieu(),vouvher.getGiaTriToiThieu(),vouvher.getKmToiDa(),vouvher.getPtGiam(),vouvher.getSoLuotSD(),vouvher.isDeleted());
+                vouvher.getMaVoucher(),vouvher.getMoTa(),vouvher.getNgayBD(),vouvher.getNgayKT(),vouvher.getGiaTriToiThieu(),vouvher.getKmToiDa(),vouvher.getPtGiam(),vouvher.getSoLuotSD(),vouvher.isDeleted());
     }
 
     @Override

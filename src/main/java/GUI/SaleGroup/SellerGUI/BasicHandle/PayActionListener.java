@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author USER
+ * @author TUANMINH
  */
 public class PayActionListener implements java.awt.event.ActionListener{
     
@@ -39,24 +39,20 @@ public class PayActionListener implements java.awt.event.ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        String bill = pay.getBillToString("Tiền mặt", Integer.parseInt(lbTotal.getText()),maNV, txtPhoneNumber.getText(),txtVoucher.getText(), orderPanel.getListChiTietHoaDon(0));
-//        int flag = JOptionPane.showConfirmDialog(null, bill,"Thanh toán",JOptionPane.YES_NO_OPTION);
-//        if(flag == JOptionPane.YES_OPTION){
-//            System.out.println(bill);
-//        }
+
         int size = orderPanel.getListChiTietHoaDon(0).size();
         long total = Long.valueOf(lbTotal.getText());
         long discount = Long.valueOf(lbDiscount.getText());
-        String tenKH = "";
-//        List<List<String>> list = new ArrayList<>();
+        String tenKH;
         List<String> data = new ArrayList<>();
         String[][] datas = new String[size][];
-        pay.getNameFromPhoneNumber(txtPhoneNumber.getText());
+        tenKH = pay.getNameFromPhoneNumber(txtPhoneNumber.getText());
         
         
         if(pay.storeBill("Tiền mặt", total, maNV, txtPhoneNumber.getText(), txtVoucher.getText()))
             if(pay.storeBillDetail(orderPanel.getListChiTietHoaDon(0))){
                 
+                //To show Bill
                 int i = 0;
                 for(ChiTietHoaDon item : orderPanel.getListChiTietHoaDon(pay.getMaHD())){
                     data.clear();

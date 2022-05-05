@@ -9,6 +9,7 @@ import GUI.SaleGroup.LoginGui.Component.Button;
 import GUI.SaleGroup.LoginGui.Component.ButtonUI;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
+import GUI.SaleGroup.SellerGUI.BasicHandle.DiscountTextFieldListener;
 import GUI.SaleGroup.SellerGUI.BasicHandle.PayActionListener;
 import GUI.SaleGroup.SellerGUI.BasicHandle.SearchMenuListener;
 import GUI.SaleGroup.SellerGUI.Component.MenuItem;
@@ -158,7 +159,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         spaceBottom.setLayout(spaceBottomLayout);
         spaceBottomLayout.setHorizontalGroup(
             spaceBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 615, Short.MAX_VALUE)
         );
         spaceBottomLayout.setVerticalGroup(
             spaceBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,9 +502,9 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbDiscount;
     private javax.swing.JLabel lbMoney;
-    public static javax.swing.JLabel lbTextDiscount;
-    public static javax.swing.JLabel lbTextMoney;
-    public static javax.swing.JLabel lbTextTotal;
+    private javax.swing.JLabel lbTextDiscount;
+    private javax.swing.JLabel lbTextMoney;
+    private javax.swing.JLabel lbTextTotal;
     private javax.swing.JLabel lbTotalMoney;
     private javax.swing.JLabel lbVoucher;
     private javax.swing.JLabel lbsoDt;
@@ -522,7 +523,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private OrderPanel scrollPanelOrder;
        
     private void init() {  
-        this.scrollPanelOrder = new OrderPanel(271, 350, new ChangePaymentInfo(this.txtPhoneNumber.getText(), this.txtVoucher.getText()));
+        this.scrollPanelOrder = new OrderPanel(271, 350, new ChangePaymentInfo(this.txtPhoneNumber, this.txtVoucher, this.lbTextTotal,this.lbTextDiscount, this.lbTextMoney));
         orderContainer.setLayout(null);
         orderContainer.add(this.scrollPanelOrder);
         //Get list loai sp
@@ -532,7 +533,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         this.scrollPanelMenu = new MenuPanel(665, 505, scrollPanelOrder);
         mainContainer.add(this.scrollPanelMenu);
         this.scrollPanelMenu.getAllProduct();
-
+        txtVoucher.getDocument().addDocumentListener(new DiscountTextFieldListener(scrollPanelOrder));
         jButton2.addActionListener(new PayActionListener(this.maNV, this.txtVoucher, this.txtPhoneNumber, this.lbTextTotal,this.lbTextDiscount, scrollPanelOrder));
     }
     

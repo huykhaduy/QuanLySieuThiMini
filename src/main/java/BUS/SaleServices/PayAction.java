@@ -72,7 +72,7 @@ public class PayAction {
     public void setSoVoucher(String maVoucher) {
         if(check.hasVoucher(maVoucher))
             this.soVoucher = voucherDAO.select(maVoucher).getSoVoucher();
-        this.soVoucher = 0;
+        else this.soVoucher = 0;
     }
             
     
@@ -101,7 +101,7 @@ public class PayAction {
     }
     
     //Hàm tính giá trị giảm của voucher
-    public long discountBillByVoucher(String maVoucher){
+    public long discountBillByVoucher(String maVoucher, long total){
         Voucher voucher;
         if(check.hasVoucher(maVoucher)){
             voucher = voucherDAO.select(maVoucher);
@@ -111,7 +111,7 @@ public class PayAction {
         return 0;
     }
     
-    public long discountBillByPoint(String sdt){
+    public long discountBillByPoint(String sdt, long total){
         if(check.isPassengerExist(sdt) && check.canUsePoint(sdt)){
             long diemThuong = khachHangDAO.selectByPhoneNumber(sdt).getDiemThuong();
             khachHangDAO.selectByPhoneNumber(sdt).setDiemThuong(diemThuong - 1000);
@@ -120,15 +120,15 @@ public class PayAction {
         return 0;
     }
     
-    public long payForBillAfterDiscount(String maVoucher, String sdt){
-        return total - (discountBillByVoucher(maVoucher) + discountBillByPoint(sdt));
+    public long payForBillAfterDiscount(String maVoucher, String sdt, long total){
+        return total - (discountBillByVoucher(maVoucher, total) + discountBillByPoint(sdt, total));
     }
     
     //Lưu hóa đơn
     public boolean storeBill(String hinhthuc, long total, int maNV, String sdt, String maVoucher){
         
         this.setSoVoucher(maVoucher);
-        long discount = discountBillByVoucher(maVoucher) + discountBillByPoint(sdt);
+        long discount = discountBillByVoucher(maVoucher, total) + discountBillByPoint(sdt, total);
         int maKH = 0;
         if(check.isPassengerExist(sdt)){
             maKH = khachHangDAO.selectByPhoneNumber(sdt).getMaKH();
@@ -150,44 +150,17 @@ public class PayAction {
         boolean flag = true;
         for(ChiTietHoaDon item : orderList){
             
+            //Thay đổi số lượng sản phẩm trong kho
+            SanPham sanPham = sanPhamDAO.select(item.getMaSP());
+            sanPham.setSoLuong(sanPham.getSoLuong() - item.getSoLuong());
+            sanPhamDAO.update(sanPham.getMaSP(), sanPham);
+            
             item.setGiaTien((long)discountProductPrice(item.getMaSP()) * item.getSoLuong());
             item.setMaHD(maHD);
             flag = CTHoaDonDAO.insert(item);
         }
         return flag;
     }
-    
-    //Thông tin hóa đơn hiển thị trên JOptionPane
-//    public String getBillToString(String hinhthuc, long total, int maNV, String sdt, String maVoucher, List<ChiTietHoaDon> listOrder){
-//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//        Date date = new Date();
-//        LocalDateTime currentDay = LocalDateTime.now();
-//        long discount = discountBillByVoucher(maVoucher) + discountBillByPoint(sdt);
-//        
-//        String tenKH = "";
-//        if(check.isPassengerExist(sdt)){
-//            tenKH = khachHangDAO.selectByPhoneNumber(sdt).getTenKH();
-//        }
-//
-//        StringBuilder table = new StringBuilder(String.format("|   %-20s|%-5s|%-10s|\n", "Mặt hàng", "SL", "T.Tiền"));
-//        for(ChiTietHoaDon order : listOrder){
-//            table.append(String.format("|   %-20s|%-5d|%-10d|\n", sanPhamDAO.select(order.getMaSP()).getTenSP(), order.getSoLuong(), order.getGiaTien()));
-//        }
-//
-//        String bill = "                    MINIMART                    \n"
-//                +     "                HÓA ĐƠN BÁN HÀNG                \n\n\n"
-//                +     String.format("Ngày bán: %-10s       Số: %d\n", dateFormat.format(date), this.maHD)
-//                +     "Mã nhân viên: " + (maNV) + "\n"
-//                +     "In lúc: " + currentDay.format(DateTimeFormatter.ofPattern("HH:mm")) + "\n"
-//                +     "Khách hàng: " + tenKH + "\n"
-//                +     table + "\n"
-//                +     String.format("Tổng: %30d", total) + "\n"
-//                +     String.format("Giảm: %30d", discount) + "\n"
-//                +     String.format("Hình thức: %30s", hinhthuc) + "\n"
-//                +     String.format("Thanh toán: %30d", total - discount) + "\n";
-//
-//        return bill;
-//    }
     
     public String getNameFromPhoneNumber(String sdt){
         if(check.isPassengerExist(sdt))
