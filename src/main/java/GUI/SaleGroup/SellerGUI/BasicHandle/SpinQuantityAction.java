@@ -4,10 +4,8 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
-import DAL.DataModels.ChiTietHoaDon;
 import GUI.SaleGroup.SellerGUI.Component.OrderItem;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
-import java.util.List;
 import javax.swing.event.DocumentEvent;
 
 /**

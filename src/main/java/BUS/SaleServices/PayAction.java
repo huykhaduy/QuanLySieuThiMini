@@ -15,7 +15,12 @@ import DAL.DataModels.GiamGiaSP;
 import DAL.DataModels.HoaDon;
 import DAL.DataModels.SanPham;
 import DAL.DataModels.Voucher;
+import java.util.Date;
+import java.time.LocalDateTime;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -36,9 +41,9 @@ public class PayAction {
     private int maKH, maNV, soVoucher;
     private long total;
 
-//    public int getMaHD() {
-//        return maHD;
-//    }
+    public int getMaHD() {
+        return maHD;
+    }
 
     public void setMaHD() {
         this.maHD = hoaDonDAO.selectNewestBill().getMaHD();
@@ -65,7 +70,9 @@ public class PayAction {
 //    }
 
     public void setSoVoucher(String maVoucher) {
-        this.soVoucher = voucherDAO.select(maVoucher).getSoVoucher();
+        if(check.hasVoucher(maVoucher))
+            this.soVoucher = voucherDAO.select(maVoucher).getSoVoucher();
+        else this.soVoucher = 0;
     }
             
     
@@ -85,7 +92,7 @@ public class PayAction {
         return sanPham.getGiaTien() - ((giamGiaSP == null) ? 0 : ((giamGiaSP.getPtGiam() * sanPham.getGiaTien())*1.0 / 100));
     }    
     
-    public double totalBill(List<ChiTietHoaDon> orderList){
+    public long totalBill(List<ChiTietHoaDon> orderList){
         total = 0;
         for(ChiTietHoaDon item : orderList){
             total += discountProductPrice(item.getMaSP()) * item.getSoLuong();
@@ -94,15 +101,17 @@ public class PayAction {
     }
     
     //Hàm tính giá trị giảm của voucher
-    public long discountBillByVoucher(String maVoucher){
-        Voucher voucher = voucherDAO.select(maVoucher);
-        if(check.hasVoucher(maVoucher))
+    public long discountBillByVoucher(String maVoucher, long total){
+        Voucher voucher;
+        if(check.hasVoucher(maVoucher)){
+            voucher = voucherDAO.select(maVoucher);
             if(total >= voucher.getGiaTriToiThieu())
                 return (long) voucher.getKmToiDa() > (voucher.getPtGiam()*total) ? (voucher.getPtGiam()*total) : voucher.getKmToiDa();
+        }
         return 0;
     }
     
-    public long discountBillByPoint(String sdt){
+    public long discountBillByPoint(String sdt, long total){
         if(check.isPassengerExist(sdt) && check.canUsePoint(sdt)){
             long diemThuong = khachHangDAO.selectByPhoneNumber(sdt).getDiemThuong();
             khachHangDAO.selectByPhoneNumber(sdt).setDiemThuong(diemThuong - 1000);
@@ -111,15 +120,23 @@ public class PayAction {
         return 0;
     }
     
-    public long payForBillAfterDiscount(String maVoucher, String sdt){
-        return total - (discountBillByVoucher(maVoucher) + discountBillByPoint(sdt));
+    public long payForBillAfterDiscount(String maVoucher, String sdt, long total){
+        return total - (discountBillByVoucher(maVoucher, total) + discountBillByPoint(sdt, total));
     }
     
     //Lưu hóa đơn
-    public boolean storeBill(String hinhthuc, int maNV, int maKH, String maVoucher){
+    public boolean storeBill(String hinhthuc, long total, int maNV, String sdt, String maVoucher){
+        
         this.setSoVoucher(maVoucher);
+        long discount = discountBillByVoucher(maVoucher, total) + discountBillByPoint(sdt, total);
+        int maKH = 0;
+        if(check.isPassengerExist(sdt)){
+            maKH = khachHangDAO.selectByPhoneNumber(sdt).getMaKH();
+        }
+        
         hoaDon = new HoaDon(0,new Timestamp(System.currentTimeMillis()),hinhthuc,
-                total, discountBillByVoucher(maVoucher), maNV, maKH, this.soVoucher,false);
+                total, discount, maKH, maNV, this.soVoucher,false);
+        
         if(hoaDonDAO.insert(hoaDon)){
             this.setMaHD();
             return true;
@@ -133,10 +150,25 @@ public class PayAction {
         boolean flag = true;
         for(ChiTietHoaDon item : orderList){
             
-            item.setGiaTien((long)discountProductPrice(item.getMaSP()));
+            //Thay đổi số lượng sản phẩm trong kho
+            SanPham sanPham = sanPhamDAO.select(item.getMaSP());
+            sanPham.setSoLuong(sanPham.getSoLuong() - item.getSoLuong());
+            sanPhamDAO.update(sanPham.getMaSP(), sanPham);
+            
+            item.setGiaTien((long)discountProductPrice(item.getMaSP()) * item.getSoLuong());
             item.setMaHD(maHD);
             flag = CTHoaDonDAO.insert(item);
         }
         return flag;
+    }
+    
+    public String getNameFromPhoneNumber(String sdt){
+        if(check.isPassengerExist(sdt))
+            return khachHangDAO.selectByPhoneNumber(sdt).getTenKH();
+        return null;
+    }
+    
+    public String getNameSPFromID(int id){
+        return sanPhamDAO.select(id).getTenSP();
     }
 }

@@ -15,7 +15,7 @@ public class CheckInfoSale {
     
     
     //hàm này được gọi khi sự kiện click chuột vào panel MenuItem được thực hiện
-    public boolean hasProduct(int maSP, int sl){
+    public boolean hasProduct(int maSP){
         return spDAO.select(maSP).getSoLuong() != 0;
     }
     

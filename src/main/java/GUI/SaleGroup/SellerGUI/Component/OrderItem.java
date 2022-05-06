@@ -4,16 +4,15 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import BUS.SaleServices.CheckInfoSale;
 import DAL.DataModels.ChiTietHoaDon;
 import DAL.DataModels.SanPham;
-import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -23,6 +22,7 @@ public class OrderItem extends RoundPanel{
     private SanPham sp;
     private ChiTietHoaDon CTHD;
     private JTextField jtf;
+    private final CheckInfoSale check = new CheckInfoSale();
     /**
      * Creates new form OrderItem
      */
@@ -184,9 +184,13 @@ public class OrderItem extends RoundPanel{
     }
     
     public void showUpdateTotalPrice(){
-        this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*getQuantity()));
-        this.CTHD.setSoLuong((int)getQuantity());
-//        System.out.println(this.sp.getGiaTien()*getQuantity());
+        if(check.isEnoughAmountProduct(CTHD.getMaSP(), (int)getQuantity())){
+            this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*getQuantity()));
+            this.CTHD.setSoLuong((int)getQuantity());
+        }else{ 
+            JOptionPane.showMessageDialog(productOrderName, "Số lượng không đủ!", "Chú ý", JOptionPane.INFORMATION_MESSAGE);
+            changeQuantity((int)getQuantity() - 1);
+        }
     }
     
     public JTextField getJTextFieldQuantity(){

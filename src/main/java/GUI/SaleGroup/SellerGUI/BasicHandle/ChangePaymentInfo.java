@@ -4,47 +4,45 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
-import BUS.SaleServices.CheckInfoSale;
 import BUS.SaleServices.PayAction;
 import DAL.DataModels.ChiTietHoaDon;
-import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
 import GUI.SaleGroup.SellerGUI.SellerMainFrame;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
- * @author USER
+ * @author TUANMINH
  */
 public class ChangePaymentInfo {
     
-//    private JLabel lbTong;
-//    private JLabel lbGiam;
-//    private JLabel lbThanhToan;
-//    
-//    private final CheckInfoSale check = new CheckInfoSale();
     private final PayAction pay = new PayAction();
-//    private OrderPanel orderPanel;
-    private String SDT;
-    private String maVoucher;
+    private JTextField txtVoucher;
+    private JTextField txtPhoneNumber;
+    private JLabel lbTextTotal;
+    private JLabel lbTextDiscount;
+    private JLabel lbTextMoney;
+    private long total;
     
     public ChangePaymentInfo(){
         
     }
     
-    public ChangePaymentInfo(String SDT, String maVoucher){
-//        this.orderPanel = orderPanel;
-        this.SDT = SDT;
-        this.maVoucher = maVoucher;
-//        this.lbTong = lbTong;
-//        this.lbGiam = lbGiam;
-//        this.lbThanhToan = lbThanhToan;
+    public ChangePaymentInfo(JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTextTotal, JLabel lbTextDiscount, JLabel lbTextMoney){
+        this.txtVoucher = txtPhoneNumber;
+        this.txtPhoneNumber = txtVoucher;
+        this.lbTextTotal = lbTextTotal;
+        this.lbTextDiscount = lbTextDiscount;
+        this.lbTextMoney = lbTextMoney;
+        
     }
     
     public void calculatePayment(List<ChiTietHoaDon> ListCTHD){
-//        List<ChiTietHoaDon> CTHD = this.orderPanel.getListChiTietHoaDon(0);
-        SellerMainFrame.lbTextTotal.setText(pay.totalBill(ListCTHD) + "");
-        SellerMainFrame.lbTextDiscount.setText((pay.discountBillByPoint(this.SDT) + pay.discountBillByVoucher(maVoucher)) + "");
-        SellerMainFrame.lbTextMoney.setText(pay.payForBillAfterDiscount(maVoucher, SDT) + "");
+        total = pay.totalBill(ListCTHD);
+        this.lbTextTotal.setText(pay.totalBill(ListCTHD) + "");
+        this.lbTextDiscount.setText((pay.discountBillByPoint(txtPhoneNumber.getText(), total) + pay.discountBillByVoucher(txtVoucher.getText(),total)) + "");
+        this.lbTextMoney.setText(pay.payForBillAfterDiscount(txtVoucher.getText(), txtPhoneNumber.getText(), total) + "");
+
     }
 }

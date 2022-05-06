@@ -39,7 +39,6 @@ CREATE TABLE VOUCHER(
   NGAYBD datetime, 
   NGAYKT datetime, 
   GIATRITOITHIEU bigint, 
-  KMTOITHIEU bigint, 
   KMTOIDA bigint, 
   PTGIAM int, 
   SOLUOTSD int, 
@@ -313,3 +312,13 @@ VALUES (NULL, 'Pepsi', 'Từ thương hiệu nước ngọt có gas nổi tiến
        (NULL, 'Bộ 2 kem đánh răng Colgate MaxFresh bạc hà 350g', ' Colgate là nhãn hiệu của Mỹ chuyên về các sản phẩm vệ sinh răng miệng bao gồm sản phẩm kem đánh răng. Bộ 2 kem đánh răng Colgate MaxFresh hương bạc hà 350g công thức đặc biệt giúp diệt khuẩn hiệu quả, ngừa sâu răng tối đa, cho răng chắc khỏe và hơi thở thơm mát.', 90, 'kemdanhrang', 60000,5, 19,0),
        (NULL, 'Bàn chải đánh răng Colgate 360 Charcoal Spiral xoắn kép', 'Bàn chải đánh răng xuất xứ thương hiệu Mỹ. Bàn chải đánh răng Colgate có lông chải xoắn, phủ than hoạt tính. Bàn chải Colgate 360 Charcoal Spiral xoắn kép có đầu bàn chải to với 30% diện tích lông chải tăng thêm, giúp chải sạch hiệu quả.', 50, 'banchay', 42000, 5, 19,0),
        (NULL, 'Nước súc miệng Colgate Plax Peppermint Fresh 750ml', 'Nước súc miệng Colgate được sản xuất tại Thái Lan. Nước súc miệng giúp làm sạch khoang miệng hiệu quả, chăm sóc nướu và mang lại hơi thở thơm ngát tự nhiên. Nước súc miệng Colgate Plax Peppermint Fresh 750ml cho khoang miệng sạch sẽ, diệt vi khuẩn gây hôi miệng.', 23, 'nuocsucmieng', 126000, 5, 19,0);
+
+--Chạy tới đây tự nhiên lỗi mấy dòng này không insert zô được hic hic đem ra insert riêng thì được hoq bít tại s luôn
+INSERT INTO `khachhang`(`MAKH`, `TENKH`, `GIOITINH`, `SODIENTHOAI`, `DIACHI`, `EMAIL`, `DIEMTHUONG`, `IS_DELETED`) 
+VALUES (0,NULL, NULL, NULL, NULL, NULL, NULL, 0)
+
+INSERT INTO `voucher`(`SOVOUCHER`, `MAVOUCHER`, `MOTA`, `NGAYBD`, `NGAYKT`, `GIATRITOITHIEU`, `KMTOIDA`, `PTGIAM`, `SOLUOTSD`, `IS_DELETED`) 
+VALUES (0,' ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0)
+
+INSERT INTO `nhanvien`(`MANV`, `TENNV`, `GIOITINH`, `CMND`, `NGAYSINH`, `SODIENTHOAI`, `EMAIL`, `DIACHI`, `NGAYTHAMGIA`, `MACHUCVU`, `IS_DELETED`) 
+VALUES (0,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0)
