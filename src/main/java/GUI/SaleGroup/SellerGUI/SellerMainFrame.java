@@ -7,7 +7,9 @@ import DAL.DataModels.LoaiSanPham;
 import DAL.DataModels.SanPham;
 import GUI.SaleGroup.LoginGui.Component.Button;
 import GUI.SaleGroup.LoginGui.Component.ButtonUI;
+import GUI.SaleGroup.SellerGUI.BasicHandle.AddCustomerAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
+import GUI.SaleGroup.SellerGUI.BasicHandle.ClearAllAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.DiscountTextFieldListener;
 import GUI.SaleGroup.SellerGUI.BasicHandle.PayActionListener;
@@ -72,7 +74,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         paymentPanel = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbClearAll = new javax.swing.JLabel();
         paymentInfo = new javax.swing.JPanel();
         lbTotalMoney = new javax.swing.JLabel();
         lbDiscount = new javax.swing.JLabel();
@@ -84,7 +86,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         txtVoucher = new GUI.SaleGroup.SellerGUI.Component.TextFieldIcon();
         lbVoucher = new javax.swing.JLabel();
         lbsoDt = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAddCustomer = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         orderContainer = new javax.swing.JPanel();
         leftPanel = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
@@ -180,9 +182,9 @@ public class SellerMainFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ĐƠN HÀNG");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("XÓA HẾT");
+        lbClearAll.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lbClearAll.setForeground(new java.awt.Color(255, 255, 255));
+        lbClearAll.setText("XÓA HẾT");
 
         paymentInfo.setBackground(new java.awt.Color(43, 133, 161));
 
@@ -219,9 +221,9 @@ public class SellerMainFrame extends javax.swing.JFrame {
         lbsoDt.setText("SỐ ĐT:");
         lbsoDt.setToolTipText("");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("+");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAddCustomer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddCustomer.setText("+");
+        btnAddCustomer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout paymentInfoLayout = new javax.swing.GroupLayout(paymentInfo);
         paymentInfo.setLayout(paymentInfoLayout);
@@ -258,7 +260,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                             .addGroup(paymentInfoLayout.createSequentialGroup()
                                 .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnAddCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         paymentInfoLayout.setVerticalGroup(
@@ -267,7 +269,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(paymentInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(btnAddCustomer)
                     .addComponent(lbsoDt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(paymentInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +328,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
+                        .addComponent(lbClearAll)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paymentPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -349,7 +351,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lbClearAll, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(orderContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -487,19 +489,19 @@ public class SellerMainFrame extends javax.swing.JFrame {
     }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddCustomer;
     private javax.swing.JPanel filterPanel;
     private GUI.SaleGroup.SellerGUI.Component.ImagePanel imagePanel1;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel itemContainer;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbClearAll;
     private javax.swing.JLabel lbDiscount;
     private javax.swing.JLabel lbMoney;
     private javax.swing.JLabel lbTextDiscount;
@@ -533,13 +535,19 @@ public class SellerMainFrame extends javax.swing.JFrame {
         this.scrollPanelMenu = new MenuPanel(665, 505, scrollPanelOrder);
         mainContainer.add(this.scrollPanelMenu);
         this.scrollPanelMenu.getAllProduct();
-        txtVoucher.getDocument().addDocumentListener(new DiscountTextFieldListener(scrollPanelOrder));
-        jButton2.addActionListener(new PayActionListener(this.maNV, this.txtVoucher, this.txtPhoneNumber, this.lbTextTotal,this.lbTextDiscount, scrollPanelOrder));
+        addActionEvent();
     }
     
     private void addEventFilterAndSearch(){
         myLoaiSPComboBox1.addActionListener(new ComboBoxLoaiSPAction(myLoaiSPComboBox1, scrollPanelMenu, textFieldIcon1));
         textFieldIcon1.getDocument().addDocumentListener(new SearchMenuListener(scrollPanelMenu, myLoaiSPComboBox1, textFieldIcon1));
+    }
+    
+    private void addActionEvent(){
+        txtVoucher.getDocument().addDocumentListener(new DiscountTextFieldListener(scrollPanelOrder));
+        jButton2.addActionListener(new PayActionListener(this.maNV, this.txtVoucher, this.txtPhoneNumber, this.lbTextTotal,this.lbTextDiscount,this.lbTextMoney, scrollPanelOrder));
+        lbClearAll.addMouseListener(new ClearAllAction(scrollPanelOrder));
+        btnAddCustomer.addActionListener(new AddCustomerAction(scrollPanelOrder, txtPhoneNumber));
     }
      
 }
