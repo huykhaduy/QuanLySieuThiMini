@@ -54,6 +54,14 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel81 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         panelAdd3 = new GUI.ManageGroup.ComponentPanel.PanelAdd();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel89 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         shape6 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         shape7 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         shape8 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
@@ -61,9 +69,6 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         button5 = new GUI.SaleGroup.LoginGui.Component.Button();
         button6 = new GUI.SaleGroup.LoginGui.Component.Button();
         button7 = new GUI.SaleGroup.LoginGui.Component.Button();
@@ -81,9 +86,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        shape32 = new GUI.ManageGroup.BackgroundShape.Shape();
         button1 = new GUI.SaleGroup.LoginGui.Component.Button();
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         button3 = new GUI.SaleGroup.LoginGui.Component.Button();
@@ -103,6 +106,15 @@ public class ManageFrame extends javax.swing.JFrame {
         jPanel17 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        shape31 = new GUI.ManageGroup.BackgroundShape.Shape();
+        shape33 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        shape34 = new GUI.ManageGroup.BackgroundShape.Shape();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        button9 = new GUI.SaleGroup.LoginGui.Component.Button();
         AddRemoveProduct = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel103 = new javax.swing.JLabel();
@@ -113,16 +125,20 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel107 = new javax.swing.JLabel();
         jLabel105 = new javax.swing.JLabel();
         jLabel106 = new javax.swing.JLabel();
-        jLabel108 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
-        shape17 = new GUI.ManageGroup.BackgroundShape.Shape();
-        jPanel10 = new javax.swing.JPanel();
+        shape35 = new GUI.ManageGroup.BackgroundShape.Shape();
+        jLabel99 = new javax.swing.JLabel();
+        jLabel123 = new javax.swing.JLabel();
+        jLabel124 = new javax.swing.JLabel();
         button15 = new GUI.SaleGroup.LoginGui.Component.Button();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel120 = new javax.swing.JLabel();
         shape18 = new GUI.ManageGroup.BackgroundShape.Shape();
         shape19 = new GUI.ManageGroup.BackgroundShape.Shape();
+        shape44 = new GUI.ManageGroup.BackgroundShape.Shape();
+        jLabel125 = new javax.swing.JLabel();
+        jLabel126 = new javax.swing.JLabel();
+        jLabel127 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -154,10 +170,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel110 = new javax.swing.JLabel();
         jLabel111 = new javax.swing.JLabel();
         jLabel112 = new javax.swing.JLabel();
-        jLabel113 = new javax.swing.JLabel();
-        jLabel114 = new javax.swing.JLabel();
-        shape27 = new GUI.ManageGroup.BackgroundShape.Shape();
-        jPanel14 = new javax.swing.JPanel();
+        shape17 = new GUI.ManageGroup.BackgroundShape.Shape();
         jLabel102 = new javax.swing.JLabel();
         button17 = new GUI.SaleGroup.LoginGui.Component.Button();
         EmployeePanel = new javax.swing.JPanel();
@@ -173,9 +186,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel86 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
         jLabel88 = new javax.swing.JLabel();
-        jLabel89 = new javax.swing.JLabel();
-        jLabel90 = new javax.swing.JLabel();
-        jPanel21 = new javax.swing.JPanel();
+        shape27 = new GUI.ManageGroup.BackgroundShape.Shape();
         button10 = new GUI.SaleGroup.LoginGui.Component.Button();
         button11 = new GUI.SaleGroup.LoginGui.Component.Button();
         button12 = new GUI.SaleGroup.LoginGui.Component.Button();
@@ -189,22 +200,39 @@ public class ManageFrame extends javax.swing.JFrame {
         jPanel22 = new javax.swing.JPanel();
         jLabel97 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
+        shape3 = new GUI.ManageGroup.BackgroundShape.Shape();
         jLabel91 = new javax.swing.JLabel();
         OrderPanel = new javax.swing.JPanel();
+        jLabel104 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel109 = new javax.swing.JLabel();
+        jPanel21 = new javax.swing.JPanel();
+        shape36 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
+        shape37 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
+        shape38 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
+        jLabel113 = new javax.swing.JLabel();
+        jLabel114 = new javax.swing.JLabel();
+        jLabel115 = new javax.swing.JLabel();
+        jLabel116 = new javax.swing.JLabel();
+        shape39 = new GUI.ManageGroup.BackgroundShape.Shape();
+        button14 = new GUI.SaleGroup.LoginGui.Component.Button();
+        button18 = new GUI.SaleGroup.LoginGui.Component.Button();
+        button19 = new GUI.SaleGroup.LoginGui.Component.Button();
+        shape40 = new GUI.ManageGroup.BackgroundShape.Shape();
         jLabel3 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
+        shape42 = new GUI.ManageGroup.BackgroundShape.Shape();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel117 = new javax.swing.JLabel();
+        jLabel118 = new javax.swing.JLabel();
+        jLabel119 = new javax.swing.JLabel();
+        jLabel121 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        shape3 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         ReportPanel = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel31 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
@@ -241,7 +269,14 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel76 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
-        jPanel40 = new javax.swing.JPanel();
+        jLabel122 = new javax.swing.JLabel();
+        jPanel24 = new javax.swing.JPanel();
+        button20 = new GUI.SaleGroup.LoginGui.Component.Button();
+        shape41 = new GUI.ManageGroup.BackgroundShape.Shape();
+        shape43 = new GUI.ManageGroup.BackgroundShape.Shape();
+        jPanel7 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel36 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -273,7 +308,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1028, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,74 +365,81 @@ public class ManageFrame extends javax.swing.JFrame {
 
         DiscountPanel.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
 
-        javax.swing.GroupLayout panelAdd3Layout = new javax.swing.GroupLayout(panelAdd3);
-        panelAdd3.setLayout(panelAdd3Layout);
-        panelAdd3Layout.setHorizontalGroup(
-            panelAdd3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
-        );
-        panelAdd3Layout.setVerticalGroup(
-            panelAdd3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-        );
+        panelAdd3.setForeground(new java.awt.Color(255, 255, 255));
+        panelAdd3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("CocaCoLa");
+        panelAdd3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 750, -1));
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("Mô tả :");
+        panelAdd3.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 50, -1));
+
+        jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("Giá tiền :");
+        panelAdd3.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+
+        jLabel51.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
+        panelAdd3.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, -1, -1));
+
+        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel54.setText("Mã loại :");
+        panelAdd3.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
+
+        jLabel89.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel89.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel89.setText("Nhà cung cấp :");
+        panelAdd3.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, -1, -1));
+
+        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextPane1.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane3.setViewportView(jTextPane1);
+
+        panelAdd3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 240, 70));
 
         DiscountPanel.add(panelAdd3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 950, 240));
 
-        shape6.setBackground(new java.awt.Color(126, 187, 222));
+        shape6.setBackground(new java.awt.Color(119, 176, 210));
 
         shape7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        shape8.setBackground(new java.awt.Color(255, 255, 255));
+        shape8.setBackground(new java.awt.Color(119, 176, 210));
         shape8.setLayout(new java.awt.GridLayout(1, 0));
 
+        jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("MÃ SẢN PHẨM");
         shape8.add(jLabel18);
 
+        jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("TÊN SẢN PHẨM");
         shape8.add(jLabel32);
 
+        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("ĐƠN GIÁ");
         shape8.add(jLabel33);
 
+        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
         jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("SỐ LƯỢNG");
         shape8.add(jLabel34);
-
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("SỬA");
-        shape8.add(jLabel35);
-
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("XÓA");
-        shape8.add(jLabel36);
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout shape6Layout = new javax.swing.GroupLayout(shape6);
         shape6.setLayout(shape6Layout);
@@ -409,9 +451,7 @@ public class ManageFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape6Layout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(shape6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(shape8, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(shape8, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
         shape6Layout.setVerticalGroup(
@@ -420,9 +460,7 @@ public class ManageFrame extends javax.swing.JFrame {
                 .addComponent(shape7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shape8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 185, Short.MAX_VALUE))
+                .addGap(0, 240, Short.MAX_VALUE))
         );
 
         DiscountPanel.add(shape6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 950, 280));
@@ -471,7 +509,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel46.setForeground(new java.awt.Color(42, 148, 208));
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("Danh sách khuyến mãi");
-        ProductPanel.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 300, 30));
+        ProductPanel.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 210, 60));
 
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -482,7 +520,7 @@ public class ManageFrame extends javax.swing.JFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
-        ProductPanel.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 190, 30));
+        ProductPanel.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 330, 30));
 
         jLabel80.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel80.setForeground(new java.awt.Color(42, 148, 208));
@@ -504,89 +542,61 @@ public class ManageFrame extends javax.swing.JFrame {
 
         ProductPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
 
-        shape4.setBackground(new java.awt.Color(126, 187, 222));
+        shape4.setBackground(new java.awt.Color(119, 176, 210));
+        shape4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         shape2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        shape4.add(shape2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
-        shape5.setBackground(new java.awt.Color(255, 255, 255));
+        shape5.setBackground(new java.awt.Color(119, 176, 210));
         shape5.setLayout(new java.awt.GridLayout(1, 0));
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("MÃ VOUCHER");
         shape5.add(jLabel7);
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("SỐ VOUCHER");
         shape5.add(jLabel8);
 
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("% GIẢM");
         shape5.add(jLabel12);
 
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("SỐ LƯỢNG");
         shape5.add(jLabel10);
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("SỬA");
-        shape5.add(jLabel14);
+        shape4.add(shape5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 12, 447, 34));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("XÓA");
-        shape5.add(jLabel5);
+        shape32.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout shape32Layout = new javax.swing.GroupLayout(shape32);
+        shape32.setLayout(shape32Layout);
+        shape32Layout.setHorizontalGroup(
+            shape32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
+        shape32Layout.setVerticalGroup(
+            shape32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 34, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout shape4Layout = new javax.swing.GroupLayout(shape4);
-        shape4.setLayout(shape4Layout);
-        shape4Layout.setHorizontalGroup(
-            shape4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape4Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(shape2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape4Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(shape4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(shape5, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
-        );
-        shape4Layout.setVerticalGroup(
-            shape4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape4Layout.createSequentialGroup()
-                .addComponent(shape2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(shape5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 185, Short.MAX_VALUE))
-        );
+        shape4.add(shape32, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 64, 447, 34));
 
-        ProductPanel.add(shape4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 950, 280));
+        ProductPanel.add(shape4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 460, 280));
 
         button1.setBackground(new java.awt.Color(118, 199, 150));
         button1.setForeground(new java.awt.Color(255, 255, 255));
@@ -600,14 +610,14 @@ public class ManageFrame extends javax.swing.JFrame {
         button2.setText("+THÊM KHUYẾN MÃI");
         button2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ProductPanel.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 160, 30));
+        ProductPanel.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 160, 30));
 
         button3.setBackground(new java.awt.Color(118, 199, 150));
         button3.setForeground(new java.awt.Color(255, 255, 255));
         button3.setText("SEARCH");
         button3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ProductPanel.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 90, 30));
+        ProductPanel.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 90, 30));
 
         button4.setBackground(new java.awt.Color(118, 199, 150));
         button4.setForeground(new java.awt.Color(255, 255, 255));
@@ -616,37 +626,39 @@ public class ManageFrame extends javax.swing.JFrame {
         button4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ProductPanel.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 30));
 
-        shape9.setBackground(new java.awt.Color(126, 187, 222));
+        shape9.setBackground(new java.awt.Color(119, 176, 210));
         shape9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel37.setBackground(new java.awt.Color(0, 0, 0));
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setText("MÃ VOUCHER");
-        shape9.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+        shape9.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 180, -1));
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("Số voucher");
-        shape9.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 80, -1));
+        shape9.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 180, -1));
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Ngày bắt đầu :");
         shape9.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 110, -1));
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Ngày kết thúc :");
         shape9.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 120, -1));
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
         jLabel41.setText("Giá trị tối thiểu :");
         shape9.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 120, -1));
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel43.setForeground(new java.awt.Color(255, 255, 255));
         jLabel43.setText("Khuyến mãi tối thiểu :");
         shape9.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 160, -1));
 
@@ -666,26 +678,28 @@ public class ManageFrame extends javax.swing.JFrame {
         shape9.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 156, 122, -1));
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("Khuyến mãi tối đa :");
         shape9.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 140, -1));
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("% Giảm :");
         shape9.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 70, -1));
 
         jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel52.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
         jLabel52.setText("Số lần sử dụng :");
         shape9.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 110, -1));
 
         jLabel53.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel53.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel53.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel53.setText("Mô tả");
-        shape9.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 43, -1));
+        shape9.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 180, -1));
 
-        jPanel17.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -710,11 +724,82 @@ public class ManageFrame extends javax.swing.JFrame {
 
         shape9.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 180, -1));
 
-        ProductPanel.add(shape9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 950, 240));
+        ProductPanel.add(shape9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
+
+        shape31.setBackground(new java.awt.Color(119, 176, 210));
+        shape31.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        shape33.setBackground(new java.awt.Color(119, 176, 210));
+        shape33.setLayout(new java.awt.GridLayout(1, 0));
+
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("MÃ SẢN PHẨM");
+        shape33.add(jLabel14);
+
+        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("TÊN SẢN PHẨM");
+        shape33.add(jLabel30);
+
+        jLabel31.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("% GIẢM");
+        shape33.add(jLabel31);
+
+        shape31.add(shape33, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 6, 447, 44));
+
+        shape34.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout shape34Layout = new javax.swing.GroupLayout(shape34);
+        shape34.setLayout(shape34Layout);
+        shape34Layout.setHorizontalGroup(
+            shape34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        shape34Layout.setVerticalGroup(
+            shape34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 34, Short.MAX_VALUE)
+        );
+
+        shape31.add(shape34, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 62, 447, 34));
+
+        ProductPanel.add(shape31, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 460, 280));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(42, 148, 208));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Danh sách sản phẩm giảm giá");
+        ProductPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 360, 270, 60));
+
+        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+        ProductPanel.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 330, 30));
+
+        button9.setBackground(new java.awt.Color(118, 199, 150));
+        button9.setForeground(new java.awt.Color(255, 255, 255));
+        button9.setText("SEARCH");
+        button9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ProductPanel.add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 420, 90, 30));
 
         TabbedPane.addTab("<html><div style=\"padding: 5px 8px\">Khuyến mãi</div>", ProductPanel);
 
         AddRemoveProduct.setBackground(new java.awt.Color(255, 255, 255));
+        AddRemoveProduct.setForeground(new java.awt.Color(255, 255, 255));
         AddRemoveProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel101.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -744,103 +829,51 @@ public class ManageFrame extends javax.swing.JFrame {
 
         AddRemoveProduct.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
 
-        shape14.setBackground(new java.awt.Color(126, 187, 222));
+        shape14.setBackground(new java.awt.Color(119, 176, 210));
+        shape14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         shape15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        shape14.add(shape15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
-        shape16.setBackground(new java.awt.Color(126, 187, 222));
+        shape16.setBackground(new java.awt.Color(119, 176, 210));
         shape16.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel107.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel107.setForeground(new java.awt.Color(255, 255, 255));
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel107.setText("MÃ NHÂN VIÊN");
         shape16.add(jLabel107);
 
         jLabel105.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel105.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel105.setForeground(new java.awt.Color(255, 255, 255));
         jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel105.setText("MÃ PHIẾU");
         shape16.add(jLabel105);
 
         jLabel106.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel106.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel106.setForeground(new java.awt.Color(255, 255, 255));
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel106.setText("NGÀY LẬP");
         shape16.add(jLabel106);
 
-        jLabel108.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel108.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel108.setText("SỬA");
-        shape16.add(jLabel108);
+        shape14.add(shape16, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 12, 500, 34));
 
-        jLabel109.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel109.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel109.setText("XÓA");
-        shape16.add(jLabel109);
+        shape35.setBackground(new java.awt.Color(255, 255, 255));
+        shape35.setLayout(new java.awt.GridLayout());
 
-        shape17.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel99.setText("3120560051");
+        shape35.add(jLabel99);
 
-        jPanel10.setBackground(new java.awt.Color(126, 187, 222));
+        jLabel123.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel123.setText("111");
+        shape35.add(jLabel123);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
+        jLabel124.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel124.setText("12/12/2003");
+        shape35.add(jLabel124);
 
-        javax.swing.GroupLayout shape17Layout = new javax.swing.GroupLayout(shape17);
-        shape17.setLayout(shape17Layout);
-        shape17Layout.setHorizontalGroup(
-            shape17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-        shape17Layout.setVerticalGroup(
-            shape17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape17Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(204, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout shape14Layout = new javax.swing.GroupLayout(shape14);
-        shape14.setLayout(shape14Layout);
-        shape14Layout.setHorizontalGroup(
-            shape14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape14Layout.createSequentialGroup()
-                .addGroup(shape14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(shape14Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(shape15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(shape14Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(shape17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape14Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(shape16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        shape14Layout.setVerticalGroup(
-            shape14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape14Layout.createSequentialGroup()
-                .addComponent(shape15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(shape16, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(shape17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        shape14.add(shape35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 490, 43));
 
         AddRemoveProduct.add(shape14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, 310));
 
@@ -884,59 +917,86 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel120.setText("QUẢN LÝ PHIẾU NHẬP");
         AddRemoveProduct.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 50));
 
-        shape18.setBackground(new java.awt.Color(126, 186, 239));
+        shape18.setBackground(new java.awt.Color(110, 163, 210));
         shape18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         shape19.setBackground(new java.awt.Color(255, 255, 255));
+
+        shape44.setBackground(new java.awt.Color(110, 163, 210));
+        shape44.setLayout(new java.awt.GridLayout());
+
+        jLabel125.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel125.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel125.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel125.setText("0001");
+        shape44.add(jLabel125);
+
+        jLabel126.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel126.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel126.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel126.setText("Cocacola");
+        shape44.add(jLabel126);
+
+        jLabel127.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel127.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel127.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel127.setText("4");
+        shape44.add(jLabel127);
 
         javax.swing.GroupLayout shape19Layout = new javax.swing.GroupLayout(shape19);
         shape19.setLayout(shape19Layout);
         shape19Layout.setHorizontalGroup(
             shape19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(shape44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         shape19Layout.setVerticalGroup(
             shape19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(shape19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(shape44, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         shape18.add(shape19, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 144, 448, 160));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ngày lập");
         shape18.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Mã nhân viên");
         shape18.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 80, -1));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Mã phiếu");
         shape18.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
 
-        shape20.setBackground(new java.awt.Color(126, 186, 239));
+        shape20.setBackground(new java.awt.Color(110, 163, 210));
         shape20.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Mã sản phẩm");
         shape20.add(jLabel13);
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Tên sản phẩm");
         shape20.add(jLabel15);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Số lượng");
         shape20.add(jLabel17);
@@ -1006,7 +1066,7 @@ public class ManageFrame extends javax.swing.JFrame {
 
         AddRemoveProduct.add(shape18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 460, 310));
 
-        shape21.setBackground(new java.awt.Color(126, 186, 239));
+        shape21.setBackground(new java.awt.Color(110, 163, 210));
         shape21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         shape22.setBackground(new java.awt.Color(255, 255, 255));
@@ -1026,39 +1086,39 @@ public class ManageFrame extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Ngày lập");
         shape21.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(0, 0, 0));
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Mã nhân viên");
         shape21.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 80, -1));
 
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Mã phiếu");
         shape21.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
 
-        shape23.setBackground(new java.awt.Color(126, 186, 239));
+        shape23.setBackground(new java.awt.Color(110, 163, 210));
         shape23.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Mã sản phẩm");
         shape23.add(jLabel20);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Tên sản phẩm");
         shape23.add(jLabel21);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Số lượng");
         shape23.add(jLabel22);
@@ -1067,103 +1127,49 @@ public class ManageFrame extends javax.swing.JFrame {
 
         AddRemoveProduct.add(shape21, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 460, 310));
 
-        shape24.setBackground(new java.awt.Color(126, 187, 222));
+        shape24.setBackground(new java.awt.Color(119, 176, 210));
+        shape24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         shape25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        shape24.add(shape25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
-        shape26.setBackground(new java.awt.Color(126, 187, 222));
+        shape26.setBackground(new java.awt.Color(119, 176, 210));
         shape26.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel110.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel110.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel110.setForeground(new java.awt.Color(255, 255, 255));
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel110.setText("MÃ NHÂN VIÊN");
         shape26.add(jLabel110);
 
         jLabel111.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel111.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel111.setForeground(new java.awt.Color(255, 255, 255));
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel111.setText("MÃ PHIẾU");
         shape26.add(jLabel111);
 
         jLabel112.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel112.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel112.setForeground(new java.awt.Color(255, 255, 255));
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel112.setText("NGÀY LẬP");
         shape26.add(jLabel112);
 
-        jLabel113.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel113.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel113.setText("SỬA");
-        shape26.add(jLabel113);
+        shape24.add(shape26, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 12, 500, 34));
 
-        jLabel114.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel114.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel114.setText("XÓA");
-        shape26.add(jLabel114);
+        shape17.setBackground(new java.awt.Color(255, 255, 255));
 
-        shape27.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel14.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
+        javax.swing.GroupLayout shape17Layout = new javax.swing.GroupLayout(shape17);
+        shape17.setLayout(shape17Layout);
+        shape17Layout.setHorizontalGroup(
+            shape17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
+        shape17Layout.setVerticalGroup(
+            shape17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout shape27Layout = new javax.swing.GroupLayout(shape27);
-        shape27.setLayout(shape27Layout);
-        shape27Layout.setHorizontalGroup(
-            shape27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape27Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        shape27Layout.setVerticalGroup(
-            shape27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape27Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout shape24Layout = new javax.swing.GroupLayout(shape24);
-        shape24.setLayout(shape24Layout);
-        shape24Layout.setHorizontalGroup(
-            shape24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape24Layout.createSequentialGroup()
-                .addGroup(shape24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(shape24Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(shape25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(shape24Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(shape27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape24Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(shape26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        shape24Layout.setVerticalGroup(
-            shape24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape24Layout.createSequentialGroup()
-                .addComponent(shape25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(shape26, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(shape27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        shape24.add(shape17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 490, 43));
 
         AddRemoveProduct.add(shape24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 510, 310));
 
@@ -1191,7 +1197,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel82.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
         jLabel82.setText("Thông tin chi tiết");
-        EmployeePanel.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1020, -1));
+        EmployeePanel.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1030, -1));
 
         jLabel83.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel83.setForeground(new java.awt.Color(42, 148, 208));
@@ -1230,89 +1236,57 @@ public class ManageFrame extends javax.swing.JFrame {
 
         EmployeePanel.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
 
-        shape10.setBackground(new java.awt.Color(126, 187, 222));
+        shape10.setBackground(new java.awt.Color(119, 176, 210));
+        shape10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         shape11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        shape10.add(shape11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
-        shape12.setBackground(new java.awt.Color(255, 255, 255));
+        shape12.setBackground(new java.awt.Color(119, 176, 210));
         shape12.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel85.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel85.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel85.setForeground(new java.awt.Color(255, 255, 255));
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel85.setText("MÃ NHÂN VIÊN");
         shape12.add(jLabel85);
 
         jLabel86.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel86.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel86.setForeground(new java.awt.Color(255, 255, 255));
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel86.setText("TÊN NHÂN VIÊN");
         shape12.add(jLabel86);
 
         jLabel87.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel87.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel87.setForeground(new java.awt.Color(255, 255, 255));
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel87.setText("CHỨC VỤ");
+        jLabel87.setText("SỐ ĐIỆN THOẠI");
         shape12.add(jLabel87);
 
         jLabel88.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel88.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel88.setForeground(new java.awt.Color(255, 255, 255));
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel88.setText("GIỚI TÍNH");
         shape12.add(jLabel88);
 
-        jLabel89.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel89.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel89.setText("SỬA");
-        shape12.add(jLabel89);
+        shape10.add(shape12, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 950, 34));
 
-        jLabel90.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel90.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel90.setText("XÓA");
-        shape12.add(jLabel90);
+        shape27.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout shape27Layout = new javax.swing.GroupLayout(shape27);
+        shape27.setLayout(shape27Layout);
+        shape27Layout.setHorizontalGroup(
+            shape27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 950, Short.MAX_VALUE)
         );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 37, Short.MAX_VALUE)
+        shape27Layout.setVerticalGroup(
+            shape27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout shape10Layout = new javax.swing.GroupLayout(shape10);
-        shape10.setLayout(shape10Layout);
-        shape10Layout.setHorizontalGroup(
-            shape10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape10Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(shape11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape10Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(shape10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(shape12, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
-                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
-        );
-        shape10Layout.setVerticalGroup(
-            shape10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(shape10Layout.createSequentialGroup()
-                .addComponent(shape11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(shape12, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 185, Short.MAX_VALUE))
-        );
+        shape10.add(shape27, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 46, 950, 43));
 
-        EmployeePanel.add(shape10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 950, 280));
+        EmployeePanel.add(shape10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 280));
 
         button10.setBackground(new java.awt.Color(118, 199, 150));
         button10.setForeground(new java.awt.Color(255, 255, 255));
@@ -1342,33 +1316,34 @@ public class ManageFrame extends javax.swing.JFrame {
         button13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         EmployeePanel.add(button13, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 30));
 
-        shape13.setBackground(new java.awt.Color(126, 187, 222));
+        shape13.setBackground(new java.awt.Color(119, 176, 210));
         shape13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel92.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel92.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel92.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel92.setText("Mã nhân viên");
-        shape13.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 100, -1));
+        shape13.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 220, -1));
 
         jLabel93.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel93.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel93.setForeground(new java.awt.Color(255, 255, 255));
         jLabel93.setText("Giới tính :");
-        shape13.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 110, -1));
+        shape13.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 110, -1));
 
         jLabel94.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
         jLabel94.setText("Địa chỉ :");
-        shape13.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 120, -1));
+        shape13.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 120, -1));
 
         jLabel95.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("E-Mail :");
-        shape13.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 120, -1));
+        shape13.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 120, -1));
 
         jLabel96.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel96.setForeground(new java.awt.Color(255, 255, 255));
         jLabel96.setText("CMND :");
-        shape13.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 60, -1));
+        shape13.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 60, -1));
 
         jPanel22.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -1386,26 +1361,22 @@ public class ManageFrame extends javax.swing.JFrame {
         shape13.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 156, 122, -1));
 
         jLabel97.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel97.setForeground(new java.awt.Color(255, 255, 255));
         jLabel97.setText("Ngày tham gia :");
-        shape13.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 120, -1));
+        shape13.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 120, -1));
 
         jLabel98.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel98.setForeground(new java.awt.Color(255, 255, 255));
         jLabel98.setText("Ngày sinh :");
-        shape13.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 80, -1));
-
-        jLabel99.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel99.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel99.setText("Số điện thoại :");
-        shape13.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 110, -1));
+        shape13.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 80, -1));
 
         jLabel100.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel100.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel100.setText("CHỨC VỤ");
-        shape13.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 70, -1));
+        shape13.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, -1));
 
-        jPanel23.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel23.setBackground(new java.awt.Color(119, 176, 210));
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -1418,117 +1389,246 @@ public class ManageFrame extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        shape13.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 110, 3));
+        shape13.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 220, 3));
+
+        shape3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel91.setBackground(new java.awt.Color(0, 0, 0));
         jLabel91.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel91.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel91.setText("TÊN NHÂN VIÊN");
-        shape13.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        EmployeePanel.add(shape13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 950, 240));
+        javax.swing.GroupLayout shape3Layout = new javax.swing.GroupLayout(shape3);
+        shape3.setLayout(shape3Layout);
+        shape3Layout.setHorizontalGroup(
+            shape3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, shape3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        shape3Layout.setVerticalGroup(
+            shape3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shape3Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel91)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        shape13.add(shape3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 200));
+
+        EmployeePanel.add(shape13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
 
         TabbedPane.addTab("<html><div style=\"padding: 5px 11px\">Nhân viên</div>", EmployeePanel);
 
         OrderPanel.setBackground(new java.awt.Color(255, 255, 255));
         OrderPanel.setForeground(new java.awt.Color(255, 255, 255));
         OrderPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        OrderPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 150, 37, -1));
 
-        jPanel11.setBackground(new java.awt.Color(43, 133, 161));
+        jLabel104.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel104.setForeground(new java.awt.Color(42, 148, 208));
+        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
+        jLabel104.setText("Thông tin chi tiết");
+        OrderPanel.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1030, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("   QUẢN LÝ ĐƠN HÀNG");
+        jLabel108.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel108.setForeground(new java.awt.Color(42, 148, 208));
+        jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel108.setText("Danh sách hóa đơn");
+        OrderPanel.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 300, 30));
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
+        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+        OrderPanel.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 190, 30));
+
+        jLabel109.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(42, 148, 208));
+        jLabel109.setText("QUẢN LÝ HÓA ĐƠN");
+        OrderPanel.add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 50));
+
+        jPanel21.setBackground(new java.awt.Color(42, 148, 208));
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-
-        OrderPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1018, -1));
-
-        jLabel51.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel51.setText("Thông tin chi tiết");
-        OrderPanel.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 118, 1018, -1));
-
-        jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel50.setText("Quản lý đơn hàng");
-        OrderPanel.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 1018, -1));
-
-        shape3.setBackground(new java.awt.Color(126, 187, 222));
-
-        javax.swing.GroupLayout shape3Layout = new javax.swing.GroupLayout(shape3);
-        shape3.setLayout(shape3Layout);
-        shape3Layout.setHorizontalGroup(
-            shape3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
-        );
-        shape3Layout.setVerticalGroup(
-            shape3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        OrderPanel.add(shape3, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 156, -1, 213));
+        OrderPanel.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
+
+        shape36.setBackground(new java.awt.Color(126, 187, 222));
+        shape36.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        shape37.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        shape36.add(shape37, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
+
+        shape38.setBackground(new java.awt.Color(126, 187, 222));
+        shape38.setLayout(new java.awt.GridLayout(1, 0));
+
+        jLabel113.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel113.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel113.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel113.setText("MÃ NHÂN VIÊN");
+        shape38.add(jLabel113);
+
+        jLabel114.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel114.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel114.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel114.setText("MÃ KHÁCH HÀNG");
+        shape38.add(jLabel114);
+
+        jLabel115.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel115.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel115.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel115.setText("MÃ HÓA ĐƠN");
+        shape38.add(jLabel115);
+
+        jLabel116.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel116.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel116.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel116.setText("NGÀY HÓA ĐƠN");
+        shape38.add(jLabel116);
+
+        shape36.add(shape38, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 950, 34));
+
+        shape39.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout shape39Layout = new javax.swing.GroupLayout(shape39);
+        shape39.setLayout(shape39Layout);
+        shape39Layout.setHorizontalGroup(
+            shape39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 950, Short.MAX_VALUE)
+        );
+        shape39Layout.setVerticalGroup(
+            shape39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 43, Short.MAX_VALUE)
+        );
+
+        shape36.add(shape39, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 46, 950, 43));
+
+        OrderPanel.add(shape36, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 290));
+
+        button14.setBackground(new java.awt.Color(118, 199, 150));
+        button14.setForeground(new java.awt.Color(255, 255, 255));
+        button14.setText("XUẤT EXCEL");
+        button14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        OrderPanel.add(button14, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 30));
+
+        button18.setBackground(new java.awt.Color(118, 199, 150));
+        button18.setForeground(new java.awt.Color(255, 255, 255));
+        button18.setText("SEARCH");
+        button18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        OrderPanel.add(button18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 90, 30));
+
+        button19.setBackground(new java.awt.Color(118, 199, 150));
+        button19.setForeground(new java.awt.Color(255, 255, 255));
+        button19.setText("NHẬP EXCEL");
+        button19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        OrderPanel.add(button19, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 30));
+
+        shape40.setBackground(new java.awt.Color(119, 176, 210));
+        shape40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("CHI TIẾT HÓA ĐƠN");
+        shape40.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+
+        shape42.setBackground(new java.awt.Color(255, 255, 255));
+        shape42.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel90.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel90.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel90.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel90.setText("GIÁ TRỊ HÓA ĐƠN");
+        shape42.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 6, -1, 27));
+
+        jLabel117.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel117.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel117.setText("Giá trị đơn hàng :");
+        shape42.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 45, -1, -1));
+
+        jLabel118.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel118.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel118.setText("Số tiền giảm :");
+        shape42.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jLabel119.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel119.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel119.setText("TỔNG :");
+        shape42.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+
+        jLabel121.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel121.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel121.setText("Tổng số lượng :");
+        shape42.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setText("jLabel4");
+        shape42.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
+
+        shape40.add(shape42, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 290, 230));
+
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Giá"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        shape40.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 560, 200));
+
+        OrderPanel.add(shape40, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
 
         TabbedPane.addTab("<html><div style=\"padding: 5px 14px\">Hóa đơn</div>", OrderPanel);
 
         ReportPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ReportPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel7.setBackground(new java.awt.Color(43, 133, 161));
-
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("THỐNG KÊ");
-
-        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel54.setText("Tháng :");
-
-        jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setForeground(new java.awt.Color(153, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel54)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel23)
-                .addContainerGap(33, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel54))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel31.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel31.setBackground(new java.awt.Color(119, 176, 210));
 
         jPanel37.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1545,6 +1645,7 @@ public class ManageFrame extends javax.swing.JFrame {
             .addGap(0, 450, Short.MAX_VALUE)
         );
 
+        jLabel57.setBackground(new java.awt.Color(119, 176, 210));
         jLabel57.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(0, 0, 0));
         jLabel57.setText("NHÂN VIÊN");
@@ -1627,7 +1728,9 @@ public class ManageFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel34.setBackground(new java.awt.Color(153, 153, 153));
+        ReportPanel.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 136, -1, -1));
+
+        jPanel34.setBackground(new java.awt.Color(119, 176, 210));
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1725,7 +1828,9 @@ public class ManageFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel28.setBackground(new java.awt.Color(153, 153, 153));
+        ReportPanel.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 156, -1, -1));
+
+        jPanel28.setBackground(new java.awt.Color(119, 176, 210));
 
         jPanel33.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1834,7 +1939,9 @@ public class ManageFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel36.setBackground(new java.awt.Color(102, 102, 102));
+        ReportPanel.add(jPanel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 185, -1, -1));
+
+        jPanel36.setBackground(new java.awt.Color(119, 176, 210));
 
         jPanel38.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1944,71 +2051,89 @@ public class ManageFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel40.setBackground(new java.awt.Color(153, 255, 99));
+        ReportPanel.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(759, 209, 265, -1));
 
-        jLabel79.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel79.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel79.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel79.setText("XUẤT FILE EXCEL");
+        jLabel122.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel122.setForeground(new java.awt.Color(42, 148, 208));
+        jLabel122.setText("THỐNG KÊ");
+        ReportPanel.add(jLabel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 50));
 
-        javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
-        jPanel40.setLayout(jPanel40Layout);
-        jPanel40Layout.setHorizontalGroup(
-            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+        jPanel24.setBackground(new java.awt.Color(42, 148, 208));
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
-        jPanel40Layout.setVerticalGroup(
-            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel79, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout ReportPanelLayout = new javax.swing.GroupLayout(ReportPanel);
-        ReportPanel.setLayout(ReportPanelLayout);
-        ReportPanelLayout.setHorizontalGroup(
-            ReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(ReportPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(ReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ReportPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))))
+        ReportPanel.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
+
+        button20.setBackground(new java.awt.Color(118, 199, 150));
+        button20.setForeground(new java.awt.Color(255, 255, 255));
+        button20.setText("XUẤT EXCEL");
+        button20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ReportPanel.add(button20, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 150, 30));
+
+        javax.swing.GroupLayout shape41Layout = new javax.swing.GroupLayout(shape41);
+        shape41.setLayout(shape41Layout);
+        shape41Layout.setHorizontalGroup(
+            shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        ReportPanelLayout.setVerticalGroup(
-            ReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReportPanelLayout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(ReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ReportPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ReportPanelLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportPanelLayout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReportPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+        shape41Layout.setVerticalGroup(
+            shape41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        ReportPanel.add(shape41, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, -1, -1));
+
+        javax.swing.GroupLayout shape43Layout = new javax.swing.GroupLayout(shape43);
+        shape43.setLayout(shape43Layout);
+        shape43Layout.setHorizontalGroup(
+            shape43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        shape43Layout.setVerticalGroup(
+            shape43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        ReportPanel.add(shape43, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, -1, -1));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        ReportPanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, -1, -1));
+
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ReportPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 80, 30));
+
+        jLabel36.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("Tháng :");
+        ReportPanel.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(-63, 0, -1, 40));
+
+        jLabel79.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel79.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel79.setText("Tháng :");
+        ReportPanel.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 30));
 
         TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Thống kê</div>", ReportPanel);
 
@@ -2016,7 +2141,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1028, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2029,7 +2154,7 @@ public class ManageFrame extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1028, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2079,6 +2204,14 @@ public class ManageFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
 
     public static void main(String args[]) {
       
@@ -2126,15 +2259,20 @@ public class ManageFrame extends javax.swing.JFrame {
     private GUI.SaleGroup.LoginGui.Component.Button button11;
     private GUI.SaleGroup.LoginGui.Component.Button button12;
     private GUI.SaleGroup.LoginGui.Component.Button button13;
+    private GUI.SaleGroup.LoginGui.Component.Button button14;
     private GUI.SaleGroup.LoginGui.Component.Button button15;
     private GUI.SaleGroup.LoginGui.Component.Button button17;
+    private GUI.SaleGroup.LoginGui.Component.Button button18;
+    private GUI.SaleGroup.LoginGui.Component.Button button19;
     private GUI.SaleGroup.LoginGui.Component.Button button2;
+    private GUI.SaleGroup.LoginGui.Component.Button button20;
     private GUI.SaleGroup.LoginGui.Component.Button button3;
     private GUI.SaleGroup.LoginGui.Component.Button button4;
     private GUI.SaleGroup.LoginGui.Component.Button button5;
     private GUI.SaleGroup.LoginGui.Component.Button button6;
     private GUI.SaleGroup.LoginGui.Component.Button button7;
     private GUI.SaleGroup.LoginGui.Component.Button button8;
+    private GUI.SaleGroup.LoginGui.Component.Button button9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2142,6 +2280,7 @@ public class ManageFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel107;
@@ -2153,8 +2292,20 @@ public class ManageFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
+    private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel122;
+    private javax.swing.JLabel jLabel123;
+    private javax.swing.JLabel jLabel124;
+    private javax.swing.JLabel jLabel125;
+    private javax.swing.JLabel jLabel126;
+    private javax.swing.JLabel jLabel127;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2174,6 +2325,8 @@ public class ManageFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -2249,11 +2402,8 @@ public class ManageFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
@@ -2261,6 +2411,7 @@ public class ManageFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
@@ -2275,19 +2426,22 @@ public class ManageFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel40;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextPane jTextPane1;
     private GUI.ManageGroup.ComponentPanel.PanelAdd panelAdd3;
     private GUI.ManageGroup.BackgroundShape.Shape shape1;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape10;
@@ -2311,9 +2465,23 @@ public class ManageFrame extends javax.swing.JFrame {
     private GUI.ManageGroup.BackgroundShape.Shape shape27;
     private GUI.ManageGroup.BackgroundShape.Shape shape28;
     private GUI.ManageGroup.BackgroundShape.Shape shape29;
-    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape3;
+    private GUI.ManageGroup.BackgroundShape.Shape shape3;
     private GUI.ManageGroup.BackgroundShape.Shape shape30;
+    private GUI.ManageGroup.BackgroundShape.Shape shape31;
+    private GUI.ManageGroup.BackgroundShape.Shape shape32;
+    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape33;
+    private GUI.ManageGroup.BackgroundShape.Shape shape34;
+    private GUI.ManageGroup.BackgroundShape.Shape shape35;
+    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape36;
+    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape37;
+    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape38;
+    private GUI.ManageGroup.BackgroundShape.Shape shape39;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape4;
+    private GUI.ManageGroup.BackgroundShape.Shape shape40;
+    private GUI.ManageGroup.BackgroundShape.Shape shape41;
+    private GUI.ManageGroup.BackgroundShape.Shape shape42;
+    private GUI.ManageGroup.BackgroundShape.Shape shape43;
+    private GUI.ManageGroup.BackgroundShape.Shape shape44;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape5;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape6;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape7;
