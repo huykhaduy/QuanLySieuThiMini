@@ -26,10 +26,4 @@ interface IBusAccessDetail<DataType> {
     boolean edit(int key1, int key2, DataType data);
     // Xoa doi tuong co khoa 1 va khoa 2
     boolean remove(int key1, int key2);
-    // Xoa list doi tuong co khoa 1
-    boolean removeByKey1(int key1);
-    // Xoa list doi tuong co khoa 2
-    boolean removeByKey2(int key2);
-    // Xoa toan bo list
-    boolean removeAll();
 }
