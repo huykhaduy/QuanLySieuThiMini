@@ -67,7 +67,7 @@ public class ScrollPanel extends JScrollPane{
     
     protected int calculateHeight(){
         if (panel.getComponentCount() == 0 || getChildComponentSize().getWidth() == 0 || getChildComponentSize().getHeight() == 0)
-            return (int) panel.getPreferredSize().getHeight();
+            return (int) 0;
         int maxInCol = (int) (panel.getPreferredSize().getWidth() / getChildComponentSize().getWidth());
         int maxInRow = roundToNextInt(panel.getComponentCount()*1.0 / maxInCol);
 //        System.out.println("Max row: "+maxInRow);

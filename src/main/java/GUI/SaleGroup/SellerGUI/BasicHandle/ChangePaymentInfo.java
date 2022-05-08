@@ -24,6 +24,7 @@ public class ChangePaymentInfo {
     private JLabel lbTextDiscount;
     private JLabel lbTextMoney;
     private long total;
+    private String sdt;
     
     public ChangePaymentInfo(){
         
@@ -40,9 +41,10 @@ public class ChangePaymentInfo {
     
     public void calculatePayment(List<ChiTietHoaDon> ListCTHD){
         total = pay.totalBill(ListCTHD);
+        sdt = txtPhoneNumber.isEnabled() ? txtPhoneNumber.getText() : "";
         this.lbTextTotal.setText(pay.totalBill(ListCTHD) + "");
-        this.lbTextDiscount.setText((pay.discountBillByPoint(txtPhoneNumber.getText(), total) + pay.discountBillByVoucher(txtVoucher.getText(),total)) + "");
-        this.lbTextMoney.setText(pay.payForBillAfterDiscount(txtVoucher.getText(), txtPhoneNumber.getText(), total) + "");
+        this.lbTextDiscount.setText((pay.discountBillByPoint(sdt, total) + pay.discountBillByVoucher(txtVoucher.getText(),total)) + "");
+        this.lbTextMoney.setText(pay.payForBillAfterDiscount(txtVoucher.getText(), sdt, total) + "");
 
     }
 }
