@@ -13,14 +13,10 @@ import DAL.DataAcessObject.VoucherDAO;
 import DAL.DataModels.ChiTietHoaDon;
 import DAL.DataModels.GiamGiaSP;
 import DAL.DataModels.HoaDon;
+import DAL.DataModels.KhachHang;
 import DAL.DataModels.SanPham;
 import DAL.DataModels.Voucher;
-import java.util.Date;
-import java.time.LocalDateTime;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -37,6 +33,8 @@ public class PayAction {
     private final CheckInfoSale check = new CheckInfoSale();
     
     private HoaDon hoaDon;
+    private KhachHang khachHang;
+    private Voucher voucher;
     private int maHD;
     private int maKH, maNV, soVoucher;
     private long total;
@@ -102,19 +100,24 @@ public class PayAction {
     
     //Hàm tính giá trị giảm của voucher
     public long discountBillByVoucher(String maVoucher, long total){
-        Voucher voucher;
+//        Voucher voucher;
+        voucher = null;
         if(check.hasVoucher(maVoucher)){
             voucher = voucherDAO.select(maVoucher);
-            if(total >= voucher.getGiaTriToiThieu())
+            if(total >= voucher.getGiaTriToiThieu() && voucher.getSoLuotSD() > 0){
+                //Set lại lượt sử dụng
+                voucher.setSoLuotSD(voucher.getSoLuotSD() - 1);
                 return (long) voucher.getKmToiDa() > (voucher.getPtGiam()*total) ? (voucher.getPtGiam()*total) : voucher.getKmToiDa();
+            }
         }
         return 0;
     }
     
     public long discountBillByPoint(String sdt, long total){
+        khachHang = null;
         if(check.isPassengerExist(sdt) && check.canUsePoint(sdt)){
-            long diemThuong = khachHangDAO.selectByPhoneNumber(sdt).getDiemThuong();
-            khachHangDAO.selectByPhoneNumber(sdt).setDiemThuong(diemThuong - 1000);
+            khachHang = khachHangDAO.selectByPhoneNumber(sdt);
+            khachHang.setDiemThuong(khachHang.getDiemThuong() - 1000);
             return (long) (total*(0.1));
         }
         return 0;
@@ -124,20 +127,34 @@ public class PayAction {
         return total - (discountBillByVoucher(maVoucher, total) + discountBillByPoint(sdt, total));
     }
     
-    //Lưu hóa đơn
-    public boolean storeBill(String hinhthuc, long total, int maNV, String sdt, String maVoucher){
+    //Lưu hóa đơn -> Truyền disVoucher và disPoint nhầm xác nhận xem nhưng loại giảm giá nào được sử dụng để dễ thay đổi dữ liệu
+    public boolean storeBill(String hinhthuc, long total, long disVoucher, long disPoint, int maNV, String sdt, String maVoucher){
         
         this.setSoVoucher(maVoucher);
-        long discount = discountBillByVoucher(maVoucher, total) + discountBillByPoint(sdt, total);
-        int maKH = 0;
-        if(check.isPassengerExist(sdt)){
-            maKH = khachHangDAO.selectByPhoneNumber(sdt).getMaKH();
-        }
         
+        //Nếu là khách hàng thân thiết kiểm tra xem có sử dụng điểm thưởng không
+        if(check.isPassengerExist(sdt)){
+            //Nếu không sử dụng thì lấy khách hàng từ cơ sở dữ liệu về
+            //ngược lại thì đối tượng khách hàng đã được lấy từ hàm discountByPoint
+            if(disPoint == 0)
+                khachHang = khachHangDAO.selectByPhoneNumber(sdt);
+            khachHang.setDiemThuong(khachHang.getDiemThuong() + ((total - (disPoint + disVoucher))/1000));
+        }    
+        
+        maKH = khachHang == null ? 0 : khachHang.getMaKH();
+
         hoaDon = new HoaDon(0,new Timestamp(System.currentTimeMillis()),hinhthuc,
-                total, discount, maKH, maNV, this.soVoucher,false);
+                total, disVoucher + disPoint, maKH, maNV, this.soVoucher,false);
+        
         
         if(hoaDonDAO.insert(hoaDon)){
+            //Lưu thay đổi điểm thưởng cho khách hàng
+            if(check.isPassengerExist(sdt))
+                khachHangDAO.update(maKH, khachHang);
+            
+            //Thay đổi số lần sử dụng voucher
+            if (disVoucher != 0)
+                voucherDAO.update(maVoucher, voucher);
             this.setMaHD();
             return true;
         }

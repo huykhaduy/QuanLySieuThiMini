@@ -39,4 +39,8 @@ public class KhachHangDAO extends AbtractAccessDatabase<KhachHang> implements IS
     public KhachHang selectByPhoneNumber(String sdt){
         return executeQuery("SELECT * FROM KHACHHANG WHERE SODIENTHOAI = ? AND IS_DELETED = 0", sdt);
     }
+    
+    public KhachHang getNewestKey(){
+          return executeQuery("SELECT * FROM KHACHHANG ORDER BY MAKH DESC LIMIT 1");
+    }
 }

@@ -266,6 +266,7 @@ public class OptionPaneBill extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Thêm phương thức lưu hóa đơn vào file tại đây
         this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 //    /**

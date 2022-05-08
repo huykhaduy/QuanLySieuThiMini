@@ -36,9 +36,12 @@ public class CheckInfoSale {
     
     //Hàm này được gọi sau khi kiểm tra khách hàng đã tồn tại
     public boolean canUsePoint(String sdt){
-        return khDAO.selectByPhoneNumber(sdt).getDiemThuong() >= 1000;
+        if(isPassengerExist(sdt)){
+            return khDAO.selectByPhoneNumber(sdt).getDiemThuong() >= 1000;
+        }
+        return false;
     }
-    
+        
    
 //    public static void main(String[] agrv){
 //        CheckInfoSale c = new CheckInfoSale();

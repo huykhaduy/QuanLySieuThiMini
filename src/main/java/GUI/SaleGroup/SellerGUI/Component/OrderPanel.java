@@ -88,8 +88,22 @@ public class OrderPanel extends ScrollPanel{
         this.panel.remove(orderItem);
         this.revalidate();
         this.repaint();
+        this.panel.setPreferredSize(new Dimension((int)this.panel.getPreferredSize().getWidth(),calculateHeight()));
         this.calculatePayment();
         return true;
+    }
+    
+    
+    public boolean removeAllOrderItem(){
+        if(this.panel.getComponents().length != 0){
+            this.panel.removeAll();
+            this.revalidate();
+            this.repaint();
+            this.panel.setPreferredSize(new Dimension((int)this.panel.getPreferredSize().getWidth(),calculateHeight()));
+            this.calculatePayment();
+            return true;
+        }
+        return false;
     }
     
     public void addOrderItemOrIncrementByOne(SanPham sp){
