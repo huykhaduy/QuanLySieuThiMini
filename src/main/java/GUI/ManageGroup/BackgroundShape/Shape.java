@@ -14,7 +14,7 @@ import java.awt.Graphics2D;
  */
 public class Shape extends javax.swing.JPanel {
 
-    private int radi = 50;
+    private int radi = 30;
 
     {
         setOpaque(false);
