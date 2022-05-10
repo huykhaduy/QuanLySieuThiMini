@@ -18,14 +18,9 @@ public class SanPhamPanel extends javax.swing.JPanel {
      */
     public SanPhamPanel() {
         initComponents();
-        customize();
+      
     }
-    
-    private void customize(){
-        jLabel48.setIconTextGap(10);
-//        jPanel1.setPreferredSize(new Dimension(900,284));
-        jScrollPane1.setPreferredSize(new Dimension(0, 284));
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,31 +39,17 @@ public class SanPhamPanel extends javax.swing.JPanel {
         productDetailPanel1 = new GUI.ManageGroup.ComponentPanel.ProductDetailPanel();
         jLabel48 = new javax.swing.JLabel();
         button6 = new GUI.SaleGroup.LoginGui.Component.Button();
-        shape1 = new GUI.ManageGroup.BackgroundShape.Shape();
-        shape8 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        productTableRow2 = new GUI.ManageGroup.ComponentPanel.ProductTableRow();
-        productTableRow1 = new GUI.ManageGroup.ComponentPanel.ProductTableRow();
-        productTableRow3 = new GUI.ManageGroup.ComponentPanel.ProductTableRow();
-        productTableRow4 = new GUI.ManageGroup.ComponentPanel.ProductTableRow();
-        productTableRow5 = new GUI.ManageGroup.ComponentPanel.ProductTableRow();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1020, 760));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel81.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel81.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel81.setForeground(new java.awt.Color(42, 148, 208));
         jLabel81.setText("QUẢN LÝ SẢN PHẨM");
-        add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 50));
+        add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 50));
 
         jPanel6.setBackground(new java.awt.Color(42, 148, 208));
 
@@ -83,124 +64,59 @@ public class SanPhamPanel extends javax.swing.JPanel {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 10, 30));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
 
         button8.setBackground(new java.awt.Color(118, 199, 150));
         button8.setForeground(new java.awt.Color(255, 255, 255));
         button8.setText("NHẬP EXCEL");
         button8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 110, 30));
+        add(button8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 30));
 
         button5.setBackground(new java.awt.Color(118, 199, 150));
         button5.setForeground(new java.awt.Color(255, 255, 255));
         button5.setText("XUẤT EXCEL");
         button5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 110, 30));
+        add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 30));
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(42, 148, 208));
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
         jLabel47.setText("Thông tin chi tiết");
-        add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 180, -1));
-        add(productDetailPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 170, -1));
+        add(productDetailPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 960, 230));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(42, 148, 208));
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/list-icon.png"))); // NOI18N
         jLabel48.setText("Danh sách sản phẩm");
-        add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
+        add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
         button6.setBackground(new java.awt.Color(118, 199, 150));
         button6.setForeground(new java.awt.Color(255, 255, 255));
         button6.setText("+THÊM SẢN PHẨM");
         button6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, -1));
+        add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, -1, 30));
 
-        shape1.setBackground(new java.awt.Color(119, 176, 210));
-        shape1.setRadi(50);
-        shape1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jTable1.setBackground(new java.awt.Color(119, 176, 210));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Mã sản phẩm", "Tên sản phẩm", "Số lương", "Giá"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
-        shape8.setBackground(new java.awt.Color(119, 176, 210));
-        shape8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel18.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("ẢNH");
-        shape8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 60, 34));
-
-        jLabel32.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("TÊN SẢN PHẨM");
-        shape8.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 0, 340, 34));
-
-        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("ĐƠN GIÁ");
-        shape8.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 60, 34));
-
-        jLabel35.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("SỬA ");
-        shape8.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 80, 34));
-
-        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setText("SỐ LƯỢNG");
-        shape8.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 70, 34));
-
-        jLabel36.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("XÓA");
-        shape8.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 70, 34));
-
-        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("MÃ SP");
-        shape8.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 70, 34));
-
-        shape1.add(shape8, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 6, 930, -1));
-
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setMaximumSize(new java.awt.Dimension(938, 284));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(938, 284));
-
-        jPanel1.setBackground(new java.awt.Color(119, 176, 210));
-        jPanel1.setMaximumSize(new java.awt.Dimension(1000, 280));
-        jPanel1.setMinimumSize(new java.awt.Dimension(925, 280));
-        jPanel1.setName(""); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(925, 280));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
-        jPanel1.add(productTableRow2);
-        jPanel1.add(productTableRow1);
-        jPanel1.add(productTableRow3);
-        jPanel1.add(productTableRow4);
-        jPanel1.add(productTableRow5);
-
-        jScrollPane1.setViewportView(jPanel1);
-
-        shape1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 940, 280));
-
-        add(shape1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 960, 330));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -208,26 +124,12 @@ public class SanPhamPanel extends javax.swing.JPanel {
     private GUI.SaleGroup.LoginGui.Component.Button button5;
     private GUI.SaleGroup.LoginGui.Component.Button button6;
     private GUI.SaleGroup.LoginGui.Component.Button button8;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel81;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private GUI.ManageGroup.ComponentPanel.ProductDetailPanel productDetailPanel1;
-    private GUI.ManageGroup.ComponentPanel.ProductTableRow productTableRow1;
-    private GUI.ManageGroup.ComponentPanel.ProductTableRow productTableRow2;
-    private GUI.ManageGroup.ComponentPanel.ProductTableRow productTableRow3;
-    private GUI.ManageGroup.ComponentPanel.ProductTableRow productTableRow4;
-    private GUI.ManageGroup.ComponentPanel.ProductTableRow productTableRow5;
-    private GUI.ManageGroup.BackgroundShape.Shape shape1;
-    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape8;
     // End of variables declaration//GEN-END:variables
 }

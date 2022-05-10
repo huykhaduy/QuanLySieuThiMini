@@ -6,8 +6,12 @@ package BUS.ManagerServices;
 
 import DAL.DataAcessObject.LoginDetailDAO;
 import DAL.DataAcessObject.NhanVienDAO;
-import DAL.DataAcessObject.TaiKhoanDAO;
+import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataModels.NhanVien;
+import DAL.DataModels.SanPham;
+import GUI.ManageGroup.ManageItem.ManageFrame.ManageFrame;
+import GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.PanelAddManageNhanvien;
+import java.util.List;
 
 /**
  *
@@ -15,7 +19,33 @@ import DAL.DataModels.NhanVien;
  */
 public class ManageNhanVien {
          private final NhanVienDAO nhanVienDAO;
+         private final SanPhamDAO sanPhamDAO;
          public ManageNhanVien(){
-         nhanVienDAO = new NhanVienDAO();
+               nhanVienDAO = new NhanVienDAO();
+               sanPhamDAO = new SanPhamDAO();
+        }
+             public void ts(){
+              List<SanPham> SP =  sanPhamDAO.selectAll();
+              PanelAddManageNhanvien addNhanVien = new PanelAddManageNhanvien();
+             for (SanPham N : SP) 
+                 {
+                     System.out.println(N);
+                     int maSanPham = N.getMaSP();
+                     addNhanVien.setMaSanPham(maSanPham);
+                      N.getGiaTien();
+                     
+                      N.getSoLuong();
+                      N.getTenSP();
+                  }
+             
+          
+             
+            
 }
+         public static void main(String[] args) {
+              ManageNhanVien mnv = new ManageNhanVien();
+              mnv.ts();
+        
+    }
+     
 }
