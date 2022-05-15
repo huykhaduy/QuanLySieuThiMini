@@ -4,8 +4,12 @@
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
+import DAL.DataModels.SanPham;
 import java.awt.Dimension;
+import java.util.Vector;
 import javax.swing.BorderFactory;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -18,9 +22,27 @@ public class SanPhamPanel extends javax.swing.JPanel {
      */
     public SanPhamPanel() {
         initComponents();
-      
+//        loadTable();
     }
 
+    public void loadTable(){
+        DefaultTableModel tableModel =(DefaultTableModel) jTable1.getModel();
+        tableModel.addRow(new Object[]{"Xin chào các ban", "Hello cat"});
+        jTable1.setModel(tableModel);
+        TableColumn column = null;
+        for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            column = jTable1.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0 -> column.setPreferredWidth(30);
+                case 1 -> column.setPreferredWidth(50);
+                case 2 -> column.setPreferredWidth(50);
+                case 3 -> column.setPreferredWidth(50);
+                default -> {
+                }
+            }
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +71,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jLabel81.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel81.setForeground(new java.awt.Color(42, 148, 208));
         jLabel81.setText("QUẢN LÝ SẢN PHẨM");
-        add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 50));
+        add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 50));
 
         jPanel6.setBackground(new java.awt.Color(42, 148, 208));
 
@@ -64,7 +86,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 10, 30));
 
         button8.setBackground(new java.awt.Color(118, 199, 150));
         button8.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,15 +127,20 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Mã sản phẩm", "Tên sản phẩm", "Số lương", "Giá"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Long.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));

@@ -123,7 +123,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CHI TIẾT HÓA ĐƠN");
-        shape40.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        shape40.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, -1));
 
         shape42.setBackground(new java.awt.Color(255, 255, 255));
         shape42.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -190,15 +190,20 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jTable2.setBackground(new java.awt.Color(119, 176, 210));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Mã hóa đơn", "Số hóa đơn", "Mã khách hàng", "Ngày hóa đơn"
+                "Mã hóa đơn", "Mã khách hàng", "Tên khách hàng", "Mã nhân viên", "Tên nhân viên", "Ngày hóa đơn"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable2);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));

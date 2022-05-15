@@ -7,6 +7,9 @@ import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import BUS.ManagerServices.ManageNhanVien;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 public class ManageFrame extends javax.swing.JFrame {
 
@@ -15,23 +18,32 @@ public class ManageFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        //customsizeTabbedPane();
+        customsizeTabbedPane();
        
         
     }
     
-//    private void customsizeTabbedPane(){
-//        TabbedPane.setIconAt(1, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/product-icon.png")));
-//        TabbedPane.setIconAt(2, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/discount-icon.png")));
-//        TabbedPane.setIconAt(3, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/nhapxuat-icon.png")));
-//        TabbedPane.setIconAt(4, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/employee-icon.png")));
-//        TabbedPane.setIconAt(5, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/order-icon.png")));
-//        TabbedPane.setIconAt(6, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/report-icon.png")));
-//        TabbedPane.setIconAt(8, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/signout-icon.png")));
-//        TabbedPane.setEnabledAt(0, false);
-//        TabbedPane.setEnabledAt(7, false);
-//        TabbedPane.setSelectedIndex(1);
-//    }
+    private void customsizeTabbedPane(){
+        TabbedPane.setIconAt(1, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/product-icon.png")));
+        TabbedPane.setIconAt(2, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/discount-icon.png")));
+        TabbedPane.setIconAt(3, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/nhapxuat-icon.png")));
+        TabbedPane.setIconAt(4, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/employee-icon.png")));
+        TabbedPane.setIconAt(5, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/order-icon.png")));
+        TabbedPane.setIconAt(6, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/report-icon.png")));
+        TabbedPane.setIconAt(8, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/signout-icon.png")));
+        TabbedPane.setEnabledAt(0, false);
+        TabbedPane.setEnabledAt(7, false);
+        Timer timer = new Timer(1500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TabbedPane.setSelectedIndex(1);
+             }
+        });
+        timer.setRepeats(false);
+        timer.start();
+
+        
+    }
 
 
     @SuppressWarnings("unchecked")

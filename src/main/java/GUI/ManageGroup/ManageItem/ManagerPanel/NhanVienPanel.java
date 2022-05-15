@@ -232,15 +232,27 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Mã nhân viên", "Tên nhân viên", "Chức vụ", "SĐT"
+                "Mã nhân viên", "Tên nhân viên", "Chức vụ", "SĐT", "Số đơn đã bán", "Tổng tiền thu"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Long.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));

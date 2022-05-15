@@ -74,7 +74,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
+        add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 10, 30));
 
         button15.setBackground(new java.awt.Color(118, 199, 150));
         button15.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +114,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jLabel120.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel120.setForeground(new java.awt.Color(42, 148, 208));
         jLabel120.setText("QUẢN LÝ PHIẾU NHẬP");
-        add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 50));
+        add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 50));
 
         jLabel102.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(42, 148, 208));
