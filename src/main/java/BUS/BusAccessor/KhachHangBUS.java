@@ -12,11 +12,11 @@ import java.util.List;
  *
  * @author huykh
  */
-public class KhachHangBUS implements IBussAccess<KhachHang>{
+public class KhachHangBUS implements IBussAccess<KhachHang,Integer>{
     private final KhachHangDAO khDAO = new KhachHangDAO();
     
     @Override
-    public KhachHang get(int maKhachHang) {
+    public KhachHang get(Integer maKhachHang) {
        return khDAO.select(maKhachHang);
     }
 
@@ -31,12 +31,12 @@ public class KhachHangBUS implements IBussAccess<KhachHang>{
     }
 
     @Override
-    public boolean edit(int maKhachHang, KhachHang kh) {
+    public boolean edit(Integer maKhachHang, KhachHang kh) {
         return khDAO.update(maKhachHang, kh);
     }
 
     @Override
-    public boolean remove(int maKhachHang) {
+    public boolean remove(Integer maKhachHang) {
        return khDAO.delete(maKhachHang);
     }
 
