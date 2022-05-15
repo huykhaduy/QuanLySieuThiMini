@@ -10,17 +10,17 @@ import java.util.List;
  *
  * @author huykh
  */
-interface IBussAccess<DataType> {
+interface IBussAccess<DataType,id> {
     // Lay thong tin doi tuong
-    DataType get(int key);  
+    DataType get(id key);  
     // Lay tat ca doi tuong
     List<DataType> getAll();
     // Them doi tuong
     boolean add(DataType data);
     // Chinh sua doi tuong
-    boolean edit(int key, DataType data);
+    boolean edit(id key, DataType data);
     // Xoa doi tuong
-    boolean remove(int key);
+    boolean remove(id key);
     // Lay khoa chinh moi nhat
     DataType getNewest();
 }
