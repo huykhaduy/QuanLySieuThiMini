@@ -43,8 +43,6 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTable3 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,7 +56,8 @@ public class NhapXuatPanel extends javax.swing.JPanel {
 
         jLabel103.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(42, 148, 208));
-        jLabel103.setText("QUẢN LÝ PHIẾU XUẤT");
+        jLabel103.setText("QUẢN LÝ PHIẾU HỦY");
+        jLabel103.setToolTipText("");
         add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, 50));
 
         jPanel20.setBackground(new java.awt.Color(42, 148, 208));
@@ -81,7 +80,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         button15.setText("+TẠO PHIẾU XUẤT");
         button15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 150, 30));
+        add(button15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 150, 30));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -109,12 +108,12 @@ public class NhapXuatPanel extends javax.swing.JPanel {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 10, 30));
+        add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 10, 30));
 
         jLabel120.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel120.setForeground(new java.awt.Color(42, 148, 208));
         jLabel120.setText("QUẢN LÝ PHIẾU NHẬP");
-        add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 50));
+        add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 50));
 
         jLabel102.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(42, 148, 208));
@@ -128,7 +127,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         button17.setText("+TẠO PHIẾU NHẬP");
         button17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 150, 30));
+        add(button17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 150, 30));
 
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -144,7 +143,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 480, 310));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 500, 320));
 
         jTable2.setBackground(new java.awt.Color(119, 176, 210));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -160,7 +159,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 480, 310));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 500, 310));
 
         jTable3.setBackground(new java.awt.Color(119, 176, 210));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -176,7 +175,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 460, 310));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 470, 310));
 
         jTable4.setBackground(new java.awt.Color(119, 176, 210));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
@@ -192,29 +191,17 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 460, 310));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Tổng :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, 30));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Tổng :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, 30));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 460, 320));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button15;
     private GUI.SaleGroup.LoginGui.Component.Button button17;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel120;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel20;

@@ -12,9 +12,9 @@ import DAL.DataModels.LoaiSanPham;
  *
  * @author huykh
  */
-public class LoaiSanPhamBUS extends AbstractBUSAccessor<LoaiSanPham, LoaiSanPhamDAO>{
-    public LoaiSanPhamBUS(){
-        setClazz(LoaiSanPhamDAO.class);
-        createDAO(clazz);
+public class LoaiSanPhamBUS extends AbstractBUSAccessor<LoaiSanPham, Integer, LoaiSanPhamDAO>{
+    public LoaiSanPhamBUS() {
+        LoaiSanPhamDAO dao = new LoaiSanPhamDAO();
+        this.setDao(dao);
     }
 }
