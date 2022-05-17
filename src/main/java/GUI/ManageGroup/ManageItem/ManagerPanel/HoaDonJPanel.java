@@ -4,17 +4,62 @@
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
+import BUS.BusAccessor.HoaDonBUS;
+import BUS.BusAccessor.KhachHangBUS;
+import BUS.BusAccessor.NhanVienBUS;
+import BUS.BusAccessor.SanPhamBUS;
+import DAL.DataAcessObject.ChiTietHoaDonDAO;
+import DAL.DataModels.ChiTietHoaDon;
+import DAL.DataModels.HoaDon;
+import DAL.DataModels.KhachHang;
+import DAL.DataModels.NhanVien;
+import DAL.DataModels.SanPham;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ACER
  */
 public class HoaDonJPanel extends javax.swing.JPanel {
-
+    private static ChiTietHoaDonDAO cthoaDonDAO = new ChiTietHoaDonDAO();
+    private static  HoaDonBUS hoaDonBUS =new HoaDonBUS();
+    private static  NhanVienBUS nhanVienBUS=new NhanVienBUS();
+    private static  KhachHangBUS khachHangBUS=new KhachHangBUS();
+    private static  SanPhamBUS sanPhamBUS=new SanPhamBUS();
+    private static List<HoaDon> hdList=hoaDonBUS.getAll();
     /**
      * Creates new form HoaDonJPanel
      */
+    DefaultTableModel modelJTABLE2;
+        DefaultTableModel modelJTABLE1;
     public HoaDonJPanel() {
         initComponents();
+        CustomHeader(jTable1);
+        CustomHeader(jTable2);
+        modelJTABLE2 = (DefaultTableModel) jTable2.getModel();
+        DatatoTable();
+    }
+    public void CustomHeader(JTable jt){
+        jt.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,15));
+        jt.getTableHeader().setOpaque(false);
+        jt.getTableHeader().setBackground(new Color(32,136,203));
+        jt.getTableHeader().setForeground(new Color(255,255,255));
+    }
+    public void DatatoTable(){
+        int i=0;
+        for(HoaDon hd:hdList){
+            hd=hdList.get(i);
+            NhanVien nv= nhanVienBUS.get(hd.getMaNV());
+            KhachHang kh= khachHangBUS.get(hd.getMaKH());
+            modelJTABLE2.addRow(new Object[]{hd.getMaHD(),hd.getMaKH(),kh.getTenKH(),hd.getMaNV(),nv.getTenNV(),hd.getNgayHD()});
+            i++;
+        }
+        jTable2.setModel(modelJTABLE2);
     }
 
     /**
@@ -43,6 +88,9 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel119 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -64,13 +112,11 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel108.setText("Danh sách hóa đơn");
         add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 300, 30));
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
         jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField9KeyReleased(evt);
             }
         });
         add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 190, 30));
@@ -107,6 +153,11 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         button18.setText("SEARCH");
         button18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button18ActionPerformed(evt);
+            }
+        });
         add(button18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 90, 30));
 
         button19.setBackground(new java.awt.Color(118, 199, 150));
@@ -130,38 +181,44 @@ public class HoaDonJPanel extends javax.swing.JPanel {
 
         jLabel90.setBackground(new java.awt.Color(0, 0, 0));
         jLabel90.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel90.setForeground(new java.awt.Color(0, 0, 0));
         jLabel90.setText("GIÁ TRỊ HÓA ĐƠN");
         shape42.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 6, -1, 27));
 
         jLabel117.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel117.setForeground(new java.awt.Color(0, 0, 0));
         jLabel117.setText("Giá trị đơn hàng :");
         shape42.add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 45, -1, -1));
 
         jLabel118.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel118.setForeground(new java.awt.Color(0, 0, 0));
         jLabel118.setText("Số tiền giảm :");
         shape42.add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel119.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel119.setForeground(new java.awt.Color(0, 0, 0));
         jLabel119.setText("TỔNG :");
         shape42.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jLabel121.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel121.setForeground(new java.awt.Color(0, 0, 0));
         jLabel121.setText("Tổng số lượng :");
-        shape42.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        shape42.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("jLabel4");
         shape42.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("jLabel1");
+        shape42.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 46, 60, 20));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("jLabel2");
+        shape42.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 50, 20));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setText("jLabel5");
+        shape42.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 50, 20));
+
         shape40.add(shape42, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 290, 230));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -188,6 +245,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         add(shape40, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
 
         jTable2.setBackground(new java.awt.Color(119, 176, 210));
+        jTable2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -204,20 +262,89 @@ public class HoaDonJPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
+        jTable2.setFocusable(false);
+        jTable2.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        jTable2.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTable2mouseclick(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable2);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void JTable2mouseclick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable2mouseclick
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+        int soluong=0;
+        String i=String.valueOf(jTable2.getValueAt(jTable2.getSelectedRow(),0));
+        jLabel1.setText("");
+        jLabel2.setText("");
+        jLabel5.setText("");
+        jLabel4.setText("");
+        jTable1.setModel(new DefaultTableModel(null,new String[]{"Mã sản phẩm","Tên sản phẩm","Số lượng","Giá"}));
+        modelJTABLE1= (DefaultTableModel) jTable1.getModel();
+        HoaDon hd= hoaDonBUS.get(Integer.parseInt(i));
+        List<ChiTietHoaDon> listChiTiet = cthoaDonDAO.selectAllById1(hd.getMaHD());
+        for (ChiTietHoaDon cthd : listChiTiet) {
+            SanPham sp = sanPhamBUS.get(cthd.getMaSP());
+            soluong+=cthd.getSoLuong();
+            modelJTABLE1.addRow(new Object[]{cthd.getMaSP(),sp.getTenSP(),cthd.getSoLuong(),cthd.getGiaTien()});
+            jLabel1.setText(String.valueOf(hd.getTongTien()));
+            jLabel5.setText(String.valueOf(hd.getTienGiam()));
+            jLabel2.setText(String.valueOf(soluong));
+            jLabel4.setText(String.valueOf(hd.getTongTien()-hd.getTienGiam()));
+            
+         }
+        jTable1.setModel(modelJTABLE1);
+        
+        
+//        int i=jTable1.getSelectedRow();
+//        Student s= studentList.get(0);
+//        jTextField1.setText(s.getMaSV());
+//        jTextField2.setText(s.getTenSV());
+//        jTextField3.setText(s.getDiem()+"");
+    }//GEN-LAST:event_JTable2mouseclick
+
+    private void button18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button18ActionPerformed
+        // Tìm kiếm theo mã hóa đơn
+        boolean test = false;
+        if(jTextField9.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "NHẬP MÃ HÓA ĐƠN VÀO MỤC TÌM KIẾM");
+        }
+        else{
+            for(HoaDon hd:hdList){
+                if(jTextField9.getText().equals(String.valueOf(hd.getMaHD())) ){
+                    jTable2.setModel(new DefaultTableModel(null,new String[]{"Mã hóa đơn","Mã khách hàng","Tên khách hàng","Mã nhân viên","Tên nhân viên","Ngày hóa đơn"}));
+                    modelJTABLE2= (DefaultTableModel) jTable2.getModel();
+                    NhanVien nv= nhanVienBUS.get(hd.getMaNV());
+                    KhachHang kh= khachHangBUS.get(hd.getMaKH());
+                    modelJTABLE2.addRow(new Object[]{hd.getMaHD(),hd.getMaKH(),kh.getTenKH(),hd.getMaNV(),nv.getTenNV(),hd.getNgayHD()});
+                    test=true;
+                }
+            }
+            if(!test) JOptionPane.showMessageDialog(null, "KOTIMTHAY");
+            jTable2.setModel(modelJTABLE2);
+        }
+        
+    }//GEN-LAST:event_button18ActionPerformed
+
+    private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
+        // reset table:
+        if(jTextField9.getText().equals("")){
+            jTable2.setModel(new DefaultTableModel(null,new String[]{"Mã hóa đơn","Mã khách hàng","Tên khách hàng","Mã nhân viên","Tên nhân viên","Ngày hóa đơn"}));
+             modelJTABLE2= (DefaultTableModel) jTable2.getModel();
+             DatatoTable();
+        }
+    }//GEN-LAST:event_jTextField9KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button14;
     private GUI.SaleGroup.LoginGui.Component.Button button18;
     private GUI.SaleGroup.LoginGui.Component.Button button19;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
@@ -225,8 +352,10 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JScrollPane jScrollPane1;

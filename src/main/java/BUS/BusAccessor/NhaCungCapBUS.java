@@ -16,8 +16,8 @@ public class NhaCungCapBUS implements IBussAccess<NhaCungCap, Integer>{
     private final NhaCungCapDAO dao = new NhaCungCapDAO();
 
     @Override
-    public NhaCungCap get(Integer key) {
-        return dao.select(key);
+    public NhaCungCap get(Integer maNCC) {
+        return dao.select(maNCC);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class NhaCungCapBUS implements IBussAccess<NhaCungCap, Integer>{
     }
 
     @Override
-    public boolean edit(Integer key, NhaCungCap data) {
-        return dao.update(key, data);
+    public boolean edit(Integer maNhaCungCap, NhaCungCap ncc) {
+       return dao.update(maNhaCungCap, ncc);
     }
 
     @Override

@@ -14,6 +14,7 @@ import java.util.List;
  * @param <Data> where T : new()
  * @param <DAO> where T : new()
  */
+
 public abstract class AbstractBUSAccessor<Data, Key, DAO extends ISimpleAccess<Data, Key>> implements IBussAccess<Data, Key> {
     protected DAO dao;
 
