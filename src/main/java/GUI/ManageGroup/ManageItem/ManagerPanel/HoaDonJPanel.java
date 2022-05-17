@@ -139,7 +139,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
+        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 10, 30));
 
         button14.setBackground(new java.awt.Color(118, 199, 150));
         button14.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,7 +198,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
 
         jLabel121.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel121.setText("Tổng số lượng :");
-        shape42.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        shape42.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
@@ -211,7 +211,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("jLabel2");
-        shape42.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 50, 20));
+        shape42.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 50, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("jLabel5");
