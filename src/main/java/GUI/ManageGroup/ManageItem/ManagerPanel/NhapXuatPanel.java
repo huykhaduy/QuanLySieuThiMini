@@ -132,15 +132,20 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Mã phiếu nhập", "Mã nhân viên", "Ngày lập"
+                "Mã phiếu nhập", "Mã nhân viên", "Tên nhân viên", "Ngày lập"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 500, 320));
@@ -148,13 +153,10 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTable2.setBackground(new java.awt.Color(119, 176, 210));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Mã phiếu xuất", "Mã nhân viên", "Ngày lập"
+                "Mã phiếu xuất", "Mã nhân viên", "Tên nhân viên", "Ngày lập"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -164,15 +166,30 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTable3.setBackground(new java.awt.Color(119, 176, 210));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Giá", "Số lượng"
+                "Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Số lượng"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Long.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 470, 310));
@@ -180,15 +197,20 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTable4.setBackground(new java.awt.Color(119, 176, 210));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Mã sản phẩm", "Giá", "Số lượng"
+                "Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Số lượng"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Long.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(jTable4);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 460, 320));

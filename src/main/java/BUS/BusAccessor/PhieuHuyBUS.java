@@ -5,15 +5,15 @@
 package BUS.BusAccessor;
 
 import DAL.DataAcessObject.ISimpleAccess;
-import DAL.DataAcessObject.LoaiSanPhamDAO;
-import DAL.DataModels.LoaiSanPham;
+import DAL.DataAcessObject.PhieuHuyDAO;
+import DAL.DataModels.PhieuHuy;
 
 /**
  *
  * @author huykh
  */
-public class LoaiSanPhamBUS extends AbstractBUSAccessor<LoaiSanPham, Integer, LoaiSanPhamDAO>{
-    public LoaiSanPhamBUS() {
-        this.setDao(new LoaiSanPhamDAO());
+public class PhieuHuyBUS extends AbstractBUSAccessor<PhieuHuy, Integer, PhieuHuyDAO>{
+    public PhieuHuyBUS(){
+        setDao(new PhieuHuyDAO());
     }
 }

@@ -4,13 +4,19 @@
  */
 package BUS.BusAccessor;
 
+import DAL.DataModels.ChiTietPhieuHuy;
+import java.util.List;
+
 /**
  *
  * @author huykh
  */
 public class BUSTest {
     public static void main(String[] args){
-        LoaiSanPhamBUS bus = new LoaiSanPhamBUS();
-        System.out.println(bus.getNewest());
+        CTPhieuHuyBUS bus  = new CTPhieuHuyBUS();
+        List<ChiTietPhieuHuy> list = bus.getAll();
+        for (ChiTietPhieuHuy item : list){
+            System.out.println(item);
+        }
     }
 }
