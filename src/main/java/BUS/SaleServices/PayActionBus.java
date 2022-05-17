@@ -23,7 +23,7 @@ import java.util.List;
  *
  * @author TuanMinh
  */
-public class PayAction {
+public class PayActionBus {
     private final GiamGiaSPDAO giamGiaDAO = new GiamGiaSPDAO();
     private final SanPhamDAO sanPhamDAO = new SanPhamDAO();
     private final HoaDonDAO hoaDonDAO = new HoaDonDAO();

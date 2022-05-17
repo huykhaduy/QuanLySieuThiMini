@@ -73,7 +73,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel46.setText("Danh sách khuyến mãi");
         add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 210, 40));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -116,6 +115,11 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         button3.setText("SEARCH");
         button3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button3ActionPerformed(evt);
+            }
+        });
         add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 100, 30));
 
         shape9.setBackground(new java.awt.Color(119, 176, 210));
@@ -204,7 +208,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jTextArea3.setEditable(false);
         jTextArea3.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea3.setColumns(20);
-        jTextArea3.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
         jScrollPane6.setViewportView(jTextArea3);
@@ -224,7 +227,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel5.setText("Danh sách sản phẩm giảm giá");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 270, 40));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(255, 255, 255));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -305,6 +307,10 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

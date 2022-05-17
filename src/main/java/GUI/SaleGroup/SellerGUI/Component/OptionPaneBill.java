@@ -68,7 +68,8 @@ public class OptionPaneBill extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(51, 0, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(270, 2147483647));
         setMinimumSize(new java.awt.Dimension(270, 470));
         setPreferredSize(new java.awt.Dimension(270, 470));
@@ -332,6 +333,7 @@ public class OptionPaneBill extends javax.swing.JFrame {
     private javax.swing.JLabel lbTextTong;
     // End of variables declaration//GEN-END:variables
     private javax.swing.JTable table;
+    private static final OptionPaneBill bill = new OptionPaneBill();
     
     public final void moveBillPanel(){
         this.setLocationRelativeTo(null);
@@ -360,7 +362,7 @@ public class OptionPaneBill extends javax.swing.JFrame {
 //        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 //        Date date = new Date();
         //Không hỏi lại chỉ bấm OK và in hóa đơn (lưu vào file)
-        OptionPaneBill bill = new OptionPaneBill();
+//        OptionPaneBill bill = new OptionPaneBill();
         bill.lbTextDay.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
         bill.lbTextTime.setText(new SimpleDateFormat("HH:mm").format(new Date()));
         bill.lbTextEmployee.setText(maNV +"");
@@ -372,12 +374,10 @@ public class OptionPaneBill extends javax.swing.JFrame {
         bill.lbTextHinhThuc.setText(hinhthuc);
         
         int panelHeight = bill.PanelTable.getHeight();
-        System.out.println(panelHeight);
         String[] name = {"Tên", "SL", "T.Tiền"};
         bill.table = new JTable(data, name);
         bill.PanelTable.setPreferredSize(new Dimension(bill.table.getPreferredSize()));
         bill.PanelTable.add(bill.table);
-//        bill.PanelTable.add(bill.table.getTableHeader());
         bill.PanelTable.revalidate();
         bill.PanelTable.repaint();
         bill.resizeBill((int)bill.table.getPreferredSize().getHeight() - panelHeight);
@@ -391,16 +391,16 @@ public class OptionPaneBill extends javax.swing.JFrame {
         this.repaint();
     }
     
-//    public static void main(String[] argv){
-//        String[][] data = {{"<html>Mirinda", "5", "51000"},
-//            {"<html>Milo", "4", "20000"},
-//            {"<html>Ovaltine", "7", "65000"},
-//            {"<html>Nước suối đóng chai", "2", "14000"},
-//            {"<html>Nước suối hết hạn", "2", "14000"},
-//            {"<html>Nước suối nhật bản", "2", "14000"}};
-//        
-//        OptionPaneBill.showBillPane("Tiền mặt", 150000, 5, "Võ Minh Tuấn", 15000, 12354, data);
-//    }
+    public static void main(String[] argv){
+        String[][] data = {{"<html>Mirinda", "5", "51000"},
+            {"<html>Milo", "4", "20000"},
+            {"<html>Ovaltine", "7", "65000"},
+            {"<html>Nước suối đóng chai", "2", "14000"},
+            {"<html>Nước suối hết hạn", "2", "14000"},
+            {"<html>Nước suối nhật bản", "2", "14000"}};
+        
+        OptionPaneBill.showBillPane("Tiền mặt", 150000, 5, "Võ Minh Tuấn", 15000, 12354, data);
+    }
 }
     
 

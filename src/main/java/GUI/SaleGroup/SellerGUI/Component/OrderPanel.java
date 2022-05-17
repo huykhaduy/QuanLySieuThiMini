@@ -13,6 +13,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 
 /**
  *
@@ -20,10 +21,16 @@ import java.util.List;
  */
 public class OrderPanel extends ScrollPanel{
     private final ChangePaymentInfo changePayment;
-    
-    public OrderPanel(int width, int height, ChangePaymentInfo changePayment){
+    private final JButton bnThanhToan;
+        
+    public OrderPanel(int width, int height, ChangePaymentInfo changePayment, JButton bnThanhToan){
         super(width, height);
         this.changePayment = changePayment;
+        this.bnThanhToan = bnThanhToan;
+    }
+    
+    public JButton getBnThanhToan(){
+        return bnThanhToan;
     }
     
     public void addToPanel(SanPham sp) {
@@ -118,5 +125,10 @@ public class OrderPanel extends ScrollPanel{
     
     public void calculatePayment(){
         this.changePayment.calculatePayment(getListChiTietHoaDon(0));
+    }
+    
+    public void checkButtonThanhToan(){
+        if(this.panel.getComponentCount() == 0)
+            this.bnThanhToan.setEnabled(false);
     }
 }

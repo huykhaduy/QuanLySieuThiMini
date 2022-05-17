@@ -33,13 +33,11 @@ public class RemoveOrderItemAction implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-//        orderpanel.removeOrderItemHasProductId(sp.getMaSP());
-//        List<ChiTietHoaDon> cthd = orderpanel.getListChiTietHoaDon(0);
-//        for (ChiTietHoaDon CTHD : cthd)
-//            System.out.println(CTHD);
+
         orderpanel.removeOrderItem(orderItem);
-//        orderpanel.revalidate();
-//        orderpanel.repaint();
+        //đếm số lượng sản phẩm trong panel order
+        orderpanel.checkButtonThanhToan();
+
     }
     
 }

@@ -22,6 +22,7 @@ public class ClearAllAction extends MouseAdapter{
     @Override
     public void mousePressed(MouseEvent e) {
         orderPanel.removeAllOrderItem();
+        orderPanel.getBnThanhToan().setEnabled(false);
     }
     
 }
