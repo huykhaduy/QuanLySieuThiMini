@@ -12,9 +12,9 @@ import java.util.List;
  *
  * @author huykh
  */
-public class NhaCungCapBUS implements IBussAccess<NhaCungCap,Integer>{
+public class NhaCungCapBUS implements IBussAccess<NhaCungCap, Integer>{
     private final NhaCungCapDAO dao = new NhaCungCapDAO();
-    
+
     @Override
     public NhaCungCap get(Integer maNCC) {
         return dao.select(maNCC);

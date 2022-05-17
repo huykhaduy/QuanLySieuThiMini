@@ -14,26 +14,15 @@ import java.util.List;
  * @param <Data> where T : new()
  * @param <DAO> where T : new()
  */
-public abstract class AbstractBUSAccessor<Data, DAO extends ISimpleAccess<Data, Integer>> implements IBussAccess<Data,Integer> {
 
-    protected Class<DAO> clazz;
+public abstract class AbstractBUSAccessor<Data, Key, DAO extends ISimpleAccess<Data, Key>> implements IBussAccess<Data, Key> {
     protected DAO dao;
 
     public AbstractBUSAccessor() {
     }
 
-    protected DAO createDAO(Class<DAO> clazz) {
-        try {
-            this.dao = clazz.getDeclaredConstructor().newInstance();
-            return this.dao;
-        } catch (IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException e) {
-            System.out.println("Error create class");
-        }
-        return null;
-    }
-
     @Override
-    public Data get(Integer key) {
+    public Data get(Key key) {
         return dao.select(key);
     }
 
@@ -48,12 +37,12 @@ public abstract class AbstractBUSAccessor<Data, DAO extends ISimpleAccess<Data, 
     }
 
     @Override
-    public boolean edit(Integer key, Data data) {
+    public boolean edit(Key key, Data data) {
         return dao.update(key, data);
     }
 
     @Override
-    public boolean remove(Integer key) {
+    public boolean remove(Key key) {
         return dao.delete(key);
     }
 
@@ -61,14 +50,6 @@ public abstract class AbstractBUSAccessor<Data, DAO extends ISimpleAccess<Data, 
     public Data getNewest() {
         List<Data> list = dao.selectAll();
         return list == null ? null : list.get(list.size() - 1);
-    }
-
-    public Class<DAO> getClazz() {
-        return clazz;
-    }
-
-    public void setClazz(Class<DAO> clazz) {
-        this.clazz = clazz;
     }
 
     public DAO getDao() {
