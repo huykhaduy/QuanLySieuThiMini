@@ -14,7 +14,7 @@ import java.util.List;
  * @param <Data> where T : new()
  * @param <DAO> where T : new()
  */
-public abstract class AbstractBUSAccessor<Data, DAO extends ISimpleAccess<Data, Integer>> implements IBussAccess<Data> {
+public abstract class AbstractBUSAccessor<Data, DAO extends ISimpleAccess<Data, Integer>> implements IBussAccess<Data,Integer> {
 
     protected Class<DAO> clazz;
     protected DAO dao;
@@ -33,7 +33,7 @@ public abstract class AbstractBUSAccessor<Data, DAO extends ISimpleAccess<Data, 
     }
 
     @Override
-    public Data get(int key) {
+    public Data get(Integer key) {
         return dao.select(key);
     }
 
@@ -48,12 +48,12 @@ public abstract class AbstractBUSAccessor<Data, DAO extends ISimpleAccess<Data, 
     }
 
     @Override
-    public boolean edit(int key, Data data) {
+    public boolean edit(Integer key, Data data) {
         return dao.update(key, data);
     }
 
     @Override
-    public boolean remove(int key) {
+    public boolean remove(Integer key) {
         return dao.delete(key);
     }
 
