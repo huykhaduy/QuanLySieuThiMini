@@ -4,13 +4,14 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
-import BUS.SaleServices.PayAction;
+import BUS.SaleServices.PayActionBus;
 import DAL.DataModels.ChiTietHoaDon;
 import GUI.SaleGroup.SellerGUI.Component.OptionPaneBill;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -27,15 +28,17 @@ public class PayActionListener implements java.awt.event.ActionListener{
     private JLabel lbDiscount;
     private JLabel lbMoney;
     private OrderPanel orderPanel;
-    private final PayAction pay = new PayAction();
+    private JButton btnThanhToan;
+    private final PayActionBus pay = new PayActionBus();
     
-    public PayActionListener(int maNV, JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTotal,JLabel lbDiscount,JLabel lbMoney, OrderPanel orderPanel){
+    public PayActionListener(int maNV, JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTotal,JLabel lbDiscount,JLabel lbMoney, JButton btnThanhToan ,OrderPanel orderPanel){
         this.maNV = maNV;
         this.txtVoucher = txtVoucher;
         this.txtPhoneNumber = txtPhoneNumber;
         this.lbTotal = lbTotal;
         this.lbDiscount = lbDiscount;
         this.lbMoney = lbMoney;
+        this.btnThanhToan = btnThanhToan;
         this.orderPanel = orderPanel;
     }
 
@@ -72,14 +75,17 @@ public class PayActionListener implements java.awt.event.ActionListener{
                 }
                 
                 OptionPaneBill.showBillPane("Tiền mặt", total, maNV, tenKH, discount, pay.getMaHD(), datas);
-   
+                
             }
+        setBackFirstStatus();
     }
     
     public void setBackFirstStatus(){
+        orderPanel.removeAllOrderItem();
         txtVoucher.setText("");
         txtPhoneNumber.setText("");
         txtPhoneNumber.setEnabled(true);
+        btnThanhToan.setEnabled(false);
         lbTotal.setText("0");
         lbDiscount.setText("0");
         lbMoney.setText("0");
