@@ -57,7 +57,7 @@ public class VoucherValidate {
     
     
     public static boolean isTimeStampValid(String inputString){ 
-    SimpleDateFormat format = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    SimpleDateFormat format = new java.text.SimpleDateFormat("dd-MM-yyyy") ;
     try{
        format.parse(inputString);
        return true;
