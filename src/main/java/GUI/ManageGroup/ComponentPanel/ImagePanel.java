@@ -19,6 +19,7 @@ import org.imgscalr.Scalr;
 
 public class ImagePanel extends JPanel{
     private ImageIcon image;
+    private String path;
 
     public Icon getImage() {
         return image;
@@ -26,6 +27,17 @@ public class ImagePanel extends JPanel{
 
     public void setImage(ImageIcon image) {
         this.image = image;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+        this.image = new ImageIcon("src/main/java/Assets/Image/" + path + ".png");
+        this.revalidate();
+        this.repaint();
     }
     
     @Override

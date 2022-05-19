@@ -70,9 +70,7 @@ public class OptionPaneBill extends javax.swing.JFrame {
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(51, 0, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(270, 2147483647));
         setMinimumSize(new java.awt.Dimension(270, 470));
-        setPreferredSize(new java.awt.Dimension(270, 470));
         getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -391,16 +389,16 @@ public class OptionPaneBill extends javax.swing.JFrame {
         this.repaint();
     }
     
-    public static void main(String[] argv){
-        String[][] data = {{"<html>Mirinda", "5", "51000"},
-            {"<html>Milo", "4", "20000"},
-            {"<html>Ovaltine", "7", "65000"},
-            {"<html>Nước suối đóng chai", "2", "14000"},
-            {"<html>Nước suối hết hạn", "2", "14000"},
-            {"<html>Nước suối nhật bản", "2", "14000"}};
-        
-        OptionPaneBill.showBillPane("Tiền mặt", 150000, 5, "Võ Minh Tuấn", 15000, 12354, data);
-    }
+//    public static void main(String[] argv){
+//        String[][] data = {{"<html>Mirinda", "5", "51000"},
+//            {"<html>Milo", "4", "20000"},
+//            {"<html>Ovaltine", "7", "65000"},
+//            {"<html>Nước suối đóng chai", "2", "14000"},
+//            {"<html>Nước suối hết hạn", "2", "14000"},
+//            {"<html>Nước suối nhật bản", "2", "14000"}};
+//        
+//        OptionPaneBill.showBillPane("Tiền mặt", 150000, 5, "Võ Minh Tuấn", 15000, 12354, data);
+//    }
 }
     
 
