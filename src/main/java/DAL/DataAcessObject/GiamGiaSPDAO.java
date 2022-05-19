@@ -38,8 +38,8 @@ public class GiamGiaSPDAO extends AbtractAccessDatabase<GiamGiaSP> implements IS
     }
     
     public GiamGiaSP selectByMaSP(Integer maSP){
-        return executeQuery("SELECT * FROM GIAMGIASP WHERE MASP = ? AND IS_DELETED = 0", maSP);
+        return executeQuery("SELECT * FROM GIAMGIASP WHERE MASP = ? AND IS_DELETED = 0 AND NOW()<= NGAYKT", maSP);
     }
-
+    
     
 }

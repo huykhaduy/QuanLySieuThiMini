@@ -35,4 +35,33 @@ public class PhieuNhapDAO extends AbtractAccessDatabase<PhieuNhap> implements IS
     public List<PhieuNhap> selectAll() {
         return executeQueryList("SELECT * FROM PHIEUNHAP WHERE IS_DELETED = 0");
     }
+    
+    public List<PhieuNhap> selectAndFilter(String maNV, String maPN, String ngayBD, String ngayKT){
+        if (maNV.isEmpty() && maPN.isEmpty()){
+            return executeQueryList("SELECT * FROM PHIEUNHAP WHERE IS_DELETED = 0 AND (NGAYLAP >= ? AND NGAYLAP <= ?)",
+                ngayBD, ngayKT);
+        }
+        else if (maNV.isEmpty()){
+            return executeQueryList("SELECT * FROM PHIEUNHAP WHERE IS_DELETED = 0 AND (MAPHIEU = ? AND NGAYLAP >= ? AND NGAYLAP <= ?)",
+                maPN, ngayBD, ngayKT);
+        }   
+        else if (maPN.isEmpty()){
+            int maNVConvert = 0;
+            try{
+                maNVConvert = Integer.parseInt(maNV);
+            } catch (NumberFormatException e){
+                String tenNV = "%"+maNV+"%";
+                return executeQueryList("SELECT PHIEUNHAP.* FROM PHIEUNHAP, NHANVIEN " +
+                                " WHERE PHIEUNHAP.IS_DELETED = 0 AND (PHIEUNHAP.NGAYLAP >= ? AND PHIEUNHAP.NGAYLAP <= ?)" +
+                                " AND NHANVIEN.MANV = PHIEUNHAP.MANV" +
+                                " AND NHANVIEN.TENNV LIKE ?",
+                        ngayBD, ngayKT, tenNV);
+            }
+            return executeQueryList("SELECT * FROM PHIEUNHAP WHERE IS_DELETED = 0 AND (MANV = ? AND NGAYLAP >= ? AND NGAYLAP <= ?)",
+                    maNVConvert, ngayBD, ngayKT);
+
+        }
+        return executeQueryList("SELECT * FROM PHIEUNHAP WHERE IS_DELETED = 0 AND (MANV = ? AND MAPHIEU = ? AND NGAYLAP >= ? AND NGAYLAP <= ?)",
+                maNV, maPN, ngayBD, ngayKT);
+    }
 }

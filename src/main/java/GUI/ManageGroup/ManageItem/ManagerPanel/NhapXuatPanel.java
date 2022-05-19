@@ -4,6 +4,11 @@
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
+import GUI.ManageGroup.Theme.NhapHuyPanel;
+import com.raven.datechooser.DateChooser;
+import java.awt.Color;
+import javax.swing.JMenuItem;
+
 /**
  *
  * @author ACER
@@ -14,7 +19,33 @@ public class NhapXuatPanel extends javax.swing.JPanel {
      * Creates new form NhapXuatPanel
      */
     public NhapXuatPanel() {
+        NhapHuyPanel.setup();
         initComponents();
+        setUpPanel();
+    }
+//    mvn install:install-file –Dfile=E:\GitHubDownload\date-chooser-main\date-chooser-main\dist\datechooser.jar -DgroupId=com.raven.datechooser -DartifactId=datechooser -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
+    private void setUpPanel() {
+        JMenuItem itemNhap1 = new JMenuItem("Xem/Sửa thông tin");
+        JMenuItem itemNhap2 = new JMenuItem("Xóa phiếu nhập");
+        dateChooserNhapBd = new DateChooser();
+        dateChooserNhapBd.setForeground(Color.decode("#59ABE3"));
+         dateChooserNhapKt = new DateChooser();
+         dateChooserNhapKt.setForeground(Color.decode("#59ABE3"));
+         dateChooserHuyBd = new DateChooser();
+         dateChooserHuyBd.setForeground(Color.decode("#59ABE3"));
+         dateChooserHuyKt = new DateChooser();
+         dateChooserHuyKt.setForeground(Color.decode("#59ABE3"));
+        dateChooserNhapBd.setTextRefernce(jTextField5);
+        dateChooserNhapKt.setTextRefernce(jTextField17);
+        dateChooserHuyBd.setTextRefernce(jTextField6);
+        dateChooserHuyKt.setTextRefernce(jTextField14);
+//        itemNhap1.addActionListener((ActionListener a) -> {
+//            
+//        });
+//        
+//        itemNhap2.addActionListener((ActionListener a)->{
+//            
+//        });
     }
 
     /**
@@ -39,10 +70,30 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        roundPanel2 = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
+        jTextField5 = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField16 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField17 = new javax.swing.JTextField();
+        jTextField18 = new javax.swing.JTextField();
+        roundPanel3 = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField14 = new javax.swing.JTextField();
+        jTextField15 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,8 +102,8 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jLabel101.setForeground(new java.awt.Color(42, 148, 208));
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
-        jLabel101.setText("Thông tin chi tiết");
-        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 460, -1));
+        jLabel101.setText("Thông tin phiếu hủy");
+        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 180, -1));
 
         jLabel103.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(42, 148, 208));
@@ -77,10 +128,10 @@ public class NhapXuatPanel extends javax.swing.JPanel {
 
         button15.setBackground(new java.awt.Color(118, 199, 150));
         button15.setForeground(new java.awt.Color(255, 255, 255));
-        button15.setText("+TẠO PHIẾU XUẤT");
+        button15.setText("+TẠO PHIẾU HỦY");
         button15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 150, 30));
+        add(button15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 150, 30));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -119,8 +170,8 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jLabel102.setForeground(new java.awt.Color(42, 148, 208));
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel102.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
-        jLabel102.setText("Thông tin chi tiết");
-        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 460, -1));
+        jLabel102.setText("Thông tin phiếu nhập");
+        add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 190, -1));
 
         button17.setBackground(new java.awt.Color(118, 199, 150));
         button17.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,7 +199,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 500, 320));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 490, 330));
 
         jTable2.setBackground(new java.awt.Color(119, 176, 210));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -161,79 +212,174 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 500, 310));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 490, 320));
 
-        jTable3.setBackground(new java.awt.Color(119, 176, 210));
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Số lượng"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Long.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        roundPanel2.setBackground(new java.awt.Color(246, 247, 249));
+        roundPanel2.setRadius(70);
+        roundPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
+        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField5.setText("jTextField1");
+        roundPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 200, 40));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable3);
+        jButton5.setBackground(new java.awt.Color(255, 153, 153));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Xóa lọc kết quả");
+        roundPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 120, 40));
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 470, 310));
+        jButton6.setBackground(new java.awt.Color(0, 153, 204));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Tìm kiếm");
+        roundPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 40));
 
-        jTable4.setBackground(new java.awt.Color(119, 176, 210));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel9.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel9.setText("LỌC PHIẾU NHẬP");
+        jLabel9.setToolTipText("");
+        roundPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 130, 20));
 
-            },
-            new String [] {
-                "Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Số lượng"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Long.class, java.lang.Integer.class
-            };
+        jLabel4.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel4.setText("Từ ngày:");
+        roundPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 70, -1));
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(jTable4);
+        jLabel1.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel1.setText("Đến ngày:");
+        roundPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 70, -1));
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 460, 320));
+        jTextField16.setText("jTextField1");
+        roundPanel2.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, 40));
+
+        jLabel13.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel13.setText("Mã nhân viên");
+        roundPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, -1));
+
+        jLabel14.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel14.setText("Mã phiếu nhập");
+        roundPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
+
+        jTextField17.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField17.setText("jTextField1");
+        roundPanel2.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 210, 40));
+
+        jTextField18.setText("jTextField1");
+        roundPanel2.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 210, 40));
+
+        add(roundPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 470, 290));
+
+        roundPanel3.setBackground(new java.awt.Color(246, 247, 249));
+        roundPanel3.setRadius(70);
+        roundPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField6.setText("jTextField1");
+        roundPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 200, 40));
+
+        jTextField14.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField14.setText("jTextField1");
+        roundPanel3.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 210, 40));
+
+        jTextField15.setText("jTextField1");
+        roundPanel3.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, 40));
+
+        jButton7.setBackground(new java.awt.Color(255, 153, 153));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Xóa lọc kết quả");
+        roundPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 120, 40));
+
+        jButton8.setBackground(new java.awt.Color(0, 153, 204));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Tìm kiếm");
+        roundPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 40));
+
+        jLabel11.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel11.setText("LỌC PHIẾU HỦY");
+        jLabel11.setToolTipText("");
+        roundPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 120, 20));
+
+        jLabel12.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel12.setText("Mã nhân viên");
+        roundPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, -1));
+
+        jLabel5.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel5.setText("Từ ngày:");
+        roundPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 70, -1));
+
+        jLabel6.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel6.setText("Đến ngày:");
+        roundPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 70, -1));
+
+        jLabel10.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel10.setText("Mã phiếu nhập");
+        roundPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
+
+        jTextField13.setText("jTextField1");
+        roundPanel3.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 210, 40));
+
+        add(roundPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 470, 290));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button15;
     private GUI.SaleGroup.LoginGui.Component.Button button17;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private GUI.SaleGroup.SellerGUI.Component.RoundPanel roundPanel2;
+    private GUI.SaleGroup.SellerGUI.Component.RoundPanel roundPanel3;
     // End of variables declaration//GEN-END:variables
+    private DateChooser dateChooserNhapBd;
+    private DateChooser dateChooserNhapKt;
+    private DateChooser dateChooserHuyBd;
+    private DateChooser dateChooserHuyKt;
+
 }

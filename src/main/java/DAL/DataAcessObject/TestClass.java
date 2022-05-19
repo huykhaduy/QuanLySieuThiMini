@@ -11,12 +11,16 @@ public class TestClass {
 //        testNhaCungCap();
 //        testSanPham();
 //        testGiamGiaSP();
-        SanPhamDAO sp = new SanPhamDAO();
-        List<SanPham> list = sp.selectByTenSP("");
-        for (SanPham mysp:list){
-            System.out.println(mysp);
+//        SanPhamDAO sp = new SanPhamDAO();
+//        List<SanPham> list = sp.selectByTenSP("");
+//        for (SanPham mysp:list){
+//            System.out.println(mysp);
+//        }
+        PhieuNhapDAO nhapDAO = new PhieuNhapDAO();
+        List<PhieuNhap> list = nhapDAO.selectAndFilter("2", "", "2022/05/16", "2022/05/18");
+        for (PhieuNhap nhap:list){
+            System.out.println(nhap);
         }
-        
         
     }
 
