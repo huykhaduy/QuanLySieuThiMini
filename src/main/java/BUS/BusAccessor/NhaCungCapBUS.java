@@ -12,11 +12,11 @@ import java.util.List;
  *
  * @author huykh
  */
-public class NhaCungCapBUS implements IBussAccess<NhaCungCap>{
+public class NhaCungCapBUS implements IBussAccess<NhaCungCap, Integer>{
     private final NhaCungCapDAO dao = new NhaCungCapDAO();
-    
+
     @Override
-    public NhaCungCap get(int maNCC) {
+    public NhaCungCap get(Integer maNCC) {
         return dao.select(maNCC);
     }
 
@@ -31,12 +31,12 @@ public class NhaCungCapBUS implements IBussAccess<NhaCungCap>{
     }
 
     @Override
-    public boolean edit(int maNhaCungCap, NhaCungCap ncc) {
+    public boolean edit(Integer maNhaCungCap, NhaCungCap ncc) {
        return dao.update(maNhaCungCap, ncc);
     }
 
     @Override
-    public boolean remove(int key) {
+    public boolean remove(Integer key) {
         return dao.delete(key);
     }
 

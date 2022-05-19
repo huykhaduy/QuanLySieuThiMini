@@ -7,7 +7,6 @@ package GUI.SaleGroup.SellerGUI.Component;
 import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataModels.SanPham;
 import GUI.SaleGroup.SellerGUI.BasicHandle.HandleClickAddEvent;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;

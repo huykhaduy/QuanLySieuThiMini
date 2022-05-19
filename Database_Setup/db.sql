@@ -220,6 +220,18 @@ FOREIGN KEY (MANV) REFERENCES NHANVIEN(MANV);
 ALTER TABLE login_detail ADD CONSTRAINT FK_LOGIN_TAIKHOAN
 FOREIGN KEY (SOTK) REFERENCES taikhoan(SOTK);
 
+# Xóa data cũ
+DELETE FROM GIAMGIASP;
+DELETE FROM TAIKHOAN;
+DELETE FROM NHANVIEN;
+DELETE FROM CHUCVU;
+DELETE FROM SANPHAM;
+DELETE FROM NHACUNGCAP;
+DELETE FROM LOAISANPHAM;
+DELETE FROM VOUCHER;
+DELETE FROM KHACHHANG;
+
+ALTER TABLE LOAISANPHAM AUTO_INCREMENT = 1;
 INSERT INTO `loaisanpham`(`MALOAI`, `TENLOAI`, `MOTA`, `IS_DELETED`)
 VALUES 
        (0,'Tất cả','Tất cả sản phẩm trong cửa hàng', 0),
@@ -229,7 +241,7 @@ VALUES
        (4,'Thực phẩm','Trứng, thịt, cá, rau,....',0),
        (5,'Đồ dùng khác','Kem đánh răng, áo mưa, dù, dầu gội, sữa tắm....',0);
 
-
+ALTER TABLE NHACUNGCAP AUTO_INCREMENT = 1;
 INSERT INTO NHACUNGCAP (MANCC, TENNCC, DIACHI, SDT, EMAIL, IS_DELETED)
 VALUES (1, 'PepsiCo', 'Hoa Kỳ', '028 3821 9436', 'recruitment@intl.pepsico.com',0),
        (2, 'Coca Cola', 'Hoa Kỳ', '028 3896 1000', 'trucle@coca-cola.com',0),
@@ -251,7 +263,7 @@ VALUES (1, 'PepsiCo', 'Hoa Kỳ', '028 3821 9436', 'recruitment@intl.pepsico.com
        (18,'3M  ', 'Hoa Kỳ', '0323921302', 'cs@3M.com.vn',0),
        (19,'Colgate   ', 'Hoa Kỳ', '0321231302', 'cs@Colgate .com.vn',0);
 
-
+ALTER TABLE SANPHAM AUTO_INCREMENT = 1;
 INSERT INTO sanpham
 VALUES (NULL, 'Pepsi', 'Từ thương hiệu nước ngọt có gas nổi tiếng toàn cầu với mùi vị thơm ngon với hỗn hợp hương tự nhiên cùng chất tạo ngọt tổng hợp, giúp xua tan cơn khát và cảm giác mệt mỏi.  Nước ngọt bổ sung năng lượng làm việc mỗi ngày. Cam kết sản phẩm chính hãng, chất lượng và an toàn', 30, 'pepsi', 10600, 1, 1,0),
        (NULL, 'Sprite', 'Hương vị được ưa chuộng tại hơn 190 quốc gia và lọt top những nước giải khát được yêu thích nhất toàn cầu. Với vị chanh tươi mát cùng những bọt ga sảng khoái tê đầu lưỡi giúp bạn đập tan cơn khát ngay tức thì. Sản phẩm cam kết chính hãng, chất lượng và an toàn từ nhà Sprite', 50, 'sprite', 8800, 1, 2,0),
@@ -313,12 +325,131 @@ VALUES (NULL, 'Pepsi', 'Từ thương hiệu nước ngọt có gas nổi tiến
        (NULL, 'Bàn chải đánh răng Colgate 360 Charcoal Spiral xoắn kép', 'Bàn chải đánh răng xuất xứ thương hiệu Mỹ. Bàn chải đánh răng Colgate có lông chải xoắn, phủ than hoạt tính. Bàn chải Colgate 360 Charcoal Spiral xoắn kép có đầu bàn chải to với 30% diện tích lông chải tăng thêm, giúp chải sạch hiệu quả.', 50, 'banchay', 42000, 5, 19,0),
        (NULL, 'Nước súc miệng Colgate Plax Peppermint Fresh 750ml', 'Nước súc miệng Colgate được sản xuất tại Thái Lan. Nước súc miệng giúp làm sạch khoang miệng hiệu quả, chăm sóc nướu và mang lại hơi thở thơm ngát tự nhiên. Nước súc miệng Colgate Plax Peppermint Fresh 750ml cho khoang miệng sạch sẽ, diệt vi khuẩn gây hôi miệng.', 23, 'nuocsucmieng', 126000, 5, 19,0);
 
---Chạy tới đây tự nhiên lỗi mấy dòng này không insert zô được hic hic đem ra insert riêng thì được hoq bít tại s luôn
-INSERT INTO `khachhang`(`MAKH`, `TENKH`, `GIOITINH`, `SODIENTHOAI`, `DIACHI`, `EMAIL`, `DIEMTHUONG`, `IS_DELETED`) 
-VALUES (0,NULL, NULL, NULL, NULL, NULL, NULL, 0)
 
-INSERT INTO `voucher`(`SOVOUCHER`, `MAVOUCHER`, `MOTA`, `NGAYBD`, `NGAYKT`, `GIATRITOITHIEU`, `KMTOIDA`, `PTGIAM`, `SOLUOTSD`, `IS_DELETED`) 
-VALUES (0,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0)
+-- Insert chức vụ
+ALTER TABLE CHUCVU AUTO_INCREMENT = 1;
+INSERT INTO `chucvu`(`MACHUCVU`, `TENCHUCVU`, `MOTA`, `IS_DELETED`)
+VALUES (1,'Nhân viên bán hàng','Thực hiện bán hàng, thanh toán, kiểm tra sản phẩm của cửa hàng',0),
+       (2,'Quản lý cửa hàng','Thực hiện quản lý cửa hàng, nhân viên',0);
 
-INSERT INTO `nhanvien`(`MANV`, `TENNV`, `GIOITINH`, `CMND`, `NGAYSINH`, `SODIENTHOAI`, `EMAIL`, `DIACHI`, `NGAYTHAMGIA`, `MACHUCVU`, `IS_DELETED`) 
-VALUES (0,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0)
+-- Insert nhân viên
+ALTER TABLE NHANVIEN AUTO_INCREMENT = 1;
+INSERT INTO `nhanvien`(`MANV`, `TENNV`, `GIOITINH`, `CMND`, `NGAYSINH`, `SODIENTHOAI`, `EMAIL`, `DIACHI`, `NGAYTHAMGIA`, `MACHUCVU`, `IS_DELETED`) VALUES
+    (1,'Huỳnh Khánh Duy',0,'3120410088','2002-06-11','0123456789','duyne@gmail.com','Nhà Bè, HCM','2022-05-16',1,0),
+    (2,'Trang Thanh Phúc',0,'3120410413','2002-04-24','0123456798','phucne@gmail.com','Quận 8, HCM','2022-05-16',1,0),
+    (3,'Trần Gia Lâm',0,'3120560051','2002-10-16','0123456518','lamne@gmail.com','Quận 8, HCM','2022-05-16',2,0),
+    (4,'Võ Minh Tuấn',0,'3120410591','2002-08-11','0123456728','tuanne@gmail.com','Quận 8, HCM','2022-05-16',2,0),
+    (5,'Vi Đào Tiến Đạt',0,'3120410125','2002-11-26','0123456738','datne@gmail.com','Quận 8, HCM','2022-05-16',1,0);
+
+-- Insert tài khoản
+ALTER TABLE TAIKHOAN AUTO_INCREMENT = 1;
+INSERT INTO `taikhoan`(`SOTK`, `TENTK`, `MATKHAU`, `MANV`, `SOLANSAI`, `NGAYTAO`, `IS_DELETED`) VALUES
+    (1,'nhanvien','nhanvien',1,0,'2022-05-16',0),
+    (2,'thanhphuc','123',2,0,'2022-05-16',0),
+    (3,'gialam','123',3,0,'2022-05-16',0),
+    (4,'admin','admin',4,0,'2022-05-16',0),
+    (5,'tiendat','123',5,0,'2022-05-16',0);
+
+-- Insert khách hàng
+ALTER TABLE KHACHHANG AUTO_INCREMENT = 1;
+INSERT INTO `khachhang`(`MAKH`, `TENKH`, `GIOITINH`, `SODIENTHOAI`, `DIACHI`, `EMAIL`, `DIEMTHUONG`, `IS_DELETED`) VALUES
+	(null,'Phạm Hồng Sơn',0,'0154399297','Nông Cống, Thanh Hóa','hongson@gmail.com',0,0),
+	(null,'Ngô Liên Phương',1,'0844598588','Kon Tum, Kon Tum','lienphuong@gmail.com',0,0),
+	(null,'Đỗ Hải Thanh',1,'0311715027','An Dương, Hải Phòng','haithanh@gmail.com',0,0),
+	(null,'Võ Bạch Yến',1,'0896971539','Dương Kinh, Hải Phòng','bachyen@gmail.com',0,0),
+	(null,'Hồ Duy Tâm',0,'0602273372','KBang, Gia Lai','duytam@gmail.com',0,0),
+	(null,'Lê Cao Minh',0,'0991763662','Bình Thuỷ, Cần Thơ','caominh@gmail.com',0,0),
+	(null,'Trần Mộng Giác',0,'0136845039','Bắc Bình, Bình Thuận','monggiac@gmail.com',0,0),
+	(null,'Lý Mạnh Dũng',0,'0879829915','Duy Tiên, Hà Nam','manhdung@gmail.com',0,0),
+	(null,'Nguyễn Cường Thịnh',0,'0478326352','Yên Lập, Phú Thọ','cuongthinh@gmail.com',0,0),
+	(null,'Dương Hoài Phương',1,'0617876595','Văn Lãng, Lạng Sơn','hoaiphuong@gmail.com',0,0),
+	(null,'Nguyễn Đông Dương',0,'0840854691','Bến Cát, Bình Dương','dongduong@gmail.com',0,0),
+	(null,'Đỗ Kim Phượng',1,'0337596679','Krông Nô, Đắk Nông','kimphuong@gmail.com',0,0),
+	(null,'Lê Diễm Trang',1,'0828538660','Uông Bí, Quảng Ninh','diemtrang@gmail.com',0,0),
+	(null,'Phạm Bích Thoa',1,'0441013903','Tam Nông, Đồng Tháp','bichthoa@gmail.com',0,0),
+	(null,'Hồ Mộng Long',0,'0649772240','Móng Cái, Quảng Ninh','monglong@gmail.com',0,0),
+	(null,'Vũ Hùng Dũng',0,'0336300478','Mộc Châu, Sơn La','hungdung@gmail.com',0,0),
+	(null,'Huỳnh Huy Khánh',0,'0576396002','Nha Trang, Khánh Hòa','huykhanh@gmail.com',0,0),
+	(null,'Đỗ Minh Khiếu',0,'0470107814','Biên Hòa, Đồng Nai','minhkhieu@gmail.com',0,0),
+	(null,'Đặng Hướng Thiện',0,'0656449090','Ninh Hải, Ninh Thuận','huongthien@gmail.com',0,0),
+	(null,'Lê Đình Dương',0,'0414402384','Bắc Giang, Bắc Giang','dinhduong@gmail.com',0,0),
+	(null,'Bùi Nam An',0,'0835310269','Nậm Nhùn, Lai Châu','naman@gmail.com',0,0),
+	(null,'Ngô Đông Nguyên',0,'01069693451','Quảng Trạch, Quảng Bình','dongnguyen@gmail.com',0,0),
+	(null,'Đỗ Danh Văn',0,'0612258069','Thuận Thành, Bắc Ninh','danhvan@gmail.com',0,0),
+	(null,'Nguyễn Hải Nhi',1,'0579869921','Kỳ Sơn, Hoà Bình','hainhi@gmail.com',0,0),
+	(null,'Vũ Cát Cát',1,'0881318321','Vũng Tàu, Bà Rịa - Vũng Tàu','catcat@gmail.com',0,0),
+	(null,'Vũ Cẩm Tú',1,'0712468869','Đức Cơ, Gia Lai','camtu@gmail.com',0,0),
+	(null,'Lê Hữu Tài',0,'0253867053','Hương Thủy, Thừa Thiên Huế','huutai@gmail.com',0,0),
+	(null,'Đặng Hương Nhi',1,'0703901479','Cần Giờ, Hồ Chí Minh','huongnhi@gmail.com',0,0),
+
+
+-- Insert voucher
+ALTER TABLE VOUCHER AUTO_INCREMENT = 1;
+INSERT INTO `voucher`(`SOVOUCHER`, `MAVOUCHER`, `MOTA`, `NGAYBD`, `NGAYKT`, `GIATRITOITHIEU`, `KMTOIDA`, `PTGIAM`, `SOLUOTSD`, `IS_DELETED`) VALUES
+    (null,'GIAM25K','Giảm 25k cho đơn từ 100k','2022-05-16','2022-06-16',100000,25000,100,5000,0),
+    (null,'GIAM10PT','Giảm 10% tối đa 200k','2022-05-16','2022-06-16',0,200000,10,5000,0),
+    (null,'GIAM25PT','Giảm 25% khi mua đơn tối thiểu 100k, giảm tối đa 100k','2022-05-16','2022-06-16',100000,100000,25,5000,0),
+    (null,'GIAM50K','Giảm 50k khi mua đơn từ 200k','2022-05-16','2022-06-16',200000,50000,100,5000,0)
+
+-- Insert giamgiasp
+ALTER TABLE GIAMGIASP AUTO_INCREMENT = 1;
+INSERT INTO `giamgiasp`(`SOPHIEU`, `NGAYBD`, `NGAYKT`, `PTGIAM`, `MASP`, `IS_DELETED`) VALUES
+    (null,'2022-05-16','2022-06-16',15,1,0),
+    (null,'2022-05-16','2022-06-16',5,3,0),
+    (null,'2022-05-16','2022-06-16',10,4,0),
+    (null,'2022-05-16','2022-06-16',20,7,0),
+    (null,'2022-05-16','2022-06-16',16,10,0);
+
+ALTER TABLE PHIEUNHAP AUTO_INCREMENT = 1;
+INSERT INTO `phieunhap` (`MAPHIEU`, `NGAYLAP`, `MANV`, `IS_DELETED`) VALUES 
+    (NULL, '2022-05-16 17:33:19', '1', '0'), 
+    (NULL, '2022-05-17 17:33:19', '2', '0'),
+    (NULL, '2022-05-17 17:35:19', '1', '0'), 
+    (NULL, '2022-05-17 17:39:19', '2', '0'),
+    (NULL, '2022-05-17 16:12:19', '3', '0'), 
+    (NULL, '2022-05-17 19:22:19', '1', '0'),
+    (NULL, '2022-05-17 20:22:19', '2', '0'),
+    (NULL, '2022-05-17 20:23:19', '1', '0'),
+    (NULL, '2022-05-17 20:25:19', '3', '0'),
+    (NULL, '2022-05-17 21:30:19', '1', '0'),
+    (NULL, '2022-05-17 21:35:20', '3', '0'),
+    (NULL, '2022-05-17 21:50:54', '5', '0'),
+    (NULL, '2022-05-17 21:59:19', '5', '0');
+
+ALTER TABLE ctphieunhap AUTO_INCREMENT = 1;
+INSERT INTO `ctphieunhap` (`MAPHIEU`, `MASP`, `SOLUONG`) VALUES 
+    ('1', '34', '8'), ('1', '16', '12'), ('1', '12', '12'), ('1', '8', '10'), 
+    ('1', '21', '8'), ('1', '6', '24'), ('2', '37', '13'), ('2', '28', '10'), 
+    ('2', '42', '10'), ('2', '43', '12'), ('2', '11', '8'), ('3', '36', '10'), 
+    ('3', '37', '14'), ('3', '24', '10'), ('3', '58', '12'), ('4', '55', '15'), 
+    ('4', '35', '12'), ('5', '47', '5'), ('5', '33', '10'), ('5', '51', '4'), 
+    ('6', '7', '8'), ('6', '49', '10'), ('6', '44', '10'), ('6', '40', '12'), 
+    ('6', '50', '10');
+
+INSERT INTO `phieuhuy` (`MAPHIEU`, `NGAYLAP`, `MANV`, `IS_DELETED`) VALUES 
+    (NULL, '2022-05-16 17:54:45', '1', '0'), 
+    (NULL, '2022-05-17 18:05:45', '2', '0'), 
+    (NULL, '2022-05-17 18:34:49', '3', '0'), 
+    (NULL, '2022-05-17 19:28:49', '5', '0'), 
+    (NULL, '2022-05-17 21:55:49', '4', '0'), 
+    (NULL, '2022-05-17 22:16:49', '2', '0');
+
+INSERT INTO `ctphieuhuy` (`MAPHIEU`, `MASP`, `SOLUONG`) VALUES 
+    ('1', '39', '4'), ('1', '26', '5'), ('1', '27', '3'), ('2', '6', '10'), 
+    ('2', '36', '5'), ('2', '44', '4'), ('3', '43', '2'), ('3', '41', '3'), 
+    ('3', '30', '6'), ('4', '37', '3'), ('1', '34', '10'), ('4', '38', '5'), 
+    ('4', '31', '8'), ('5', '46', '10'), ('5', '51', '2'), ('5', '23', '1'), 
+    ('6', '33', '3'), ('6', '47', '9'), ('6', '4', '4'), ('6', '54', '1');
+
+
+
+
+# --Chạy tới đây tự nhiên lỗi mấy dòng này không insert zô được hic hic đem ra insert riêng thì được hoq bít tại s luôn
+# INSERT INTO `khachhang`(`MAKH`, `TENKH`, `GIOITINH`, `SODIENTHOAI`, `DIACHI`, `EMAIL`, `DIEMTHUONG`, `IS_DELETED`)
+# VALUES (0,NULL, NULL, NULL, NULL, NULL, NULL, 0)
+#
+# INSERT INTO `voucher`(`SOVOUCHER`, `MAVOUCHER`, `MOTA`, `NGAYBD`, `NGAYKT`, `GIATRITOITHIEU`, `KMTOIDA`, `PTGIAM`, `SOLUOTSD`, `IS_DELETED`)
+# VALUES (0,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0)
+#
+# INSERT INTO `nhanvien`(`MANV`, `TENNV`, `GIOITINH`, `CMND`, `NGAYSINH`, `SODIENTHOAI`, `EMAIL`, `DIACHI`, `NGAYTHAMGIA`, `MACHUCVU`, `IS_DELETED`)
+# VALUES (0,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0)

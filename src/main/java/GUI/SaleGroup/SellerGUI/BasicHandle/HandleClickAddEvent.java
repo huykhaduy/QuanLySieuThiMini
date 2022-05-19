@@ -27,8 +27,10 @@ public class HandleClickAddEvent implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(check.hasProduct(sp.getMaSP()))
+        if(check.hasProduct(sp.getMaSP())){
             orderpanel.addOrderItemOrIncrementByOne(sp);
+            orderpanel.getBnThanhToan().setEnabled(true);
+        }
         else JOptionPane.showMessageDialog(orderpanel, "Hết hàng!", "Chú ý", JOptionPane.INFORMATION_MESSAGE);
     }
     

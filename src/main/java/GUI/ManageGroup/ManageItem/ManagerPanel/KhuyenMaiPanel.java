@@ -31,10 +31,8 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jTextField5 = new javax.swing.JTextField();
         jLabel80 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        button1 = new GUI.SaleGroup.LoginGui.Component.Button();
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         button3 = new GUI.SaleGroup.LoginGui.Component.Button();
-        button4 = new GUI.SaleGroup.LoginGui.Component.Button();
         shape9 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -45,11 +43,11 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        jLabel54 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         button9 = new GUI.SaleGroup.LoginGui.Component.Button();
@@ -57,6 +55,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        button5 = new GUI.SaleGroup.LoginGui.Component.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,15 +65,14 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
         jLabel45.setText("Thông tin chi tiết");
-        add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1020, -1));
+        add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 62, 1020, 30));
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(42, 148, 208));
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("Danh sách khuyến mãi");
-        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 210, 60));
+        add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 210, 40));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -83,7 +81,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 jTextField5ActionPerformed(evt);
             }
         });
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 330, 30));
+        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 270, 30));
 
         jLabel80.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel80.setForeground(new java.awt.Color(42, 148, 208));
@@ -105,33 +103,24 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
 
-        button1.setBackground(new java.awt.Color(118, 199, 150));
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setText("XUẤT EXCEL");
-        button1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        button1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 30));
-
         button2.setBackground(new java.awt.Color(118, 199, 150));
         button2.setForeground(new java.awt.Color(255, 255, 255));
         button2.setText("+THÊM KHUYẾN MÃI");
         button2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 160, 30));
+        add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 160, 30));
 
         button3.setBackground(new java.awt.Color(118, 199, 150));
         button3.setForeground(new java.awt.Color(255, 255, 255));
         button3.setText("SEARCH");
         button3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 90, 30));
-
-        button4.setBackground(new java.awt.Color(118, 199, 150));
-        button4.setForeground(new java.awt.Color(255, 255, 255));
-        button4.setText("NHẬP EXCEL");
-        button4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        button4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 30));
+        button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button3ActionPerformed(evt);
+            }
+        });
+        add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 100, 30));
 
         shape9.setBackground(new java.awt.Color(119, 176, 210));
         shape9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -194,11 +183,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel49.setText("% Giảm :");
         shape9.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 70, -1));
 
-        jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel52.setText("Số lần sử dụng :");
-        shape9.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 110, -1));
-
         jLabel53.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(255, 255, 255));
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -224,22 +208,25 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jTextArea3.setEditable(false);
         jTextArea3.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea3.setColumns(20);
-        jTextArea3.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
         jScrollPane6.setViewportView(jTextArea3);
 
         shape9.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 180, -1));
 
-        add(shape9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
+        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel54.setText("Số lượt sử dụng:");
+        shape9.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 120, -1));
+
+        add(shape9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 960, 240));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(42, 148, 208));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Danh sách sản phẩm giảm giá");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 270, 60));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 270, 40));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(255, 255, 255));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -248,31 +235,46 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 jTextField8ActionPerformed(evt);
             }
         });
-        add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 330, 30));
+        add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 410, 30));
 
         button9.setBackground(new java.awt.Color(118, 199, 150));
         button9.setForeground(new java.awt.Color(255, 255, 255));
         button9.setText("SEARCH");
         button9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 420, 90, 30));
+        add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, 100, 30));
 
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "% Giảm", "Số lượng"
+                "Mã sản phẩm", "Tên sản phẩm", "Giá gốc", "% Giảm", "Số tiền giảm"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Long.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 450, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 530, 300));
 
         jTable2.setBackground(new java.awt.Color(119, 176, 210));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -283,12 +285,19 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Mã voucher", "Số voucher", "% Giảm", "Số lượng"
+                "Số voucher", "Mã voucher", "% Giảm", "Số lượng"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 460, 270));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 400, 300));
+
+        button5.setBackground(new java.awt.Color(118, 199, 150));
+        button5.setForeground(new java.awt.Color(255, 255, 255));
+        button5.setText("+THÊM KHUYẾN MÃI");
+        button5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 160, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -299,12 +308,15 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.SaleGroup.LoginGui.Component.Button button1;
     private GUI.SaleGroup.LoginGui.Component.Button button2;
     private GUI.SaleGroup.LoginGui.Component.Button button3;
-    private GUI.SaleGroup.LoginGui.Component.Button button4;
+    private GUI.SaleGroup.LoginGui.Component.Button button5;
     private GUI.SaleGroup.LoginGui.Component.Button button9;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -317,8 +329,8 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel80;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel4;

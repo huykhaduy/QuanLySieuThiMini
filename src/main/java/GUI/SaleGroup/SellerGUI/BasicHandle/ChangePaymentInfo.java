@@ -4,7 +4,7 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
-import BUS.SaleServices.PayAction;
+import BUS.SaleServices.PayActionBus;
 import DAL.DataModels.ChiTietHoaDon;
 import GUI.SaleGroup.SellerGUI.SellerMainFrame;
 import java.util.List;
@@ -17,7 +17,7 @@ import javax.swing.JTextField;
  */
 public class ChangePaymentInfo {
     
-    private final PayAction pay = new PayAction();
+    private final PayActionBus pay = new PayActionBus();
     private JTextField txtVoucher;
     private JTextField txtPhoneNumber;
     private JLabel lbTextTotal;
@@ -30,9 +30,9 @@ public class ChangePaymentInfo {
         
     }
     
-    public ChangePaymentInfo(JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTextTotal, JLabel lbTextDiscount, JLabel lbTextMoney){
-        this.txtVoucher = txtPhoneNumber;
-        this.txtPhoneNumber = txtVoucher;
+    public ChangePaymentInfo(JTextField txtPhoneNumber, JTextField txtVoucher, JLabel lbTextTotal, JLabel lbTextDiscount, JLabel lbTextMoney){
+        this.txtPhoneNumber = txtPhoneNumber;
+        this.txtVoucher = txtVoucher;
         this.lbTextTotal = lbTextTotal;
         this.lbTextDiscount = lbTextDiscount;
         this.lbTextMoney = lbTextMoney;

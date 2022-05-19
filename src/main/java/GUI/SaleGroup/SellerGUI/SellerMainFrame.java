@@ -1,12 +1,5 @@
 package GUI.SaleGroup.SellerGUI;
 
-import DAL.DataAcessObject.LoaiSanPhamDAO;
-import DAL.DataAcessObject.SanPhamDAO;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.LoaiSanPham;
-import DAL.DataModels.SanPham;
-import GUI.SaleGroup.LoginGui.Component.Button;
-import GUI.SaleGroup.LoginGui.Component.ButtonUI;
 import GUI.SaleGroup.SellerGUI.BasicHandle.AddCustomerAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ClearAllAction;
@@ -14,25 +7,10 @@ import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.DiscountTextFieldListener;
 import GUI.SaleGroup.SellerGUI.BasicHandle.PayActionListener;
 import GUI.SaleGroup.SellerGUI.BasicHandle.SearchMenuListener;
-import GUI.SaleGroup.SellerGUI.Component.MenuItem;
-import GUI.SaleGroup.SellerGUI.Component.OrderItem;
 import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
-import GUI.SaleGroup.SellerGUI.Component.ScrollPanel;
 import com.formdev.flatlaf.FlatLightLaf;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.ScrollPane;
-import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 /**
  *
@@ -525,7 +503,8 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private OrderPanel scrollPanelOrder;
        
     private void init() {  
-        this.scrollPanelOrder = new OrderPanel(271, 350, new ChangePaymentInfo(this.txtPhoneNumber, this.txtVoucher, this.lbTextTotal,this.lbTextDiscount, this.lbTextMoney));
+        
+        this.scrollPanelOrder = new OrderPanel(271, 350, new ChangePaymentInfo(this.txtPhoneNumber, this.txtVoucher, this.lbTextTotal,this.lbTextDiscount, this.lbTextMoney), jButton2);
         orderContainer.setLayout(null);
         orderContainer.add(this.scrollPanelOrder);
         //Get list loai sp
@@ -545,7 +524,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
     
     private void addActionEvent(){
         txtVoucher.getDocument().addDocumentListener(new DiscountTextFieldListener(scrollPanelOrder));
-        jButton2.addActionListener(new PayActionListener(this.maNV, this.txtVoucher, this.txtPhoneNumber, this.lbTextTotal,this.lbTextDiscount,this.lbTextMoney, scrollPanelOrder));
+        jButton2.addActionListener(new PayActionListener(this.maNV, this.txtVoucher, this.txtPhoneNumber, this.lbTextTotal,this.lbTextDiscount,this.lbTextMoney, jButton2, scrollPanelOrder));
         lbClearAll.addMouseListener(new ClearAllAction(scrollPanelOrder));
         btnAddCustomer.addActionListener(new AddCustomerAction(scrollPanelOrder, txtPhoneNumber));
     }

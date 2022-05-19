@@ -4,7 +4,7 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
-import BUS.SaleServices.PayAction;
+import BUS.SaleServices.PayActionBus;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -14,7 +14,7 @@ import javax.swing.event.DocumentListener;
  * @author USER
  */
 public class DiscountTextFieldListener implements DocumentListener{
-    private PayAction pay = new PayAction();
+    private PayActionBus pay = new PayActionBus();
     private OrderPanel orderPanel;
 
     public DiscountTextFieldListener(OrderPanel orderPanel) {
