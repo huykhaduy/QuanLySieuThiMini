@@ -4,15 +4,25 @@
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
+import BUS.BusAccessor.GiamGiaSPBUS;
+import BUS.BusAccessor.SanPhamBUS;
 import BUS.BusAccessor.VoucherBUS;
+import DAL.DataModels.GiamGiaSP;
+import DAL.DataModels.SanPham;
+import DAL.DataModels.Voucher;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ACER
+ * @author ACER, TUANMINH
  */
 public class KhuyenMaiPanel extends javax.swing.JPanel {
 
@@ -21,7 +31,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
      */
     public KhuyenMaiPanel() {
         initComponents();
-        loadDataTableVoucher();
+        loadAllTable();
     }
 
     /**
@@ -43,19 +53,19 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         shape9 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         imagePanel2 = new GUI.ManageGroup.ComponentPanel.ImagePanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         button9 = new GUI.SaleGroup.LoginGui.Component.Button();
@@ -66,11 +76,10 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         button5 = new GUI.SaleGroup.LoginGui.Component.Button();
         jLabel47 = new javax.swing.JLabel();
         shape10 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
+        lbMaVoucher = new javax.swing.JLabel();
+        lbSoVoucher = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel56 = new javax.swing.JLabel();
@@ -78,15 +87,14 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel58 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        txtMota = new javax.swing.JTextArea();
         jLabel59 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbNgayBD = new javax.swing.JLabel();
+        lbGiaTriToiThieu = new javax.swing.JLabel();
+        lbPtGiam = new javax.swing.JLabel();
+        lbLuotSD = new javax.swing.JLabel();
+        lbNgayKT = new javax.swing.JLabel();
+        lbKMToiDa = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -170,20 +178,15 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel38.setText("Số khuyến mãi");
         shape9.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 180, -1));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Ngày bắt đầu :");
-        shape9.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 100, -1));
-
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Ngày kết thúc :");
-        shape9.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
+        shape9.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 120, -1));
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(255, 255, 255));
         jLabel43.setText("Giá gốc :");
-        shape9.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 160, -1));
+        shape9.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 100, -1));
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -203,7 +206,53 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("% Giảm :");
-        shape9.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 70, -1));
+        shape9.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 70, -1));
+
+        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel54.setText("Giá khuyến mãi:");
+        shape9.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 120, -1));
+
+        imagePanel2.setBackground(new java.awt.Color(119, 176, 210));
+        imagePanel2.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/banhbaocade.png"))); // NOI18N
+
+        javax.swing.GroupLayout imagePanel2Layout = new javax.swing.GroupLayout(imagePanel2);
+        imagePanel2.setLayout(imagePanel2Layout);
+        imagePanel2Layout.setHorizontalGroup(
+            imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        imagePanel2Layout.setVerticalGroup(
+            imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        shape9.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 160, 120));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(17, 86, 125));
+        shape9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 120, 20));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(17, 86, 125));
+        shape9.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 120, 20));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(17, 86, 125));
+        shape9.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 120, 20));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(17, 86, 125));
+        shape9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 120, 20));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(17, 86, 125));
+        shape9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 120, 20));
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setText("Ngày bắt đầu :");
+        shape9.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,42 +269,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         );
 
         shape9.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
-
-        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel54.setText("Giá khuyến mãi:");
-        shape9.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 120, -1));
-
-        imagePanel2.setBackground(new java.awt.Color(119, 176, 210));
-        imagePanel2.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/banhbaocade.png"))); // NOI18N
-
-        javax.swing.GroupLayout imagePanel2Layout = new javax.swing.GroupLayout(imagePanel2);
-        imagePanel2.setLayout(imagePanel2Layout);
-        imagePanel2Layout.setHorizontalGroup(
-            imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-        imagePanel2Layout.setVerticalGroup(
-            imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
-        shape9.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 160, 120));
-
-        jLabel9.setText("jLabel9");
-        shape9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 110, -1));
-
-        jLabel10.setText("jLabel10");
-        shape9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 120, -1));
-
-        jLabel11.setText("jLabel11");
-        shape9.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 120, -1));
-
-        jLabel12.setText("jLabel12");
-        shape9.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 120, -1));
-
-        jLabel13.setText("jLabel13");
-        shape9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 120, -1));
 
         add(shape9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 520, 240));
 
@@ -307,6 +320,12 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tbProduct.setSelectionBackground(new java.awt.Color(55, 100, 155));
+        tbProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProductMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbProduct);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 370, 210));
@@ -320,6 +339,13 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 "Số voucher", "Mã voucher", "% Giảm", "Số lượng"
             }
         ));
+        tbVoucher.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbVoucher.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbVoucher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbVoucherMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbVoucher);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 370, 220));
@@ -341,38 +367,33 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         shape10.setBackground(new java.awt.Color(119, 176, 210));
         shape10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel42.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel42.setText("MÃ VOUCHER");
-        shape10.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 180, -1));
+        lbMaVoucher.setBackground(new java.awt.Color(0, 0, 0));
+        lbMaVoucher.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbMaVoucher.setForeground(new java.awt.Color(255, 255, 255));
+        lbMaVoucher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMaVoucher.setText("MÃ VOUCHER");
+        shape10.add(lbMaVoucher, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 180, -1));
 
-        jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel48.setText("Số voucher");
-        shape10.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 180, -1));
+        lbSoVoucher.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbSoVoucher.setForeground(new java.awt.Color(255, 255, 255));
+        lbSoVoucher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbSoVoucher.setText("Số voucher");
+        shape10.add(lbSoVoucher, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 180, -1));
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setText("Ngày bắt đầu :");
-        shape10.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 100, -1));
+        shape10.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 100, -1));
 
         jLabel51.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
         jLabel51.setText("Ngày kết thúc :");
-        shape10.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
-
-        jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel52.setText("Giá trị tối thiểu :");
-        shape10.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 120, -1));
+        shape10.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 120, -1));
 
         jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
         jLabel55.setText("Giá trị tối thiểu :");
-        shape10.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 160, -1));
+        shape10.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 120, -1));
 
         jPanel10.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -392,12 +413,12 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel56.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(255, 255, 255));
         jLabel56.setText("Khuyến mãi tối đa :");
-        shape10.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 140, -1));
+        shape10.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 140, -1));
 
         jLabel57.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("% Giảm :");
-        shape10.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 70, -1));
+        shape10.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 70, -1));
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,40 +442,43 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         shape10.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
-        jTextArea4.setEditable(false);
-        jTextArea4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea4.setColumns(20);
-        jTextArea4.setLineWrap(true);
-        jTextArea4.setRows(5);
-        jScrollPane7.setViewportView(jTextArea4);
+        txtMota.setEditable(false);
+        txtMota.setBackground(new java.awt.Color(255, 255, 255));
+        txtMota.setColumns(20);
+        txtMota.setLineWrap(true);
+        txtMota.setRows(5);
+        jScrollPane7.setViewportView(txtMota);
 
         shape10.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 180, -1));
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));
         jLabel59.setText("Số lượt sử dụng:");
-        shape10.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 120, -1));
+        shape10.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 120, -1));
 
-        jLabel1.setText("jLabel1");
-        shape10.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 100, -1));
+        lbNgayBD.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbNgayBD.setForeground(new java.awt.Color(17, 86, 125));
+        shape10.add(lbNgayBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 100, 20));
 
-        jLabel2.setText("jLabel2");
-        shape10.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 100, -1));
+        lbGiaTriToiThieu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbGiaTriToiThieu.setForeground(new java.awt.Color(17, 86, 125));
+        shape10.add(lbGiaTriToiThieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 100, 20));
 
-        jLabel3.setText("jLabel3");
-        shape10.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 100, -1));
+        lbPtGiam.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbPtGiam.setForeground(new java.awt.Color(17, 86, 125));
+        shape10.add(lbPtGiam, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 100, 20));
 
-        jLabel4.setText("jLabel4");
-        shape10.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 100, -1));
+        lbLuotSD.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbLuotSD.setForeground(new java.awt.Color(17, 86, 125));
+        shape10.add(lbLuotSD, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 100, 20));
 
-        jLabel6.setText("jLabel6");
-        shape10.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 100, -1));
+        lbNgayKT.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbNgayKT.setForeground(new java.awt.Color(17, 86, 125));
+        shape10.add(lbNgayKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 100, 20));
 
-        jLabel7.setText("jLabel7");
-        shape10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 100, -1));
-
-        jLabel8.setText("jLabel8");
-        shape10.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 100, -1));
+        lbKMToiDa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbKMToiDa.setForeground(new java.awt.Color(17, 86, 125));
+        shape10.add(lbKMToiDa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 100, 20));
 
         add(shape10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 520, 240));
         add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 50, 750));
@@ -472,6 +496,21 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_button3ActionPerformed
 
+    private void tbProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProductMouseClicked
+        // TODO add your handling code here:
+        int row = tbProduct.getSelectedRow();
+        this.sp = sanPhamBus.get(Integer.valueOf(tbProduct.getValueAt(row, 1) + ""));
+        this.giamGiaSP = giamGiaSPBus.get(Integer.valueOf(tbProduct.getValueAt(row, 0) + ""));
+        this.pushDataToGuiDiscountProduct(sp, giamGiaSP);
+    }//GEN-LAST:event_tbProductMouseClicked
+
+    private void tbVoucherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVoucherMouseClicked
+        // TODO add your handling code here:
+        int row = tbVoucher.getSelectedRow();
+        this.voucher = voucherBus.get(tbProduct.getValueAt(row, 1) + "");
+        this.pushDataToGuiVoucher(voucher);
+    }//GEN-LAST:event_tbVoucherMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button2;
@@ -480,38 +519,28 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private GUI.SaleGroup.LoginGui.Component.Button button9;
     private javax.swing.Box.Filler filler1;
     private GUI.ManageGroup.ComponentPanel.ImagePanel imagePanel2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
@@ -522,22 +551,87 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel lbGiaTriToiThieu;
+    private javax.swing.JLabel lbKMToiDa;
+    private javax.swing.JLabel lbLuotSD;
+    private javax.swing.JLabel lbMaVoucher;
+    private javax.swing.JLabel lbNgayBD;
+    private javax.swing.JLabel lbNgayKT;
+    private javax.swing.JLabel lbPtGiam;
+    private javax.swing.JLabel lbSoVoucher;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape10;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape9;
     private javax.swing.JTable tbProduct;
     private javax.swing.JTable tbVoucher;
+    private javax.swing.JTextArea txtMota;
     // End of variables declaration//GEN-END:variables
     private final VoucherBUS voucherBus = new VoucherBUS();
+    private final GiamGiaSPBUS giamGiaSPBus = new GiamGiaSPBUS();
+    private final SanPhamBUS sanPhamBus = new SanPhamBUS();
+    private Voucher voucher;
+    private SanPham sp;
+    private GiamGiaSP giamGiaSP;
+    private final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
 
     public void loadDataTableVoucher(){
         String[][] datas = voucherBus.convertToStringList();
         for (String[] data : datas) {
-            ((DefaultTableModel) this.tbVoucher.getModel()).addRow(data);
+            if(!data[0].equals("0"))
+                ((DefaultTableModel) this.tbVoucher.getModel()).addRow(data);
         }
+    }
+    
+    public void loadDataTableDiscountProduct(){
+        String[][] datas = giamGiaSPBus.convertToStringList();
+        for(String[] data : datas){
+            if(!data[0].equals("0"))
+                ((DefaultTableModel) this.tbProduct.getModel()).addRow(data);
+        }
+    }
+    
+    public void loadAllTable(){
+        loadDataTableVoucher();
+        loadDataTableDiscountProduct();
+    }
+    
+    public void init(){
+        
+    
+    }
+    
+    public String[] getDataAtRow(int row, JTable table){
+        String[] data = new String[table.getColumnCount()];
+        
+        for(int i = 0; i < data.length ; i++){
+            data[i] = (String) table.getValueAt(row, i);
+        }
+        return data;
+    }
+   
+    public void pushDataToGuiVoucher(Voucher voucher){
+        this.lbNgayBD.setText(df.format(voucher.getNgayBD()));
+        this.lbGiaTriToiThieu.setText(voucher.getGiaTriToiThieu()+"");
+        this.lbPtGiam.setText(voucher.getPtGiam()+"%");
+        this.lbLuotSD.setText(voucher.getSoLuotSD()+"");
+        this.lbKMToiDa.setText(voucher.getKmToiDa()+"");
+        this.lbNgayKT.setText(df.format(voucher.getNgayKT()));
+        this.lbSoVoucher.setText("Số voucher: " + voucher.getSoVoucher());
+        this.lbMaVoucher.setText("MÃ VOUCHER: " + voucher.getMaVoucher()+"");
+        this.txtMota.setText(voucher.getMoTa());
+    }
+    
+    public void pushDataToGuiDiscountProduct(SanPham sp, GiamGiaSP giamGiaSP ){
+        this.jLabel38.setText("Số khuyến mãi: "+ giamGiaSP.getSoPhieu());
+        this.jLabel37.setText("<html>" + sp.getTenSP().toUpperCase());
+        this.jLabel10.setText(df.format(giamGiaSP.getNgayBD())+"");
+        this.jLabel9.setText(sp.getGiaTien()+"");
+        this.jLabel11.setText(giamGiaSP.getPtGiam()+"%");
+        this.jLabel12.setText((double) sp.getGiaTien()*(100 - giamGiaSP.getPtGiam())/100+"");
+        this.jLabel13.setText(df.format(giamGiaSP.getNgayKT())+"");
+        this.imagePanel2.setPath(sp.getHinhAnh());
     }
     
     public static void main(String[] argv){
@@ -547,6 +641,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         f.setLayout(new FlowLayout());
         f.setSize(1100,800);
         f.setVisible(true);
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
     }
 }
