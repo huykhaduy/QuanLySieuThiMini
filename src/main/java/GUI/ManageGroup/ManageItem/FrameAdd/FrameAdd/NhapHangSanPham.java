@@ -18,7 +18,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -29,6 +32,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 
 /**
  *
@@ -56,6 +60,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         this.maNhanVien = maNhanVien;
         this.setThongTinPhieuNhap();
         this.addActionToTextSearch();
+        this.loadFromDatabase();
     }
     
     private void setThongTinPhieuNhap(){
@@ -69,7 +74,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
             lbGioNhap.setText(arr[1]);
         });
         myTimer.start();
-        JMenuItem item1 = new JMenuItem("Sửa");
+        JMenuItem item1 = new JMenuItem("Lấy mã");
         item1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -101,7 +106,6 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         nhapTable.setShowGrid(false);
         nhapTable.setShowHorizontalLines(true);
         nhapTable.setGridColor(Color.decode("#3BACB6"));
-        
     }
     
     private void addActionToTextSearch(){
@@ -145,13 +149,42 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         return false;
     }
     
-    public void uploadDataToDatabase(){
-        for (int i =0;i<nhapTable.getRowCount();i++){
-            int productId = getNumberic(nhapTable.getValueAt(i, 0)+"");
-            int soluong = getNumberic(nhapTable.getValueAt(i, 2)+"");
-            ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maHoaDon, productId, soluong);
-            ctPhieuNhapBus.add(ctpn);
+    private void loadFromDatabase(){
+        List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maHoaDon);
+        DefaultTableModel model = (DefaultTableModel)nhapTable.getModel();
+        if (ctpn == null)
+            return;
+        for (ChiTietPhieuNhap ct : ctpn){
+            model.addRow(new Object[]{ct.getMaSP(), sanPhambus.get(ct.getMaSP()).getTenSP(), ct.getSoLuong()});
         }
+    }
+    
+    public void addToDatabase(int maSP, int soLuong) {
+        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maHoaDon, maSP, soLuong);
+        ctPhieuNhapBus.add(ctpn);
+    }
+    
+    public void updateToDatabase(int maSP, int soLuong){
+        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maHoaDon, maSP, soLuong);
+        ctPhieuNhapBus.edit(maHoaDon, maSP, ctpn);
+    }
+    
+    public void removeFromDatabase(int maSP){
+         ctPhieuNhapBus.remove(this.maHoaDon, maSP);
+    }
+    
+    public List<ChiTietPhieuNhap> convertToList(){
+        List<ChiTietPhieuNhap> listNhap = new ArrayList<>();
+        for (int i=0;i<nhapTable.getRowCount();i++){
+            int maSP = getNumberic(nhapTable.getValueAt(i, 0)+"");
+            int soLuong = getNumberic(nhapTable.getValueAt(i, 2)+"");
+            if (soLuong <= 0) {
+                JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ!", "Error", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+            listNhap.add(new ChiTietPhieuNhap(this.maHoaDon, maSP, soLuong));
+        }
+        return listNhap;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -607,7 +640,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
             //Gop ket qua
             int maSP = getNumberic(txtMaSP.getText());
             for (int i =0;i<model.getRowCount();i++){
-                int value = getNumberic((String) model.getValueAt(i, 0));
+                int value = getNumberic(model.getValueAt(i, 0)+"");
                 if (maSP == value){
                     int tong = getNumberic(jSpinner1.getValue()+"")+getNumberic(model.getValueAt(i, 2)+"");
                     model.setValueAt(tong, i, 2);
@@ -619,7 +652,26 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       this.uploadDataToDatabase();
+       List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maHoaDon);
+       List<ChiTietPhieuNhap> convertedList = convertToList();
+       if (null != ctpn && convertedList != null){
+           for (int i = ctpn.size()-1; i>=0 ;i--){
+               for (int j = convertedList.size()-1;j>=0;j--){
+                   if (ctpn.get(i).getMaSP() == convertedList.get(j).getMaSP()){
+                       updateToDatabase(convertedList.get(j).getMaSP(), convertedList.get(j).getSoLuong());
+                       ctpn.remove(i);
+                       convertedList.remove(j);
+                       j--;
+                       i--;
+                   }
+               }
+           }
+           for (ChiTietPhieuNhap ct: ctpn)
+               removeFromDatabase(ct.getMaSP());
+           
+           for (ChiTietPhieuNhap ct: convertedList)
+               addToDatabase(ct.getMaSP(), ct.getSoLuong());
+       }
        this.setVisible(false);
        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
