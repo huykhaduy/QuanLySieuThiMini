@@ -26,12 +26,12 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class HoaDonJPanel extends javax.swing.JPanel {
-    private static ChiTietHoaDonDAO cthoaDonDAO = new ChiTietHoaDonDAO();
-    private static  HoaDonBUS hoaDonBUS =new HoaDonBUS();
-    private static  NhanVienBUS nhanVienBUS=new NhanVienBUS();
-    private static  KhachHangBUS khachHangBUS=new KhachHangBUS();
-    private static  SanPhamBUS sanPhamBUS=new SanPhamBUS();
-    private static List<HoaDon> hdList=hoaDonBUS.getAll();
+    private final ChiTietHoaDonDAO cthoaDonDAO = new ChiTietHoaDonDAO();
+    private final  HoaDonBUS hoaDonBUS =new HoaDonBUS();
+    private final  NhanVienBUS nhanVienBUS=new NhanVienBUS();
+    private final  KhachHangBUS khachHangBUS=new KhachHangBUS();
+    private final  SanPhamBUS sanPhamBUS=new SanPhamBUS();
+    private final List<HoaDon> hdList=hoaDonBUS.getAll();
     /**
      * Creates new form HoaDonJPanel
      */
@@ -52,6 +52,8 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     }
     public void DatatoTable(){
         int i=0;
+        if (hdList == null)
+            return;
         for(HoaDon hd:hdList){
             hd=hdList.get(i);
             NhanVien nv= nhanVienBUS.get(hd.getMaNV());
