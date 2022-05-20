@@ -380,7 +380,7 @@ INSERT INTO `khachhang`(`MAKH`, `TENKH`, `GIOITINH`, `SODIENTHOAI`, `DIACHI`, `E
 	(null,'Vũ Cát Cát',1,'0881318321','Vũng Tàu, Bà Rịa - Vũng Tàu','catcat@gmail.com',0,0),
 	(null,'Vũ Cẩm Tú',1,'0712468869','Đức Cơ, Gia Lai','camtu@gmail.com',0,0),
 	(null,'Lê Hữu Tài',0,'0253867053','Hương Thủy, Thừa Thiên Huế','huutai@gmail.com',0,0),
-	(null,'Đặng Hương Nhi',1,'0703901479','Cần Giờ, Hồ Chí Minh','huongnhi@gmail.com',0,0),
+	(null,'Đặng Hương Nhi',1,'0703901479','Cần Giờ, Hồ Chí Minh','huongnhi@gmail.com',0,0);
 
 
 -- Insert voucher
@@ -390,7 +390,7 @@ INSERT INTO `voucher`(`SOVOUCHER`, `MAVOUCHER`, `MOTA`, `NGAYBD`, `NGAYKT`, `GIA
     (2,'GIAM25K','Giảm 25k cho đơn từ 100k','2022-05-16','2022-06-16',100000,25000,100,5000,0),
     (3,'GIAM10PT','Giảm 10% tối đa 200k','2022-05-16','2022-06-16',0,200000,10,5000,0),
     (4,'GIAM25PT','Giảm 25% khi mua đơn tối thiểu 100k, giảm tối đa 100k','2022-05-16','2022-06-16',100000,100000,25,5000,0),
-    (5,'GIAM50K','Giảm 50k khi mua đơn từ 200k','2022-05-16','2022-06-16',200000,50000,100,5000,0)
+    (5,'GIAM50K','Giảm 50k khi mua đơn từ 200k','2022-05-16','2022-06-16',200000,50000,100,5000,0);
 
 -- Insert giamgiasp
 ALTER TABLE GIAMGIASP AUTO_INCREMENT = 1;

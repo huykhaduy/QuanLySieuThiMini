@@ -7,7 +7,9 @@ import DAL.DataModels.ChucVu;
 import DAL.DataModels.LoginDetail;
 import DAL.DataModels.NhanVien;
 import DAL.DataModels.TaiKhoan;
+import GUI.ManageGroup.ManageItem.ManageFrame.ManageFrame;
 import GUI.SaleGroup.LoginGui.LoginFrame.LoginGui;
+import GUI.SaleGroup.SellerGUI.SellerMainFrame;
 //import com.formdev.flatlaf.FlatLightLaf;
 
 import java.sql.Timestamp;
@@ -20,15 +22,27 @@ public class LoginAction{
     private LoginDetail loginDetail;
     private final int AUTH_KEY_EXPIRE_TIME = 1000*60*60*2; // 2 hours // Thời gian hết hạn account
     private int soTK;
-
+    private boolean rememberMe;
+    private SellerMainFrame sell;
+    private ManageFrame manager;
+    
     public LoginAction() {
         taiKhoanDAO = new TaiKhoanDAO();
         loginDetailDAO = new LoginDetailDAO();
         nhanVienDAO = new NhanVienDAO();
     }
+    
+    public LoginAction(SellerMainFrame sell, ManageFrame manager){
+        taiKhoanDAO = new TaiKhoanDAO();
+        loginDetailDAO = new LoginDetailDAO();
+        nhanVienDAO = new NhanVienDAO();
+        this.sell = sell;
+        this.manager = manager;
+    }
 
     //Hàm này sẽ được gọi khi click đăng nhập ở form đăng nhập
     public boolean loginInput(String username, String password, boolean rememberMe){
+        this.rememberMe = rememberMe;
         TaiKhoan tk = taiKhoanDAO.selectByTenTK(username);
         if (tk == null)
             return false;
@@ -36,16 +50,11 @@ public class LoginAction{
             setWrongPasswordTime(tk.getSoTK(),tk,tk.getSoLanSai()+1);
             return false;
         }
+        this.sell.setMaNV(tk.getMaNV());
         soTK = tk.getSoTK();
         setWrongPasswordTime(tk.getSoTK(),tk,0);
-        
-        
-//        if (rememberMe){
-//            storeLoginAuth();
-//        } else storeLoginDetail("");
-        //Đoạn trên có thể thay thế thành
         storeLoginAuth(rememberMe);
-        showFrame();
+
         return true;
     }
 
@@ -56,13 +65,20 @@ public class LoginAction{
         if (authKey == null)
             return false;
         loginDetail = loginDetailDAO.selectByAuthKey(authKey);
-        if (loginDetail == null)
+        if (loginDetail == null){
+            //Trường hợp này là thời gian duy trì đăng nhập đã hết
+            //nên ta sẽ xóa auth key trong file
+            LogoutAction.logout();
             return false;
+        }
         
+        this.rememberMe = true;
         //Dòng này để tăng thời gian hết hạn sau khi vào lại chương trình
         loginDetail.setLogoutTime(new Timestamp(System.currentTimeMillis() + AUTH_KEY_EXPIRE_TIME));
-        
+//        System.out.println("Logout Time: " + loginDetail);
         soTK = loginDetail.getSoTK();
+        loginDetailDAO.update(loginDetail.getLoginId(), loginDetail);
+        
         return true;
     }
 
@@ -74,19 +90,20 @@ public class LoginAction{
     }
 
     //Khởi tạo frame khi login thành công
-    protected void showFrame(){
+    public void showFrame(){
         int maChucVu = getChucVuNguoiDung(soTK);
         if (maChucVu == ChucVu.NHANVIENBANHANG){
             System.out.println("Khoi tao frame nhan vien ban hang");
             JOptionPane.showMessageDialog(null,"Hien thi form nhan vien ban hang","Auto login success",JOptionPane.CLOSED_OPTION);
-            //            new NhanVienBanHangFrame(soTK);
+            sell.setMaNV(taiKhoanDAO.select(soTK).getMaNV());
+            sell.setVisible(true);
         }
 
             
         else if (maChucVu == ChucVu.NHANVIENQUANLY){
             System.out.println("Khoi tao frame nhan vien quan ly");
             JOptionPane.showMessageDialog(null, "Hien thi form nhan vien ban hang", "Auto login success", JOptionPane.CLOSED_OPTION);
-            //            new NhanVienQuanLyFrame(soTK);
+            manager.setVisible(true);
         }
 
     }
@@ -101,16 +118,19 @@ public class LoginAction{
 //    }
     
     protected void storeLoginAuth(boolean remember){
-        //Generate auth key and store it to file
-        LoginFile loginFile = new LoginFile();
-        String authKey = loginFile.createAuthKey(50);
-        loginFile.setAuthKey(authKey);
-        loginFile.writeToFile();
-        //Store to database
-        if(remember)
+        
+        if(remember){
+            //Generate auth key and store it to file
+            LoginFile loginFile = new LoginFile();
+            String authKey = loginFile.createAuthKey(50);
+            System.out.println("AuthKey: " + authKey);
+            loginFile.setAuthKey(authKey);
+            loginFile.writeToFile();
             loginDetail = new LoginDetail(0,authKey,"192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()+AUTH_KEY_EXPIRE_TIME),soTK);
-        else 
+        }else{ 
             loginDetail = new LoginDetail(0,null,"192.168.1.1","None_MAC", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()),soTK);
+        }
+        //Store to database
         loginDetailDAO.insert(loginDetail);
     }
     
@@ -152,6 +172,15 @@ public class LoginAction{
     public void setLoginDetail(LoginDetail loginDetail) {
         this.loginDetail = loginDetail;
     }
+
+    public boolean isRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
+    }
+    
     
     
     //Tang so lan password nhap sai

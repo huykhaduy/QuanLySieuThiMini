@@ -5,6 +5,8 @@
 package GUI.SaleGroup.LoginGui.LoginFrame;
 
 import BUS.AccountServices.LoginAction;
+import GUI.ManageGroup.ManageItem.ManageFrame.ManageFrame;
+import GUI.SaleGroup.SellerGUI.SellerMainFrame;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JOptionPane;
 
@@ -19,6 +21,7 @@ public class LoginGui extends javax.swing.JFrame {
      */
     public LoginGui() {
         initComponents();
+        init();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
@@ -349,7 +352,7 @@ public class LoginGui extends javax.swing.JFrame {
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
-        LoginAction loginAct = new LoginAction();
+        
         String username = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
         boolean isSaved = jCheckBox1.isSelected();
@@ -361,6 +364,7 @@ public class LoginGui extends javax.swing.JFrame {
             //Remove login frame
             setVisible(false);
             dispose();
+            loginAct.showFrame();
         }
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -399,7 +403,7 @@ public class LoginGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginGui().setVisible(true);
+                new LoginGui();
             }
         });
     }
@@ -428,4 +432,19 @@ public class LoginGui extends javax.swing.JFrame {
     private GUI.SaleGroup.LoginGui.Background.PhoneGui phoneGui1;
     private GUI.SaleGroup.LoginGui.Background.PhoneGui2 phoneGui21;
     // End of variables declaration//GEN-END:variables
+    private SellerMainFrame saleFrame = new SellerMainFrame(0, null, this);
+//    private ManagerMainFrame managerFrame = new ManagerMainFrame(0);
+    private ManageFrame managerFrame = new ManageFrame();
+    private LoginAction loginAct = new LoginAction(saleFrame, managerFrame);
+    
+    public void init(){
+        saleFrame.setLogAct(loginAct);
+        //Kiểm tra authkey
+        if(loginAct.checkAuthKey()){
+            loginAct.showFrame();
+        }else{
+            this.setVisible(true);
+        }
+    }
+
 }
