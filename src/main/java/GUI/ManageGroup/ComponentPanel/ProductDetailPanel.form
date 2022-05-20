@@ -22,40 +22,42 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="190" pref="190" max="-2" attributes="0"/>
-              <Component id="lbName" min="-2" pref="740" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="imagePanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="62" pref="62" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                      <Component id="lbMaSp" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
-                      <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                      <Component id="lbLoai" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="78" pref="78" max="-2" attributes="0"/>
-                      <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-                      <Component id="lbSoLuong" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                      <Component id="lbDonGia" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
-                      <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                      <Component id="lbNhaCC" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                      <Component id="lbMoTa" min="-2" pref="610" max="-2" attributes="0"/>
+                  <Component id="lbName" alignment="0" min="-2" pref="740" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Component id="lbMaSp" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                              <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                              <Component id="lbLoai" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="78" pref="78" max="-2" attributes="0"/>
+                              <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
+                              <Component id="lbSoLuong" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Component id="lbDonGia" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+                              <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Component id="lbNhaCC" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
+                              <Component id="lbMoTa" min="-2" pref="610" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -64,13 +66,11 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="lbName" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="imagePanel" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
                           <Component id="lbMaSp" min="-2" max="-2" attributes="0"/>
@@ -86,14 +86,19 @@
                           <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
                           <Component id="lbNhaCC" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
                           <Component id="lbMoTa" min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="7" max="32767" attributes="0"/>
+                      <Component id="imagePanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -244,7 +249,7 @@
         <Property name="text" type="java.lang.String" value="PEPSI INC"/>
       </Properties>
     </Component>
-    <Container class="GUI.SaleGroup.SellerGUI.Component.ImagePanel" name="imagePanel">
+    <Container class="GUI.ManageGroup.ComponentPanel.ImagePanel" name="imagePanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -257,12 +262,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="157" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="128" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="136" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

@@ -5,6 +5,8 @@
 package GUI.ManageGroup.ComponentPanel;
 
 import GUI.SaleGroup.LoginGui.Background.*;
+import static GUI.SaleGroup.SellerGUI.Component.ImagePanel.imgDirectory;
+import static GUI.SaleGroup.SellerGUI.Component.ImagePanel.imgExtension;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,6 +21,9 @@ import org.imgscalr.Scalr;
 
 public class ImagePanel extends JPanel{
     private ImageIcon image;
+    public final static String imgDirectory = "src/main/java/Assets/Image/";
+    public final static String noImageProduct = "no-product";
+    public final static String imgExtension = ".png";
 
     public Icon getImage() {
         return image;
@@ -26,6 +31,17 @@ public class ImagePanel extends JPanel{
 
     public void setImage(ImageIcon image) {
         this.image = image;
+        this.repaint();
+    }
+     public final void setImagePathSanPham(String url){
+        this.image = new ImageIcon(url);
+        this.revalidate();
+        this.repaint();
+    }
+        public final void setImagePath(String url){
+        this.image = new ImageIcon(imgDirectory+url+imgExtension);
+        this.revalidate();
+        this.repaint();
     }
     
     @Override

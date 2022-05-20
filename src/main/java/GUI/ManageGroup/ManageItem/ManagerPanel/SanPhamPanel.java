@@ -4,30 +4,38 @@
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
+import BUS.BusAccessor.SanPhamBUS;
 import DAL.DataModels.SanPham;
+import GUI.ManageGroup.ComponentPanel.ProductDetailPanel;
+import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.SanPhamAdd;
 import java.awt.Dimension;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-/**
- *
- * @author huykh
- */
+
 public class SanPhamPanel extends javax.swing.JPanel {
+      SanPhamBUS spBUS =new SanPhamBUS();
+        SanPham sp = new SanPham();
 
     /**
      * Creates new form SanPhamPanel
      */
     public SanPhamPanel() {
         initComponents();
-//        loadTable();
+        loadTable();
     }
-
+    
     public void loadTable(){
         DefaultTableModel tableModel =(DefaultTableModel) jTable1.getModel();
-        tableModel.addRow(new Object[]{"Xin chào các ban", "Hello cat"});
+        List<SanPham> sp=  spBUS.getAll();
+        for( int i = 0 ; i < sp.size();i++)
+        {
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getGiaTien(),sp.get(i).getSoLuong()};
+         tableModel.addRow(sanpham);
+        }
         jTable1.setModel(tableModel);
         TableColumn column = null;
         for (int i = 0; i < tableModel.getColumnCount(); i++) {
@@ -58,11 +66,11 @@ public class SanPhamPanel extends javax.swing.JPanel {
         button8 = new GUI.SaleGroup.LoginGui.Component.Button();
         button5 = new GUI.SaleGroup.LoginGui.Component.Button();
         jLabel47 = new javax.swing.JLabel();
-        productDetailPanel1 = new GUI.ManageGroup.ComponentPanel.ProductDetailPanel();
         jLabel48 = new javax.swing.JLabel();
         button6 = new GUI.SaleGroup.LoginGui.Component.Button();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        productDetailPanel1 = new GUI.ManageGroup.ComponentPanel.ProductDetailPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1020, 760));
@@ -108,7 +116,6 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
         jLabel47.setText("Thông tin chi tiết");
         add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 170, -1));
-        add(productDetailPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 960, 230));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(42, 148, 208));
@@ -122,6 +129,11 @@ public class SanPhamPanel extends javax.swing.JPanel {
         button6.setText("+THÊM SẢN PHẨM");
         button6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button6MouseClicked(evt);
+            }
+        });
         add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, -1, 30));
 
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
@@ -148,10 +160,32 @@ public class SanPhamPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));
+        add(productDetailPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 950, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+      
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int maSP= Integer.parseInt(model.getValueAt(jTable1.getSelectedRow(),0)+"");
+        sp =  spBUS.get(maSP);
+        System.out.println(sp.toString());
+        productDetailPanel1.setSanpham(sp);
+        this.repaint();
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void button6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button6MouseClicked
+       SanPhamAdd spAdd = new SanPhamAdd();
+       spAdd.setVisible(true);
+       spAdd.setLocationRelativeTo(this);
+    }//GEN-LAST:event_button6MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

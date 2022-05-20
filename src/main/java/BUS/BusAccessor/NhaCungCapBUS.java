@@ -8,10 +8,7 @@ import DAL.DataAcessObject.NhaCungCapDAO;
 import DAL.DataModels.NhaCungCap;
 import java.util.List;
 
-/**
- *
- * @author huykh
- */
+
 public class NhaCungCapBUS implements IBussAccess<NhaCungCap, Integer>{
     private final NhaCungCapDAO dao = new NhaCungCapDAO();
 
@@ -45,6 +42,5 @@ public class NhaCungCapBUS implements IBussAccess<NhaCungCap, Integer>{
         List<NhaCungCap> list = dao.selectAll();
         return list == null ? null:list.get(list.size()-1);
     }
-    
     
 }
