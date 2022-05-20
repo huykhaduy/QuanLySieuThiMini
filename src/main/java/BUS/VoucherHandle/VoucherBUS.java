@@ -7,6 +7,11 @@ package BUS.VoucherHandle;
 import DAL.DataAcessObject.VoucherDAO;
 import DAL.DataModels.Voucher;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,10 +27,19 @@ public class VoucherBUS {
         voucher.setGiaTriToiThieu(valueMin);
         Long valueMax = Long.valueOf(maxmizeVoucher);
         voucher.setKmToiDa(valueMax);
-       Timestamp ngayBatDau = Timestamp.valueOf(startDay);
-        voucher.setNgayBD(ngayBatDau);
-       Timestamp ngayKetThuc = Timestamp.valueOf(endDay);
-        voucher.setNgayKT(ngayKetThuc);
+        try {
+            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(startDay);
+            Timestamp ngayBatDau = new Timestamp(date.getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(VoucherBUS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       try {
+            Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(endDay);
+            Timestamp ngayBatDau = new Timestamp(date1.getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(VoucherBUS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         Integer phanTramgiam = Integer.valueOf(percent);
         voucher.setPtGiam(phanTramgiam);
         Integer soLuotSuDung = Integer.valueOf(numberUse);
@@ -45,10 +59,18 @@ public class VoucherBUS {
         voucher.setGiaTriToiThieu(valueMin);
         Long valueMax = Long.valueOf(maxmizeVoucher);
         voucher.setKmToiDa(valueMax);
-       Timestamp ngayBatDau = Timestamp.valueOf(startDay);
-        voucher.setNgayBD(ngayBatDau);
-       Timestamp ngayKetThuc = Timestamp.valueOf(endDay);
-        voucher.setNgayKT(ngayKetThuc);
+       try {
+            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(startDay);
+            Timestamp ngayBatDau = new Timestamp(date.getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(VoucherBUS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       try {
+            Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(endDay);
+            Timestamp ngayBatDau = new Timestamp(date1.getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(VoucherBUS.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Integer phanTramgiam = Integer.valueOf(percent);
         voucher.setPtGiam(phanTramgiam);
         Integer soLuotSuDung = Integer.valueOf(numberUse);

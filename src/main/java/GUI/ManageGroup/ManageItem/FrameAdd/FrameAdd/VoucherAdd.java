@@ -7,6 +7,10 @@ import BUS.VoucherHandle.VoucherValidate;
 import DAL.DataModels.Voucher;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.VoucherAdd;
 import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -321,17 +325,29 @@ public class VoucherAdd extends javax.swing.JFrame {
         String startDay = jTextField4.getText();
         String endDay = jTextField5.getText();
         String percent = jTextField6.getText();
-        String numberUser = jTextField7.getText();
+        String numberUse = jTextField7.getText();
         String describe =  jTextArea1.getText();
         
+        
+        
+        
+        
 
-        if (!voucherValidate.validateAll(codeVoucher , minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUser, describe)){
+        if (!voucherValidate.validateAll(codeVoucher , minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe)){
 //            Voucher voucher = voucherValidate.getValidatedVoucher();
                 JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }else {
-    //            System.out.println("sai");
+//                SimpleDateFormat format = new java.text.SimpleDateFormat("dd/MM/yyyy "); 
+//            try {
+//                format.parse(startDay);
+//                 format.parse(endDay);
+//            } catch (ParseException ex) {
+//                Logger.getLogger(VoucherAdd.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+               
+
                 VoucherBUS themVoucher = new VoucherBUS();
-                themVoucher.AddVoucher(codeVoucher, minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUser, describe);
+                themVoucher.AddVoucher(codeVoucher, minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe);
 
 
             dispose();
