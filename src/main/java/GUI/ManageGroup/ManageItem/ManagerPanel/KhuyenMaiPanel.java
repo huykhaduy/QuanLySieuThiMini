@@ -11,14 +11,14 @@ import DAL.DataModels.GiamGiaSP;
 import DAL.DataModels.SanPham;
 import DAL.DataModels.Voucher;
 import java.awt.FlowLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+import java.util.regex.PatternSyntaxException;
 import javax.swing.JFrame;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -45,7 +45,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtSearchVoucher = new javax.swing.JTextField();
         jLabel80 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
@@ -67,7 +67,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel39 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtSearchProduct = new javax.swing.JTextField();
         button9 = new GUI.SaleGroup.LoginGui.Component.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbProduct = new javax.swing.JTable();
@@ -109,19 +109,18 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(42, 148, 208));
-        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel46.setText("Danh sách khuyến mãi");
+        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel46.setText("Danh sách voucher");
         add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 210, 40));
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtSearchVoucher.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSearchVoucher.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtSearchVoucher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtSearchVoucherActionPerformed(evt);
             }
         });
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 250, 30));
+        add(txtSearchVoucher, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 250, 30));
 
         jLabel80.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel80.setForeground(new java.awt.Color(42, 148, 208));
@@ -214,7 +213,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         shape9.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 120, -1));
 
         imagePanel2.setBackground(new java.awt.Color(119, 176, 210));
-        imagePanel2.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/banhbaocade.png"))); // NOI18N
+        imagePanel2.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/no-product.png"))); // NOI18N
 
         javax.swing.GroupLayout imagePanel2Layout = new javax.swing.GroupLayout(imagePanel2);
         imagePanel2.setLayout(imagePanel2Layout);
@@ -224,10 +223,10 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         );
         imagePanel2Layout.setVerticalGroup(
             imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
 
-        shape9.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 160, 120));
+        shape9.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 160, 140));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(17, 86, 125));
@@ -274,29 +273,32 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(42, 148, 208));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Danh sách giảm giá");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 190, 40));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Danh sách giảm giá sản phẩm");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, 300, 40));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtSearchProduct.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSearchProduct.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtSearchProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtSearchProductActionPerformed(evt);
             }
         });
-        add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, 250, 30));
+        add(txtSearchProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, 250, 30));
 
         button9.setBackground(new java.awt.Color(118, 199, 150));
         button9.setForeground(new java.awt.Color(255, 255, 255));
         button9.setText("SEARCH");
         button9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button9ActionPerformed(evt);
+            }
+        });
         add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 470, 100, 30));
 
         tbProduct.setBackground(new java.awt.Color(119, 176, 210));
-        tbProduct.setForeground(new java.awt.Color(255, 255, 255));
         tbProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -321,6 +323,8 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
             }
         });
         tbProduct.setSelectionBackground(new java.awt.Color(55, 100, 155));
+        tbProduct.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbProduct.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbProductMouseClicked(evt);
@@ -339,6 +343,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 "Số voucher", "Mã voucher", "% Giảm", "Số lượng"
             }
         ));
+        tbVoucher.setSelectionBackground(new java.awt.Color(55, 100, 155));
         tbVoucher.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbVoucher.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbVoucher.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -484,16 +489,27 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 50, 750));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtSearchVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchVoucherActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtSearchVoucherActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchProductActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtSearchProductActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
+        String text = this.txtSearchVoucher.getText();
+        if(text.length() == 0){
+            this.sorterVoucher.setRowFilter(RowFilter.regexFilter(null));
+        }else{
+            try{
+            this.sorterVoucher.setRowFilter(RowFilter.regexFilter(text));
+            }catch(PatternSyntaxException ex){
+                System.out.println("Bad regex!");
+
+            }
+        }
     }//GEN-LAST:event_button3ActionPerformed
 
     private void tbProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProductMouseClicked
@@ -507,9 +523,24 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private void tbVoucherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVoucherMouseClicked
         // TODO add your handling code here:
         int row = tbVoucher.getSelectedRow();
-        this.voucher = voucherBus.get(tbProduct.getValueAt(row, 1) + "");
+        this.voucher = voucherBus.get(tbVoucher.getValueAt(row, 1) + "");
         this.pushDataToGuiVoucher(voucher);
     }//GEN-LAST:event_tbVoucherMouseClicked
+
+    private void button9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button9ActionPerformed
+        // TODO add your handling code here:
+        String text = this.txtSearchProduct.getText();
+        if(text.length() == 0){
+            this.sorterProduct.setRowFilter(RowFilter.regexFilter(null));
+        }else{
+            try{
+            this.sorterProduct.setRowFilter(RowFilter.regexFilter(text));
+            }catch(PatternSyntaxException ex){
+                System.out.println("Bad regex!");
+
+            }
+        }
+    }//GEN-LAST:event_button9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -551,8 +582,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lbGiaTriToiThieu;
     private javax.swing.JLabel lbKMToiDa;
     private javax.swing.JLabel lbLuotSD;
@@ -566,7 +595,11 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private javax.swing.JTable tbProduct;
     private javax.swing.JTable tbVoucher;
     private javax.swing.JTextArea txtMota;
+    private javax.swing.JTextField txtSearchProduct;
+    private javax.swing.JTextField txtSearchVoucher;
     // End of variables declaration//GEN-END:variables
+    private TableModel model;
+    private TableRowSorter<TableModel> sorterVoucher, sorterProduct;
     private final VoucherBUS voucherBus = new VoucherBUS();
     private final GiamGiaSPBUS giamGiaSPBus = new GiamGiaSPBUS();
     private final SanPhamBUS sanPhamBus = new SanPhamBUS();
@@ -576,40 +609,32 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
 
-    public void loadDataTableVoucher(){
-        String[][] datas = voucherBus.convertToStringList();
-        for (String[] data : datas) {
-            if(!data[0].equals("0"))
-                ((DefaultTableModel) this.tbVoucher.getModel()).addRow(data);
-        }
+    public void loadDataTableVoucher(TableModel model){
+        sorterVoucher = new TableRowSorter<TableModel>(model);
+        tbVoucher.setModel(model);
+        tbVoucher.setRowSorter(sorterVoucher);
+
     }
     
-    public void loadDataTableDiscountProduct(){
-        String[][] datas = giamGiaSPBus.convertToStringList();
-        for(String[] data : datas){
-            if(!data[0].equals("0"))
-                ((DefaultTableModel) this.tbProduct.getModel()).addRow(data);
-        }
+    public void loadDataTableDiscountProduct(TableModel model){
+        
+        sorterProduct = new TableRowSorter<TableModel>(model);
+        tbProduct.setModel(model);
+        tbProduct.setRowSorter(sorterProduct);
+
     }
     
     public void loadAllTable(){
-        loadDataTableVoucher();
-        loadDataTableDiscountProduct();
+        String[] voucherHeader = new String[]{"Số voucher", "Mã voucher", "% Giảm", "Số lượng"};
+        String[] productHeader = new String[]{"Mã Giảm", "Mã SP", "% Giảm"};
+        loadDataTableVoucher(new DefaultTableModel(voucherBus.convertToStringList(), voucherHeader));
+        loadDataTableDiscountProduct(new DefaultTableModel(giamGiaSPBus.convertToStringList(), productHeader));
     }
     
     public void init(){
-        
     
     }
     
-    public String[] getDataAtRow(int row, JTable table){
-        String[] data = new String[table.getColumnCount()];
-        
-        for(int i = 0; i < data.length ; i++){
-            data[i] = (String) table.getValueAt(row, i);
-        }
-        return data;
-    }
    
     public void pushDataToGuiVoucher(Voucher voucher){
         this.lbNgayBD.setText(df.format(voucher.getNgayBD()));
@@ -633,6 +658,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         this.jLabel13.setText(df.format(giamGiaSP.getNgayKT())+"");
         this.imagePanel2.setPath(sp.getHinhAnh());
     }
+    
     
     public static void main(String[] argv){
         JFrame f = new JFrame();

@@ -70,7 +70,9 @@ public class OptionPaneBill extends javax.swing.JFrame {
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(51, 0, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(270, 2147483647));
         setMinimumSize(new java.awt.Dimension(270, 470));
+        setPreferredSize(new java.awt.Dimension(270, 470));
         getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
