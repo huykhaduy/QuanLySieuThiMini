@@ -21,20 +21,19 @@ public class SanPhamValidate {
     }
   
     private boolean CheckGia(String Gia){
-         Long value = Long.valueOf(Gia);
-         System.out.println(value);
-         if(value <=0)
-        return false;
-       
+        long gia = Long.valueOf(Gia);
+        System.out.println(gia);
+        if(gia<0)
+            return false;
+        
          return true;
+      
 }
      private boolean CheckTen (String Ten){
          return Ten.length()>0;
      }
      private boolean CheckNCC (String nhaCungCap){
-         NhaCungCapBUS nhaCC = new NhaCungCapBUS();
-      
-          
+       
          return Integer.valueOf(nhaCungCap) > 0; 
      }
      private boolean CheckLoai (String Loai)

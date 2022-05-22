@@ -5,7 +5,7 @@ import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataModels.SanPham;
 
 
-public class SanPhamBUS {
+public class SanPhamToData {
     SanPhamDAO spDao = new SanPhamDAO();
     public boolean AddSanPham (String Gia,String Ten,String nhaCungCap,String Loai,String Mota,String url)
             {
@@ -13,7 +13,7 @@ public class SanPhamBUS {
                 Long gia =Long.valueOf(Gia);
                 sp.setGiaTien(gia);
                 int loai = Integer.valueOf(Loai);
-                sp.setMaLoai(0);
+                sp.setMaLoai(loai);
                 int NhaCC = Integer.valueOf(nhaCungCap);
                 sp.setMaNCC(NhaCC);
                 sp.setTenSP(Ten);

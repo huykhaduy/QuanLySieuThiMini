@@ -33,7 +33,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         List<SanPham> sp=  spBUS.getAll();
         for( int i = 0 ; i < sp.size();i++)
         {
-         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getGiaTien(),sp.get(i).getSoLuong()};
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien()};
          tableModel.addRow(sanpham);
         }
         jTable1.setModel(tableModel);

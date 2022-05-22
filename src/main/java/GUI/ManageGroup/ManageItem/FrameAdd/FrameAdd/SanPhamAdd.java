@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
-
-import BUS.SanPhamHandle.SanPhamBUS;
+import BUS.BusAccessor.SanPhamBUS;
+import BUS.SanPhamHandle.SanPhamToData;
 import BUS.SanPhamHandle.SanPhamValidate;
 import java.awt.Color;
 import java.io.File;
@@ -18,11 +18,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class SanPhamAdd extends javax.swing.JFrame {
       private String url;
+      SanPhamBUS sanphamBUS = new SanPhamBUS();
     /**
      * Creates new form SanPhamAdd
      */
     public SanPhamAdd() {
         initComponents();
+        
+        tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
     }
 
 
@@ -68,50 +71,44 @@ public class SanPhamAdd extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Tên sản phẩm");
-        sanPhamAddBackground1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 179, 111, 30));
+        sanPhamAddBackground1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 111, 30));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nhà cung cấp");
         sanPhamAddBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 295, 100, 40));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Giá");
         sanPhamAddBackground1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 37, 40));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Mã sản phẩm");
-        sanPhamAddBackground1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 235, 100, 40));
+        sanPhamAddBackground1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 100, 40));
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Loại");
         sanPhamAddBackground1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 357, 37, 50));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Mô tả");
         sanPhamAddBackground1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 427, 91, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Thêm sản phẩm");
         sanPhamAddBackground1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, 157, -1));
 
         tfSanPham.setBackground(new java.awt.Color(196, 196, 196));
-        sanPhamAddBackground1.add(tfSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 211, 299, -1));
+        sanPhamAddBackground1.add(tfSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 299, -1));
 
         tfMaSanPham.setBackground(new java.awt.Color(196, 196, 196));
-        sanPhamAddBackground1.add(tfMaSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 271, 299, -1));
+        tfMaSanPham.setFocusable(false);
+        sanPhamAddBackground1.add(tfMaSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 299, -1));
 
         tfNhaCC.setBackground(new java.awt.Color(196, 196, 196));
         sanPhamAddBackground1.add(tfNhaCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 337, 299, -1));
@@ -157,20 +154,20 @@ public class SanPhamAdd extends javax.swing.JFrame {
         imagePanel2.setLayout(imagePanel2Layout);
         imagePanel2Layout.setHorizontalGroup(
             imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         imagePanel2Layout.setVerticalGroup(
             imagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        sanPhamAddBackground1.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 150, -1));
+        sanPhamAddBackground1.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 150, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sanPhamAddBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+            .addComponent(sanPhamAddBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,8 +190,18 @@ public class SanPhamAdd extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {
-              SanPhamBUS spBUS =new SanPhamBUS();
-              spBUS.AddSanPham(gia, tenSanPham, maNhaCC, loai, moTa,url);
+              SanPhamToData spData =new SanPhamToData();
+              spData.AddSanPham(gia, tenSanPham, maNhaCC, loai, moTa,url);
+              JOptionPane.showMessageDialog(this, "Success");
+              tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
+              tfNhaCC.setText("");
+              tfSanPham.setText("");
+              tfLoai.setText("");
+              tfGia.setText("");
+              tfMoTa.setText("");
+              imagePanel2.setImage(null);
+              imagePanel2.setBackground(Color.decode("#3C3F41"));
+              
               }
     }//GEN-LAST:event_button2MouseClicked
 
@@ -206,7 +213,9 @@ public class SanPhamAdd extends javax.swing.JFrame {
         int x = fileChooser.showDialog(this, "Chon file");
         if(x == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
-            url= file.getAbsolutePath();
+           System.out.println(file.getName());
+           String[] parts = file.getName().split("\\.");
+            url = parts[0];
             imagePanel2.setImagePathSanPham(file.getAbsolutePath());
             imagePanel2.setBackground(Color.decode("#F69E18"));
             }
