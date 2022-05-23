@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
-
+import com.raven.datechooser.DateChooser;
 import BUS.BusAccessor.HoaDonBUS;
 import BUS.BusAccessor.KhachHangBUS;
 import BUS.BusAccessor.NhanVienBUS;
@@ -14,12 +14,21 @@ import DAL.DataModels.HoaDon;
 import DAL.DataModels.KhachHang;
 import DAL.DataModels.NhanVien;
 import DAL.DataModels.SanPham;
+import com.raven.datechooser.DateChooser;
 import java.awt.Color;
 import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import  java.text.ParseException;
 
 /**
  *
@@ -43,7 +52,32 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         CustomHeader(jTable2);
         modelJTABLE2 = (DefaultTableModel) jTable2.getModel();
         DatatoTable();
+        setUpPanel();
     }
+    private void setUpPanel() {
+        JMenuItem itemNhap1 = new JMenuItem("Xem/Sửa thông tin");
+        JMenuItem itemNhap2 = new JMenuItem("Xóa phiếu nhập");
+//        JPopupMenu
+       dateChooserNhapBd = new DateChooser();
+        dateChooserNhapBd.setForeground(Color.decode("#59ABE3"));
+         dateChooserNhapKt = new DateChooser();
+         dateChooserNhapKt.setForeground(Color.decode("#59ABE3"));
+         dateChooserHuyBd = new DateChooser();
+         dateChooserHuyBd.setForeground(Color.decode("#59ABE3"));
+         dateChooserHuyKt = new DateChooser();
+         dateChooserHuyKt.setForeground(Color.decode("#59ABE3"));
+        dateChooserNhapBd.setTextRefernce(jTextField5);
+        dateChooserNhapKt.setTextRefernce(jTextField17);
+        
+//        itemNhap1.addActionListener((ActionListener a) -> {
+//            
+//        });
+//        
+//        itemNhap2.addActionListener((ActionListener a)->{
+//            
+//        });
+    }
+
     public void CustomHeader(JTable jt){
         jt.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,15));
         jt.getTableHeader().setOpaque(false);
@@ -80,7 +114,6 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jPanel21 = new javax.swing.JPanel();
         button14 = new GUI.SaleGroup.LoginGui.Component.Button();
         button18 = new GUI.SaleGroup.LoginGui.Component.Button();
-        button19 = new GUI.SaleGroup.LoginGui.Component.Button();
         shape40 = new GUI.ManageGroup.BackgroundShape.Shape();
         jLabel3 = new javax.swing.JLabel();
         shape42 = new GUI.ManageGroup.BackgroundShape.Shape();
@@ -97,6 +130,13 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        roundPanel2 = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField17 = new javax.swing.JTextField();
+        button19 = new GUI.SaleGroup.LoginGui.Component.Button();
+        button20 = new GUI.SaleGroup.LoginGui.Component.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -112,7 +152,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel108.setForeground(new java.awt.Color(42, 148, 208));
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel108.setText("Danh sách hóa đơn");
-        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 300, 30));
+        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 300, 30));
 
         jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -161,13 +201,6 @@ public class HoaDonJPanel extends javax.swing.JPanel {
             }
         });
         add(button18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 90, 30));
-
-        button19.setBackground(new java.awt.Color(118, 199, 150));
-        button19.setForeground(new java.awt.Color(255, 255, 255));
-        button19.setText("NHẬP EXCEL");
-        button19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        button19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button19, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 30));
 
         shape40.setBackground(new java.awt.Color(119, 176, 210));
         shape40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -240,6 +273,8 @@ public class HoaDonJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(jTable1);
 
         shape40.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 560, 200));
@@ -274,7 +309,55 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable2);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 960, 270));
+
+        roundPanel2.setBackground(new java.awt.Color(246, 247, 249));
+        roundPanel2.setRadius(70);
+        roundPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField5.setText("jTextField1");
+        roundPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 100, 20));
+
+        jLabel6.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel6.setText("Từ ngày:");
+        roundPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, -1));
+
+        jLabel7.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel7.setText("Đến ngày:");
+        roundPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 70, -1));
+
+        jTextField17.setText("jTextField1");
+        roundPanel2.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 100, 20));
+
+        button19.setBackground(new java.awt.Color(119, 176, 210));
+        button19.setForeground(new java.awt.Color(255, 255, 255));
+        button19.setText("LỌC");
+        button19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button19ActionPerformed(evt);
+            }
+        });
+        roundPanel2.add(button19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 110, -1));
+
+        add(roundPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 310, 90));
+
+        button20.setBackground(new java.awt.Color(118, 199, 150));
+        button20.setForeground(new java.awt.Color(255, 255, 255));
+        button20.setText("NHẬP EXCEL");
+        button20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button20ActionPerformed(evt);
+            }
+        });
+        add(button20, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 110, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void JTable2mouseclick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable2mouseclick
@@ -312,6 +395,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     private void button18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button18ActionPerformed
         // Tìm kiếm theo mã hóa đơn
         boolean test = false;
+        
         if(jTextField9.getText().equals("")){
             JOptionPane.showMessageDialog(null, "NHẬP MÃ HÓA ĐƠN VÀO MỤC TÌM KIẾM");
         }
@@ -331,7 +415,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_button18ActionPerformed
-
+    
     private void jTextField9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyReleased
         // reset table:
         if(jTextField9.getText().equals("")){
@@ -341,11 +425,53 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextField9KeyReleased
 
+    private void button19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button19ActionPerformed
+        // so sánh ngày
+        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+        boolean test =false;
+        jTable2.setModel(new DefaultTableModel(null,new String[]{"Mã hóa đơn","Mã khách hàng","Tên khách hàng","Mã nhân viên","Tên nhân viên","Ngày hóa đơn"}));
+        modelJTABLE2= (DefaultTableModel) jTable2.getModel();
+        try {
+            Date sDate=sdf.parse(jTextField5.getText());
+            System.out.println(sDate);
+            Date eDate=sdf.parse(jTextField17.getText());
+            System.out.println(eDate);
+            for(HoaDon hd:hdList){
+                String reDate=sdf.format(hd.getNgayHD());
+                System.out.println(reDate);
+                Date requiredDate=sdf.parse(reDate);
+                if(requiredDate.compareTo(sDate)>= 0 && requiredDate.compareTo(eDate) <=0 ){
+                    
+                    NhanVien nv= nhanVienBUS.get(hd.getMaNV());
+                    KhachHang kh= khachHangBUS.get(hd.getMaKH());
+                    modelJTABLE2.addRow(new Object[]{hd.getMaHD(),hd.getMaKH(),kh.getTenKH(),hd.getMaNV(),nv.getTenNV(),hd.getNgayHD()});
+                    test=true;
+                    
+                }
+                else{
+                    System.out.println("FAIL");
+
+                }
+            }
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(HoaDonJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        
+    }//GEN-LAST:event_button19ActionPerformed
+
+    private void button20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button20ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button14;
     private GUI.SaleGroup.LoginGui.Component.Button button18;
     private GUI.SaleGroup.LoginGui.Component.Button button19;
+    private GUI.SaleGroup.LoginGui.Component.Button button20;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel108;
@@ -358,14 +484,23 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField9;
+    private GUI.SaleGroup.SellerGUI.Component.RoundPanel roundPanel2;
     private GUI.ManageGroup.BackgroundShape.Shape shape40;
     private GUI.ManageGroup.BackgroundShape.Shape shape42;
     // End of variables declaration//GEN-END:variables
+     private DateChooser dateChooserNhapBd;
+    private DateChooser dateChooserNhapKt;
+    private DateChooser dateChooserHuyBd;
+    private DateChooser dateChooserHuyKt;
 }
