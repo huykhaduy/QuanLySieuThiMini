@@ -123,7 +123,7 @@ public class ProductDetailPanel extends PanelAdd {
 
         lbLoai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbLoai.setForeground(new java.awt.Color(17, 86, 125));
-        lbLoai.setText("Nuoc ngot");
+        lbLoai.setText("1");
 
         lbSoLuong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbSoLuong.setForeground(new java.awt.Color(17, 86, 125));

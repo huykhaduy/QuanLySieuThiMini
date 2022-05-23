@@ -6,6 +6,8 @@ package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SanPhamHandle.SanPhamToData;
 import BUS.SanPhamHandle.SanPhamValidate;
+import DAL.DataModels.SanPham;
+import GUI.ManageGroup.ManageItem.ManagerPanel.SanPhamPanel;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -19,13 +21,27 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class SanPhamAdd extends javax.swing.JFrame {
       private String url;
       SanPhamBUS sanphamBUS = new SanPhamBUS();
+      SanPhamValidate spVali = new SanPhamValidate();
+      SanPhamToData spData =new SanPhamToData();
+      SanPhamPanel spPanel = new SanPhamPanel();
+      
     /**
      * Creates new form SanPhamAdd
      */
     public SanPhamAdd() {
         initComponents();
+        this.setDefaultCloseOperation(0);
         
         tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
+    }
+    public void setNullText(){
+              tfNhaCC.setText("");
+              tfSanPham.setText("");
+              tfLoai.setText("");
+              tfGia.setText("");
+              tfMoTa.setText("");
+              imagePanel2.setImage(null);
+              imagePanel2.setBackground(Color.decode("#3C3F41"));
     }
 
 
@@ -132,6 +148,11 @@ public class SanPhamAdd extends javax.swing.JFrame {
         button1.setBackground(new java.awt.Color(246, 158, 24));
         button1.setText("Hủy");
         button1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button1MouseClicked(evt);
+            }
+        });
         sanPhamAddBackground1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 100, 40));
 
         button2.setBackground(new java.awt.Color(246, 158, 24));
@@ -179,7 +200,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
 
     private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
         System.out.println("Turn");
-        SanPhamValidate spVali = new SanPhamValidate();
+      
         String maSanPham = tfMaSanPham.getText();
         String maNhaCC = tfNhaCC.getText();
         String tenSanPham =tfSanPham.getText();
@@ -190,18 +211,10 @@ public class SanPhamAdd extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {
-              SanPhamToData spData =new SanPhamToData();
               spData.AddSanPham(gia, tenSanPham, maNhaCC, loai, moTa,url);
               JOptionPane.showMessageDialog(this, "Success");
               tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
-              tfNhaCC.setText("");
-              tfSanPham.setText("");
-              tfLoai.setText("");
-              tfGia.setText("");
-              tfMoTa.setText("");
-              imagePanel2.setImage(null);
-              imagePanel2.setBackground(Color.decode("#3C3F41"));
-              
+              setNullText();
               }
     }//GEN-LAST:event_button2MouseClicked
 
@@ -220,6 +233,10 @@ public class SanPhamAdd extends javax.swing.JFrame {
             imagePanel2.setBackground(Color.decode("#F69E18"));
             }
     }//GEN-LAST:event_imagePanel2MouseClicked
+
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_button1MouseClicked
 
     /**
      * @param args the command line arguments

@@ -224,7 +224,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="7d" green="56" red="11" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nuoc ngot"/>
+        <Property name="text" type="java.lang.String" value="1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbSoLuong">
