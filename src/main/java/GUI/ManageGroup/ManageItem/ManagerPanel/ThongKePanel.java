@@ -65,7 +65,6 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel77 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
         jLabel122 = new javax.swing.JLabel();
-        jPanel24 = new javax.swing.JPanel();
         button20 = new GUI.SaleGroup.LoginGui.Component.Button();
         shape41 = new GUI.ManageGroup.BackgroundShape.Shape();
         shape43 = new GUI.ManageGroup.BackgroundShape.Shape();
@@ -74,6 +73,7 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel36 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel24 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,25 +97,20 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jLabel57.setBackground(new java.awt.Color(119, 176, 210));
         jLabel57.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel57.setForeground(new java.awt.Color(0, 0, 0));
         jLabel57.setText("NHÂN VIÊN");
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel59.setForeground(new java.awt.Color(0, 0, 0));
         jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel59.setText("BÁN NHIỀU ĐƠN NHẤT");
 
         jLabel60.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(0, 0, 0));
         jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel60.setText("jLabel60");
 
         jLabel61.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
         jLabel61.setText("DOANH THU CAO NHẤT");
 
         jLabel62.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel62.setForeground(new java.awt.Color(0, 0, 0));
         jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel62.setText("jLabel62");
 
@@ -190,36 +185,29 @@ public class ThongKePanel extends javax.swing.JPanel {
         );
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel58.setForeground(new java.awt.Color(0, 0, 0));
         jLabel58.setText("HÓA ĐƠN");
 
         jLabel63.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
         jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel63.setText("Tổng doanh thu");
 
         jLabel64.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel64.setForeground(new java.awt.Color(0, 0, 0));
         jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel64.setText("Số lượng hóa đơn tháng");
 
         jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(0, 0, 0));
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel65.setText("jLabel65");
 
         jLabel66.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(0, 0, 0));
         jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel66.setText("jLabel66");
 
         jLabel80.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel80.setForeground(new java.awt.Color(0, 0, 0));
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel80.setText("Tổng số lượng hóa đơn");
 
         jLabel81.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel81.setForeground(new java.awt.Color(0, 0, 0));
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel81.setText("jLabel66");
 
@@ -314,36 +302,29 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jLabel55.setBackground(new java.awt.Color(153, 153, 153));
         jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel55.setForeground(new java.awt.Color(0, 0, 0));
         jLabel55.setText("Doanh Thu Tháng");
 
         jLabel67.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel67.setForeground(new java.awt.Color(0, 0, 0));
         jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel67.setText("DOANH THU THÁNG");
 
         jLabel68.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel68.setForeground(new java.awt.Color(0, 0, 0));
         jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel68.setText("jLabel68");
 
         jLabel69.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(0, 0, 0));
         jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel69.setText("SẢN PHẨM BÁN ĐƯỢC");
 
         jLabel70.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel70.setForeground(new java.awt.Color(0, 0, 0));
         jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel70.setText("jLabel70");
 
         jLabel71.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel71.setForeground(new java.awt.Color(0, 0, 0));
         jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel71.setText("TỔNG DOANH THU NĂM");
 
         jLabel72.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel72.setForeground(new java.awt.Color(0, 0, 0));
         jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel72.setText("jLabel72");
 
@@ -425,36 +406,29 @@ public class ThongKePanel extends javax.swing.JPanel {
         );
 
         jLabel56.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel56.setForeground(new java.awt.Color(0, 0, 0));
         jLabel56.setText("Khuyến mãi");
 
         jLabel73.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel73.setForeground(new java.awt.Color(0, 0, 0));
         jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel73.setText(" SỐ LƯỢNG KHUYẾN MÃI");
 
         jLabel74.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel74.setForeground(new java.awt.Color(0, 0, 0));
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel74.setText("jLabel74");
 
         jLabel75.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel75.setForeground(new java.awt.Color(0, 0, 0));
         jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel75.setText("CÒN HIỆU LỰC");
 
         jLabel76.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel76.setForeground(new java.awt.Color(0, 0, 0));
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel76.setText("jLabel76");
 
         jLabel77.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel77.setForeground(new java.awt.Color(0, 0, 0));
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel77.setText("TỔNG KHUYẾN MÃI NĂM");
 
         jLabel78.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel78.setForeground(new java.awt.Color(0, 0, 0));
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel78.setText("jLabel78");
 
@@ -523,21 +497,6 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel122.setText("THỐNG KÊ");
         add(jLabel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 50));
 
-        jPanel24.setBackground(new java.awt.Color(42, 148, 208));
-
-        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-
-        add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
-
         button20.setBackground(new java.awt.Color(118, 199, 150));
         button20.setForeground(new java.awt.Color(255, 255, 255));
         button20.setText("XUẤT EXCEL");
@@ -584,8 +543,6 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 80, 30));
 
@@ -596,21 +553,39 @@ public class ThongKePanel extends javax.swing.JPanel {
         add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(-63, 0, -1, 40));
 
         jLabel79.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel79.setForeground(new java.awt.Color(0, 0, 0));
         jLabel79.setText("Tháng :");
         add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel24.setBackground(new java.awt.Color(42, 148, 208));
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1036, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1007, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(710, Short.MAX_VALUE))
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

@@ -391,16 +391,16 @@ public class OptionPaneBill extends javax.swing.JFrame {
         this.repaint();
     }
     
-    public static void main(String[] argv){
-        String[][] data = {{"<html>Mirinda", "5", "51000"},
-            {"<html>Milo", "4", "20000"},
-            {"<html>Ovaltine", "7", "65000"},
-            {"<html>Nước suối đóng chai", "2", "14000"},
-            {"<html>Nước suối hết hạn", "2", "14000"},
-            {"<html>Nước suối nhật bản", "2", "14000"}};
-        
-        OptionPaneBill.showBillPane("Tiền mặt", 150000, 5, "Võ Minh Tuấn", 15000, 12354, data);
-    }
+//    public static void main(String[] argv){
+//        String[][] data = {{"<html>Mirinda", "5", "51000"},
+//            {"<html>Milo", "4", "20000"},
+//            {"<html>Ovaltine", "7", "65000"},
+//            {"<html>Nước suối đóng chai", "2", "14000"},
+//            {"<html>Nước suối hết hạn", "2", "14000"},
+//            {"<html>Nước suối nhật bản", "2", "14000"}};
+//        
+//        OptionPaneBill.showBillPane("Tiền mặt", 150000, 5, "Võ Minh Tuấn", 15000, 12354, data);
+//    }
 }
     
 

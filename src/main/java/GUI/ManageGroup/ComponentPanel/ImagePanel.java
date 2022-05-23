@@ -21,9 +21,11 @@ import org.imgscalr.Scalr;
 
 public class ImagePanel extends JPanel{
     private ImageIcon image;
+
     public final static String imgDirectory = "src/main/java/Assets/Image/";
     public final static String noImageProduct = "no-product";
     public final static String imgExtension = ".png";
+
 
     public Icon getImage() {
         return image;
@@ -40,6 +42,17 @@ public class ImagePanel extends JPanel{
     }
         public final void setImagePath(String url){
         this.image = new ImageIcon(imgDirectory+url+imgExtension);
+        this.revalidate();
+        this.repaint();
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+        this.image = new ImageIcon("src/main/java/Assets/Image/" + path + ".png");
         this.revalidate();
         this.repaint();
     }

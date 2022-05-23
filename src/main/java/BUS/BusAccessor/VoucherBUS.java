@@ -6,6 +6,7 @@ package BUS.BusAccessor;
 
 import DAL.DataAcessObject.VoucherDAO;
 import DAL.DataModels.Voucher;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,5 +46,23 @@ public class VoucherBUS implements IBussAccess<Voucher,String>{
        return list== null ? null : list.get(list.size()-1);
     }
 
+    public String[][] convertToStringList(){
+        List<Voucher> lsVoucher = getAll();
+        String[][] datas = new String[lsVoucher.size()][];
+        List<String> data = new ArrayList<>();
+        
+        int i = 0;
+        for(Voucher voucher : lsVoucher){
+            data.clear();
+            data.add(voucher.getSoVoucher()+"");
+            data.add(voucher.getMaVoucher());
+            data.add(voucher.getPtGiam()+"");
+            data.add(voucher.getSoLuotSD()+"");
+            datas[i] = data.toArray(String[] :: new);
+            i++;
+        }
+        
+        return datas;
+    }
    
 }

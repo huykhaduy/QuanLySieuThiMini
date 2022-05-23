@@ -21,17 +21,18 @@ import javax.swing.JTextField;
  */
 public class PayActionListener implements java.awt.event.ActionListener{
     
-    private int maNV;
+    
     private JTextField txtVoucher;
     private JTextField txtPhoneNumber;
     private JLabel lbTotal;
     private JLabel lbDiscount;
     private JLabel lbMoney;
+    private JLabel maNV;
     private OrderPanel orderPanel;
     private JButton btnThanhToan;
     private final PayActionBus pay = new PayActionBus();
     
-    public PayActionListener(int maNV, JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTotal,JLabel lbDiscount,JLabel lbMoney, JButton btnThanhToan ,OrderPanel orderPanel){
+    public PayActionListener(JLabel maNV, JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTotal,JLabel lbDiscount,JLabel lbMoney, JButton btnThanhToan ,OrderPanel orderPanel){
         this.maNV = maNV;
         this.txtVoucher = txtVoucher;
         this.txtPhoneNumber = txtPhoneNumber;
@@ -45,6 +46,7 @@ public class PayActionListener implements java.awt.event.ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        int maNV = Integer.valueOf(this.maNV.getText());
         int size = orderPanel.getListChiTietHoaDon(0).size();
         long total = Long.valueOf(lbTotal.getText());
         long discount = Long.valueOf(lbDiscount.getText());

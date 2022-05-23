@@ -107,7 +107,7 @@ public class PayActionBus {
             if(total >= voucher.getGiaTriToiThieu() && voucher.getSoLuotSD() > 0){
                 //Set lại lượt sử dụng
                 voucher.setSoLuotSD(voucher.getSoLuotSD() - 1);
-                return (long) voucher.getKmToiDa() > (voucher.getPtGiam()*total) ? (voucher.getPtGiam()*total) : voucher.getKmToiDa();
+                return (long) (long)(voucher.getKmToiDa()) > ((voucher.getPtGiam()*total)/100) ? ((voucher.getPtGiam()*total)/100) : voucher.getKmToiDa();
             }
         }
         return 0;

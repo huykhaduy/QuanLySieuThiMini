@@ -36,13 +36,13 @@ public class AddCustomerAction implements ActionListener{
                     txtPhoneNumber.setEnabled(true);
                 else txtPhoneNumber.setEnabled(false);
                 
-            }else JOptionPane.showConfirmDialog(txtPhoneNumber, "Điểm tích lũy chưa đủ", "Thông báo",JOptionPane.OK_OPTION);
-        orderPanel.calculatePayment();
+            }else JOptionPane.showConfirmDialog(txtPhoneNumber, "Điểm tích lũy chưa đủ", "Thông báo",JOptionPane.CLOSED_OPTION);
+            orderPanel.calculatePayment();
         }else{
             int option = JOptionPane.showConfirmDialog(txtPhoneNumber, "Bạn có muốn trở thành khách hàng thân thiết?", "Question",JOptionPane.YES_NO_OPTION);
                 if(option == JOptionPane.OK_OPTION)
                     new AdditionCustomerFrame().setVisible(true);
-        orderPanel.calculatePayment();
+            orderPanel.calculatePayment();
         }
     }
     

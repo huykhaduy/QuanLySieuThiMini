@@ -63,7 +63,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jLabel83.setText("Danh sách nhân viên");
         add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 300, 30));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -92,7 +91,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 10, 30));
+        add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 10, 30));
 
         button10.setBackground(new java.awt.Color(118, 199, 150));
         button10.setForeground(new java.awt.Color(255, 255, 255));
@@ -177,7 +176,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         shape13.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 80, -1));
 
         jLabel100.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel100.setForeground(new java.awt.Color(0, 0, 0));
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel100.setText("CHỨC VỤ");
         shape13.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 220, -1));
@@ -201,7 +199,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         jLabel91.setBackground(new java.awt.Color(0, 0, 0));
         jLabel91.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel91.setForeground(new java.awt.Color(0, 0, 0));
         jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel91.setText("TÊN NHÂN VIÊN");
 
