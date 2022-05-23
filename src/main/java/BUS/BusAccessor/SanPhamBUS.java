@@ -1,50 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package BUS.BusAccessor;
 
+import DAL.DataAcessObject.NhanVienDAO;
 import DAL.DataAcessObject.SanPhamDAO;
+import DAL.DataModels.NhanVien;
 import DAL.DataModels.SanPham;
 import java.util.List;
 
-/**
- *
- * @author tiend
- */
-public class SanPhamBUS implements IBussAccess<SanPham,Integer>{
-      private final SanPhamDAO spDAO = new SanPhamDAO();
-
+public  class SanPhamBUS implements IBussAccess<SanPham, Integer>{
+    private final SanPhamDAO sanPhamDAO =new  SanPhamDAO();
     @Override
     public SanPham get(Integer maSanPham) {
-         return spDAO.select(maSanPham);
+        return sanPhamDAO.select(maSanPham);
     }
 
     @Override
     public List<SanPham> getAll() {
-        return spDAO.selectAll();
+       return sanPhamDAO.selectAll();
     }
 
     @Override
-    public boolean add(SanPham sp) {
-        return spDAO.insert(sp);
+    public boolean add(SanPham sanpham) {
+        return  sanPhamDAO.insert(sanpham);
     }
 
     @Override
-    public boolean edit(Integer maSanPham, SanPham sp) {
-        return spDAO.update(maSanPham, sp);
+    public boolean edit(Integer maSanPham, SanPham sanpham) {
+       return sanPhamDAO.update(maSanPham, sanpham);
     }
 
     @Override
     public boolean remove(Integer maSanPham) {
-        return spDAO.delete(maSanPham);
+      return sanPhamDAO.delete(maSanPham);
     }
+ 
 
     @Override
     public SanPham getNewest() {
-        List<SanPham> list=getAll();
-        return list== null ? null : list.get(list.size()-1);
-        
+       List<SanPham> list=getAll();
+       return list== null ? null : list.get(list.size()-1);
     }
-    
 }
+
+   
