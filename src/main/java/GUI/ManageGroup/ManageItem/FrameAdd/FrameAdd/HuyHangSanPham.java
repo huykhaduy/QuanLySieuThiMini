@@ -4,14 +4,17 @@
  */
 package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 
-import BUS.BusAccessor.CTPhieuNhapBUS;
+import BUS.BusAccessor.CTPhieuHuyBUS;
+import BUS.BusAccessor.CTPhieuHuyBUS;
 import BUS.BusAccessor.NhanVienBUS;
+import BUS.BusAccessor.PhieuHuyBUS;
 import BUS.BusAccessor.PhieuNhapBUS;
 import BUS.BusAccessor.SanPhamBUS;
+import DAL.DataModels.ChiTietPhieuHuy;
 import DAL.DataModels.ChiTietPhieuNhap;
+import DAL.DataModels.PhieuHuy;
 import DAL.DataModels.PhieuNhap;
 import DAL.DataModels.SanPham;
-import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.NhapHangSanPham;
 import GUI.ManageGroup.Theme.NhapXuatTheme;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
@@ -40,28 +43,28 @@ import javax.swing.table.TableCellEditor;
  *
  * @author ACER
  */
-public class NhapHangSanPham extends javax.swing.JFrame {
-    private final CTPhieuNhapBUS ctPhieuNhapBus;
+public class HuyHangSanPham extends javax.swing.JFrame {
+    private final CTPhieuHuyBUS ctPhieuHuyBus;
     private final NhanVienBUS nhanvienBus;
     private final SanPhamBUS sanPhambus;
-    private int maPhieuNhap;
-    private final int maNhanVien;
     private final boolean isAdd;
+    private int maPhieuHuy;
+    private final int maNhanVien;
     /**
      * Creates new form NhapHangSanPham
      */
-    public NhapHangSanPham(int maPhieuNhap, int maNhanVien, boolean frameAdd) {
+    public HuyHangSanPham(int maPhieuHuy, int maNhanVien, boolean isAddFrame) {
         NhapXuatTheme.setup();
         initComponents();
         this.setLocationRelativeTo(null);
-        this.isAdd = frameAdd;
-        this.setTitle("Nhập sản phẩm vào kho");
+        this.isAdd = isAddFrame;
+        this.setTitle("Hủy sản phẩm khỏi kho hàng");
         SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 10000, 1); 
         this.jSpinner1.setModel(model);
-        ctPhieuNhapBus = new CTPhieuNhapBUS();
+        ctPhieuHuyBus = new CTPhieuHuyBUS();
         nhanvienBus = new NhanVienBUS();
         sanPhambus = new SanPhamBUS();
-        this.maPhieuNhap = maPhieuNhap;
+        this.maPhieuHuy = maPhieuHuy;
         this.maNhanVien = maNhanVien;
         this.setThongTinPhieuNhap();
         this.addActionToTextSearch();
@@ -69,7 +72,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }
     
     private void setThongTinPhieuNhap(){
-        this.lbmaHoaDon.setText(Integer.toString(this.maPhieuNhap));
+        this.lbmaHoaDon.setText(Integer.toString(this.maPhieuHuy));
         this.lbMaNV.setText(Integer.toString(this.maNhanVien));
         this.lbTenNV.setText("<html>"+nhanvienBus.get(this.maNhanVien).getTenNV());
         Timer myTimer = new Timer(1000, (ActionEvent e) -> {
@@ -155,31 +158,31 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }
     
     private void loadFromDatabase(){
-        List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maPhieuNhap);
+        List<ChiTietPhieuHuy> ctpn = ctPhieuHuyBus.getByKey1(this.maPhieuHuy);
         DefaultTableModel model = (DefaultTableModel)nhapTable.getModel();
         if (ctpn == null)
             return;
-        for (ChiTietPhieuNhap ct : ctpn){
+        for (ChiTietPhieuHuy ct : ctpn){
             model.addRow(new Object[]{ct.getMaSP(), sanPhambus.get(ct.getMaSP()).getTenSP(), ct.getSoLuong()});
         }
     }
     
     public void addToDatabase(int maSP, int soLuong) {
-        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maPhieuNhap, maSP, soLuong);
-        ctPhieuNhapBus.add(ctpn);
+        ChiTietPhieuHuy ctpn = new ChiTietPhieuHuy(this.maPhieuHuy, maSP, soLuong);
+        ctPhieuHuyBus.add(ctpn);
     }
     
     public void updateToDatabase(int maSP, int soLuong){
-        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maPhieuNhap, maSP, soLuong);
-        ctPhieuNhapBus.edit(maPhieuNhap, maSP, ctpn);
+        ChiTietPhieuHuy ctpn = new ChiTietPhieuHuy(this.maPhieuHuy, maSP, soLuong);
+        ctPhieuHuyBus.edit(maPhieuHuy, maSP, ctpn);
     }
     
     public void removeFromDatabase(int maSP){
-         ctPhieuNhapBus.remove(this.maPhieuNhap, maSP);
+         ctPhieuHuyBus.remove(this.maPhieuHuy, maSP);
     }
     
-    public List<ChiTietPhieuNhap> convertToList(){
-        List<ChiTietPhieuNhap> listNhap = new ArrayList<>();
+    public List<ChiTietPhieuHuy> convertToList(){
+        List<ChiTietPhieuHuy> listNhap = new ArrayList<>();
         for (int i=0;i<nhapTable.getRowCount();i++){
             int maSP = getNumberic(nhapTable.getValueAt(i, 0)+"");
             int soLuong = getNumberic(nhapTable.getValueAt(i, 2)+"");
@@ -187,7 +190,20 @@ public class NhapHangSanPham extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ!", "Error", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            listNhap.add(new ChiTietPhieuNhap(this.maPhieuNhap, maSP, soLuong));
+            if (isAdd){
+                if (sanPhambus.get(maSP).getSoLuong() < soLuong) {
+                    JOptionPane.showMessageDialog(this, "Số lượng sản phẩm hủy nhiều hơn số lượng có trong kho", "Error", JOptionPane.ERROR_MESSAGE);
+                    return null;
+                }
+            }
+            else {
+                if (sanPhambus.get(maSP).getSoLuong() + ctPhieuHuyBus.get(maPhieuHuy, maSP).getSoLuong() < soLuong) {
+                    JOptionPane.showMessageDialog(this, "Số lượng sản phẩm hủy nhiều hơn số lượng có trong kho", "Error", JOptionPane.ERROR_MESSAGE);
+                    return null;
+                }
+            }
+            
+            listNhap.add(new ChiTietPhieuHuy(this.maPhieuHuy, maSP, soLuong));
         }
         return listNhap;
     }
@@ -416,7 +432,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        sanPhamAddBackground1.setBackground(new java.awt.Color(0, 204, 204));
+        sanPhamAddBackground1.setBackground(new java.awt.Color(0, 153, 204));
         sanPhamAddBackground1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -432,7 +448,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Ngày nhập");
+        jLabel23.setText("Ngày hủy");
         sanPhamAddBackground1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         txtMaSP.addActionListener(new java.awt.event.ActionListener() {
@@ -456,12 +472,12 @@ public class NhapHangSanPham extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("NHẬP HÀNG");
-        sanPhamAddBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
+        jLabel2.setText("HỦY HÀNG");
+        sanPhamAddBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(59, 172, 182));
-        jLabel29.setText("Sản phẩm đã nhập");
+        jLabel29.setText("Sản phẩm đã hủy");
         sanPhamAddBackground1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
 
         lbTenNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -500,7 +516,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
 
         sanPhamAddBackground1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 480, 300));
 
-        imagePanel1.setBackground(new java.awt.Color(0, 204, 204));
+        imagePanel1.setBackground(new java.awt.Color(0, 153, 204));
         imagePanel1.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManageItem/FrameAdd/ComponentFrameAdd/icons8-box-256.png"))); // NOI18N
 
         javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
@@ -516,7 +532,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
 
         sanPhamAddBackground1.add(imagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 90, 100));
 
-        jButton2.setBackground(new java.awt.Color(130, 219, 216));
+        jButton2.setBackground(new java.awt.Color(0, 153, 204));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("LƯU");
@@ -536,7 +552,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lbmaHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lbmaHoaDon.setForeground(new java.awt.Color(0, 204, 204));
+        lbmaHoaDon.setForeground(new java.awt.Color(0, 153, 204));
         lbmaHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbmaHoaDon.setText("1");
 
@@ -570,7 +586,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         sanPhamAddBackground1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 110, 30));
         sanPhamAddBackground1.add(lbTenSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 246, 390, 20));
 
-        jButton3.setBackground(new java.awt.Color(59, 172, 182));
+        jButton3.setBackground(new java.awt.Color(0, 153, 204));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Thêm");
@@ -625,9 +641,13 @@ public class NhapHangSanPham extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Sản phẩm không hợp lệ, vui lòng thêm trước khi nhập !", "Thêm thất bại", JOptionPane.ERROR_MESSAGE);
         }
         else {
+            int maSP = getNumberic(txtMaSP.getText());
+            if (sanPhambus.get(maSP).getSoLuong() < getNumberic(jSpinner1.getValue()+"")){
+                JOptionPane.showMessageDialog(this, "Số lượng sản phẩm hủy nhiều hơn số lượng có trong kho","Thêm thất bại",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             DefaultTableModel model = (DefaultTableModel) nhapTable.getModel();
             //Gop ket qua
-            int maSP = getNumberic(txtMaSP.getText());
             for (int i =0;i<model.getRowCount();i++){
                 int value = getNumberic(model.getValueAt(i, 0)+"");
                 if (maSP == value){
@@ -641,23 +661,23 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if (isAdd){
-           List<ChiTietPhieuNhap> convertedList = convertToList();
-           if (convertedList != null && !convertedList.isEmpty()){
-               PhieuNhapBUS nhapBus = new PhieuNhapBUS();
-               PhieuNhap pn = new PhieuNhap(0, new Timestamp(System.currentTimeMillis()), this.maNhanVien, false);
-               nhapBus.add(pn);
-               this.maPhieuNhap = nhapBus.getNewest().getMaPhieu();
-               for (ChiTietPhieuNhap ct : convertedList) {
-                   addToDatabase(ct.getMaSP(), ct.getSoLuong());
-               }
-               this.setVisible(false);
-               this.dispose();
-               return;
-           } 
-       }
-       List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maPhieuNhap);
-       List<ChiTietPhieuNhap> convertedList = convertToList();
+        if (isAdd) {
+            List<ChiTietPhieuHuy> convertedList = convertToList();
+            if (convertedList != null && !convertedList.isEmpty()){
+                PhieuHuyBUS huyBUS = new PhieuHuyBUS();
+                PhieuHuy ph = new PhieuHuy(0, new Timestamp(System.currentTimeMillis()), this.maNhanVien, false);
+                huyBUS.add(ph);
+                this.maPhieuHuy = huyBUS.getNewest().getMaPhieu();
+                for (ChiTietPhieuHuy ct : convertedList) {
+                    addToDatabase(ct.getMaSP(), ct.getSoLuong());
+                }
+                this.setVisible(false);
+                this.dispose();
+                return;
+            }
+        }
+       List<ChiTietPhieuHuy> ctpn = ctPhieuHuyBus.getByKey1(this.maPhieuHuy);
+       List<ChiTietPhieuHuy> convertedList = convertToList();
        if (null != ctpn && convertedList != null){
            for (int i = ctpn.size()-1; i>=0 ;i--){
                for (int j = convertedList.size()-1;j>=0;j--){
@@ -670,14 +690,15 @@ public class NhapHangSanPham extends javax.swing.JFrame {
                    }
                }
            }
-           for (ChiTietPhieuNhap ct: ctpn)
+           for (ChiTietPhieuHuy ct: ctpn)
                removeFromDatabase(ct.getMaSP());
            
-           for (ChiTietPhieuNhap ct: convertedList)
+           for (ChiTietPhieuHuy ct: convertedList)
                addToDatabase(ct.getMaSP(), ct.getSoLuong());
             this.setVisible(false);
             this.dispose();
        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -702,20 +723,20 @@ public class NhapHangSanPham extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NhapHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HuyHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NhapHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HuyHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NhapHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HuyHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NhapHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HuyHangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         NhapXuatTheme.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NhapHangSanPham(9,4,true).setVisible(true);
+                new HuyHangSanPham(8,4, true).setVisible(true);
             }
         });
     }

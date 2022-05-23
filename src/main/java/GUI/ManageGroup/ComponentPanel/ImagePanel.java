@@ -21,7 +21,7 @@ import org.imgscalr.Scalr;
 
 public class ImagePanel extends JPanel{
     private ImageIcon image;
-
+    private String path;
     public final static String imgDirectory = "src/main/java/Assets/Image/";
     public final static String noImageProduct = "no-product";
     public final static String imgExtension = ".png";
