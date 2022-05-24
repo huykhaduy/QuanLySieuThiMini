@@ -17,11 +17,11 @@ public class TestClass {
 //            System.out.println(mysp);
 //        }
         PhieuNhapDAO nhapDAO = new PhieuNhapDAO();
-        List<PhieuNhap> list = nhapDAO.selectAndFilter("2", "", "2022/05/16", "2022/05/18");
-        for (PhieuNhap nhap:list){
-            System.out.println(nhap);
-        }
-        
+//        List<PhieuNhap> list = nhapDAO.selectAndFilter("2", "", "2022/05/16", "2022/05/18");
+//        for (PhieuNhap nhap:list){
+//            System.out.println(nhap);
+//        }
+        System.out.println(nhapDAO.selectNewest());
     }
 
     public static void testHoaDon(){
@@ -81,31 +81,31 @@ public class TestClass {
 
     }
 
-    public static void testSanPham(){
-        SanPham sp = new SanPham(0,"Sua ong tho","Sua ong tho tiet trung vinamlik 100% sua bo","D:/img/image.png",36000,1,1,1,false);
-        SanPhamDAO sanPhamDAO = new SanPhamDAO();
-        if (sanPhamDAO.insert(sp))
-            System.out.println("Insert success");
-        else
-            System.out.println("Insert fail");
-
-        sp.setGiaTien(360033120);
-        if (sanPhamDAO.update(1,sp))
-            System.out.println("Update success");
-        else
-            System.out.println("Update fail");
-
-//        if (sanPhamDAO.delete(1))
-//            System.out.println("Delete success");
+//    public static void testSanPham(){
+//        SanPham sp = new SanPham(0,"Sua ong tho","Sua ong tho tiet trung vinamlik 100% sua bo","D:/img/image.png",36000,1,1,1,false);
+//        SanPhamDAO sanPhamDAO = new SanPhamDAO();
+//        if (sanPhamDAO.insert(sp))
+//            System.out.println("Insert success");
 //        else
-//            System.out.println("Delete fail");
-
-        List<SanPham> list = sanPhamDAO.selectAll();
-        for (SanPham sanPham : list) {
-            System.out.println(sanPham);
-        }
-
-    }
+//            System.out.println("Insert fail");
+//
+//        sp.setGiaTien(360033120);
+//        if (sanPhamDAO.update(1,sp))
+//            System.out.println("Update success");
+//        else
+//            System.out.println("Update fail");
+//
+////        if (sanPhamDAO.delete(1))
+////            System.out.println("Delete success");
+////        else
+////            System.out.println("Delete fail");
+//
+//        List<SanPham> list = sanPhamDAO.selectAll();
+//        for (SanPham sanPham : list) {
+//            System.out.println(sanPham);
+//        }
+//
+//    }
 
     public static void testLoaiSanPham(){
         LoaiSanPhamDAO loaiSanPhamDAO = new LoaiSanPhamDAO();

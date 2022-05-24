@@ -36,6 +36,10 @@ public class PhieuNhapDAO extends AbtractAccessDatabase<PhieuNhap> implements IS
         return executeQueryList("SELECT * FROM PHIEUNHAP WHERE IS_DELETED = 0");
     }
     
+    public PhieuNhap selectNewest(){
+        return executeQuery("SELECT * FROM PHIEUNHAP ORDER BY MAPHIEU DESC LIMIT 1");
+    }
+    
     public List<PhieuNhap> selectAndFilter(String maNV, String maPN, String ngayBD, String ngayKT){
         if (maNV.isEmpty() && maPN.isEmpty()){
             return executeQueryList("SELECT * FROM PHIEUNHAP WHERE IS_DELETED = 0 AND (NGAYLAP >= ? AND NGAYLAP <= ?)",

@@ -4,48 +4,161 @@
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
+import BUS.BusAccessor.NhanVienBUS;
+import BUS.BusAccessor.PhieuHuyBUS;
+import BUS.BusAccessor.PhieuNhapBUS;
+import DAL.DataModels.PhieuHuy;
+import DAL.DataModels.PhieuNhap;
+import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.HuyHangSanPham;
+import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.NhapHangSanPham;
 import GUI.ManageGroup.Theme.NhapHuyPanel;
 import com.raven.datechooser.DateChooser;
+import com.raven.datechooser.SelectedDate;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Timestamp;
+import java.util.List;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
  * @author ACER
  */
 public class NhapXuatPanel extends javax.swing.JPanel {
-
+    private final PhieuNhapBUS nhapBus;
+    private final NhanVienBUS nvBus;
+    private final PhieuHuyBUS huyBus;
+    private final DefaultTableModel nhapModel;
+    private final DefaultTableModel huyModel;
+    private final int maNhanVien;
     /**
      * Creates new form NhapXuatPanel
      */
     public NhapXuatPanel() {
+        maNhanVien = 1;
         NhapHuyPanel.setup();
         initComponents();
+        nhapModel = (DefaultTableModel) jTable1.getModel();
+        huyModel = (DefaultTableModel) jTable2.getModel();
+        nhapBus = new PhieuNhapBUS();
+        nvBus = new NhanVienBUS();
+        huyBus = new PhieuHuyBUS();
         setUpPanel();
+        loadPhieuNhapFromDB();
+        loadPhieuHuyFromDB();
     }
-//    mvn install:install-file –Dfile=E:\GitHubDownload\date-chooser-main\date-chooser-main\dist\datechooser.jar -DgroupId=com.raven.datechooser -DartifactId=datechooser -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true
+
     private void setUpPanel() {
+        // Thêm pop up cho table phieu nhap
         JMenuItem itemNhap1 = new JMenuItem("Xem/Sửa thông tin");
         JMenuItem itemNhap2 = new JMenuItem("Xóa phiếu nhập");
+        itemNhap1.addActionListener((ActionEvent e) -> {
+            int row = jTable1.getSelectedRow();
+            int maPN = Integer.parseInt(nhapModel.getValueAt(row, 0) + "");
+            int maNV = Integer.parseInt(nhapModel.getValueAt(row, 1) + "");
+            new NhapHangSanPham(maPN, maNV, false).setVisible(true);
+        });
+
+        itemNhap2.addActionListener((ActionEvent e) -> {
+            int[] rows = jTable1.getSelectedRows();
+            for (int i = rows.length - 1; i >= 0; i--) {
+                nhapBus.remove(Integer.parseInt(nhapModel.getValueAt(rows[i], 0)+""));
+                nhapModel.removeRow(rows[i]);
+            }
+        });
+ 
+        JPopupMenu nhapPopUp = new JPopupMenu();
+        nhapPopUp.add(itemNhap1);
+        nhapPopUp.add(itemNhap2);
+        jTable1.setComponentPopupMenu(nhapPopUp);
+        
+        // Thêm pop up cho table phieu huy
+        JMenuItem itemHuy1 = new JMenuItem("Xem/Sửa thông tin");
+        JMenuItem itemHuy2 = new JMenuItem("Xóa phiếu hủy");
+        itemHuy1.addActionListener((ActionEvent e) -> {
+            int row = jTable2.getSelectedRow();
+            int maPN = Integer.parseInt(huyModel.getValueAt(row, 0) + "");
+            int maNV = Integer.parseInt(huyModel.getValueAt(row, 1) + "");
+            new HuyHangSanPham(maPN, maNV, false).setVisible(true);
+        });
+
+        itemHuy2.addActionListener((ActionEvent e) -> {
+            int[] rows = jTable2.getSelectedRows();
+            for (int i = rows.length - 1; i >= 0; i--) {
+                huyBus.remove(Integer.parseInt(huyModel.getValueAt(rows[i], 0)+""));
+                huyModel.removeRow(rows[i]);
+            }
+        });
+
+        JPopupMenu huyPopup = new JPopupMenu();
+        huyPopup.add(itemHuy1);
+        huyPopup.add(itemHuy2);
+        jTable2.setComponentPopupMenu(huyPopup);
+        
+        
         dateChooserNhapBd = new DateChooser();
         dateChooserNhapBd.setForeground(Color.decode("#59ABE3"));
-         dateChooserNhapKt = new DateChooser();
-         dateChooserNhapKt.setForeground(Color.decode("#59ABE3"));
-         dateChooserHuyBd = new DateChooser();
-         dateChooserHuyBd.setForeground(Color.decode("#59ABE3"));
-         dateChooserHuyKt = new DateChooser();
-         dateChooserHuyKt.setForeground(Color.decode("#59ABE3"));
+        dateChooserNhapKt = new DateChooser();
+        dateChooserNhapKt.setForeground(Color.decode("#59ABE3"));
+        dateChooserHuyBd = new DateChooser();
+        dateChooserHuyBd.setForeground(Color.decode("#59ABE3"));
+        dateChooserHuyKt = new DateChooser();
+        dateChooserHuyKt.setForeground(Color.decode("#59ABE3"));
         dateChooserNhapBd.setTextRefernce(jTextField5);
         dateChooserNhapKt.setTextRefernce(jTextField17);
         dateChooserHuyBd.setTextRefernce(jTextField6);
         dateChooserHuyKt.setTextRefernce(jTextField14);
-//        itemNhap1.addActionListener((ActionListener a) -> {
-//            
-//        });
-//        
-//        itemNhap2.addActionListener((ActionListener a)->{
-//            
-//        });
+        
+        TableColumn column = null;
+        for (int i = 0; i < nhapModel.getColumnCount(); i++) {
+            column = jTable1.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0 -> column.setPreferredWidth(30);
+                case 1 -> column.setPreferredWidth(30);
+                case 2 -> column.setPreferredWidth(100);
+                case 3 -> column.setPreferredWidth(100);
+                default -> {
+                }
+            }
+        }
+        
+        TableColumn column2 = null;
+        for (int i = 0; i < huyModel.getColumnCount(); i++) {
+            column2 = jTable2.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0 -> column2.setPreferredWidth(30);
+                case 1 -> column2.setPreferredWidth(30);
+                case 2 -> column2.setPreferredWidth(100);
+                case 3 -> column2.setPreferredWidth(100);
+                default -> {
+                }
+            }
+        }
+    }
+    
+    private void loadPhieuNhapFromDB(){
+        List<PhieuNhap> list = nhapBus.getAll();
+        nhapModel.setRowCount(0);
+        if (list == null || list.isEmpty()) return;
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (PhieuNhap item: list){
+            model.addRow(new Object[]{item.getMaPhieu(),item.getMaNV(),nvBus.get(item.getMaNV()).getTenNV(),item.getNgayLap()});
+        }
+    }
+    
+    private void loadPhieuHuyFromDB(){
+        List<PhieuHuy> list = huyBus.getAll();
+        huyModel.setRowCount(0);
+        if (list == null || list.isEmpty()) return;
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        for (PhieuHuy item: list){
+            model.addRow(new Object[]{item.getMaPhieu(),item.getMaNV(),nvBus.get(item.getMaNV()).getTenNV(),item.getNgayLap()});
+        }
     }
 
     /**
@@ -94,6 +207,8 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,7 +218,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
         jLabel101.setText("Thông tin phiếu hủy");
-        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 180, -1));
+        add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 180, -1));
 
         jLabel103.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel103.setForeground(new java.awt.Color(42, 148, 208));
@@ -131,6 +246,11 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         button15.setText("+TẠO PHIẾU HỦY");
         button15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button15ActionPerformed(evt);
+            }
+        });
         add(button15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 150, 30));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -178,6 +298,11 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         button17.setText("+TẠO PHIẾU NHẬP");
         button17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button17ActionPerformed(evt);
+            }
+        });
         add(button17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 150, 30));
 
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
@@ -192,9 +317,16 @@ public class NhapXuatPanel extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -209,7 +341,22 @@ public class NhapXuatPanel extends javax.swing.JPanel {
             new String [] {
                 "Mã phiếu xuất", "Mã nhân viên", "Tên nhân viên", "Ngày lập"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 490, 320));
@@ -225,11 +372,21 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jButton5.setBackground(new java.awt.Color(255, 153, 153));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Xóa lọc kết quả");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         roundPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 120, 40));
 
         jButton6.setBackground(new java.awt.Color(0, 153, 204));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Tìm kiếm");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         roundPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 40));
 
         jLabel9.setBackground(new java.awt.Color(0, 204, 204));
@@ -250,8 +407,6 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("Đến ngày:");
         roundPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 70, -1));
-
-        jTextField16.setText("jTextField1");
         roundPanel2.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, 40));
 
         jLabel13.setBackground(new java.awt.Color(0, 204, 204));
@@ -269,8 +424,6 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTextField17.setBackground(new java.awt.Color(255, 255, 255));
         jTextField17.setText("jTextField1");
         roundPanel2.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 210, 40));
-
-        jTextField18.setText("jTextField1");
         roundPanel2.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 210, 40));
 
         add(roundPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 470, 290));
@@ -286,18 +439,26 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jTextField14.setBackground(new java.awt.Color(255, 255, 255));
         jTextField14.setText("jTextField1");
         roundPanel3.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 210, 40));
-
-        jTextField15.setText("jTextField1");
         roundPanel3.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, 40));
 
         jButton7.setBackground(new java.awt.Color(255, 153, 153));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Xóa lọc kết quả");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         roundPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 120, 40));
 
         jButton8.setBackground(new java.awt.Color(0, 153, 204));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Tìm kiếm");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         roundPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, 40));
 
         jLabel11.setBackground(new java.awt.Color(0, 204, 204));
@@ -330,17 +491,108 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(51, 153, 255));
         jLabel10.setText("Mã phiếu nhập");
         roundPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 120, -1));
-
-        jTextField13.setText("jTextField1");
         roundPanel3.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 210, 40));
 
         add(roundPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 470, 290));
+
+        jButton1.setBackground(new java.awt.Color(0, 204, 204));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(0, 204, 204));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Refresh");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    // Tim kiem cua phieu nhap
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        SelectedDate nhapStart = dateChooserNhapBd.getSelectedDate();
+        SelectedDate endDate = dateChooserNhapKt.getSelectedDate();
+        String bd = nhapStart.getYear() +"-"+nhapStart.getMonth()+"-"+nhapStart.getDay();
+        String kt = endDate.getYear()+"-"+endDate.getMonth()+"-"+endDate.getDay();
+        Timestamp bdTs = Timestamp.valueOf(bd+" 00:00:00");
+        Timestamp ktTs = Timestamp.valueOf(kt+" 00:00:00");
+        if (bdTs.compareTo(ktTs)>0) JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu","Thời gian lọc sai",JOptionPane.OK_OPTION);
+        List<PhieuNhap> list = nhapBus.getFilter(jTextField16.getText(), jTextField18.getText(), bd, kt);
+        nhapModel.setRowCount(0);
+        if (list == null || list.isEmpty()) 
+            return;
+        for (PhieuNhap item: list){
+            nhapModel.addRow(new Object[]{item.getMaPhieu(),item.getMaNV(),nvBus.get(item.getMaNV()).getTenNV(),item.getNgayLap()});
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    // Xoa loc ket qua phieu nhap
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jTextField16.setText("");
+        jTextField18.setText("");
+        nhapModel.setRowCount(0);
+        loadPhieuNhapFromDB();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    // Them phieu nhap
+    private void button17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button17ActionPerformed
+        int maPNMoiNhat = nhapBus.getNewest().getMaPhieu()+1;
+        new NhapHangSanPham(maPNMoiNhat,this.maNhanVien, true).setVisible(true);
+    }//GEN-LAST:event_button17ActionPerformed
+
+    private void button15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button15ActionPerformed
+        // TODO add your handling code here:
+        int maPHMoiNhat = huyBus.getNewest().getMaPhieu()+1;
+        new HuyHangSanPham(maPHMoiNhat,this.maNhanVien, true).setVisible(true);
+    }//GEN-LAST:event_button15ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        SelectedDate huyBd = dateChooserHuyBd.getSelectedDate();
+        SelectedDate huyKt = dateChooserHuyKt.getSelectedDate();
+        String bd = huyBd.getYear() +"-"+huyBd.getMonth()+"-"+huyBd.getDay();
+        String kt = huyKt.getYear()+"-"+huyKt.getMonth()+"-"+huyKt.getDay();
+        Timestamp bdTs = Timestamp.valueOf(bd+" 00:00:00");
+        Timestamp ktTs = Timestamp.valueOf(kt+" 00:00:00");
+        if (bdTs.compareTo(ktTs)>0) JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu","Thời gian lọc sai",JOptionPane.OK_OPTION);
+        List<PhieuHuy> list = huyBus.getFilter(jTextField15.getText(), jTextField13.getText(), bd, kt);
+        huyModel.setRowCount(0);
+        if (list == null || list.isEmpty()) 
+            return;
+        for (PhieuHuy item: list){
+            huyModel.addRow(new Object[]{item.getMaPhieu(),item.getMaNV(),nvBus.get(item.getMaNV()).getTenNV(),item.getNgayLap()});
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        jTextField15.setText("");
+        jTextField13.setText("");
+        huyModel.setRowCount(0);
+        loadPhieuHuyFromDB();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jButton5ActionPerformed(evt);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jButton7ActionPerformed(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button15;
     private GUI.SaleGroup.LoginGui.Component.Button button17;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

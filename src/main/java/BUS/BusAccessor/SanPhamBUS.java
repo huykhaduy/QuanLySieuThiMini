@@ -40,6 +40,12 @@ public  class SanPhamBUS implements IBussAccess<SanPham, Integer>{
        List<SanPham> list=getAll();
        return list== null ? null : list.get(list.size()-1);
     }
+    
+    public void thayDoiSoLuong(Integer maSP, int soLuongThayDoi){
+        SanPham sp = this.get(maSP);
+        sp.setSoLuong(sp.getSoLuong()+soLuongThayDoi);
+        this.edit(maSP, sp);
+    }
 }
 
    

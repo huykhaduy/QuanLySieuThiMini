@@ -14,7 +14,8 @@ import java.util.List;
  */
 public class CTPhieuHuyBUS implements IBusAccessDetail<ChiTietPhieuHuy>{
     private CTPhieuHuyDAO dao = new CTPhieuHuyDAO();
-
+    private SanPhamBUS spBUS = new SanPhamBUS();
+    
     @Override
     public ChiTietPhieuHuy get(int key1, int key2) {
         return dao.select(key1, key2);
@@ -37,16 +38,21 @@ public class CTPhieuHuyBUS implements IBusAccessDetail<ChiTietPhieuHuy>{
 
     @Override
     public boolean add(ChiTietPhieuHuy data) {
+        spBUS.thayDoiSoLuong(data.getMaSP(), -data.getSoLuong());
         return dao.insert(data);
     }
 
     @Override
     public boolean edit(int key1, int key2, ChiTietPhieuHuy data) {
+        ChiTietPhieuHuy ct = this.get(key1, key2);
+        spBUS.thayDoiSoLuong(key2, ct.getSoLuong() - data.getSoLuong());
         return dao.update(key1, key2, data);
     }
 
     @Override
     public boolean remove(int key1, int key2) {
+        ChiTietPhieuHuy ct = this.get(key1, key2);
+        spBUS.thayDoiSoLuong(key2, ct.getSoLuong());
         return dao.delete(key1, key2);
     }
 
