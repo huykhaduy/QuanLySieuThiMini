@@ -13,11 +13,14 @@ import java.util.List;
  */
 public class BUSTest {
     public static void main(String[] args){
-//        CTPhieuHuyBUS bus  = new CTPhieuHuyBUS();
-//        List<ChiTietPhieuHuy> list = bus.getAll();
-//        for (ChiTietPhieuHuy item : list){
-//            System.out.println(item);
-//        }
-        
+     int Tong = 0 ;
+    
+    CTHoaDonBUS bUS = new CTHoaDonBUS();
+     for(int i = 0 ; i< bUS.getByKey2(62).size();i++)
+         {
+       Tong =Tong+bUS.getByKey2(62).get(i).getSoLuong() ;
+        System.out.println(  bUS.getByKey2(62).get(i).getSoLuong());
     }
+        System.out.println("Tong="+Tong);
+    }    
 }
