@@ -144,7 +144,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     protected boolean checkAndChangeName(){
         int num = getNumberic(txtMaSP.getText());
         if (num >= 0 && num<=1000){
-            SanPham sp = sanPhambus.get(num);
+            SanPham sp = sanPhambus.getHide(num);
             if (sp != null){
                 lbTenSP.setText(sp.getTenSP());
                 return true;

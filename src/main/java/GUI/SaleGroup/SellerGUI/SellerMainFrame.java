@@ -12,6 +12,7 @@ import GUI.SaleGroup.SellerGUI.BasicHandle.PayActionListener;
 import GUI.SaleGroup.SellerGUI.BasicHandle.SearchMenuListener;
 import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
+import GUI.SaleGroup.SellerGUI.Component.SearchAndFilter;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
@@ -71,6 +72,8 @@ public class SellerMainFrame extends javax.swing.JFrame {
         filterPanel = new javax.swing.JPanel();
         textFieldIcon1 = new GUI.SaleGroup.SellerGUI.Component.TextFieldIcon();
         myLoaiSPComboBox1 = new GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox();
+        jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         mainContainer = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
         spaceBottom = new javax.swing.JPanel();
         paymentPanel = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
@@ -120,6 +123,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
 
         filterPanel.setBackground(new java.awt.Color(24, 154, 180));
         filterPanel.setPreferredSize(new java.awt.Dimension(650, 55));
+        filterPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textFieldIcon1.setTextHeadIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/SaleGroup/SellerGUI/Image/search.png"))); // NOI18N
         textFieldIcon1.addActionListener(new java.awt.event.ActionListener() {
@@ -127,27 +131,26 @@ public class SellerMainFrame extends javax.swing.JFrame {
                 textFieldIcon1ActionPerformed(evt);
             }
         });
+        filterPanel.add(textFieldIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 14, 369, 37));
+        filterPanel.add(myLoaiSPComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 121, 37));
 
-        javax.swing.GroupLayout filterPanelLayout = new javax.swing.GroupLayout(filterPanel);
-        filterPanel.setLayout(filterPanelLayout);
-        filterPanelLayout.setHorizontalGroup(
-            filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filterPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(myLoaiSPComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textFieldIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
-        );
-        filterPanelLayout.setVerticalGroup(
-            filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(filterPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textFieldIcon1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(myLoaiSPComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/remove.png"))); // NOI18N
+        jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        filterPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 14, 40, 37));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/advanced.png"))); // NOI18N
+        jButton4.setToolTipText("");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        filterPanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 14, 50, 37));
 
         itemContainer.add(filterPanel, java.awt.BorderLayout.NORTH);
 
@@ -163,7 +166,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         spaceBottom.setLayout(spaceBottomLayout);
         spaceBottomLayout.setHorizontalGroup(
             spaceBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
         spaceBottomLayout.setVerticalGroup(
             spaceBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,6 +470,16 @@ public class SellerMainFrame extends javax.swing.JFrame {
         this.loginGui.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new SearchAndFilter(scrollPanelMenu).setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       myLoaiSPComboBox1.setSelectedIndex(0);
+       textFieldIcon1.setText("");
+       scrollPanelMenu.showProducts();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -499,7 +512,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new SellerMainFrame(0, null).setVisible(true);
+                new SellerMainFrame(0, null, null).setVisible(true);
             }
         });
     }
@@ -509,8 +522,10 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel filterPanel;
     private GUI.SaleGroup.SellerGUI.Component.ImagePanel imagePanel1;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel itemContainer;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -551,7 +566,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         mainContainer.setLayout(null);
         this.scrollPanelMenu = new MenuPanel(665, 505, scrollPanelOrder);
         mainContainer.add(this.scrollPanelMenu);
-        this.scrollPanelMenu.getAllProduct();
+        this.scrollPanelMenu.showProducts();
         addActionEvent();
         this.addWindowListener(new WindowAdapter(){
             @Override

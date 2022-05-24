@@ -4,6 +4,7 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import BUS.BusAccessor.SanPhamBUS;
 import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataModels.SanPham;
 import GUI.SaleGroup.SellerGUI.BasicHandle.HandleClickAddEvent;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 public class MenuPanel extends ScrollPanel{
     private final SanPhamDAO spDAO = new SanPhamDAO();
+    private final SanPhamBUS spbus = new SanPhamBUS();
     private List<SanPham> listData;
     private final OrderPanel orderpanel;
     
@@ -25,31 +27,31 @@ public class MenuPanel extends ScrollPanel{
         this.orderpanel = orderPanel;
         listData = new ArrayList<>();
     }
-    
-    public void getAllProduct(){
-        List<SanPham> list = spDAO.selectAll();
-        addToPanel(list);
-    }
-    
-    public void getProductByType(int maLoai){
-        List<SanPham> list = spDAO.selectByLoaiSP(maLoai);
-        addToPanel(list);
-    }
-    
-    public void getProductByName(String name){
-        List<SanPham> list = spDAO.selectByTenSP(name);
-        addToPanel(list);
-    }
-    
-    public void getProductByNameAndType(int maLoai, String name){
-        if (maLoai == 0){
-            List<SanPham> list = spDAO.selectByTenSP(name);
-            addToPanel(list);
-            return;
-        }
-        List<SanPham> list = spDAO.selectByTenSPAndLoaiSP(maLoai, name);
-        addToPanel(list);
-    }
+//    
+//    public void getAllProduct(){
+//        List<SanPham> list = spDAO.selectAll();
+//        addToPanel(list);
+//    }
+//    //Done
+//    public void getProductByType(int maLoai){
+//        List<SanPham> list = spDAO.selectByLoaiSP(maLoai);
+//        addToPanel(list);
+//    }
+//    
+//    public void getProductByName(String name){
+//        List<SanPham> list = spDAO.selectByTenSP(name);
+//        addToPanel(list);
+//    }
+//    
+//    public void getProductByNameAndType(int maLoai, String name){
+//        if (maLoai == 0){
+//            List<SanPham> list = spDAO.selectByTenSP(name);
+//            addToPanel(list);
+//            return;
+//        }
+//        List<SanPham> list = spDAO.selectByTenSPAndLoaiSP(maLoai, name);
+//        addToPanel(list);
+//    }
 
     public void addToPanel(SanPham sp) {
         MenuItem item = new MenuItem(sp);
@@ -62,6 +64,7 @@ public class MenuPanel extends ScrollPanel{
     }
     
     public void addToPanel(List<SanPham> list) {
+        this.removeAll();
         this.listData = list;
         for (SanPham sp: list){
             addToPanel(sp);
@@ -78,6 +81,11 @@ public class MenuPanel extends ScrollPanel{
 
     public List<SanPham> getListData() {
        return this.listData;
+    }
+
+    public void showProducts() {
+        List<SanPham> list = spbus.getAll();
+        this.addToPanel(list);
     }
 
    
