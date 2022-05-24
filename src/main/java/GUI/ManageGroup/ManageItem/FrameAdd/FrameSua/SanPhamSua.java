@@ -2,54 +2,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
+package GUI.ManageGroup.ManageItem.FrameAdd.FrameSua;
+
 import BUS.BusAccessor.SanPhamBUS;
-import BUS.SanPhamHandle.SanPhamToData;
 import BUS.SanPhamHandle.SanPhamValidate;
 import DAL.DataModels.SanPham;
-import GUI.ManageGroup.ManageItem.ManagerPanel.SanPhamPanel;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+
 /**
  *
  * @author ACER
  */
-public class SanPhamAdd extends javax.swing.JFrame {
-      private String url;
-      SanPhamBUS sanphamBUS = new SanPhamBUS();
-      SanPhamValidate spVali = new SanPhamValidate();
-      SanPhamToData spData =new SanPhamToData();
-      SanPhamPanel spPanel = new SanPhamPanel();
-      
-    /**
-     * Creates new form SanPhamAdd
-     */
-    public SanPhamAdd() {
+public class SanPhamSua extends javax.swing.JFrame {
+   private String url ;
+   SanPhamValidate spVali = new SanPhamValidate();
+   SanPhamBUS spBUS = new SanPhamBUS();
+  
+    
+    public SanPhamSua() {
         initComponents();
-        this.setDefaultCloseOperation(0);
-        
-        tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
     }
-    public void setNullText(){
-              tfNhaCC.setText("");
-              tfSanPham.setText("");
-              tfLoai.setText("");
-              tfGia.setText("");
-              tfMoTa.setText("");
-              imagePanel2.setImage(null);
-              imagePanel2.setBackground(Color.decode("#3C3F41"));
-    }
-
-
+public  void Sua(SanPham sp){
+       
+   
+        tfMaSanPham.setText(String.valueOf(sp.getMaSP()));
+        tfNhaCC.setText(String.valueOf(sp.getMaNCC()));
+        tfSanPham.setText(sp.getTenSP());
+        tfLoai.setText(String.valueOf(sp.getMaLoai()));
+        tfGia.setText(String.valueOf(sp.getGiaTien()));
+        tfMoTa.setText(String.valueOf(sp.getMoTa()));
+        imagePanel2.setImagePath(sp.getHinhAnh());
+        url = sp.getHinhAnh();
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        shape1 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         sanPhamAddBackground1 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.SanPhamAddBackground();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -68,17 +61,6 @@ public class SanPhamAdd extends javax.swing.JFrame {
         button1 = new GUI.SaleGroup.LoginGui.Component.Button();
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         imagePanel2 = new GUI.ManageGroup.ComponentPanel.ImagePanel();
-
-        javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
-        shape1.setLayout(shape1Layout);
-        shape1Layout.setHorizontalGroup(
-            shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        shape1Layout.setVerticalGroup(
-            shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,8 +98,8 @@ public class SanPhamAdd extends javax.swing.JFrame {
         sanPhamAddBackground1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 427, 91, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel6.setText("Thêm sản phẩm");
-        sanPhamAddBackground1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, 157, -1));
+        jLabel6.setText("Sửa sản phẩm");
+        sanPhamAddBackground1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, -1));
 
         tfSanPham.setBackground(new java.awt.Color(196, 196, 196));
         sanPhamAddBackground1.add(tfSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 299, -1));
@@ -155,7 +137,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
         sanPhamAddBackground1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 100, 40));
 
         button2.setBackground(new java.awt.Color(246, 158, 24));
-        button2.setText("Xác Nhận");
+        button2.setText("Sửa");
         button2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         button2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -187,7 +169,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sanPhamAddBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+            .addComponent(sanPhamAddBackground1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,45 +179,48 @@ public class SanPhamAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_button1MouseClicked
+
     private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
         System.out.println("Turn");
-      
+
         String maSanPham = tfMaSanPham.getText();
         String maNhaCC = tfNhaCC.getText();
         String tenSanPham =tfSanPham.getText();
         String loai = tfLoai.getText();
         String gia = tfGia.getText();
         String moTa =tfMoTa.getText();
+        
+        SanPham sp = new SanPham(tenSanPham, moTa, url, Long.valueOf(gia), spBUS.get(Integer.valueOf(maSanPham)).getSoLuong(), Integer.valueOf(loai),  Integer.valueOf(maNhaCC),false);
         if(!spVali.AllValidate(gia,tenSanPham,maNhaCC,loai,moTa)) {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {
-              spData.AddSanPham(gia, tenSanPham, maNhaCC, loai, moTa,url);
-              JOptionPane.showMessageDialog(this, "Success");
-              tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
-              setNullText();
-              }
+            spBUS.edit(Integer.valueOf(maSanPham), sp);
+            JOptionPane.showMessageDialog(this, "Success");
+            this.setVisible(false);
+            
+          
+        }
     }//GEN-LAST:event_button2MouseClicked
 
     private void imagePanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanel2MouseClicked
-         JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("anh", "jpg","png");
         fileChooser.setFileFilter(imageFilter);
         fileChooser.setMultiSelectionEnabled(false);
         int x = fileChooser.showDialog(this, "Chon file");
         if(x == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
-           System.out.println(file.getName());
-           String[] parts = file.getName().split("\\.");
+            System.out.println(file.getName());
+            String[] parts = file.getName().split("\\.");
             url = parts[0];
             imagePanel2.setImagePathSanPham(file.getAbsolutePath());
             imagePanel2.setBackground(Color.decode("#F69E18"));
-            }
+        }
     }//GEN-LAST:event_imagePanel2MouseClicked
-
-    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
-        this.setVisible(false);
-    }//GEN-LAST:event_button1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -254,20 +239,20 @@ public class SanPhamAdd extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamSua.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamSua.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamSua.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SanPhamAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SanPhamSua.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SanPhamAdd().setVisible(true);
+                new SanPhamSua().setVisible(true);
             }
         });
     }
@@ -285,7 +270,6 @@ public class SanPhamAdd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.SanPhamAddBackground sanPhamAddBackground1;
-    private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape1;
     private javax.swing.JTextField tfGia;
     private javax.swing.JTextField tfLoai;
     private javax.swing.JTextField tfMaSanPham;
