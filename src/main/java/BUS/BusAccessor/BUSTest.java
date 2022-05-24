@@ -5,6 +5,7 @@
 package BUS.BusAccessor;
 
 import DAL.DataModels.ChiTietPhieuHuy;
+import DAL.DataModels.SanPham;
 import java.util.List;
 
 /**
@@ -13,14 +14,10 @@ import java.util.List;
  */
 public class BUSTest {
     public static void main(String[] args){
-     int Tong = 0 ;
-    
-    CTHoaDonBUS bUS = new CTHoaDonBUS();
-     for(int i = 0 ; i< bUS.getByKey2(62).size();i++)
-         {
-       Tong =Tong+bUS.getByKey2(62).get(i).getSoLuong() ;
-        System.out.println(  bUS.getByKey2(62).get(i).getSoLuong());
-    }
-        System.out.println("Tong="+Tong);
+        SanPhamBUS spBus = new SanPhamBUS();
+        List<SanPham> list = spBus.advancedFilter("nuoc giai khat", "5000", "100000", 1, "Co");
+        for (SanPham sp:list){
+            System.out.println(sp);
+        }
     }    
 }

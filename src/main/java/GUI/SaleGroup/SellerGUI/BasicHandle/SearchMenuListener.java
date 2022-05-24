@@ -4,8 +4,11 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
+import BUS.BusAccessor.SanPhamBUS;
+import DAL.DataModels.SanPham;
 import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
 import GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox;
+import java.util.List;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -18,6 +21,7 @@ public class SearchMenuListener implements DocumentListener{
     private MenuPanel menu;
     private MyLoaiSPComboBox bx;
     private JTextField searchField;
+    private final SanPhamBUS spBus = new SanPhamBUS();
 
     public SearchMenuListener(MenuPanel menu, MyLoaiSPComboBox bx, JTextField searchField) {
         this.menu = menu;
@@ -42,8 +46,8 @@ public class SearchMenuListener implements DocumentListener{
     
     public void changeOnText(){
         int maLoaiHienTai = bx.getSelectedMaLoai();
-        menu.removeAll();
-        menu.getProductByNameAndType(maLoaiHienTai, searchField.getText());
+        List<SanPham> list = spBus.getProductByTypeAndName(maLoaiHienTai, searchField.getText());
+        menu.addToPanel(list);
     }
     
 }

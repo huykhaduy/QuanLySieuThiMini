@@ -495,7 +495,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
 
         add(roundPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 470, 290));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 204));
+        jButton1.setBackground(new java.awt.Color(0, 153, 204));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Refresh");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -505,7 +505,7 @@ public class NhapXuatPanel extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 204));
+        jButton2.setBackground(new java.awt.Color(0, 153, 204));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Refresh");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
