@@ -3,20 +3,57 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
-
+import BUS.BusAccessor.ChucVuBUS;
+import BUS.BusAccessor.NhanVienBUS;
+import DAL.DataModels.ChucVu;
+import DAL.DataModels.NhanVien;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.regex.PatternSyntaxException;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author ACER
  */
 public class NhanVienPanel extends javax.swing.JPanel {
-
+        private final NhanVienBUS nhanvienBUS = new NhanVienBUS(); 
+        private final ChucVuBUS chucvuBUS = new ChucVuBUS();
+        private final List<NhanVien> nhanvienList = nhanvienBUS.getAll();
+        
+        DefaultTableModel tableModel;
     /**
      * Creates new form NhanVienPanel
      */
     public NhanVienPanel() {
         initComponents();
+        tableModel = (DefaultTableModel) jTable1.getModel();
+        LoadTable();
     }
+public void LoadTable(){
+//       int i = 0;
+       if(nhanvienList == null){
+           return;
+       }
+       for (int i = 0; i < nhanvienList.size(); i++) {
+           ChucVu chucVu = chucvuBUS.get(nhanvienList.get(i).getMaChucVu());
 
+//           Object[] obj = {nhanvienList.get(i).getMaNV(), nhanvienList.get(i).getTenNV(), chucVu.getTenChucVu(), nhanvienList.get(i).getSoDienThoai(), nhanvienBUS.getSoLuongHoaDon(nhanvienList.get(i).getMaNV()), nhanvienBUS.getDoanhThu(nhanvienList.get(i).getMaNV())};
+//
+//           tableModel.addRow(obj);
+                tableModel.addRow(new Object[]{nhanvienList.get(i).getMaNV(), nhanvienList.get(i).getTenNV(), chucVu.getTenChucVu(), nhanvienList.get(i).getSoDienThoai(), nhanvienBUS.getSoLuongHoaDon(nhanvienList.get(i).getMaNV()), nhanvienBUS.getDoanhThu(nhanvienList.get(i).getMaNV())});
+
+       }
+       
+       jTable1.setModel(tableModel);
+
+       final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableModel);
+       jTable1.setRowSorter(sorter);
+   
+   }
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,8 +81,16 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jPanel23 = new javax.swing.JPanel();
         shape3 = new GUI.ManageGroup.BackgroundShape.Shape();
         jLabel91 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,6 +114,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
+            }
+        });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
             }
         });
         add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 190, 30));
@@ -112,6 +162,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
         button12.setText("SEARCH");
         button12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button12ActionPerformed(evt);
+            }
+        });
         add(button12, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 90, 30));
 
         button13.setBackground(new java.awt.Color(118, 199, 150));
@@ -133,12 +188,12 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jLabel93.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel93.setForeground(new java.awt.Color(255, 255, 255));
         jLabel93.setText("Giới tính :");
-        shape13.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 110, -1));
+        shape13.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 80, -1));
 
         jLabel94.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel94.setForeground(new java.awt.Color(255, 255, 255));
         jLabel94.setText("Địa chỉ :");
-        shape13.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 120, -1));
+        shape13.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 70, -1));
 
         jLabel95.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,6 +275,27 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         shape13.add(shape3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 200));
 
+        jLabel1.setText("jLabel1");
+        shape13.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 110, 20));
+
+        jLabel2.setText("jLabel2");
+        shape13.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 140, 20));
+
+        jLabel3.setText("jLabel3");
+        shape13.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 196, 130, 20));
+
+        jLabel4.setText("jLabel4");
+        shape13.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 190, 20));
+
+        jLabel5.setText("jLabel5");
+        shape13.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 136, 130, 20));
+
+        jLabel6.setText("jLabel6");
+        shape13.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 196, 170, 20));
+
+        jLabel7.setText("jLabel7");
+        shape13.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 180, -1));
+
         add(shape13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
 
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
@@ -246,14 +322,62 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã nhân viên", "Tên nhân viên", "Chức vụ", "Số điện thoại" }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 170, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+        int row = jTable1.getSelectedRow();
+        int maNhanVien = (int) jTable1.getValueAt(row, 0);
+        NhanVien nhanvien = nhanvienBUS.get(maNhanVien);
+        jLabel91.setText(nhanvien.getTenNV());
+        ChucVu chucVu = chucvuBUS.get(nhanvien.getMaChucVu());
+        jLabel100.setText(chucVu.getTenChucVu());
+        jLabel1.setText(nhanvien.isGioiTinh() == false ? "Nam":"Nữ");
+        jLabel2.setText(nhanvien.getCmnd());
+        jLabel3.setText(nhanvien.getNgaySinh().toString());
+        jLabel4.setText(nhanvien.getDiaChi());
+        jLabel5.setText(nhanvien.getNgayThamGia().toString());
+        jLabel6.setText(nhanvien.getEmail());
+        jLabel7.setText(maNhanVien + "");
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void button12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button12ActionPerformed
+        final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableModel);
+        jTable1.setRowSorter(sorter);
+        int select = jComboBox1.getSelectedIndex();
+        String text = jTextField7.getText();
+        if (text.length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            try {
+                sorter.setRowFilter(RowFilter.regexFilter(text, select));
+            } catch (PatternSyntaxException pse) {
+                System.out.println("Bad regex pattern");
+            }
+        }
+    }//GEN-LAST:event_button12ActionPerformed
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        if (jTextField7.getText().equals("")) {
+            tableModel.setRowCount(0);
+            LoadTable();
+        }
+    }//GEN-LAST:event_jTextField7KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -261,7 +385,15 @@ public class NhanVienPanel extends javax.swing.JPanel {
     private GUI.SaleGroup.LoginGui.Component.Button button11;
     private GUI.SaleGroup.LoginGui.Component.Button button12;
     private GUI.SaleGroup.LoginGui.Component.Button button13;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
