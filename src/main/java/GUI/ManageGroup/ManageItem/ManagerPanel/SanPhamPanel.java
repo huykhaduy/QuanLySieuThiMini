@@ -4,16 +4,13 @@
  */
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
-import BUS.BusAccessor.CTHoaDonBUS;
 import BUS.BusAccessor.LoaiSanPhamBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import DAL.DataModels.LoaiSanPham;
 import DAL.DataModels.SanPham;
 import GUI.ManageGroup.ComponentPanel.ProductDetailPanel;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.SanPhamAdd;
-import GUI.ManageGroup.ManageItem.FrameAdd.FrameSua.SanPhamSua;
 import java.awt.Dimension;
-import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.BorderFactory;
@@ -27,9 +24,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
       SanPhamBUS spBUS =new SanPhamBUS();
         SanPham sp = new SanPham();
          LoaiSanPhamBUS maloaiBUS = new LoaiSanPhamBUS();
-         CTHoaDonBUS ctBUS = new CTHoaDonBUS();
-         SanPhamSua spSua = new SanPhamSua();
-         DefaultTableModel tableModel;
+       DefaultTableModel tableModel;
      
 
     /**
@@ -42,11 +37,6 @@ public class SanPhamPanel extends javax.swing.JPanel {
        
         
     }
-    public  void Sửa(SanPham sp){
-        
-        
-    }
-
     // Tạo Item Combobox
     public void LoadComboBox(){
          List <LoaiSanPham> iSP =maloaiBUS.getAll();
@@ -78,26 +68,17 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }  
     } 
     // Get tên loại
-    public String GetLoai(int maLoai){
-        return  maloaiBUS.get(maLoai).getTenLoai();
-    }
-    public int GetSoLuongBan( int maSP){
-        int Tong = 0;
-        for( int i = 0 ; i < ctBUS.getByKey2(maSP).size();i++)
-            {
-            ctBUS.getByKey2(maSP).get(i).getGiaTien();
-            Tong = Tong + ctBUS.getByKey2(maSP).get(i).getSoLuong();
-           }
-        return Tong;
+    public String GetLoai(int maloai){
+       
+        return  maloaiBUS.get(maloai).getTenLoai();
     }
     // Load Table
     public void loadTable(){
          tableModel =(DefaultTableModel) jTable1.getModel();
         List<SanPham> sp=  spBUS.getAll();
-        System.out.println(sp.toString());
         for( int i = 0 ; i < sp.size();i++)
         {
-         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),GetSoLuongBan(sp.get(i).getMaSP())};
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai())};
          tableModel.addRow(sanpham);
         }
      
@@ -119,9 +100,6 @@ public class SanPhamPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        popUp = new javax.swing.JPopupMenu();
-        Sửa = new javax.swing.JMenuItem();
-        Xóa = new javax.swing.JMenuItem();
         jLabel81 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         button8 = new GUI.SaleGroup.LoginGui.Component.Button();
@@ -136,27 +114,6 @@ public class SanPhamPanel extends javax.swing.JPanel {
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
-
-        Sửa.setText("Sửa");
-        Sửa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SửaMouseClicked(evt);
-            }
-        });
-        Sửa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SửaActionPerformed(evt);
-            }
-        });
-        popUp.add(Sửa);
-
-        Xóa.setText("Xóa");
-        Xóa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                XóaActionPerformed(evt);
-            }
-        });
-        popUp.add(Xóa);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1020, 760));
@@ -252,9 +209,6 @@ public class SanPhamPanel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTable1MouseReleased(evt);
-            }
         });
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
@@ -323,7 +277,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         List<SanPham> sp=  spBUS.getAll();
         for( int i = 0 ; i < sp.size();i++)
         {
-         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),GetSoLuongBan(sp.get(i).getMaSP())};
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai())};
          tableModel.addRow(sanpham);
         }
         jTable1.setModel(tableModel);
@@ -353,38 +307,8 @@ public class SanPhamPanel extends javax.swing.JPanel {
         FilterTF(a);
     }//GEN-LAST:event_jTextField1KeyReleased
 
-    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
-        if(evt.getButton()==MouseEvent.BUTTON3){
-            if(evt.isPopupTrigger()&&jTable1.getSelectedRowCount() !=0){
-                 popUp.show(evt.getComponent(),evt.getX(),evt.getY());
-            }
-        }
-                
-    }//GEN-LAST:event_jTable1MouseReleased
-
-    private void SửaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SửaMouseClicked
-    
-    }//GEN-LAST:event_SửaMouseClicked
-
-    private void SửaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SửaActionPerformed
-
-        int maSP= Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0)+"");
-        spSua.setVisible(true);
-        spSua.Sua(spBUS.get(maSP));
-    }//GEN-LAST:event_SửaActionPerformed
-
-    private void XóaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XóaActionPerformed
-       int maSP= Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0)+"");
-       SanPham spTemp = new SanPham();
-       spTemp= spBUS.get(maSP);
-       spTemp.setDeleted(true);
-       spBUS.edit(maSP,spTemp);
-    }//GEN-LAST:event_XóaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Sửa;
-    private javax.swing.JMenuItem Xóa;
     private GUI.SaleGroup.LoginGui.Component.Button button2;
     private GUI.SaleGroup.LoginGui.Component.Button button5;
     private GUI.SaleGroup.LoginGui.Component.Button button6;
@@ -398,7 +322,6 @@ public class SanPhamPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JPopupMenu popUp;
     private GUI.ManageGroup.ComponentPanel.ProductDetailPanel productDetailPanel1;
     // End of variables declaration//GEN-END:variables
 }

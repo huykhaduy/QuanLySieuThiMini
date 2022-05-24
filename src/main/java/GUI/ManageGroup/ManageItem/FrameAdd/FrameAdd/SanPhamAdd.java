@@ -137,6 +137,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
 
         tfMoTa.setBackground(new java.awt.Color(196, 196, 196));
         tfMoTa.setColumns(20);
+        tfMoTa.setForeground(new java.awt.Color(196, 196, 196));
         tfMoTa.setLineWrap(true);
         tfMoTa.setRows(5);
         tfMoTa.setWrapStyleWord(true);
