@@ -10,7 +10,7 @@ import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataModels.NhanVien;
 import DAL.DataModels.SanPham;
 import GUI.ManageGroup.ManageItem.ManageFrame.ManageFrame;
-
+import GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.PanelAddManageNhanvien;
 import java.util.List;
 
 /**
@@ -26,12 +26,12 @@ public class ManageNhanVien {
         }
              public void ts(){
               List<SanPham> SP =  sanPhamDAO.selectAll();
-       
+              PanelAddManageNhanvien addNhanVien = new PanelAddManageNhanvien();
              for (SanPham N : SP) 
                  {
                      System.out.println(N);
                      int maSanPham = N.getMaSP();
-                  
+                     addNhanVien.setMaSanPham(maSanPham);
                       N.getGiaTien();
                      
                       N.getSoLuong();
