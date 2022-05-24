@@ -29,9 +29,10 @@ public  class SanPhamBUS implements IBussAccess<SanPham, Integer>{
     }
 
     @Override
-    public boolean remove(Integer maSanPham) {
+    public boolean remove(Integer maSanPham ) {
       return sanPhamDAO.delete(maSanPham);
     }
+    
  
 
     @Override
