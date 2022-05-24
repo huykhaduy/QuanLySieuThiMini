@@ -44,7 +44,7 @@ public class SanPhamDAO extends AbtractAccessDatabase<SanPham> implements ISimpl
     }
     
     public SanPham selectNewest(){
-        return executeQuery("SELECT * FROM SANPHAM ORDER BY DESC LIMIT 1");
+        return executeQuery("SELECT * FROM SANPHAM ORDER BY MASP DESC LIMIT 1");
     }
     
     public List<SanPham> selectByLoaiSP(int maLoai){
