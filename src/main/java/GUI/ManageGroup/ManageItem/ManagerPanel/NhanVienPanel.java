@@ -7,8 +7,10 @@ import BUS.BusAccessor.ChucVuBUS;
 import BUS.BusAccessor.NhanVienBUS;
 import DAL.DataModels.ChucVu;
 import DAL.DataModels.NhanVien;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.RowFilter;
@@ -59,6 +61,9 @@ public void LoadTable(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        edit = new javax.swing.JMenuItem();
+        clear = new javax.swing.JMenuItem();
         jLabel82 = new javax.swing.JLabel();
         jLabel83 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
@@ -91,6 +96,17 @@ public void LoadTable(){
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
+
+        edit.setText("Edit");
+        jPopupMenu1.add(edit);
+
+        clear.setText("Xóa");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(clear);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -326,6 +342,9 @@ public void LoadTable(){
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable1MouseReleased(evt);
+            }
         });
         jScrollPane1.setViewportView(jTable1);
 
@@ -379,12 +398,29 @@ public void LoadTable(){
         }
     }//GEN-LAST:event_jTextField7KeyReleased
 
+    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
+        if(evt.getButton() == MouseEvent.BUTTON3){
+            if(evt.isPopupTrigger() && jTable1.getSelectedRowCount() != 0){
+                jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseReleased
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+            int row = jTable1.getSelectedRow();
+            int maNhanVien = (int) jTable1.getValueAt(row, 0);
+            nhanvienBUS.remove(maNhanVien);
+            tableModel.removeRow(row);
+    }//GEN-LAST:event_clearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button10;
     private GUI.SaleGroup.LoginGui.Component.Button button11;
     private GUI.SaleGroup.LoginGui.Component.Button button12;
     private GUI.SaleGroup.LoginGui.Component.Button button13;
+    private javax.swing.JMenuItem clear;
+    private javax.swing.JMenuItem edit;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel100;
@@ -408,6 +444,7 @@ public void LoadTable(){
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField7;
