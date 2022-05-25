@@ -405,7 +405,7 @@ ALTER TABLE PHIEUNHAP AUTO_INCREMENT = 1;
 INSERT INTO `phieunhap` (`MAPHIEU`, `NGAYLAP`, `MANV`, `IS_DELETED`) VALUES 
     (NULL, '2022-05-16 17:33:19', '1', '0'), 
     (NULL, '2022-05-17 17:33:19', '2', '0'),
-    (NULL, '2022-05-17 17:35:19', '1', '0'), 
+    (NULL, '2022-05-17 17:35:19', '1', '0'),
     (NULL, '2022-05-17 17:39:19', '2', '0'),
     (NULL, '2022-05-17 16:12:19', '3', '0'), 
     (NULL, '2022-05-17 19:22:19', '1', '0'),
@@ -426,7 +426,7 @@ INSERT INTO `ctphieunhap` (`MAPHIEU`, `MASP`, `SOLUONG`) VALUES
     ('4', '35', '12'), ('5', '47', '5'), ('5', '33', '10'), ('5', '51', '4'), 
     ('6', '7', '8'), ('6', '49', '10'), ('6', '44', '10'), ('6', '40', '12'), 
     ('6', '50', '10');
-
+ALTER TABLE PHIEUHUY AUTO_INCREMENT = 1;
 INSERT INTO `phieuhuy` (`MAPHIEU`, `NGAYLAP`, `MANV`, `IS_DELETED`) VALUES 
     (NULL, '2022-05-16 17:54:45', '1', '0'), 
     (NULL, '2022-05-17 18:05:45', '2', '0'), 
@@ -434,7 +434,6 @@ INSERT INTO `phieuhuy` (`MAPHIEU`, `NGAYLAP`, `MANV`, `IS_DELETED`) VALUES
     (NULL, '2022-05-17 19:28:49', '5', '0'), 
     (NULL, '2022-05-17 21:55:49', '4', '0'), 
     (NULL, '2022-05-17 22:16:49', '2', '0');
-
 INSERT INTO `ctphieuhuy` (`MAPHIEU`, `MASP`, `SOLUONG`) VALUES 
     ('1', '39', '4'), ('1', '26', '5'), ('1', '27', '3'), ('2', '6', '10'), 
     ('2', '36', '5'), ('2', '44', '4'), ('3', '43', '2'), ('3', '41', '3'), 
@@ -443,8 +442,6 @@ INSERT INTO `ctphieuhuy` (`MAPHIEU`, `MASP`, `SOLUONG`) VALUES
     ('6', '33', '3'), ('6', '47', '9'), ('6', '4', '4'), ('6', '54', '1');
 
 # INSERT INTO
-
-
 # --Chạy tới đây tự nhiên lỗi mấy dòng này không insert zô được hic hic đem ra insert riêng thì được hoq bít tại s luôn
 # INSERT INTO `khachhang`(`MAKH`, `TENKH`, `GIOITINH`, `SODIENTHOAI`, `DIACHI`, `EMAIL`, `DIEMTHUONG`, `IS_DELETED`)
 # VALUES (0,NULL, NULL, NULL, NULL, NULL, NULL, 0)
