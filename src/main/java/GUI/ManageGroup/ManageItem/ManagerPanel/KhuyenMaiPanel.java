@@ -14,6 +14,7 @@ import java.awt.FlowLayout;
 import java.text.SimpleDateFormat;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -298,7 +299,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         });
         add(button9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 470, 100, 30));
 
-        tbProduct.setBackground(new java.awt.Color(119, 176, 210));
         tbProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -334,7 +334,6 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 370, 210));
 
-        tbVoucher.setBackground(new java.awt.Color(119, 176, 210));
         tbVoucher.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -530,8 +529,10 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
     private void button9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button9ActionPerformed
         // TODO add your handling code here:
         String text = this.txtSearchProduct.getText();
+                
         if(text.length() == 0){
-            this.sorterProduct.setRowFilter(RowFilter.regexFilter(null));
+            this.sorterProduct.setRowFilter(RowFilter.regexFilter(text));
+            JOptionPane.showConfirmDialog(this, "Vui lòng nhập thông tin vào ô tìm kiếm", "Nhắc nhở nhẹ", JOptionPane.CLOSED_OPTION);
         }else{
             try{
             this.sorterProduct.setRowFilter(RowFilter.regexFilter(text));

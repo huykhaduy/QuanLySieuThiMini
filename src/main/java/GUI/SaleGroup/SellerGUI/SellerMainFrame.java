@@ -23,7 +23,7 @@ import javax.swing.JLabel;
  * @author huykh
  */
 public class SellerMainFrame extends javax.swing.JFrame {
-    private JLabel maNV = new JLabel();
+    private final JLabel maNV = new JLabel();
     private LoginAction logAct;
     private LoginGui loginGui;
 
