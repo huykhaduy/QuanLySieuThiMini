@@ -50,7 +50,7 @@ public class LoginAction{
             setWrongPasswordTime(tk.getSoTK(),tk,tk.getSoLanSai()+1);
             return false;
         }
-        this.sell.setMaNV(tk.getMaNV());
+        SellerMainFrame.maNV = tk.getMaNV();
         soTK = tk.getSoTK();
         setWrongPasswordTime(tk.getSoTK(),tk,0);
         storeLoginAuth(rememberMe);
@@ -94,15 +94,16 @@ public class LoginAction{
         int maChucVu = getChucVuNguoiDung(soTK);
         if (maChucVu == ChucVu.NHANVIENBANHANG){
             System.out.println("Khoi tao frame nhan vien ban hang");
-            JOptionPane.showMessageDialog(null,"Hien thi form nhan vien ban hang","Auto login success",JOptionPane.CLOSED_OPTION);
-            sell.setMaNV(taiKhoanDAO.select(soTK).getMaNV());
+            JOptionPane.showMessageDialog(null,"Hiểm thị form nhân viên bán hàng","Auto login success",JOptionPane.CLOSED_OPTION);
+            SellerMainFrame.maNV = taiKhoanDAO.select(soTK).getMaNV();
             sell.setVisible(true);
         }
 
             
         else if (maChucVu == ChucVu.NHANVIENQUANLY){
             System.out.println("Khoi tao frame nhan vien quan ly");
-            JOptionPane.showMessageDialog(null, "Hien thi form nhan vien ban hang", "Auto login success", JOptionPane.CLOSED_OPTION);
+            JOptionPane.showMessageDialog(null, "Hiển thị form nhân viên quản lý", "Auto login success", JOptionPane.CLOSED_OPTION);
+            ManageFrame.maNV = taiKhoanDAO.select(soTK).getMaNV();
             manager.setVisible(true);
         }
 

@@ -33,7 +33,7 @@ public class VoucherBUS {
         } catch (ParseException ex) {
             Logger.getLogger(VoucherBUS.class.getName()).log(Level.SEVERE, null, ex);
         }
-       try {
+        try {
             Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(endDay);
             Timestamp ngayBatDau = new Timestamp(date1.getTime());
         } catch (ParseException ex) {
