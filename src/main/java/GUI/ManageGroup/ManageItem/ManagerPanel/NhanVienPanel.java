@@ -7,8 +7,12 @@ import BUS.BusAccessor.ChucVuBUS;
 import BUS.BusAccessor.NhanVienBUS;
 import DAL.DataModels.ChucVu;
 import DAL.DataModels.NhanVien;
+import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.NhanVienAdd;
+import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.SanPhamAdd;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.RowFilter;
@@ -22,7 +26,7 @@ import javax.swing.table.TableRowSorter;
 public class NhanVienPanel extends javax.swing.JPanel {
         private final NhanVienBUS nhanvienBUS = new NhanVienBUS(); 
         private final ChucVuBUS chucvuBUS = new ChucVuBUS();
-        private final List<NhanVien> nhanvienList = nhanvienBUS.getAll();
+        
         
         DefaultTableModel tableModel;
     /**
@@ -33,11 +37,12 @@ public class NhanVienPanel extends javax.swing.JPanel {
         tableModel = (DefaultTableModel) jTable1.getModel();
         LoadTable();
     }
-public void LoadTable(){
-//       int i = 0;
-       if(nhanvienList == null){
-           return;
-       }
+private void LoadTable(){
+          List<NhanVien> nhanvienList = nhanvienBUS.getAll() ;
+            tableModel.setRowCount(0);
+
+     
+       System.out.println(nhanvienList.size());
        for (int i = 0; i < nhanvienList.size(); i++) {
            ChucVu chucVu = chucvuBUS.get(nhanvienList.get(i).getMaChucVu());
 
@@ -48,7 +53,6 @@ public void LoadTable(){
 
        }
        
-       jTable1.setModel(tableModel);
 
        final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tableModel);
        jTable1.setRowSorter(sorter);
@@ -59,6 +63,9 @@ public void LoadTable(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        edit = new javax.swing.JMenuItem();
+        clear = new javax.swing.JMenuItem();
         jLabel82 = new javax.swing.JLabel();
         jLabel83 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
@@ -91,6 +98,18 @@ public void LoadTable(){
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
+        button14 = new GUI.SaleGroup.LoginGui.Component.Button();
+
+        edit.setText("Edit");
+        jPopupMenu1.add(edit);
+
+        clear.setText("Xóa");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(clear);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,10 +125,9 @@ public void LoadTable(){
         jLabel83.setForeground(new java.awt.Color(42, 148, 208));
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel83.setText("Danh sách nhân viên");
-        add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 300, 30));
+        add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 410, 300, 30));
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +139,7 @@ public void LoadTable(){
                 jTextField7KeyReleased(evt);
             }
         });
-        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 190, 30));
+        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 410, 190, 30));
 
         jLabel84.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel84.setForeground(new java.awt.Color(42, 148, 208));
@@ -152,10 +170,20 @@ public void LoadTable(){
 
         button11.setBackground(new java.awt.Color(118, 199, 150));
         button11.setForeground(new java.awt.Color(255, 255, 255));
-        button11.setText("+THÊM NHÂN VIÊN");
+        button11.setText("Refresh");
         button11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(button11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 150, 30));
+        button11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button11MouseClicked(evt);
+            }
+        });
+        button11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button11ActionPerformed(evt);
+            }
+        });
+        add(button11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 150, 30));
 
         button12.setBackground(new java.awt.Color(118, 199, 150));
         button12.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +195,7 @@ public void LoadTable(){
                 button12ActionPerformed(evt);
             }
         });
-        add(button12, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 90, 30));
+        add(button12, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, 90, 30));
 
         button13.setBackground(new java.awt.Color(118, 199, 150));
         button13.setForeground(new java.awt.Color(255, 255, 255));
@@ -326,13 +354,28 @@ public void LoadTable(){
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable1MouseReleased(evt);
+            }
         });
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 960, 270));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã nhân viên", "Tên nhân viên", "Chức vụ", "Số điện thoại" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 170, 30));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, 120, 30));
+
+        button14.setBackground(new java.awt.Color(118, 199, 150));
+        button14.setForeground(new java.awt.Color(255, 255, 255));
+        button14.setText("+THÊM NHÂN VIÊN");
+        button14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        button14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button14MouseClicked(evt);
+            }
+        });
+        add(button14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 150, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
@@ -374,10 +417,40 @@ public void LoadTable(){
 
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
         if (jTextField7.getText().equals("")) {
-            tableModel.setRowCount(0);
             LoadTable();
         }
     }//GEN-LAST:event_jTextField7KeyReleased
+
+    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
+        if(evt.getButton() == MouseEvent.BUTTON3){
+            if(evt.isPopupTrigger() && jTable1.getSelectedRowCount() != 0){
+                jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseReleased
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+            int row = jTable1.getSelectedRow();
+            int maNhanVien = (int) jTable1.getValueAt(row, 0);
+            nhanvienBUS.remove(maNhanVien);
+            tableModel.removeRow(row);
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void button11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button11MouseClicked
+
+        LoadTable();
+
+    }//GEN-LAST:event_button11MouseClicked
+
+    private void button14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button14MouseClicked
+        NhanVienAdd nhanvienAdd = new NhanVienAdd();
+        nhanvienAdd.setVisible(true);
+        nhanvienAdd.setLocationRelativeTo(this);
+    }//GEN-LAST:event_button14MouseClicked
+
+    private void button11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11ActionPerformed
+        
+    }//GEN-LAST:event_button11ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -385,6 +458,9 @@ public void LoadTable(){
     private GUI.SaleGroup.LoginGui.Component.Button button11;
     private GUI.SaleGroup.LoginGui.Component.Button button12;
     private GUI.SaleGroup.LoginGui.Component.Button button13;
+    private GUI.SaleGroup.LoginGui.Component.Button button14;
+    private javax.swing.JMenuItem clear;
+    private javax.swing.JMenuItem edit;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel100;
@@ -408,6 +484,7 @@ public void LoadTable(){
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField7;
