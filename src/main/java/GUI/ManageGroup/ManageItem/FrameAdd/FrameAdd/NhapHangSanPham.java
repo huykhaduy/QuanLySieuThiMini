@@ -9,6 +9,7 @@ import BUS.BusAccessor.NhanVienBUS;
 import BUS.BusAccessor.PhieuNhapBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import DAL.DataModels.ChiTietPhieuNhap;
+import DAL.DataModels.PhieuNhap;
 import DAL.DataModels.SanPham;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.NhapHangSanPham;
 import GUI.ManageGroup.Theme.NhapXuatTheme;
@@ -17,6 +18,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,21 +44,24 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     private final CTPhieuNhapBUS ctPhieuNhapBus;
     private final NhanVienBUS nhanvienBus;
     private final SanPhamBUS sanPhambus;
-    private final int maHoaDon;
+    private int maPhieuNhap;
     private final int maNhanVien;
+    private final boolean isAdd;
     /**
      * Creates new form NhapHangSanPham
      */
-    public NhapHangSanPham(int maHoaDon, int maNhanVien) {
+    public NhapHangSanPham(int maPhieuNhap, int maNhanVien, boolean frameAdd) {
+        NhapXuatTheme.setup();
         initComponents();
         this.setLocationRelativeTo(null);
+        this.isAdd = frameAdd;
         this.setTitle("Nhập sản phẩm vào kho");
         SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 10000, 1); 
         this.jSpinner1.setModel(model);
         ctPhieuNhapBus = new CTPhieuNhapBUS();
         nhanvienBus = new NhanVienBUS();
         sanPhambus = new SanPhamBUS();
-        this.maHoaDon = maHoaDon;
+        this.maPhieuNhap = maPhieuNhap;
         this.maNhanVien = maNhanVien;
         this.setThongTinPhieuNhap();
         this.addActionToTextSearch();
@@ -64,7 +69,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }
     
     private void setThongTinPhieuNhap(){
-        this.lbmaHoaDon.setText(Integer.toString(this.maHoaDon));
+        this.lbmaHoaDon.setText(Integer.toString(this.maPhieuNhap));
         this.lbMaNV.setText(Integer.toString(this.maNhanVien));
         this.lbTenNV.setText("<html>"+nhanvienBus.get(this.maNhanVien).getTenNV());
         Timer myTimer = new Timer(1000, (ActionEvent e) -> {
@@ -139,7 +144,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     protected boolean checkAndChangeName(){
         int num = getNumberic(txtMaSP.getText());
         if (num >= 0 && num<=1000){
-            SanPham sp = sanPhambus.get(num);
+            SanPham sp = sanPhambus.getHide(num);
             if (sp != null){
                 lbTenSP.setText(sp.getTenSP());
                 return true;
@@ -150,7 +155,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }
     
     private void loadFromDatabase(){
-        List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maHoaDon);
+        List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maPhieuNhap);
         DefaultTableModel model = (DefaultTableModel)nhapTable.getModel();
         if (ctpn == null)
             return;
@@ -160,17 +165,17 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }
     
     public void addToDatabase(int maSP, int soLuong) {
-        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maHoaDon, maSP, soLuong);
+        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maPhieuNhap, maSP, soLuong);
         ctPhieuNhapBus.add(ctpn);
     }
     
     public void updateToDatabase(int maSP, int soLuong){
-        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maHoaDon, maSP, soLuong);
-        ctPhieuNhapBus.edit(maHoaDon, maSP, ctpn);
+        ChiTietPhieuNhap ctpn = new ChiTietPhieuNhap(this.maPhieuNhap, maSP, soLuong);
+        ctPhieuNhapBus.edit(maPhieuNhap, maSP, ctpn);
     }
     
     public void removeFromDatabase(int maSP){
-         ctPhieuNhapBus.remove(this.maHoaDon, maSP);
+         ctPhieuNhapBus.remove(this.maPhieuNhap, maSP);
     }
     
     public List<ChiTietPhieuNhap> convertToList(){
@@ -182,7 +187,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ!", "Error", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
-            listNhap.add(new ChiTietPhieuNhap(this.maHoaDon, maSP, soLuong));
+            listNhap.add(new ChiTietPhieuNhap(this.maPhieuNhap, maSP, soLuong));
         }
         return listNhap;
     }
@@ -244,13 +249,11 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         lbNgayNhap = new javax.swing.JLabel();
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("getmaso");
 
         shape8.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Xác nhận");
 
         javax.swing.GroupLayout shape8Layout = new javax.swing.GroupLayout(shape8);
@@ -271,13 +274,11 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         );
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("getMaphieu");
 
         shape9.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Hủy");
 
         javax.swing.GroupLayout shape9Layout = new javax.swing.GroupLayout(shape9);
@@ -298,7 +299,6 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         );
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("getngaynhaphang");
 
         jTextField1.setBackground(new java.awt.Color(196, 196, 196));
@@ -310,20 +310,17 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Mã sản phẩm");
 
         jTextField2.setBackground(new java.awt.Color(196, 196, 196));
         jTextField2.setText("jTextField2");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Số lượng");
 
         shape1.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nhập");
 
         javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
@@ -346,7 +343,6 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         shape2.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Sửa");
 
         javax.swing.GroupLayout shape2Layout = new javax.swing.GroupLayout(shape2);
@@ -369,7 +365,6 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         shape3.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Xóa");
 
         javax.swing.GroupLayout shape3Layout = new javax.swing.GroupLayout(shape3);
@@ -390,15 +385,12 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nhập hàng");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Sản phẩm đã nhập");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("getTen");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -422,7 +414,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         sanPhamAddBackground1.setBackground(new java.awt.Color(0, 204, 204));
         sanPhamAddBackground1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -443,9 +435,6 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         jLabel23.setText("Ngày nhập");
         sanPhamAddBackground1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        txtMaSP.setBackground(new java.awt.Color(255, 255, 255));
-        txtMaSP.setForeground(new java.awt.Color(0, 0, 0));
-        txtMaSP.setMargin(new java.awt.Insets(5, 15, 5, 15));
         txtMaSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaSPActionPerformed(evt);
@@ -652,7 +641,22 @@ public class NhapHangSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maHoaDon);
+       if (isAdd){
+           List<ChiTietPhieuNhap> convertedList = convertToList();
+           if (convertedList != null && !convertedList.isEmpty()){
+               PhieuNhapBUS nhapBus = new PhieuNhapBUS();
+               PhieuNhap pn = new PhieuNhap(0, new Timestamp(System.currentTimeMillis()), this.maNhanVien, false);
+               nhapBus.add(pn);
+               this.maPhieuNhap = nhapBus.getNewest().getMaPhieu();
+               for (ChiTietPhieuNhap ct : convertedList) {
+                   addToDatabase(ct.getMaSP(), ct.getSoLuong());
+               }
+               this.setVisible(false);
+               this.dispose();
+               return;
+           } 
+       }
+       List<ChiTietPhieuNhap> ctpn = ctPhieuNhapBus.getByKey1(this.maPhieuNhap);
        List<ChiTietPhieuNhap> convertedList = convertToList();
        if (null != ctpn && convertedList != null){
            for (int i = ctpn.size()-1; i>=0 ;i--){
@@ -671,9 +675,9 @@ public class NhapHangSanPham extends javax.swing.JFrame {
            
            for (ChiTietPhieuNhap ct: convertedList)
                addToDatabase(ct.getMaSP(), ct.getSoLuong());
+            this.setVisible(false);
+            this.dispose();
        }
-       this.setVisible(false);
-       this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -711,7 +715,7 @@ public class NhapHangSanPham extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NhapHangSanPham(2,4).setVisible(true);
+                new NhapHangSanPham(9,4,true).setVisible(true);
             }
         });
     }

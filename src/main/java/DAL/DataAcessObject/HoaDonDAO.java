@@ -43,6 +43,10 @@ public class HoaDonDAO extends AbtractAccessDatabase<HoaDon> implements ISimpleA
         return executeQueryList("SELECT * FROM HOADON WHERE IS_DELETED = 0");
     }
     
+    public List<HoaDon> selectHoaDonTrongKhoang(String startDay, String endDay){
+        return executeQueryList("SELECT * FROM HOADON WHERE NGAYHD >= ? AND NGAYHD <= ?", startDay, endDay);
+    }
+    
     public static void main(String[] argv){
         HoaDonDAO hoaDonDAO = new HoaDonDAO();
         HoaDon hoaDon = new HoaDon(7,new Timestamp(System.currentTimeMillis()), "Momo", 550000, 55000, 1, 1, 1, false);

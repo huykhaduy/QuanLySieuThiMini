@@ -14,8 +14,8 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(int maSP, String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, int maLoai, int maNCC, boolean isDeleted) {
-        this.maSP = maSP;
+    public SanPham( String tenSP, String moTa, String hinhAnh, long giaTien, int soLuong, int maLoai, int maNCC, boolean isDeleted) {
+        
         this.tenSP = tenSP;
         this.moTa = moTa;
         this.hinhAnh = hinhAnh;

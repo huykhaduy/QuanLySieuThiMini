@@ -28,7 +28,7 @@ public class NhanVienDAO extends AbtractAccessDatabase<NhanVien> implements ISim
 
     @Override
     public NhanVien select(Integer maNhanVien) {
-        return executeQuery("SELECT * FROM NHANVIEN WHERE MANV = ? AND IS_DELETED = 0",maNhanVien);
+        return executeQuery("SELECT * FROM NHANVIEN WHERE MANV = ? ",maNhanVien);
     }
 
     @Override
