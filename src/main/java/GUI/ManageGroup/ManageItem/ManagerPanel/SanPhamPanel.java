@@ -9,26 +9,31 @@ import BUS.BusAccessor.LoaiSanPhamBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import DAL.DataModels.LoaiSanPham;
 import DAL.DataModels.SanPham;
+import DAL.Exel.sanphamexcel;
 import GUI.ManageGroup.ComponentPanel.ProductDetailPanel;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.SanPhamAdd;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameSua.SanPhamSua;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.BorderFactory;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
 
 public class SanPhamPanel extends javax.swing.JPanel {
-      SanPhamBUS spBUS =new SanPhamBUS();
-        SanPham sp = new SanPham();
+         SanPhamBUS spBUS =new SanPhamBUS();
+         SanPham sp = new SanPham();
          LoaiSanPhamBUS maloaiBUS = new LoaiSanPhamBUS();
          CTHoaDonBUS ctBUS = new CTHoaDonBUS();
-         SanPhamSua spSua = new SanPhamSua();
+      
          DefaultTableModel tableModel;
      
 
@@ -42,19 +47,14 @@ public class SanPhamPanel extends javax.swing.JPanel {
        
         
     }
-    public  void Sửa(SanPham sp){
-        
-        
-    }
 
     // Tạo Item Combobox
     public void LoadComboBox(){
          List <LoaiSanPham> iSP =maloaiBUS.getAll();
-         jComboBox1.addItem("None");
-        for(int i=0;i< iSP.size()-1;i++){
+        for(int i=0;i< iSP.size();i++){
         jComboBox1.addItem(GetLoai(iSP.get(i).getMaLoai()));
         }
-       
+        jComboBox1.setSelectedItem("Tất cả");
     }
     // Search Text Field
     public void FilterTF (String a){
@@ -69,35 +69,27 @@ public class SanPhamPanel extends javax.swing.JPanel {
       
         tableModel=(DefaultTableModel) jTable1.getModel();
         TableRowSorter <DefaultTableModel> tableRowSorter = new TableRowSorter<DefaultTableModel>(tableModel);
-        jTable1.setRowSorter(tableRowSorter);
-        if(a != "None"){
-           tableRowSorter.setRowFilter(RowFilter.regexFilter(a,4));
+          jTable1.setRowSorter(tableRowSorter);
+        if(a.equals("Tất cả")){
+          jTable1.setRowSorter(tableRowSorter);
         }
         else {
-            jTable1.setRowSorter(tableRowSorter);
+          tableRowSorter.setRowFilter(RowFilter.regexFilter(a,4));
         }  
     } 
     // Get tên loại
     public String GetLoai(int maLoai){
         return  maloaiBUS.get(maLoai).getTenLoai();
     }
-    public int GetSoLuongBan( int maSP){
-        int Tong = 0;
-        for( int i = 0 ; i < ctBUS.getByKey2(maSP).size();i++)
-            {
-            ctBUS.getByKey2(maSP).get(i).getGiaTien();
-            Tong = Tong + ctBUS.getByKey2(maSP).get(i).getSoLuong();
-           }
-        return Tong;
-    }
+
     // Load Table
     public void loadTable(){
          tableModel =(DefaultTableModel) jTable1.getModel();
+         jTable1.getTableHeader().setEnabled(false);
         List<SanPham> sp=  spBUS.getAll();
-        System.out.println(sp.toString());
         for( int i = 0 ; i < sp.size();i++)
         {
-         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),GetSoLuongBan(sp.get(i).getMaSP())};
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),spBUS.getSoLuongDaBan(sp.get(i).getMaSP())};
          tableModel.addRow(sanpham);
         }
      
@@ -187,6 +179,11 @@ public class SanPhamPanel extends javax.swing.JPanel {
         button8.setText("NHẬP EXCEL");
         button8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button8ActionPerformed(evt);
+            }
+        });
         add(button8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 30));
 
         button5.setBackground(new java.awt.Color(118, 199, 150));
@@ -194,6 +191,11 @@ public class SanPhamPanel extends javax.swing.JPanel {
         button5.setText("XUẤT EXCEL");
         button5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         button5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        button5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button5ActionPerformed(evt);
+            }
+        });
         add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 110, 30));
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -223,7 +225,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         add(button6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, -1, 30));
 
         jTable1.setBackground(new java.awt.Color(119, 176, 210));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -233,7 +235,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Long.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -296,7 +298,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         });
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 200, 30));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã sản phẩm", "Tên sản phẩm", " " }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã sản phẩm", "Tên sản phẩm" }));
         add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 // Click Table
@@ -319,11 +321,12 @@ public class SanPhamPanel extends javax.swing.JPanel {
 // Load Again Table
     private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
         tableModel =(DefaultTableModel) jTable1.getModel();
+         jTable1.getTableHeader().setEnabled(false);
         tableModel.setRowCount(0);
         List<SanPham> sp=  spBUS.getAll();
         for( int i = 0 ; i < sp.size();i++)
         {
-         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),GetSoLuongBan(sp.get(i).getMaSP())};
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),spBUS.getSoLuongDaBan(sp.get(i).getMaSP())};
          tableModel.addRow(sanpham);
         }
         jTable1.setModel(tableModel);
@@ -331,10 +334,13 @@ public class SanPhamPanel extends javax.swing.JPanel {
         for (int i = 0; i < tableModel.getColumnCount(); i++) {
             column = jTable1.getColumnModel().getColumn(i);
             switch (i) {
-                case 0 -> column.setPreferredWidth(30);
+                case 0 -> column.setPreferredWidth(10);
                 case 1 -> column.setPreferredWidth(50);
-                case 2 -> column.setPreferredWidth(50);
-                case 3 -> column.setPreferredWidth(50);
+                case 2 -> column.setPreferredWidth(20);
+                case 3 -> column.setPreferredWidth(20);
+                case 4 -> column.setPreferredWidth(20);
+                case 5 -> column.setPreferredWidth(20);
+                case 6 -> column.setPreferredWidth(20);
                 default -> {
                 }
             }
@@ -367,9 +373,10 @@ public class SanPhamPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_SửaMouseClicked
 
     private void SửaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SửaActionPerformed
-
+        SanPhamSua spSua = new SanPhamSua();
         int maSP= Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0)+"");
         spSua.setVisible(true);
+        spSua.setLocationRelativeTo(this);
         spSua.Sua(spBUS.get(maSP));
     }//GEN-LAST:event_SửaActionPerformed
 
@@ -380,6 +387,25 @@ public class SanPhamPanel extends javax.swing.JPanel {
        spTemp.setDeleted(true);
        spBUS.edit(maSP,spTemp);
     }//GEN-LAST:event_XóaActionPerformed
+
+    private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
+        sanphamexcel spexcel = new sanphamexcel();
+        spexcel.sanPhamtuDataBaseraExcel();
+        JOptionPane.showMessageDialog(this, "Success");
+    }//GEN-LAST:event_button5ActionPerformed
+
+    private void button8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button8ActionPerformed
+         sanphamexcel  sp = new sanphamexcel();
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("File excel", "xlsx");
+        fileChooser.setFileFilter(imageFilter);
+        fileChooser.setMultiSelectionEnabled(false);
+        int x = fileChooser.showDialog(this, "Chon file");
+        if(x == JFileChooser.APPROVE_OPTION){
+        File file = fileChooser.getSelectedFile();
+        sp.sanphamtuexcel(file);
+        }
+    }//GEN-LAST:event_button8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

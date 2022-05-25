@@ -152,6 +152,17 @@ public  class SanPhamBUS implements IBussAccess<SanPham, Integer>{
         } else result = tempList;
         return result;
     }
+    public boolean TrungSanPham(List<SanPham> sp,String MaSanPham){
+        for(int i =0 ; i< sp.size();i++)
+        {
+            if(MaSanPham.equals(String.valueOf(sp.get(i).getMaSP())))
+            {
+                return false ;
+            }
+        }
+        
+        return true;
+    }
 }
 
    

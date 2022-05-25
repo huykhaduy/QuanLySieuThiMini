@@ -78,63 +78,71 @@ public class ProductDetailPanel extends PanelAdd {
         imagePanel = new GUI.ManageGroup.ComponentPanel.ImagePanel();
 
         setBackground(new java.awt.Color(245, 245, 245));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbName.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbName.setForeground(new java.awt.Color(255, 255, 255));
         lbName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbName.setText("CocaCoLa");
+        lbName.setText("Tên sản phẩm");
+        add(lbName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 740, -1));
 
         jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel54.setText("Loại sản phẩm:");
+        jLabel54.setText("Mã loại:");
+        add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 60, -1, -1));
 
         jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
         jLabel55.setText("Mã sản phẩm:");
+        add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 60, -1, -1));
 
         jLabel56.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(255, 255, 255));
         jLabel56.setText("Đơn giá:");
+        add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 100, -1, -1));
 
         jLabel57.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("Số lượng:");
+        add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, -1));
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(255, 255, 255));
         jLabel58.setText("Nhà cung cấp:");
+        add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 100, -1, -1));
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));
         jLabel59.setText("Mô tả:");
+        add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 140, -1, -1));
 
         lbMoTa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbMoTa.setForeground(new java.awt.Color(17, 86, 125));
-        lbMoTa.setText("<html> Là sản phẩm nước ngọt có gas của thương hiệu Fanta nổi tiếng giúp giải khát sau khi hoạt động ngoài trời, giải tỏa căng thẳng, mệt mỏi khi học tập, làm việc. 6 lon nước ngọt Fanta hương cam lon 330ml thơm ngon kích thích vị giác, chứa nhiều vitamin C sẽ cung cấp năng lượng cho cơ thể khỏe mạnh.");
+        lbMoTa.setText("<html> ");
         lbMoTa.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        add(lbMoTa, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 140, 610, 60));
 
         lbMaSp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbMaSp.setForeground(new java.awt.Color(17, 86, 125));
-        lbMaSp.setText("1");
+        add(lbMaSp, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 60, -1, -1));
 
         lbDonGia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbDonGia.setForeground(new java.awt.Color(17, 86, 125));
-        lbDonGia.setText("10.000");
+        add(lbDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 100, -1, -1));
 
         lbLoai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbLoai.setForeground(new java.awt.Color(17, 86, 125));
-        lbLoai.setText("1");
+        add(lbLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         lbSoLuong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbSoLuong.setForeground(new java.awt.Color(17, 86, 125));
-        lbSoLuong.setText("10");
+        add(lbSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, -1, -1));
 
         lbNhaCC.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbNhaCC.setForeground(new java.awt.Color(17, 86, 125));
-        lbNhaCC.setText("PEPSI INC");
+        add(lbNhaCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(584, 100, -1, -1));
 
         imagePanel.setBackground(new java.awt.Color(255, 255, 255));
-        imagePanel.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/7up.png"))); // NOI18N
 
         javax.swing.GroupLayout imagePanelLayout = new javax.swing.GroupLayout(imagePanel);
         imagePanel.setLayout(imagePanelLayout);
@@ -147,75 +155,7 @@ public class ProductDetailPanel extends PanelAdd {
             .addGap(0, 136, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel55)
-                                .addGap(12, 12, 12)
-                                .addComponent(lbMaSp)
-                                .addGap(65, 65, 65)
-                                .addComponent(jLabel54)
-                                .addGap(8, 8, 8)
-                                .addComponent(lbLoai)
-                                .addGap(78, 78, 78)
-                                .addComponent(jLabel57)
-                                .addGap(15, 15, 15)
-                                .addComponent(lbSoLuong))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel56)
-                                .addGap(12, 12, 12)
-                                .addComponent(lbDonGia)
-                                .addGap(67, 67, 67)
-                                .addComponent(jLabel58)
-                                .addGap(12, 12, 12)
-                                .addComponent(lbNhaCC))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel59)
-                                .addGap(16, 16, 16)
-                                .addComponent(lbMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lbName)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel55)
-                            .addComponent(lbMaSp)
-                            .addComponent(jLabel54)
-                            .addComponent(lbLoai)
-                            .addComponent(jLabel57)
-                            .addComponent(lbSoLuong))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel56)
-                            .addComponent(lbDonGia)
-                            .addComponent(jLabel58)
-                            .addComponent(lbNhaCC))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel59)
-                            .addComponent(lbMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                        .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
-        );
+        add(imagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 42, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

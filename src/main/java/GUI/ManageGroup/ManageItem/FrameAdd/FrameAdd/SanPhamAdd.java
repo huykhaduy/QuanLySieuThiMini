@@ -31,9 +31,10 @@ public class SanPhamAdd extends javax.swing.JFrame {
     public SanPhamAdd() {
         initComponents();
         this.setDefaultCloseOperation(0);
-        
-        tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
+       // Tạo mã sản phẩm mới
+        tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()+1));
     }
+    // reset Text
     public void setNullText(){
               tfNhaCC.setText("");
               tfSanPham.setText("");
@@ -45,7 +46,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
     }
 
 
-    @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -119,23 +120,22 @@ public class SanPhamAdd extends javax.swing.JFrame {
         jLabel6.setText("Thêm sản phẩm");
         sanPhamAddBackground1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 6, 157, -1));
 
-        tfSanPham.setBackground(new java.awt.Color(196, 196, 196));
+        tfSanPham.setBackground(new java.awt.Color(255, 255, 255));
         sanPhamAddBackground1.add(tfSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 299, -1));
 
-        tfMaSanPham.setBackground(new java.awt.Color(196, 196, 196));
+        tfMaSanPham.setBackground(new java.awt.Color(255, 255, 255));
         tfMaSanPham.setFocusable(false);
         sanPhamAddBackground1.add(tfMaSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 299, -1));
 
-        tfNhaCC.setBackground(new java.awt.Color(196, 196, 196));
+        tfNhaCC.setBackground(new java.awt.Color(255, 255, 255));
         sanPhamAddBackground1.add(tfNhaCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 337, 299, -1));
 
-        tfGia.setBackground(new java.awt.Color(196, 196, 196));
+        tfGia.setBackground(new java.awt.Color(255, 255, 255));
         sanPhamAddBackground1.add(tfGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 403, 125, -1));
 
-        tfLoai.setBackground(new java.awt.Color(196, 196, 196));
+        tfLoai.setBackground(new java.awt.Color(255, 255, 255));
         sanPhamAddBackground1.add(tfLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 403, 133, -1));
 
-        tfMoTa.setBackground(new java.awt.Color(196, 196, 196));
         tfMoTa.setColumns(20);
         tfMoTa.setLineWrap(true);
         tfMoTa.setRows(5);
@@ -152,7 +152,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
                 button1MouseClicked(evt);
             }
         });
-        sanPhamAddBackground1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 100, 40));
+        sanPhamAddBackground1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, 110, 40));
 
         button2.setBackground(new java.awt.Color(246, 158, 24));
         button2.setText("Xác Nhận");
@@ -198,8 +198,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
-        System.out.println("Turn");
-      
+
         String maSanPham = tfMaSanPham.getText();
         String maNhaCC = tfNhaCC.getText();
         String tenSanPham =tfSanPham.getText();
@@ -212,20 +211,20 @@ public class SanPhamAdd extends javax.swing.JFrame {
         else {
               spData.AddSanPham(gia, tenSanPham, maNhaCC, loai, moTa,url);
               JOptionPane.showMessageDialog(this, "Success");
-              tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()));
+              tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()+1));
               setNullText();
               }
     }//GEN-LAST:event_button2MouseClicked
 
     private void imagePanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagePanel2MouseClicked
-         JFileChooser fileChooser = new JFileChooser();
+       JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("anh", "jpg","png");
         fileChooser.setFileFilter(imageFilter);
         fileChooser.setMultiSelectionEnabled(false);
         int x = fileChooser.showDialog(this, "Chon file");
         if(x == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
-           System.out.println(file.getName());
+           
            String[] parts = file.getName().split("\\.");
             url = parts[0];
             imagePanel2.setImagePathSanPham(file.getAbsolutePath());
