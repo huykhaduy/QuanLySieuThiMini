@@ -101,6 +101,11 @@ private void LoadTable(){
         button14 = new GUI.SaleGroup.LoginGui.Component.Button();
 
         edit.setText("Edit");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(edit);
 
         clear.setText("Xóa");
@@ -443,7 +448,7 @@ private void LoadTable(){
     }//GEN-LAST:event_button11MouseClicked
 
     private void button14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button14MouseClicked
-        NhanVienAdd nhanvienAdd = new NhanVienAdd();
+        NhanVienAdd nhanvienAdd = new NhanVienAdd(true, 0);
         nhanvienAdd.setVisible(true);
         nhanvienAdd.setLocationRelativeTo(this);
     }//GEN-LAST:event_button14MouseClicked
@@ -451,6 +456,16 @@ private void LoadTable(){
     private void button11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button11ActionPerformed
         
     }//GEN-LAST:event_button11ActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        int row = jTable1.getSelectedRow();
+        int maNhanVien = (int) jTable1.getValueAt(row, 0);
+        NhanVienAdd nhanvienAdd = new NhanVienAdd(false, maNhanVien);
+        nhanvienAdd.setVisible(true);
+        nhanvienAdd.setLocationRelativeTo(this);
+
+        
+    }//GEN-LAST:event_editActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
