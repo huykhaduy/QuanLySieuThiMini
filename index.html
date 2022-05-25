@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-weight: normal;
+        font-family: sans-serif;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid rgb(213, 227, 237);
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: rgb(213, 230, 234);
+      }
+      .header_content {
+        height: 250px;
+        display: flex;
+      }
+      .header_mahoadon_title {
+        color: rgb(115, 113, 113);
+      }
+      .header_ngaythanhtoan {
+        margin-top: 30px;
+      }
+      .header_mahoadon_info {
+        color: white;
+        background-color: rgb(119, 185, 232);
+        width: 110px;
+        font-size: 20px;
+        text-align: center;
+        padding: 5px;
+        margin-top: 5px;
+        font-weight: bold;
+      }
+      .header_image {
+        position: absolute;
+        left: 200px;
+        top: 0px;
+      }
+      .hoadon{
+        color:rgb(119, 185, 232);
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .title_content{
+        position: absolute;
+        left: 550px;
+        top: 60px;
+      }
+      .nguoibanhang{
+        margin: 5px 0px;
+        margin-bottom: 20px;
+      }
+      .nguoimuahang{
+        margin-top: 5px;
+      }
+      .thongtinmuahang{
+        margin-bottom: 10px;
+        color: rgb(119, 185, 232);
+        font-weight: bold;
+      }
+      .total_content{
+        text-align: right;
+        margin-right: 80px;
+        margin-top: 30px;
+      }
+      .line{
+        margin: 5px 0px;
+      }
+      .thankforbuy{
+        text-align: center;
+        color: rgb(255, 255, 255);
+        background-color: rgb(119, 185, 232);
+        padding: 10px;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hoadon">HÓA ĐƠN BÁN HÀNG</div>
+    <div class="header_content">
+      <div class="header_mahoadon">
+        <div class="header_mahoadon_title">MÃ HÓA ĐƠN:</div>
+        <div class="header_mahoadon_info">10</div>
+        <div class="header_ngaythanhtoan">
+          <div class="header_ngaythanhtoan_title">Ngày thanh toán:</div>
+          <div class="header_ngaythanhtoan_info">25/5/2022</div>
+        </div>
+      </div>
+      <div class="header_image">
+        <img src="./payment.png" alt="" style="width: 300px" />
+      </div>
+    </div>
+    <div class="title_content">
+      <div class="nguoibanhang_tilte">Nhân viên bán hàng: </div>
+      <div class="nguoibanhang">Nguyễn Văn A</div>
+      <div class="nguoimuahang_tilte">Khách hàng: </div>
+      <div class="nguoimuahang">Nguyễn Văn B</div>
+    </div>
+    <div class="thongtinmuahang">
+      Thông tin mua hàng
+    </div>
+    <div class="buying_content">
+      <table>
+        <tr>
+          <th>STT</th>
+          <th>Tên sản phẩm</th>
+          <th>Số lượng</th>
+          <th>Đơn giá</th>
+          <th>Thành tiền</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th>Nước cocacola</th>
+          <th>30.000</th>
+          <th>2</th>
+          <th>60.000</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th>Nước cocacola</th>
+          <th>30.000</th>
+          <th>2</th>
+          <th>60.000</th>
+        </tr>
+      </table>
+    </div>
+    <div class="total_content">
+      <div class="total_title">
+        <div class="line">
+          Tổng tiền: 1.000.000
+        </div>
+        <div class="line">
+          Tiền giảm: 300.000
+        </div>
+        <div class="line" style="color:rgb(119, 185, 232);font-weight: bold">
+          Tiền trả: 700.000
+        </div>
+      </div>
+    </div>
+    <div class="thankforbuy">
+        Cảm ơn đã mua hàng tại MiniMart. Chúc bạn 1 ngày tốt lành !
+    </div>
+  </body>
+</html>
