@@ -146,6 +146,7 @@ public  void Sua(SanPham sp){
         });
         sanPhamAddBackground1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 100, 40));
 
+        imagePanel2.setBackground(new java.awt.Color(246, 158, 24));
         imagePanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imagePanel2MouseClicked(evt);
