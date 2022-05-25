@@ -96,6 +96,6 @@ public class PDFTool {
     }
 
     public static void main(String[] args) {
-        renderPDF(3);
+        renderPDF(4);
     }
 }

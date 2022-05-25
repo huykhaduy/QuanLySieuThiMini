@@ -7,6 +7,7 @@ package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 import BUS.BusAccessor.NhanVienBUS;
 import BUS.NhanVienHandle.NhanVienToData;
 import BUS.NhanVienHandle.NhanVienValidate;
+import DAL.DataModels.NhanVien;
 import GUI.ManageGroup.ManageItem.ManagerPanel.NhanVienPanel;
 import GUI.ManageGroup.Theme.NhanVienAddTheme;
 import GUI.ManageGroup.Theme.NhapHuyPanel;
@@ -18,6 +19,7 @@ import java.awt.Color;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,14 +30,24 @@ import javax.swing.table.DefaultTableModel;
  * @author ACER
  */
 public class NhanVienAdd extends javax.swing.JFrame {
-        DefaultTableModel tableModel;
-        NhanVienValidate nhanvienValidate = new NhanVienValidate();
+        private final NhanVienValidate nhanvienValidate = new NhanVienValidate();
+        private boolean isAdd;
+        private final NhanVienBUS nvBUS = new NhanVienBUS();
+        private NhanVien nv = null;
      /**
      * Creates new form NhanVienAdd
      */
-    public NhanVienAdd() {
+    public NhanVienAdd(boolean isAddFrame, int maNV) {
         initComponents();
+        this.isAdd = isAddFrame;
         setUpPanel();
+        if (!this.isAdd){
+            // Cac ham setup khi add
+           nv  =  nvBUS.get(maNV);
+           loadDuLieuNhanVien(nv);
+        }
+  
+ 
     }
  private void setUpPanel() {
         
@@ -44,11 +56,32 @@ public class NhanVienAdd extends javax.swing.JFrame {
         dateChooserNhapNgaySinh.setForeground(Color.decode("#59ABE3"));
         dateChooserNhapNgayThamGia = new DateChooser();
         dateChooserNhapNgayThamGia.setForeground(Color.decode("#59ABE3"));
-        
-        
         dateChooserNhapNgaySinh.setTextRefernce(jTextField4);
         dateChooserNhapNgayThamGia.setTextRefernce(jTextField7);
 
+ }
+ 
+ private void loadDuLieuNhanVien(NhanVien nv){
+     jTextField1.setText(nv.getTenNV());
+     jTextField3.setText(nv.getSoDienThoai());
+     jTextField2.setText(nv.getCmnd());
+     if(nv.isGioiTinh() == false){
+         jComboBox1.setSelectedIndex(0);
+     } else {
+          jComboBox1.setSelectedIndex(1);
+     }
+     dateChooserNhapNgaySinh.setSelectedDate( nv.getNgaySinh());
+     dateChooserNhapNgayThamGia.setSelectedDate(nv.getNgayThamGia());
+     jTextField5.setText(nv.getEmail());
+     jTextField6.setText(nv.getDiaChi());
+     if(nv.getMaChucVu() == 1){
+         jComboBox2.setSelectedIndex(0);
+     }else{
+         jComboBox2.setSelectedIndex(1);
+     }
+     
+     
+     //Lam tiep
  }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,7 +161,7 @@ public class NhanVienAdd extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Thêm nhân viên");
+        jLabel6.setText("Nhân viên");
         sanPhamAddBackground1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 360, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -207,40 +240,13 @@ public class NhanVienAdd extends javax.swing.JFrame {
     }//GEN-LAST:event_roundButton1ActionPerformed
 
     private void roundButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roundButton2ActionPerformed
-
-        try {
-            String tenNhanVien = jTextField1.getText();
-            String soDienThoai = jTextField3.getText();
-            String cmnd = jTextField2.getText();
-            int gioiTinh = jComboBox1.getSelectedIndex();
-
-            String email = jTextField5.getText();
-            String diachi = jTextField6.getText();
-
-            int maChucVu = jComboBox2.getSelectedIndex() + 1;
-
-            SelectedDate nhapNgaySinh = dateChooserNhapNgaySinh.getSelectedDate();
-            SelectedDate nhapNgayThamGia = dateChooserNhapNgayThamGia.getSelectedDate();
-            String bd = nhapNgaySinh.getYear() + "-" + nhapNgaySinh.getMonth() + "-" + nhapNgaySinh.getDay();
-            String kt = nhapNgayThamGia.getYear() + "-" + nhapNgayThamGia.getMonth() + "-" + nhapNgayThamGia.getDay();
-            Timestamp bdTs = Timestamp.valueOf(bd + " 00:00:00");
-            Date date = new Date(bdTs.getTime());
-            Timestamp ktTs = Timestamp.valueOf(kt + " 00:00:00");
-            Date date1 = new Date(ktTs.getTime());
-
-            if (!nhanvienValidate.validateAll(tenNhanVien, soDienThoai, cmnd, diachi)) {
-                JOptionPane.showMessageDialog(this, "Sai định dạng");
-            } else {
-                NhanVienToData nhanVienToDaTa = new NhanVienToData();
-
-                nhanVienToDaTa.AddNhanVien(tenNhanVien, soDienThoai, cmnd, gioiTinh, date, email, diachi, date1, maChucVu);
-
-                System.out.println("thanh cong");
-                 dispose();
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(NhanVienAdd.class.getName()).log(Level.SEVERE, null, ex);
+        if (isAdd){
+            addNhanVienAction();
         }
+        else {
+            editNhanVien();
+        }
+        
        
     }//GEN-LAST:event_roundButton2ActionPerformed
 
@@ -275,7 +281,7 @@ public class NhanVienAdd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NhanVienAdd().setVisible(true);
+                new NhanVienAdd(false,3).setVisible(true);
             }
         });
     }
@@ -308,4 +314,53 @@ public class NhanVienAdd extends javax.swing.JFrame {
         private DateChooser dateChooserNhapNgaySinh;
         private DateChooser dateChooserNhapNgayThamGia;
 
+        
+        public void addNhanVienAction(){
+           NhanVien nhanVien = kiemTraVaTraDuLieu(0);
+           if (nhanVien != null){
+               nvBUS.add(nhanVien);
+               dispose();
+           }
+ 
+        }
+        
+        public NhanVien kiemTraVaTraDuLieu(int maNV) {
+            String tenNhanVien = jTextField1.getText();
+            String soDienThoai = jTextField3.getText();
+            String cmnd = jTextField2.getText();
+            boolean gioiTinh = jComboBox1.getSelectedIndex() == 0 ? false : true;
+            
+            
+            String email = jTextField5.getText();
+            String diachi = jTextField6.getText();
+
+            int maChucVu = jComboBox2.getSelectedIndex() + 1;
+
+            SelectedDate nhapNgaySinh = dateChooserNhapNgaySinh.getSelectedDate();
+            SelectedDate nhapNgayThamGia = dateChooserNhapNgayThamGia.getSelectedDate();
+            String bd = nhapNgaySinh.getYear() + "-" + nhapNgaySinh.getMonth() + "-" + nhapNgaySinh.getDay();
+            String kt = nhapNgayThamGia.getYear() + "-" + nhapNgayThamGia.getMonth() + "-" + nhapNgayThamGia.getDay();
+            Timestamp bdTs = Timestamp.valueOf(bd + " 00:00:00");
+            Date date = new Date(bdTs.getTime());
+            Timestamp ktTs = Timestamp.valueOf(kt + " 00:00:00");
+            Date date1 = new Date(ktTs.getTime());
+
+            if (!nhanvienValidate.validateAll(tenNhanVien, soDienThoai, cmnd, diachi)) {
+                JOptionPane.showMessageDialog(this, "Sai định dạng");
+                return null;
+            } else {
+//                    (int maNV, String tenNV, boolean gioiTinh, String cmnd, Date ngaySinh, String soDienThoai, String email, String diaChi, Date ngayThamGia, int maChucVu, boolean isDeleted) 
+                NhanVien nhanVien = new NhanVien(maNV, tenNhanVien, gioiTinh, cmnd, date, soDienThoai, email, diachi, date1, maChucVu, false);
+                System.out.println("thanh cong");
+                return nhanVien;
+            }
+        }
+        
+        public void editNhanVien(){
+              NhanVien nhanVien = kiemTraVaTraDuLieu(nv.getMaNV());
+              if (nhanVien != null){
+                  nvBUS.edit(nv.getMaNV(), nhanVien);
+                  dispose();
+              }
+        }
 }

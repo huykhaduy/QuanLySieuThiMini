@@ -25,8 +25,8 @@ public class NhanVienToData {
         nhanVien.setTenNV(tenNhanVien);
         nhanVien.setSoDienThoai(soDienThoai);
         nhanVien.setCmnd(cmnd);
-        boolean testGioiTinh = false;
-        if(gioiTinh == 0)  testGioiTinh = true;
+        boolean testGioiTinh = true;
+        if(gioiTinh == 0)  testGioiTinh = false;
         nhanVien.setGioiTinh(testGioiTinh);
          System.out.println(ngaySinh);
          nhanVien.setEmail(email);
@@ -37,6 +37,7 @@ public class NhanVienToData {
           System.out.println(nhanVien.toString());
         return nhanvienBUS.add(nhanVien);
     }
+    
     
     
 }
