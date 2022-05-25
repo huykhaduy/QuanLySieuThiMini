@@ -41,8 +41,12 @@ public class HoaDonBUS implements IBussAccess<HoaDon, Integer>{
 
     @Override
     public HoaDon getNewest() {
-        List<HoaDon> list=getAll();
+       List<HoaDon> list=getAll();
        return list== null ? null : list.get(list.size()-1);
+    }
+    
+    public List<HoaDon> getHoaDonFromTo(String start, String end){
+        return HoaDonDAO.selectHoaDonTrongKhoang(start, end);
     }
     
 }

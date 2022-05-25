@@ -4,6 +4,7 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import BUS.BusAccessor.LoaiSanPhamBUS;
 import DAL.DataAcessObject.LoaiSanPhamDAO;
 import DAL.DataModels.LoaiSanPham;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
@@ -17,7 +18,7 @@ import javax.swing.JTextField;
  * @author huykh
  */
 public class MyLoaiSPComboBox extends JComboBox<LoaiSanPham>{
-    private final LoaiSanPhamDAO loaispdao = new LoaiSanPhamDAO();
+    private final LoaiSanPhamBUS loaispBUS = new LoaiSanPhamBUS();
     
     public MyLoaiSPComboBox() {
         this.setRenderer(new ComboboxLoaiSanPhamRender());
@@ -34,7 +35,7 @@ public class MyLoaiSPComboBox extends JComboBox<LoaiSanPham>{
     }
 
     public void getLoaiSPFromDatabase(){
-        List<LoaiSanPham> list = loaispdao.selectAll();
+        List<LoaiSanPham> list = loaispBUS.getAll();
         for (LoaiSanPham loaisp:list){
             this.addItem(loaisp);
         }

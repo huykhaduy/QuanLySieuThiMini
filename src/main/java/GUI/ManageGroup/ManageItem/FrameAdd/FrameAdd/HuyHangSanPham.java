@@ -147,7 +147,7 @@ public class HuyHangSanPham extends javax.swing.JFrame {
     protected boolean checkAndChangeName(){
         int num = getNumberic(txtMaSP.getText());
         if (num >= 0 && num<=1000){
-            SanPham sp = sanPhambus.get(num);
+            SanPham sp = sanPhambus.getHide(num);
             if (sp != null){
                 lbTenSP.setText(sp.getTenSP());
                 return true;
@@ -486,7 +486,9 @@ public class HuyHangSanPham extends javax.swing.JFrame {
         lbTenNV.setToolTipText("");
         sanPhamAddBackground1.add(lbTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 140, -1));
 
+        nhapTable.setBackground(new java.awt.Color(255, 255, 255));
         nhapTable.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        nhapTable.setForeground(new java.awt.Color(0, 153, 204));
         nhapTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
