@@ -137,4 +137,12 @@ public class NhanVien{
                 ", isDeleted=" + isDeleted +
                 '}';
     }
+
+    public void setNgaySinh(Timestamp ngaySinh) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setNgayThamGia(Timestamp ngayThamGia) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
