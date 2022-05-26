@@ -31,6 +31,9 @@ public class SanPhamValidate {
          return true;
       
 }
+    private boolean CheckHinhAnh (String url){
+         return url.length()>0;
+     }
      private boolean CheckTen (String Ten){
          return Ten.length()>0;
      }
@@ -55,8 +58,8 @@ public class SanPhamValidate {
          return Mota.length()>20;
      }
 
-    public boolean AllValidate(String Gia,String Ten,String nhaCungCap,String Loai,String Mota) {
-       return CheckGia(Gia)&&CheckTen(Ten)&&CheckMota(Mota)&&CheckNCC(nhaCungCap)&&CheckLoai(Loai);
+    public boolean AllValidate(String Gia,String Ten,String nhaCungCap,String Loai,String Mota,String url) {
+       return CheckGia(Gia)&&CheckTen(Ten)&&CheckMota(Mota)&&CheckNCC(nhaCungCap)&&CheckLoai(Loai)&&CheckHinhAnh(url);
     }
 
   

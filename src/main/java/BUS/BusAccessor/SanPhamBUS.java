@@ -163,6 +163,9 @@ public  class SanPhamBUS implements IBussAccess<SanPham, Integer>{
         
         return true;
     }
+     public List<SanPham> getAllSanPham() {
+       return sanPhamDAO.selectAllSanPham();
+    }
 }
 
    

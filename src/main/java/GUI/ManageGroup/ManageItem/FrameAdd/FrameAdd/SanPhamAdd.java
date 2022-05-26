@@ -205,7 +205,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
         String loai = tfLoai.getText();
         String gia = tfGia.getText();
         String moTa =tfMoTa.getText();
-        if(!spVali.AllValidate(gia,tenSanPham,maNhaCC,loai,moTa)) {
+        if(!spVali.AllValidate(gia,tenSanPham,maNhaCC,loai,moTa,url)) {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {

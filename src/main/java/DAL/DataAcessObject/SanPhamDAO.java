@@ -42,7 +42,6 @@ public class SanPhamDAO extends AbtractAccessDatabase<SanPham> implements ISimpl
     public List<SanPham> selectAll() {
         return executeQueryList("SELECT * FROM SanPham WHERE IS_DELETED = 0");
     }
-    
     public SanPham selectNewest(){
         return executeQuery("SELECT * FROM SANPHAM ORDER BY MASP DESC LIMIT 1");
     }
@@ -82,5 +81,8 @@ public class SanPhamDAO extends AbtractAccessDatabase<SanPham> implements ISimpl
         String searchStr = "%"+tenSP+"%";
         return executeQueryList("SELECT * FROM SanPham WHERE MALOAI = ? AND TENSP LIKE ?", maLoai, searchStr);
     }
+    public List<SanPham> selectAllSanPham(){
+              return executeQueryList("SELECT * FROM SanPham");
+            }
     
 }
