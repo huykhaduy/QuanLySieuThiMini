@@ -15,6 +15,7 @@ public class Shape2 extends javax.swing.JPanel {
      */
     public Shape2() {
         initComponents();
+        setOpaque(false);
     }
 
 protected void paintComponent(Graphics g){
@@ -24,7 +25,6 @@ protected void paintComponent(Graphics g){
         g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 80, 80);
         g2d.dispose();
         super.paintComponent(g);
-        setOpaque(false);
     
     }
     @SuppressWarnings("unchecked")
