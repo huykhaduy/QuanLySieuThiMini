@@ -5,6 +5,7 @@
 package DAL.Exel;
 
 import BUS.BusAccessor.SanPhamBUS;
+import BUS.SanPhamHandle.SanPhamValidate;
 import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataModels.GiamGiaSP;
 import DAL.DataModels.SanPham;
@@ -33,6 +34,7 @@ public class sanphamexcel {
     private static List<SanPham> spTuExcelList=new ArrayList<SanPham>();
     private static SanPhamBUS spBUS = new SanPhamBUS();
     private static SanPhamDAO spDAO= new SanPhamDAO();
+    private static SanPhamValidate spVali = new SanPhamValidate();
     public static void sanphamtuexcel(File f) {
         try {
             
@@ -47,7 +49,7 @@ public class sanphamexcel {
                     if (cell != null) {
                         String value = fmt.formatCellValue(cell);
                         if (!value.trim().isEmpty()) {
-                            if(spBUS.TrungSanPham(spBUS.getAll(), value))
+                            if(spBUS.TrungSanPham(spBUS.getAllSanPham(), value))
                                sp1.setMaSP(Integer.parseInt(value));
                             else {
                                 continue;
@@ -128,7 +130,8 @@ public class sanphamexcel {
             }
             for (int i = 0; i < spTuExcelList.size(); i++) {
                 SanPham s = spTuExcelList.get(i);
-                spBUS.add(s);
+                if(spVali.AllValidate(String.valueOf(s.getGiaTien()), s.getTenSP(),String.valueOf(s.getMaNCC()) , String.valueOf(s.getMaLoai()), s.getMoTa(), s.getHinhAnh()))
+                    spBUS.add(s);
             }
             workbook.close();
             file.close();
@@ -186,10 +189,6 @@ public class sanphamexcel {
         }
     }
 
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args) {
         
         File f = new File("src\\main\\java\\DAL\\Exel\\sp.xlsx");

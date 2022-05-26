@@ -195,7 +195,7 @@ public  void Sua(SanPham sp){
         String moTa =tfMoTa.getText();
         
         SanPham sp = new SanPham(tenSanPham, moTa, url, Long.valueOf(gia), spBUS.get(Integer.valueOf(maSanPham)).getSoLuong(), Integer.valueOf(loai),  Integer.valueOf(maNhaCC),false);
-        if(!spVali.AllValidate(gia,tenSanPham,maNhaCC,loai,moTa)) {
+        if(!spVali.AllValidate(gia,tenSanPham,maNhaCC,loai,moTa,url)) {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {
