@@ -1,26 +1,31 @@
 
 package GUI.ManageGroup.ManageItem.ManageFrame;
 
+import BUS.AccountServices.LoginAction;
 import GUI.ManageGroup.Theme.ManagerTheme;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import BUS.ManagerServices.ManageNhanVien;
+import GUI.SaleGroup.LoginGui.LoginFrame.LoginGui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class ManageFrame extends javax.swing.JFrame {
+     public static int maNV;
+     private LoginAction logAct;
+     private LoginGui loginGui;
 
-
-    public ManageFrame() {
+    public ManageFrame(LoginAction logAct, LoginGui loginGui) {
+        this.loginGui = loginGui;
+        this.logAct = logAct;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        customsizeTabbedPane();
-       
-        
     }
     
     private void customsizeTabbedPane(){
@@ -44,7 +49,6 @@ public class ManageFrame extends javax.swing.JFrame {
 
         
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -187,8 +191,7 @@ public class ManageFrame extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageFrame().setVisible(true);
-                
+                new ManageFrame(null, null).setVisible(true);
             }
         });
     }
