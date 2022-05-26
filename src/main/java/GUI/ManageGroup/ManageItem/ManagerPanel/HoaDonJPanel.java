@@ -16,6 +16,7 @@ import DAL.DataModels.NhanVien;
 import DAL.DataModels.SanPham;
 import com.raven.datechooser.DateChooser;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +30,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import  java.text.ParseException;
+import javax.swing.JFrame;
 
 /**
  *
@@ -132,10 +134,15 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jTable2 = new javax.swing.JTable();
         roundPanel2 = new GUI.SaleGroup.SellerGUI.Component.RoundPanel();
         jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
         button19 = new GUI.SaleGroup.LoginGui.Component.Button();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
         button20 = new GUI.SaleGroup.LoginGui.Component.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -146,13 +153,13 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/info.png"))); // NOI18N
         jLabel104.setText("Thông tin chi tiết");
-        add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1030, -1));
+        add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1030, 30));
 
         jLabel108.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel108.setForeground(new java.awt.Color(42, 148, 208));
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel108.setText("Danh sách hóa đơn");
-        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 300, 30));
+        add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, 300, 30));
 
         jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -166,7 +173,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel109.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel109.setForeground(new java.awt.Color(42, 148, 208));
         jLabel109.setText("QUẢN LÝ HÓA ĐƠN");
-        add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 50));
+        add(jLabel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 50));
 
         jPanel21.setBackground(new java.awt.Color(42, 148, 208));
 
@@ -181,7 +188,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 10, 30));
+        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 10, 30));
 
         button14.setBackground(new java.awt.Color(118, 199, 150));
         button14.setForeground(new java.awt.Color(255, 255, 255));
@@ -252,7 +259,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel5.setText("jLabel5");
         shape42.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 50, 20));
 
-        shape40.add(shape42, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 290, 230));
+        shape40.add(shape42, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 290, 230));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -279,7 +286,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
 
         shape40.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 560, 200));
 
-        add(shape40, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
+        add(shape40, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 960, 240));
 
         jTable2.setBackground(new java.awt.Color(119, 176, 210));
         jTable2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -314,23 +321,13 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         roundPanel2.setBackground(new java.awt.Color(246, 247, 249));
         roundPanel2.setRadius(70);
         roundPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextField5.setText("jTextField1");
         roundPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 100, 20));
-
-        jLabel6.setBackground(new java.awt.Color(0, 204, 204));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel6.setText("Từ ngày:");
-        roundPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, -1));
 
         jLabel7.setBackground(new java.awt.Color(0, 204, 204));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 153, 255));
         jLabel7.setText("Đến ngày:");
         roundPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 70, -1));
-
-        jTextField17.setText("jTextField1");
         roundPanel2.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 100, 20));
 
         button19.setBackground(new java.awt.Color(119, 176, 210));
@@ -343,9 +340,32 @@ public class HoaDonJPanel extends javax.swing.JPanel {
                 button19ActionPerformed(evt);
             }
         });
-        roundPanel2.add(button19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 110, -1));
+        roundPanel2.add(button19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 110, -1));
 
-        add(roundPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 310, 90));
+        jLabel8.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel8.setText("Từ ngày:");
+        roundPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, -1));
+
+        jLabel6.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel6.setText("Mã NV:");
+        roundPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 70, -1));
+
+        jLabel9.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel9.setText("Mã KH:");
+        roundPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 70, -1));
+        roundPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 100, 20));
+
+        jTextField7.setText("jTextField1");
+        roundPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 100, 20));
+        roundPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 100, 20));
+
+        add(roundPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 310, 150));
 
         button20.setBackground(new java.awt.Color(118, 199, 150));
         button20.setForeground(new java.awt.Color(255, 255, 255));
@@ -428,32 +448,65 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     private void button19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button19ActionPerformed
         // so sánh ngày
         SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-        boolean test =false;
+       
         jTable2.setModel(new DefaultTableModel(null,new String[]{"Mã hóa đơn","Mã khách hàng","Tên khách hàng","Mã nhân viên","Tên nhân viên","Ngày hóa đơn"}));
         modelJTABLE2= (DefaultTableModel) jTable2.getModel();
         try {
             Date sDate=sdf.parse(jTextField5.getText());
-            System.out.println(sDate);
             Date eDate=sdf.parse(jTextField17.getText());
-            System.out.println(eDate);
-            for(HoaDon hd:hdList){
-                String reDate=sdf.format(hd.getNgayHD());
-                System.out.println(reDate);
-                Date requiredDate=sdf.parse(reDate);
-                if(requiredDate.compareTo(sDate)>= 0 && requiredDate.compareTo(eDate) <=0 ){
-                    
-                    NhanVien nv= nhanVienBUS.get(hd.getMaNV());
-                    KhachHang kh= khachHangBUS.get(hd.getMaKH());
-                    modelJTABLE2.addRow(new Object[]{hd.getMaHD(),hd.getMaKH(),kh.getTenKH(),hd.getMaNV(),nv.getTenNV(),hd.getNgayHD()});
-                    test=true;
-                    
-                }
-                else{
-                    System.out.println("FAIL");
+            if (sDate.compareTo(eDate)>0) JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu","Thời gian lọc sai",JOptionPane.OK_OPTION);
+            if (jTextField6.getText().isEmpty() && jTextField8.getText().isEmpty()){
+                for (HoaDon hd : hdList) {
+                    String reDate = sdf.format(hd.getNgayHD());
+                    Date requiredDate = sdf.parse(reDate);
+                    if (requiredDate.compareTo(sDate) >= 0 && requiredDate.compareTo(eDate) <= 0) {
 
+                        NhanVien nv = nhanVienBUS.get(hd.getMaNV());
+                        KhachHang kh = khachHangBUS.get(hd.getMaKH());
+                        modelJTABLE2.addRow(new Object[]{hd.getMaHD(), hd.getMaKH(), kh.getTenKH(), hd.getMaNV(), nv.getTenNV(), hd.getNgayHD()});
+                        
+
+                    } else {
+                        System.out.println("FAIL");
+
+                    }
                 }
             }
-            
+            else if (jTextField6.getText().isEmpty()){// loc theo ma khach hang
+                KhachHang kh = khachHangBUS.get(Integer.parseInt(jTextField8.getText()));
+                for (HoaDon hd : hdList) {
+                    String reDate = sdf.format(hd.getNgayHD());
+                    Date requiredDate = sdf.parse(reDate);
+                    if (hd.getMaKH() == kh.getMaKH() && requiredDate.compareTo(sDate) >= 0 && requiredDate.compareTo(eDate) <= 0) {
+                        NhanVien nv = nhanVienBUS.get(hd.getMaNV());
+                        modelJTABLE2.addRow(new Object[]{hd.getMaHD(), hd.getMaKH(), kh.getTenKH(), hd.getMaNV(), nv.getTenNV(), hd.getNgayHD()});
+                        
+                    }
+                }
+            }
+            else if (jTextField8.getText().isEmpty()){
+                NhanVien nv= nhanVienBUS.get(Integer.parseInt(jTextField6.getText()));
+                for (HoaDon hd : hdList) {
+                    String reDate = sdf.format(hd.getNgayHD());
+                    Date requiredDate = sdf.parse(reDate);
+                    if (hd.getMaNV()== nv.getMaNV()&& requiredDate.compareTo(sDate) >= 0 && requiredDate.compareTo(eDate) <= 0) {
+                        KhachHang kh= khachHangBUS.get(hd.getMaKH());
+                        modelJTABLE2.addRow(new Object[]{hd.getMaHD(), hd.getMaKH(), kh.getTenKH(), hd.getMaNV(), nv.getTenNV(), hd.getNgayHD()});
+                    }
+                }
+            }//loc theo ma nv
+            else {
+                NhanVien nv= nhanVienBUS.get(Integer.parseInt(jTextField6.getText()));
+                KhachHang kh = khachHangBUS.get(Integer.parseInt(jTextField8.getText()));
+                for (HoaDon hd : hdList) {
+                    String reDate = sdf.format(hd.getNgayHD());
+                    Date requiredDate = sdf.parse(reDate);
+                    if (hd.getMaKH() == kh.getMaKH() && hd.getMaNV()== nv.getMaNV() &&requiredDate.compareTo(sDate) >= 0 && requiredDate.compareTo(eDate) <= 0) {
+                        modelJTABLE2.addRow(new Object[]{hd.getMaHD(), hd.getMaKH(), kh.getTenKH(), hd.getMaNV(), nv.getTenNV(), hd.getNgayHD()});
+                        
+                    }
+                }
+            }
         } catch (ParseException ex) {
             Logger.getLogger(HoaDonJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -464,9 +517,19 @@ public class HoaDonJPanel extends javax.swing.JPanel {
 
     private void button20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button20ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_button20ActionPerformed
 
-
+    public static void main(String[] argv){
+        JFrame f = new JFrame();
+        HoaDonJPanel km = new HoaDonJPanel();
+        f.add(km);
+        f.setLayout(new FlowLayout());
+        f.setSize(1100,800);
+        f.setVisible(true);
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button14;
     private GUI.SaleGroup.LoginGui.Component.Button button18;
@@ -486,6 +549,8 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JScrollPane jScrollPane1;
@@ -494,6 +559,9 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private GUI.SaleGroup.SellerGUI.Component.RoundPanel roundPanel2;
     private GUI.ManageGroup.BackgroundShape.Shape shape40;
