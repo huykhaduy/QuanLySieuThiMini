@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 
 
 public class SellerMainFrame extends javax.swing.JFrame {
-    private final JLabel maNV1 = new JLabel();
+
     public static int maNV;
     private LoginAction logAct;
     private LoginGui loginGui;
@@ -457,6 +457,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         LogoutAction.storeLogoutTime(logAct.getLoginDetail());
 //        System.out.println("Login detail: " + logAct.getLoginDetail());
         this.setVisible(false);
+        this.dispose();
         this.loginGui.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -562,6 +563,8 @@ public class SellerMainFrame extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
+                
+                if(logAct == null) System.exit(0);
                 
                 if(!logAct.isRememberMe()){
                     System.out.println("No remember user!");

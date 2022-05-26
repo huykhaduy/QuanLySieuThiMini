@@ -1,29 +1,33 @@
 
 package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 
-import BUS.SaleServices.CheckInfoSale;
-import BUS.VoucherHandle.VoucherBUS;
+import BUS.BusAccessor.VoucherBUS;
+import BUS.VoucherHandle.VoucherHandleBUS;
 import BUS.VoucherHandle.VoucherValidate;
 import DAL.DataModels.Voucher;
-import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.VoucherAdd;
-import java.math.BigInteger;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author ACER
+ * @author ACER, TUANMINH
  */
 public class VoucherAdd extends javax.swing.JFrame {
-
+    private String maVoucher;
+    private boolean isInsert;
     /**
      * Creates new form VoucherAdd
      */
     public VoucherAdd() {
         initComponents();
+    }
+    
+    public VoucherAdd(String title, String soVoucher, boolean insert){
+        initComponents();
+        this.jLabel12.setText(title);
+        this.maVoucher = soVoucher;
+        this.isInsert = insert;
+        init();
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +40,7 @@ public class VoucherAdd extends javax.swing.JFrame {
         shape2 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtaMoTa = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -44,19 +48,19 @@ public class VoucherAdd extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtCodeVoucher = new javax.swing.JTextField();
+        txtGiaTriToiDa = new javax.swing.JTextField();
+        txtGiaTriToiThieu = new javax.swing.JTextField();
+        txtNgayBD = new javax.swing.JTextField();
+        txtNgayKT = new javax.swing.JTextField();
+        txtPtGiam = new javax.swing.JTextField();
+        txtSoLuotSD = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         imagePanel1 = new GUI.ManageGroup.ComponentPanel.ImagePanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         shape1.setBackground(new java.awt.Color(0, 220, 128));
         shape1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,7 +70,6 @@ public class VoucherAdd extends javax.swing.JFrame {
         });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Xác Nhận");
 
         javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
@@ -87,9 +90,13 @@ public class VoucherAdd extends javax.swing.JFrame {
         );
 
         shape2.setBackground(new java.awt.Color(0, 220, 128));
+        shape2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shape2MouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Hủy");
 
         javax.swing.GroupLayout shape2Layout = new javax.swing.GroupLayout(shape2);
@@ -109,75 +116,67 @@ public class VoucherAdd extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jTextArea1.setBackground(new java.awt.Color(196, 196, 196));
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jTextArea1.setSelectionColor(new java.awt.Color(51, 255, 0));
-        jScrollPane1.setViewportView(jTextArea1);
+        txtaMoTa.setBackground(new java.awt.Color(196, 196, 196));
+        txtaMoTa.setColumns(20);
+        txtaMoTa.setLineWrap(true);
+        txtaMoTa.setRows(5);
+        txtaMoTa.setWrapStyleWord(true);
+        txtaMoTa.setSelectionColor(new java.awt.Color(51, 255, 0));
+        jScrollPane1.setViewportView(txtaMoTa);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Mã Voucher");
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Khuyến mãi tối đa");
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Ngày bắt đầu ");
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Khuyến mãi tối thiểu");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Ngày kết thúc");
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("% Giảm");
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Mô tả");
 
-        jTextField1.setBackground(new java.awt.Color(196, 196, 196));
+        txtCodeVoucher.setBackground(new java.awt.Color(196, 196, 196));
 
-        jTextField2.setBackground(new java.awt.Color(196, 196, 196));
+        txtGiaTriToiDa.setBackground(new java.awt.Color(196, 196, 196));
 
-        jTextField3.setBackground(new java.awt.Color(196, 196, 196));
+        txtGiaTriToiThieu.setBackground(new java.awt.Color(196, 196, 196));
 
-        jTextField4.setBackground(new java.awt.Color(196, 196, 196));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtNgayBD.setBackground(new java.awt.Color(196, 196, 196));
+        txtNgayBD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtNgayBDActionPerformed(evt);
             }
         });
 
-        jTextField5.setBackground(new java.awt.Color(196, 196, 196));
+        txtNgayKT.setBackground(new java.awt.Color(196, 196, 196));
 
-        jTextField6.setBackground(new java.awt.Color(196, 196, 196));
+        txtPtGiam.setBackground(new java.awt.Color(196, 196, 196));
 
-        jTextField7.setBackground(new java.awt.Color(196, 196, 196));
+        txtSoLuotSD.setBackground(new java.awt.Color(196, 196, 196));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Số  lần sử dụng");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Thêm voucher");
 
         imagePanel1.setBackground(new java.awt.Color(0, 220, 128));
@@ -199,31 +198,11 @@ public class VoucherAdd extends javax.swing.JFrame {
         voucherAddBackground1Layout.setHorizontalGroup(
             voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(voucherAddBackground1Layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(imagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(voucherAddBackground1Layout.createSequentialGroup()
                 .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(voucherAddBackground1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, voucherAddBackground1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)))
-                            .addGroup(voucherAddBackground1Layout.createSequentialGroup()
-                                .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                        .addComponent(jTextField4))
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(55, 55, 55)
-                                .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                                    .addComponent(jTextField7)
-                                    .addComponent(jTextField3)))
-                            .addComponent(jScrollPane1)))
                     .addGroup(voucherAddBackground1Layout.createSequentialGroup()
                         .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(voucherAddBackground1Layout.createSequentialGroup()
@@ -239,19 +218,37 @@ public class VoucherAdd extends javax.swing.JFrame {
                                 .addGap(139, 139, 139)
                                 .addComponent(jLabel1))
                             .addGroup(voucherAddBackground1Layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(voucherAddBackground1Layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
                                 .addComponent(shape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)
                                 .addComponent(shape2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(voucherAddBackground1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCodeVoucher)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, voucherAddBackground1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)))
+                            .addGroup(voucherAddBackground1Layout.createSequentialGroup()
+                                .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtGiaTriToiDa, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                        .addComponent(txtNgayBD))
+                                    .addComponent(txtPtGiam, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(55, 55, 55)
+                                .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(txtNgayKT, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(txtSoLuotSD)
+                                    .addComponent(txtGiaTriToiThieu)))
+                            .addComponent(jScrollPane1)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(voucherAddBackground1Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(imagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         voucherAddBackground1Layout.setVerticalGroup(
             voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,31 +260,31 @@ public class VoucherAdd extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodeVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGiaTriToiDa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGiaTriToiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(voucherAddBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPtGiam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSoLuotSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,46 +316,44 @@ public class VoucherAdd extends javax.swing.JFrame {
              
         VoucherValidate voucherValidate = new VoucherValidate();
         
-        String codeVoucher = jTextField1.getText();
-        String minimizeVoucher = jTextField3.getText();
-        String maxmizeVoucher = jTextField2.getText();
-        String startDay = jTextField4.getText();
-        String endDay = jTextField5.getText();
-        String percent = jTextField6.getText();
-        String numberUse = jTextField7.getText();
-        String describe =  jTextArea1.getText();
+        String codeVoucher = txtCodeVoucher.getText();
+        String minimizeVoucher = txtGiaTriToiThieu.getText();
+        String maxmizeVoucher = txtGiaTriToiDa.getText();
+        String startDay = txtNgayBD.getText();
+        String endDay = txtNgayKT.getText();
+        String percent = txtPtGiam.getText();
+        String numberUse = txtSoLuotSD.getText();
+        String describe =  txtaMoTa.getText();
         
-        
-        
-        
-        
-
-        if (!voucherValidate.validateAll(codeVoucher , minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe)){
-//            Voucher voucher = voucherValidate.getValidatedVoucher();
+        if(isInsert){
+            if (!voucherValidate.validateAll(codeVoucher , minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe)){
                 JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
-        }else {
-//                SimpleDateFormat format = new java.text.SimpleDateFormat("dd/MM/yyyy "); 
-//            try {
-//                format.parse(startDay);
-//                 format.parse(endDay);
-//            } catch (ParseException ex) {
-//                Logger.getLogger(VoucherAdd.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-               
-
-                VoucherBUS themVoucher = new VoucherBUS();
-                themVoucher.AddVoucher(codeVoucher, minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe);
-
-
-            dispose();
+            }else {          
+                VoucherHandleBUS themVoucher = new VoucherHandleBUS();
+                boolean flag = themVoucher.AddVoucher(codeVoucher, minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe);
+                if(flag) JOptionPane.showConfirmDialog(this, "Inserted successfully!!!", "Thông báo", JOptionPane.CLOSED_OPTION);
+                dispose();
+            }
+        }else{
+            if(voucherValidate.validateAllExpectCodeVoucher(minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe)){
+                VoucherHandleBUS themVoucher = new VoucherHandleBUS();
+                boolean flag = themVoucher.EditVoucher(codeVoucher, minimizeVoucher, maxmizeVoucher, startDay, endDay, percent, numberUse, describe);
+                if(flag) JOptionPane.showConfirmDialog(this, "Updated successfully!!!", "Thông báo", JOptionPane.CLOSED_OPTION);
+                dispose();
+            }else JOptionPane.showMessageDialog(this, "Some values was wrong!!!");
         }
         
         
     }//GEN-LAST:event_shape1MouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtNgayBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayBDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtNgayBDActionPerformed
+
+    private void shape2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shape2MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_shape2MouseClicked
 
 
     public static void main(String args[]) {
@@ -409,16 +404,35 @@ public class VoucherAdd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape1;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape2;
+    private javax.swing.JTextField txtCodeVoucher;
+    private javax.swing.JTextField txtGiaTriToiDa;
+    private javax.swing.JTextField txtGiaTriToiThieu;
+    private javax.swing.JTextField txtNgayBD;
+    private javax.swing.JTextField txtNgayKT;
+    private javax.swing.JTextField txtPtGiam;
+    private javax.swing.JTextField txtSoLuotSD;
+    private javax.swing.JTextArea txtaMoTa;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.VoucherAddBackground voucherAddBackground1;
     // End of variables declaration//GEN-END:variables
+    private final VoucherBUS voucherBus = new VoucherBUS();
+    private Voucher voucher;
+    private final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    
+    
+    private void init(){
+        if(!isInsert){
+            voucher = voucherBus.get(maVoucher);
+            this.txtCodeVoucher.setText(maVoucher);
+            this.txtGiaTriToiThieu.setText(voucher.getGiaTriToiThieu()+"");
+            this.txtGiaTriToiDa.setText(voucher.getKmToiDa()+"");
+            this.txtNgayBD.setText(df.format(voucher.getNgayBD()));
+            this.txtNgayKT.setText(df.format(voucher.getNgayKT()));
+            this.txtPtGiam.setText(voucher.getPtGiam()+"");
+            this.txtSoLuotSD.setText(voucher.getSoLuotSD()+"");
+            this.txtaMoTa.setText(voucher.getMoTa());
+            this.txtCodeVoucher.setEnabled(false);
+        }
+    }
 }

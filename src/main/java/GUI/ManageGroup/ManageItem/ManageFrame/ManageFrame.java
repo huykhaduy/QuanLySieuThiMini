@@ -2,18 +2,16 @@
 package GUI.ManageGroup.ManageItem.ManageFrame;
 
 import BUS.AccountServices.LoginAction;
+import BUS.AccountServices.LogoutAction;
 import GUI.ManageGroup.Theme.ManagerTheme;
 
-import com.formdev.flatlaf.FlatLightLaf;
-import java.awt.Color;
 import javax.swing.ImageIcon;
-import BUS.ManagerServices.ManageNhanVien;
 import GUI.SaleGroup.LoginGui.LoginFrame.LoginGui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.Timer;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 public class ManageFrame extends javax.swing.JFrame {
      public static int maNV;
@@ -24,9 +22,21 @@ public class ManageFrame extends javax.swing.JFrame {
         this.loginGui = loginGui;
         this.logAct = logAct;
         initComponents();
+        customsizeTabbedPane();
+        init();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
+
+    public LoginAction getLogAct() {
+        return logAct;
+    }
+
+    public void setLogAct(LoginAction logAct) {
+        this.logAct = logAct;
+    }
+    
+    
     
     private void customsizeTabbedPane(){
         TabbedPane.setIconAt(1, new ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/product-icon.png")));
@@ -98,6 +108,11 @@ public class ManageFrame extends javax.swing.JFrame {
         TabbedPane.setForeground(new java.awt.Color(255, 255, 255));
         TabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabbedPane.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabbedPaneMouseClicked(evt);
+            }
+        });
         TabbedPane.addTab("<html><div id=\"title-quanly\" style=\"padding: 10 0px; text-align: center; width: 120px\"><b style=\"font-size: 13px\">Quản lý<br>MINI MART</b></div>", welcomPanel2);
         TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Sản phẩm</div>", sanPhamPanel1);
         TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Nhân viên</div>", nhanVienPanel1);
@@ -119,6 +134,12 @@ public class ManageFrame extends javax.swing.JFrame {
 
         TabbedPane.addTab("<html><div style=\"height:200px\"></div>", jPanel2);
 
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -138,7 +159,7 @@ public class ManageFrame extends javax.swing.JFrame {
             shape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shape1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1211, Short.MAX_VALUE)
+                .addComponent(TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1211, Short.MAX_VALUE)
                 .addContainerGap())
         );
         shape1Layout.setVerticalGroup(
@@ -163,6 +184,41 @@ public class ManageFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void TabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabbedPaneMouseClicked
+        // TODO add your handling code here:
+        if(TabbedPane.getSelectedIndex() == 8){
+            LogoutAction.logout();
+            LogoutAction.storeLogoutTime(logAct.getLoginDetail());
+            this.setVisible(false);
+            this.dispose();
+            loginGui.setVisible(true);
+        }
+    }//GEN-LAST:event_TabbedPaneMouseClicked
+
+    private void init(){
+        
+        this.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                
+                if(logAct == null) System.exit(0);
+                
+                if(!logAct.isRememberMe()){
+                    System.out.println("No remember user!");
+                    System.out.println("Login detail: " + logAct.getLoginDetail());
+                    LogoutAction.storeLogoutTime(logAct.getLoginDetail());
+                    System.out.println("Login detail: " + logAct.getLoginDetail());
+                }
+                System.exit(0);
+            }
+        });
+    }
 
     public static void main(String args[]) {
       

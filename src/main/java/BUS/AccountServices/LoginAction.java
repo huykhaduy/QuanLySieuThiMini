@@ -50,7 +50,6 @@ public class LoginAction{
             setWrongPasswordTime(tk.getSoTK(),tk,tk.getSoLanSai()+1);
             return false;
         }
-        SellerMainFrame.maNV = tk.getMaNV();
         soTK = tk.getSoTK();
         setWrongPasswordTime(tk.getSoTK(),tk,0);
         storeLoginAuth(rememberMe);
