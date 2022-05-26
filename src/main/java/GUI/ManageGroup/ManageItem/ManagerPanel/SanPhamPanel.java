@@ -87,7 +87,34 @@ public class SanPhamPanel extends javax.swing.JPanel {
     public void loadTable(){
          tableModel =(DefaultTableModel) jTable1.getModel();
          jTable1.getTableHeader().setEnabled(false);
-        List<SanPham> sp=  spBUS.getAll();
+        List<SanPham> sp;
+         if(jRadioButton1.isSelected())
+             {
+            sp =  spBUS.getAllSanPham();
+        if (sp == null || sp.isEmpty()) return;
+        for( int i = 0 ; i < sp.size();i++)
+        {
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),spBUS.getSoLuongDaBan(sp.get(i).getMaSP())};
+         tableModel.addRow(sanpham);
+        }
+     
+        TableColumn column = null;
+        for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            column = jTable1.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0 -> column.setPreferredWidth(30);
+                case 1 -> column.setPreferredWidth(50);
+                case 2 -> column.setPreferredWidth(50);
+                case 3 -> column.setPreferredWidth(50);
+                default -> {
+                 }
+                }
+            }
+        }
+                
+            
+         else{
+         sp=  spBUS.getAll();
         if (sp == null || sp.isEmpty()) return;
         for( int i = 0 ; i < sp.size();i++)
         {
@@ -107,6 +134,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
                 }
             }
         }
+           }
 
     }
     @SuppressWarnings("unchecked")
@@ -130,6 +158,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         Sửa.setText("Sửa");
         Sửa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,7 +241,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManagerIcon/list-icon.png"))); // NOI18N
         jLabel48.setText("Danh sách sản phẩm");
-        add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+        add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
         button6.setBackground(new java.awt.Color(118, 199, 150));
         button6.setForeground(new java.awt.Color(255, 255, 255));
@@ -291,7 +320,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
                 button2MouseClicked(evt);
             }
         });
-        add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 140, 30));
+        add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 140, 30));
 
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -302,6 +331,9 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã sản phẩm", "Tên sản phẩm" }));
         add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 140, 30));
+
+        jRadioButton1.setText("Hiện các sản phẩm đã ẩn");
+        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 // Click Table
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -325,28 +357,56 @@ public class SanPhamPanel extends javax.swing.JPanel {
         tableModel =(DefaultTableModel) jTable1.getModel();
          jTable1.getTableHeader().setEnabled(false);
         tableModel.setRowCount(0);
-        List<SanPham> sp=  spBUS.getAll();
+        tableModel =(DefaultTableModel) jTable1.getModel();
+         jTable1.getTableHeader().setEnabled(false);
+        List<SanPham> sp;
+         if(jRadioButton1.isSelected())
+             {
+            sp =  spBUS.getAllSanPham();
+        if (sp == null || sp.isEmpty()) return;
         for( int i = 0 ; i < sp.size();i++)
         {
          Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),spBUS.getSoLuongDaBan(sp.get(i).getMaSP())};
          tableModel.addRow(sanpham);
         }
-        jTable1.setModel(tableModel);
+     
         TableColumn column = null;
         for (int i = 0; i < tableModel.getColumnCount(); i++) {
             column = jTable1.getColumnModel().getColumn(i);
             switch (i) {
-                case 0 -> column.setPreferredWidth(10);
+                case 0 -> column.setPreferredWidth(30);
                 case 1 -> column.setPreferredWidth(50);
-                case 2 -> column.setPreferredWidth(20);
-                case 3 -> column.setPreferredWidth(20);
-                case 4 -> column.setPreferredWidth(20);
-                case 5 -> column.setPreferredWidth(20);
-                case 6 -> column.setPreferredWidth(20);
+                case 2 -> column.setPreferredWidth(50);
+                case 3 -> column.setPreferredWidth(50);
+                default -> {
+                 }
+                }
+            }
+        }
+                
+            
+         else{
+         sp=  spBUS.getAll();
+        if (sp == null || sp.isEmpty()) return;
+        for( int i = 0 ; i < sp.size();i++)
+        {
+         Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),spBUS.getSoLuongDaBan(sp.get(i).getMaSP())};
+         tableModel.addRow(sanpham);
+        }
+     
+        TableColumn column = null;
+        for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            column = jTable1.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0 -> column.setPreferredWidth(30);
+                case 1 -> column.setPreferredWidth(50);
+                case 2 -> column.setPreferredWidth(50);
+                case 3 -> column.setPreferredWidth(50);
                 default -> {
                 }
             }
         }
+           }
 
     }//GEN-LAST:event_button2MouseClicked
 // Search Combobox
@@ -423,6 +483,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel81;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
