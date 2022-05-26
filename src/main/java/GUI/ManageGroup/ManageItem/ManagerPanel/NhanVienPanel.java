@@ -218,7 +218,7 @@ private void LoadTable(){
         jLabel92.setForeground(new java.awt.Color(255, 255, 255));
         jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel92.setText("Mã nhân viên");
-        shape13.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 220, -1));
+        shape13.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 230, -1));
 
         jLabel93.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel93.setForeground(new java.awt.Color(255, 255, 255));
@@ -233,7 +233,7 @@ private void LoadTable(){
         jLabel95.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("E-Mail :");
-        shape13.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 120, -1));
+        shape13.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 70, -1));
 
         jLabel96.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel96.setForeground(new java.awt.Color(255, 255, 255));
@@ -309,26 +309,12 @@ private void LoadTable(){
         );
 
         shape13.add(shape3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 200));
-
-        jLabel1.setText("jLabel1");
-        shape13.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 110, 20));
-
-        jLabel2.setText("jLabel2");
-        shape13.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 140, 20));
-
-        jLabel3.setText("jLabel3");
-        shape13.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 196, 130, 20));
-
-        jLabel4.setText("jLabel4");
-        shape13.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 190, 20));
-
-        jLabel5.setText("jLabel5");
-        shape13.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 136, 130, 20));
-
-        jLabel6.setText("jLabel6");
-        shape13.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 196, 170, 20));
-
-        jLabel7.setText("jLabel7");
+        shape13.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 110, 20));
+        shape13.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 140, 20));
+        shape13.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 130, 20));
+        shape13.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 190, 20));
+        shape13.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 130, 130, 20));
+        shape13.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, 170, 20));
         shape13.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 180, -1));
 
         add(shape13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 960, 240));
