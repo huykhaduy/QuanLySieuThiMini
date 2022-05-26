@@ -24,8 +24,12 @@ public class PhieuNhapBUS extends AbstractBUSAccessor<PhieuNhap, Integer, PhieuN
         setDao(new PhieuNhapDAO());
     }
     
-    public List<PhieuNhap> getFilter(String maNV, String maPN, String ngayBD, String ngayKT){
+    public List<PhieuNhap> getFilter(String maNV, String maPN, String ngayBD, String ngayKT) {
         return dao.selectAndFilter(maNV, maPN, ngayBD, ngayKT);
+    }
+    
+    public List<PhieuNhap> getPhieuNhapInTime(String ngayBD, String ngayKT) {
+        return dao.selectAndFilter("", "", ngayBD, ngayKT);
     }
     
     @Override

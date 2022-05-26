@@ -39,7 +39,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
     }
 private void LoadTable(){
           List<NhanVien> nhanvienList = nhanvienBUS.getAll() ;
+          
             tableModel.setRowCount(0);
+           if (nhanvienList == null || nhanvienList.isEmpty()) return;
 
      
        System.out.println(nhanvienList.size());

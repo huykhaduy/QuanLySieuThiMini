@@ -48,6 +48,7 @@ public class VoucherBUS implements IBussAccess<Voucher,String>{
 
     public String[][] convertToStringList(){
         List<Voucher> lsVoucher = getAll();
+        if (lsVoucher == null || lsVoucher.isEmpty()) return null;
         String[][] datas = new String[lsVoucher.size()][];
         List<String> data = new ArrayList<>();
         

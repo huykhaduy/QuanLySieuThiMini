@@ -51,6 +51,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
     // Tạo Item Combobox
     public void LoadComboBox(){
          List <LoaiSanPham> iSP =maloaiBUS.getAll();
+         if (iSP == null || iSP.isEmpty()) return;
         for(int i=0;i< iSP.size();i++){
         jComboBox1.addItem(GetLoai(iSP.get(i).getMaLoai()));
         }
@@ -87,6 +88,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
          tableModel =(DefaultTableModel) jTable1.getModel();
          jTable1.getTableHeader().setEnabled(false);
         List<SanPham> sp=  spBUS.getAll();
+        if (sp == null || sp.isEmpty()) return;
         for( int i = 0 ; i < sp.size();i++)
         {
          Object[] sanpham ={sp.get(i).getMaSP(),sp.get(i).getTenSP(),sp.get(i).getSoLuong(),sp.get(i).getGiaTien(),GetLoai(sp.get(i).getMaLoai()),spBUS.getSoLuongDaBan(sp.get(i).getMaSP())};

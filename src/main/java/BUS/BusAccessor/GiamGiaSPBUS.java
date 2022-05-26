@@ -48,6 +48,7 @@ public class GiamGiaSPBUS implements IBussAccess<GiamGiaSP, Integer>{
  
     public String[][] convertToStringList(){
         List<GiamGiaSP> lsGiamGiaSP = getAll();
+        if (lsGiamGiaSP == null || lsGiamGiaSP.isEmpty()) return null;
         String[][] datas = new String[lsGiamGiaSP.size()][];
         List<String> data = new ArrayList<>();
         
