@@ -8,6 +8,7 @@ import BUS.SaleServices.PayActionBus;
 import DAL.DataModels.ChiTietHoaDon;
 import GUI.SaleGroup.SellerGUI.Component.OptionPaneBill;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
+import GUI.SaleGroup.SellerGUI.SellerMainFrame;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,7 @@ public class PayActionListener implements java.awt.event.ActionListener{
     private JButton btnThanhToan;
     private final PayActionBus pay = new PayActionBus();
     
-    public PayActionListener(JLabel maNV, JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTotal,JLabel lbDiscount,JLabel lbMoney, JButton btnThanhToan ,OrderPanel orderPanel){
-        this.maNV = maNV;
+    public PayActionListener(JTextField txtVoucher, JTextField txtPhoneNumber, JLabel lbTotal,JLabel lbDiscount,JLabel lbMoney, JButton btnThanhToan ,OrderPanel orderPanel){
         this.txtVoucher = txtVoucher;
         this.txtPhoneNumber = txtPhoneNumber;
         this.lbTotal = lbTotal;
@@ -46,7 +46,7 @@ public class PayActionListener implements java.awt.event.ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        int maNV = Integer.valueOf(this.maNV.getText());
+        int maNV = SellerMainFrame.maNV;
         int size = orderPanel.getListChiTietHoaDon(0).size();
         long total = Long.valueOf(lbTotal.getText());
         long discount = Long.valueOf(lbDiscount.getText());

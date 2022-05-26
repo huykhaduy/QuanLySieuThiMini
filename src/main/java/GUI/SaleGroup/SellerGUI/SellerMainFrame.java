@@ -21,35 +21,25 @@ import javax.swing.JLabel;
 
 
 public class SellerMainFrame extends javax.swing.JFrame {
-    private JLabel maNV = new JLabel();
+    private final JLabel maNV1 = new JLabel();
+    public static int maNV;
     private LoginAction logAct;
     private LoginGui loginGui;
 
     /**
      * Creates new form SellerMainFrame
-     * @param maNV
      * @param logAct
      * @param loginGui
      */
-    public SellerMainFrame(int maNV, LoginAction logAct, LoginGui loginGui) {
+    public SellerMainFrame(LoginAction logAct, LoginGui loginGui) {
         this.loginGui = loginGui;
         this.logAct = logAct;
-        this.maNV.setText(maNV + "");
         initComponents();
         init();
         this.getContentPane().setBackground(Color.decode("#189AB4"));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         addEventFilterAndSearch();
-    }
-
-
-    public int getMaNV() {
-        return Integer.valueOf(maNV.getText());
-    }
-
-    public void setMaNV(int maNV) {
-        this.maNV.setText(maNV+"");
     }
 
     public LoginAction getLogAct() {
@@ -512,7 +502,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SellerMainFrame(0, null, null).setVisible(true);
+                new SellerMainFrame(null, null).setVisible(true);
             }
         });
     }
@@ -591,7 +581,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
     
     private void addActionEvent(){
         txtVoucher.getDocument().addDocumentListener(new DiscountTextFieldListener(scrollPanelOrder));
-        jButton2.addActionListener(new PayActionListener(this.maNV, this.txtVoucher, this.txtPhoneNumber, this.lbTextTotal,this.lbTextDiscount,this.lbTextMoney, jButton2, scrollPanelOrder));
+        jButton2.addActionListener(new PayActionListener(this.txtVoucher, this.txtPhoneNumber, this.lbTextTotal,this.lbTextDiscount,this.lbTextMoney, jButton2, scrollPanelOrder));
         lbClearAll.addMouseListener(new ClearAllAction(scrollPanelOrder));
         btnAddCustomer.addActionListener(new AddCustomerAction(scrollPanelOrder, txtPhoneNumber));
     }

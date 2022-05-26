@@ -1,20 +1,32 @@
 
 package GUI.ManageGroup.ManageItem.ManageFrame;
 
+import BUS.AccountServices.LoginAction;
+import BUS.AccountServices.LogoutAction;
 import GUI.ManageGroup.Theme.ManagerTheme;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import BUS.ManagerServices.ManageNhanVien;
+import GUI.SaleGroup.LoginGui.LoginFrame.LoginGui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class ManageFrame extends javax.swing.JFrame {
+    public static int maNV;
+    private LoginAction logAct;
+    private LoginGui loginGui;
 
 
-    public ManageFrame() {
+    public ManageFrame(LoginAction logAct, LoginGui loginGui) {
+        this.loginGui = loginGui;
+        this.logAct = logAct;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -44,6 +56,15 @@ public class ManageFrame extends javax.swing.JFrame {
 
         
     }
+    
+    public void init(){
+        ChangeListener changeListener = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            
+        }
+    };
+    }
 
 
     @SuppressWarnings("unchecked")
@@ -63,11 +84,8 @@ public class ManageFrame extends javax.swing.JFrame {
         shape1 = new GUI.ManageGroup.BackgroundShape.Shape();
         TabbedPane = new javax.swing.JTabbedPane();
         welcomPanel2 = new GUI.ManageGroup.ManageItem.ManagerPanel.WelcomPanel();
-        sanPhamPanel1 = new GUI.ManageGroup.ManageItem.ManagerPanel.SanPhamPanel();
-        nhanVienPanel1 = new GUI.ManageGroup.ManageItem.ManagerPanel.NhanVienPanel();
         hoaDonJPanel1 = new GUI.ManageGroup.ManageItem.ManagerPanel.HoaDonJPanel();
         nhapXuatPanel1 = new GUI.ManageGroup.ManageItem.ManagerPanel.NhapXuatPanel();
-        khuyenMaiPanel1 = new GUI.ManageGroup.ManageItem.ManagerPanel.KhuyenMaiPanel();
         thongKePanel2 = new GUI.ManageGroup.ManageItem.ManagerPanel.ThongKePanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -94,12 +112,14 @@ public class ManageFrame extends javax.swing.JFrame {
         TabbedPane.setForeground(new java.awt.Color(255, 255, 255));
         TabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabbedPane.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabbedPaneMouseClicked(evt);
+            }
+        });
         TabbedPane.addTab("<html><div id=\"title-quanly\" style=\"padding: 10 0px; text-align: center; width: 120px\"><b style=\"font-size: 13px\">Quản lý<br>MINI MART</b></div>", welcomPanel2);
-        TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Sản phẩm</div>", sanPhamPanel1);
-        TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Nhân viên</div>", nhanVienPanel1);
         TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Hóa đơn</div>", hoaDonJPanel1);
         TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Nhập xuất</div>", nhapXuatPanel1);
-        TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Khuyến mãi</div>", khuyenMaiPanel1);
         TabbedPane.addTab("<html><div style=\"padding: 5px 12px\">Thống kê</div>", thongKePanel2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -159,6 +179,12 @@ public class ManageFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabbedPaneMouseClicked
+        // TODO add your handling code here:
+        if(TabbedPane.getSelectedIndex() == 8)
+                jtab8MouseClicked();
+    }//GEN-LAST:event_TabbedPaneMouseClicked
+
 
     public static void main(String args[]) {
       
@@ -187,7 +213,7 @@ public class ManageFrame extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageFrame().setVisible(true);
+                new ManageFrame(null, null).setVisible(true);
                 
             }
         });
@@ -202,10 +228,7 @@ public class ManageFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private GUI.ManageGroup.ManageItem.ManagerPanel.KhuyenMaiPanel khuyenMaiPanel1;
-    private GUI.ManageGroup.ManageItem.ManagerPanel.NhanVienPanel nhanVienPanel1;
     private GUI.ManageGroup.ManageItem.ManagerPanel.NhapXuatPanel nhapXuatPanel1;
-    private GUI.ManageGroup.ManageItem.ManagerPanel.SanPhamPanel sanPhamPanel1;
     private GUI.ManageGroup.BackgroundShape.Shape shape1;
     private GUI.ManageGroup.ComponentPanel.Table table1;
     private GUI.ManageGroup.ComponentPanel.Table table2;
@@ -216,4 +239,14 @@ public class ManageFrame extends javax.swing.JFrame {
     private GUI.ManageGroup.ManageItem.ManagerPanel.ThongKePanel thongKePanel2;
     private GUI.ManageGroup.ManageItem.ManagerPanel.WelcomPanel welcomPanel2;
     // End of variables declaration//GEN-END:variables
+
+    public void jtab8MouseClicked(){
+        LogoutAction.logout();
+        LogoutAction.storeLogoutTime(logAct.getLoginDetail());
+//               System.out.println("Login detail: " + logAct.getLoginDetail());
+        this.setVisible(false);
+        this.loginGui.setVisible(true);
+        System.out.println("Hello world");
+    }
+
 }

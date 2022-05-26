@@ -19,6 +19,9 @@ public class CheckInfoSale {
         return spDAO.select(maSP).getSoLuong() != 0;
     }
     
+    public boolean isProductExsist(int maSP){
+        return spDAO.select(maSP) != null;
+    }
     
     //Hàm này được gọi để xem số lượng có đápứng đủ nhu cầu khách hàng không
     public boolean isEnoughAmountProduct(int maSP, int sl){     

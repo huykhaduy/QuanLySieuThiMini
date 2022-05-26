@@ -36,7 +36,7 @@ public class ConnectManager {
         try {
             this.connect = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Can't connect database " + url);
         }
     }
 
@@ -44,7 +44,7 @@ public class ConnectManager {
         try {
             DbUtils.close(connect);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong when closing database");;
         }
     }
 }
