@@ -82,6 +82,7 @@ public class LoginGui extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.setMargin(new java.awt.Insets(5, 15, 5, 15));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);

@@ -24,6 +24,7 @@ public class VoucherAdd extends javax.swing.JFrame {
     
     public VoucherAdd(String title, String soVoucher, boolean insert){
         initComponents();
+        this.setLocationRelativeTo(null);
         this.jLabel12.setText(title);
         this.maVoucher = soVoucher;
         this.isInsert = insert;

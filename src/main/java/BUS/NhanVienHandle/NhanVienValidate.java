@@ -13,7 +13,7 @@ import DAL.DataModels.NhanVien;
  */
 public class NhanVienValidate {
     private final NhanVien nhanvienValidate;
-    private EmailExampleTest emailExampleTest;
+    private final EmailExampleTest emailExampleTest;
     
     public NhanVienValidate(){
         nhanvienValidate = new NhanVien();
@@ -32,6 +32,7 @@ public class NhanVienValidate {
     
     private boolean checkSoDienThoai(String soDienThoai){
         if(soDienThoai.length() != 10) return false;
+        System.out.println(soDienThoai);
         this.nhanvienValidate.setSoDienThoai(soDienThoai);
         return true;
     }

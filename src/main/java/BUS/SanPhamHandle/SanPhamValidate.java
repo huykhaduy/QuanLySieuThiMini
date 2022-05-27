@@ -8,6 +8,7 @@ import BUS.BusAccessor.LoaiSanPhamBUS;
 import BUS.BusAccessor.NhaCungCapBUS;
 import DAL.DataModels.SanPham;
 import DAL.DataModels.Voucher;
+import javax.swing.JOptionPane;
 
 
 public class SanPhamValidate {
@@ -25,9 +26,8 @@ public class SanPhamValidate {
         try{
             long gia = Long.valueOf(Gia);
         } catch (NumberFormatException e){
-            System.out.println("false Gia");
            return false;
-        };
+        }
          return true;
       
 }

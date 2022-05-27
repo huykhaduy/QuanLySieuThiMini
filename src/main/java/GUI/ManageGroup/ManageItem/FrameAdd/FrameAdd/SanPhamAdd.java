@@ -242,7 +242,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
             url = parts[0];
             imagePanel2.setImagePathSanPham(file.getAbsolutePath());
             imagePanel2.setBackground(Color.decode("#F69E18"));
-            }
+        }
     }//GEN-LAST:event_imagePanel2MouseClicked
 
     private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked

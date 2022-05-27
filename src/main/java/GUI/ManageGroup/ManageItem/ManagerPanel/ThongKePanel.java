@@ -15,6 +15,7 @@ import DAL.DataModels.NhanVien;
 import DAL.DataModels.PhieuHuy;
 import DAL.DataModels.PhieuNhap;
 import DAL.DataModels.SanPham;
+import GUI.ManageGroup.Theme.NhapHuyPanel;
 import com.raven.datechooser.DateChooser;
 import com.raven.datechooser.SelectedDate;
 import java.awt.Color;
@@ -35,6 +36,7 @@ public class ThongKePanel extends javax.swing.JPanel {
      * Creates new form ThongKePanel
      */
     public ThongKePanel() {
+        NhapHuyPanel.setup();
         initComponents();
         startDay = new DateChooser();
         startDay.setForeground(Color.decode("#59ABE3"));
@@ -155,22 +157,22 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel3.setText("Trong");
         jPanel37.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 170, 60));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 204));
         jLabel4.setText("Mã nhân viên:");
-        jPanel37.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 90, 40));
+        jPanel37.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 110, 40));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 255));
         jLabel5.setText("0");
         jPanel37.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 30, 20));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 153, 204));
         jLabel6.setText("Mã nhân viên:");
-        jPanel37.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 80, 40));
+        jPanel37.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, 40));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 153, 255));
         jLabel7.setText("0");
         jPanel37.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 20, 20));
@@ -236,7 +238,7 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jLabel80.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel80.setText("<html>TỔNG SỐ LƯỢNG HÓA ĐƠN");
+        jLabel80.setText("<html>TỔNG SỐ ĐƠN");
         jPanel29.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 180, 50));
 
         jLabel79.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -309,12 +311,12 @@ public class ThongKePanel extends javax.swing.JPanel {
         jLabel55.setBackground(new java.awt.Color(153, 153, 153));
         jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(255, 0, 102));
-        jLabel55.setText("Doanh Thu Tháng");
+        jLabel55.setText("DOANH THU");
         jPanel33.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
         jLabel67.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel67.setText("DOANH THU THÁNG");
+        jLabel67.setText("DOANH THU");
         jPanel33.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 56, 177, 30));
 
         jLabel69.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -397,7 +399,7 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jLabel56.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(255, 204, 0));
-        jLabel56.setText("Nhập xuất kho");
+        jLabel56.setText("NHẬP HỦY KHO");
         jPanel38.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 269, 44));
 
         jLabel73.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -572,9 +574,9 @@ public class ThongKePanel extends javax.swing.JPanel {
             jLabel9.setText("Không có nhân viên");
         }
         int sanPhamDaBan = tkBus.getTongSanPhamBanDuoc(listHoaDon);
-        jLabel14.setText(sanPhamDaBan+"");
+        jLabel15.setText(sanPhamDaBan+"");
         Long doanhThuThang = tkBus.getDoanhThuThang(listHoaDon);
-        jLabel15.setText(Money.format(doanhThuThang));
+        jLabel14.setText(Money.format(doanhThuThang));
         Long toanDoanhThu = tkBus.getTongDoanhThu();
         jLabel16.setText(Money.format(toanDoanhThu));
         int tongSanPhamDaBan = tkBus.getTongSanPhamDaBan();

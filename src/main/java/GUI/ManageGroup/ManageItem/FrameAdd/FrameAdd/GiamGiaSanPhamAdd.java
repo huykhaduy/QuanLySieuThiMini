@@ -9,6 +9,7 @@ import BUS.BusAccessor.SanPhamBUS;
 import BUS.SaleServices.CheckInfoSale;
 import DAL.DataModels.GiamGiaSP;
 import DAL.DataModels.SanPham;
+import GUI.ManageGroup.Theme.NhapXuatTheme;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,6 +35,7 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
     
     public GiamGiaSanPhamAdd(String title, int maKM, boolean Insert){
         initComponents();
+        this.setLocationRelativeTo(null);
         this.jLabel1.setText(title);
         this.maKM = maKM;
         this.isInsert = Insert;

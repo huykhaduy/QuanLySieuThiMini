@@ -21,6 +21,7 @@ public class ManageFrame extends javax.swing.JFrame {
     public ManageFrame(LoginAction logAct, LoginGui loginGui) {
         this.loginGui = loginGui;
         this.logAct = logAct;
+        ManagerTheme.setup();
         initComponents();
         customsizeTabbedPane();
         init();

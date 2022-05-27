@@ -34,6 +34,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
     public SellerMainFrame(LoginAction logAct, LoginGui loginGui) {
         this.loginGui = loginGui;
         this.logAct = logAct;
+        FlatLightLaf.setup();
         initComponents();
         init();
         this.getContentPane().setBackground(Color.decode("#189AB4"));
