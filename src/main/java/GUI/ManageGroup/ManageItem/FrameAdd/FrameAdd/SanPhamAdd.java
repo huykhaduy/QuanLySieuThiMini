@@ -3,13 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
+import BUS.BusAccessor.LoaiSanPhamBUS;
+import BUS.BusAccessor.NhaCungCapBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SanPhamHandle.SanPhamToData;
 import BUS.SanPhamHandle.SanPhamValidate;
+import DAL.DataModels.LoaiSanPham;
+import DAL.DataModels.NhaCungCap;
 import DAL.DataModels.SanPham;
 import GUI.ManageGroup.ManageItem.ManagerPanel.SanPhamPanel;
 import java.awt.Color;
 import java.io.File;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -24,25 +29,36 @@ public class SanPhamAdd extends javax.swing.JFrame {
       SanPhamValidate spVali = new SanPhamValidate();
       SanPhamToData spData =new SanPhamToData();
       SanPhamPanel spPanel = new SanPhamPanel();
+     LoaiSanPhamBUS maloaiBUS = new LoaiSanPhamBUS();
+     NhaCungCapBUS  nccBUS = new NhaCungCapBUS();
+     
       
-    /**
-     * Creates new form SanPhamAdd
-     */
+
     public SanPhamAdd() {
         initComponents();
         this.setDefaultCloseOperation(0);
+        Loadcb();
        // Tạo mã sản phẩm mới
         tfMaSanPham.setText(String.valueOf(sanphamBUS.getNewest().getMaSP()+1));
     }
     // reset Text
     public void setNullText(){
-              tfNhaCC.setText("");
               tfSanPham.setText("");
-              tfLoai.setText("");
               tfGia.setText("");
               tfMoTa.setText("");
               imagePanel2.setImage(null);
               imagePanel2.setBackground(Color.decode("#3C3F41"));
+    }
+    public void Loadcb(){
+         List <NhaCungCap> iNCC =nccBUS.getAll();
+         if (iNCC == null || iNCC.isEmpty()) return;
+        for(int i=0;i< iNCC.size();i++){
+        cbNCC.addItem(GetLoai(iNCC.get(i).getMaNCC()));
+        }
+       cbLoai.getLoaiSPexAll();
+}
+      public String GetLoai(int NCC){
+        return  nccBUS.get(NCC).getTenNCC();
     }
 
 
@@ -61,14 +77,14 @@ public class SanPhamAdd extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tfSanPham = new javax.swing.JTextField();
         tfMaSanPham = new javax.swing.JTextField();
-        tfNhaCC = new javax.swing.JTextField();
         tfGia = new javax.swing.JTextField();
-        tfLoai = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tfMoTa = new javax.swing.JTextArea();
         button1 = new GUI.SaleGroup.LoginGui.Component.Button();
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         imagePanel2 = new GUI.ManageGroup.ComponentPanel.ImagePanel();
+        cbLoai = new GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox();
+        cbNCC = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
         shape1.setLayout(shape1Layout);
@@ -94,12 +110,12 @@ public class SanPhamAdd extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Nhà cung cấp");
-        sanPhamAddBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 295, 100, 40));
+        sanPhamAddBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 100, 40));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Giá");
-        sanPhamAddBackground1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 37, 40));
+        sanPhamAddBackground1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 37, 40));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -109,7 +125,7 @@ public class SanPhamAdd extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Loại");
-        sanPhamAddBackground1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 357, 37, 50));
+        sanPhamAddBackground1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 37, 40));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -127,14 +143,8 @@ public class SanPhamAdd extends javax.swing.JFrame {
         tfMaSanPham.setFocusable(false);
         sanPhamAddBackground1.add(tfMaSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 299, -1));
 
-        tfNhaCC.setBackground(new java.awt.Color(255, 255, 255));
-        sanPhamAddBackground1.add(tfNhaCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 337, 299, -1));
-
         tfGia.setBackground(new java.awt.Color(255, 255, 255));
-        sanPhamAddBackground1.add(tfGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 403, 125, -1));
-
-        tfLoai.setBackground(new java.awt.Color(255, 255, 255));
-        sanPhamAddBackground1.add(tfLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 403, 133, -1));
+        sanPhamAddBackground1.add(tfGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 300, -1));
 
         tfMoTa.setColumns(20);
         tfMoTa.setLineWrap(true);
@@ -182,6 +192,9 @@ public class SanPhamAdd extends javax.swing.JFrame {
         );
 
         sanPhamAddBackground1.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 150, 100));
+        sanPhamAddBackground1.add(cbLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 130, 30));
+
+        sanPhamAddBackground1.add(cbNCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,12 +213,12 @@ public class SanPhamAdd extends javax.swing.JFrame {
     private void button2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button2MouseClicked
 
         String maSanPham = tfMaSanPham.getText();
-        String maNhaCC = tfNhaCC.getText();
+        int maNhaCC = cbNCC.getSelectedIndex()+1;
         String tenSanPham =tfSanPham.getText();
-        String loai = tfLoai.getText();
+        int loai = cbLoai.getSelectedMaLoai();
         String gia = tfGia.getText();
         String moTa =tfMoTa.getText();
-        if(!spVali.AllValidate(gia,tenSanPham,maNhaCC,loai,moTa,url)) {
+        if(!spVali.AllValidate(gia,tenSanPham,moTa,url)) {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {
@@ -274,6 +287,8 @@ public class SanPhamAdd extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button1;
     private GUI.SaleGroup.LoginGui.Component.Button button2;
+    private GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox cbLoai;
+    private javax.swing.JComboBox<String> cbNCC;
     private GUI.ManageGroup.ComponentPanel.ImagePanel imagePanel2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -286,10 +301,8 @@ public class SanPhamAdd extends javax.swing.JFrame {
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.SanPhamAddBackground sanPhamAddBackground1;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape1;
     private javax.swing.JTextField tfGia;
-    private javax.swing.JTextField tfLoai;
     private javax.swing.JTextField tfMaSanPham;
     private javax.swing.JTextArea tfMoTa;
-    private javax.swing.JTextField tfNhaCC;
     private javax.swing.JTextField tfSanPham;
     // End of variables declaration//GEN-END:variables
 }
