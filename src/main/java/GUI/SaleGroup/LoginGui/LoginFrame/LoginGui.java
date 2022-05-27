@@ -433,12 +433,13 @@ public class LoginGui extends javax.swing.JFrame {
     private GUI.SaleGroup.LoginGui.Background.PhoneGui2 phoneGui21;
     // End of variables declaration//GEN-END:variables
     private SellerMainFrame saleFrame = new SellerMainFrame(null, this);
-//    private ManagerMainFrame managerFrame = new ManagerMainFrame(0);
     private ManageFrame managerFrame = new ManageFrame(null, this);
     private LoginAction loginAct = new LoginAction(saleFrame, managerFrame);
     
-    public void init(){
+    private void init(){
+        
         saleFrame.setLogAct(loginAct);
+        managerFrame.setLogAct(loginAct);
         //Kiểm tra authkey
         if(loginAct.checkAuthKey()){
             loginAct.showFrame();

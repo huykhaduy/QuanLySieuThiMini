@@ -5,25 +5,39 @@
 package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 
 import BUS.BusAccessor.GiamGiaSPBUS;
+import BUS.BusAccessor.SanPhamBUS;
 import BUS.SaleServices.CheckInfoSale;
 import DAL.DataModels.GiamGiaSP;
+import DAL.DataModels.SanPham;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
  * @author TUANMINH
  */
 public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
+    private int maKM;
+    private boolean isInsert;
 
     /**
      * Creates new form GiamGiaSanPhamAdd
      */
     public GiamGiaSanPhamAdd() {
         initComponents();
+    }
+    
+    public GiamGiaSanPhamAdd(String title, int maKM, boolean Insert){
+        initComponents();
+        this.jLabel1.setText(title);
+        this.maKM = maKM;
+        this.isInsert = Insert;
+        init();
     }
 
     /**
@@ -51,16 +65,17 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         shape2 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        giamGiaSanPhamAddBackground3.setBackground(new java.awt.Color(255, 255, 255));
         giamGiaSanPhamAddBackground3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THÊM GIẢM GIÁ SẢN PHẨM");
-        giamGiaSanPhamAddBackground3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 300, -1));
+        giamGiaSanPhamAddBackground3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 310, -1));
 
         imagePanel1.setBackground(new java.awt.Color(0, 255, 175));
         imagePanel1.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManageItem/FrameAdd/ComponentFrameAdd/icons8-voucher-64.png"))); // NOI18N
@@ -69,14 +84,14 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         imagePanel1.setLayout(imagePanel1Layout);
         imagePanel1Layout.setHorizontalGroup(
             imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 110, Short.MAX_VALUE)
         );
         imagePanel1Layout.setVerticalGroup(
             imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        giamGiaSanPhamAddBackground3.add(imagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+        giamGiaSanPhamAddBackground3.add(imagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 110, 100));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Ngày bắt đầu");
@@ -94,16 +109,16 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         jLabel5.setText("Mã sản phẩm");
         giamGiaSanPhamAddBackground3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 80, -1));
 
-        txtNgayBD.setBackground(new java.awt.Color(196, 196, 196));
+        txtNgayBD.setBackground(new java.awt.Color(225, 225, 225));
         giamGiaSanPhamAddBackground3.add(txtNgayBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 280, -1));
 
-        txtNgayKT.setBackground(new java.awt.Color(196, 196, 196));
+        txtNgayKT.setBackground(new java.awt.Color(225, 225, 225));
         giamGiaSanPhamAddBackground3.add(txtNgayKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 280, -1));
 
-        txtPtGiam.setBackground(new java.awt.Color(196, 196, 196));
+        txtPtGiam.setBackground(new java.awt.Color(225, 225, 225));
         giamGiaSanPhamAddBackground3.add(txtPtGiam, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 280, -1));
 
-        txtMaSP.setBackground(new java.awt.Color(196, 196, 196));
+        txtMaSP.setBackground(new java.awt.Color(225, 225, 225));
         giamGiaSanPhamAddBackground3.add(txtMaSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 280, -1));
 
         shape1.setBackground(new java.awt.Color(0, 255, 175));
@@ -175,13 +190,20 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean check = isValidDate(txtNgayBD.getText(), txtNgayKT.getText()) && checkPtGiam(txtPtGiam.getText()) && hasProductId(txtMaSP.getText());
         if(check){
-            giamGiaSP.setSoPhieu(0);
-            giamGiaSP.setIsDeleted(false);
-            giamGiaSPBUS.add(giamGiaSP);
-            JOptionPane.showConfirmDialog(this, "Insert successfully!!!", "Thông báo", JOptionPane.CLOSED_OPTION);
+            if(isInsert){
+                giamGiaSP.setSoPhieu(0);
+                giamGiaSP.setIsDeleted(false);
+                giamGiaSPBUS.add(giamGiaSP);
+                JOptionPane.showConfirmDialog(this, "Inserted successfully!!!", "Thông báo", JOptionPane.CLOSED_OPTION);
+                
+            }else{
+                giamGiaSP.setSoPhieu(maKM);
+                giamGiaSP.setIsDeleted(false);
+                giamGiaSPBUS.edit(maKM, giamGiaSP);
+                JOptionPane.showConfirmDialog(this, "Updated successfully!!!", "Thông báo", JOptionPane.CLOSED_OPTION);
+            }
             this.dispose();
         }
-        System.out.println("shape1 mouse click");
     }//GEN-LAST:event_shape1MouseClicked
 
     private void shape2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shape2MouseClicked
@@ -243,7 +265,10 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private final CheckInfoSale checkInfo = new CheckInfoSale();
     private final GiamGiaSPBUS giamGiaSPBUS = new GiamGiaSPBUS(); 
+    private final SanPhamBUS sanPhamBus = new SanPhamBUS();
+    private SanPham sanPham = new SanPham();
     private GiamGiaSP giamGiaSP = new GiamGiaSP();
+    private final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
     
     public boolean checkPtGiam(String ptGiam){
         int giam;
@@ -296,6 +321,53 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
            JOptionPane.showConfirmDialog(this, "Ngày bắt đầu không hợp lệ", "Chú ý!", JOptionPane.CLOSED_OPTION);
            return false;
         }
+    }
+    
+    private void init(){
+        this.txtMaSP.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                getAndSetImage(txtMaSP.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                getAndSetImage(txtMaSP.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                getAndSetImage(txtMaSP.getText());
+            }
+            
+        });
+        
+        
+        if(!isInsert){
+            giamGiaSP = giamGiaSPBUS.get(maKM);
+            this.txtNgayBD.setText(df.format(giamGiaSP.getNgayBD()));
+            this.txtNgayKT.setText(df.format(giamGiaSP.getNgayKT()));
+            this.txtPtGiam.setText(giamGiaSP.getPtGiam()+"");
+            this.txtMaSP.setText(giamGiaSP.getMaSP()+"");
+            this.imagePanel1.setPath(sanPhamBus.get(giamGiaSP.getMaSP()).getHinhAnh());
+        }
+    }
+    
+    private void getAndSetImage(String maSP){
+        int maSPNumber;
+        try{
+            maSPNumber = Integer.parseInt(maSP);
+            sanPham = sanPhamBus.get(maSPNumber);
+            if(sanPham != null){
+                this.imagePanel1.setPath(sanPham.getHinhAnh());
+                return;
+            }
+            this.imagePanel1.setPath("no-product");
+        }catch(NumberFormatException e){
+            this.imagePanel1.setPath("no-product");
+          
+        }
+        
     }
 
 }

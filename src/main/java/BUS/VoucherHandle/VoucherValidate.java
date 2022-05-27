@@ -26,8 +26,12 @@ public class VoucherValidate {
         return checkCodeVoucher(codeVoucher) && checkHasVoucher(codeVoucher) && checkMinimizeVoucher(minimizeVoucher) &&checkMaxmizeVoucher(maxmizeVoucher) && isTimeStampValid(startDay) && isTimeStampValid(endDay) && isCheckPercent(percent) && isCheckNumberUser(numberUser) && isCheckDescribe(describe);
     }
     
+    public boolean validateAllExpectCodeVoucher(String minimizeVoucher, String maxmizeVoucher, String startDay, String endDay, String percent, String numberUser, String describe){
+        return checkMinimizeVoucher(minimizeVoucher) && checkMaxmizeVoucher(maxmizeVoucher) && isTimeStampValid(startDay) && isTimeStampValid(endDay) && isCheckPercent(percent) && isCheckNumberUser(numberUser) && isCheckDescribe(describe);
+    }
+    
     private boolean checkHasVoucher(String codeVoucher){
-        return checkInfoSale.hasVoucher(codeVoucher);
+        return !checkInfoSale.hasVoucher(codeVoucher);
     }
     
     

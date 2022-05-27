@@ -120,7 +120,7 @@
     <Component class="GUI.SaleGroup.LoginGui.Component.Button" name="button2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -131,6 +131,9 @@
         </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2ActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="730" y="430" width="160" height="30"/>
@@ -140,7 +143,7 @@
     <Component class="GUI.SaleGroup.LoginGui.Component.Button" name="button3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -163,7 +166,7 @@
     <Container class="GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape" name="shape9">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -305,7 +308,7 @@
         <Container class="GUI.ManageGroup.ComponentPanel.ImagePanel" name="imagePanel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d2" green="b0" red="77" type="rgb"/>
+              <Color blue="c8" green="96" red="0" type="rgb"/>
             </Property>
             <Property name="image" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Assets/Image/no-product.png"/>
@@ -313,7 +316,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="100" width="160" height="140"/>
+              <AbsoluteConstraints x="40" y="80" width="160" height="140"/>
             </Constraint>
           </Constraints>
 
@@ -487,7 +490,7 @@
     <Component class="GUI.SaleGroup.LoginGui.Component.Button" name="button9">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -521,6 +524,12 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tbProduct">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="c8" green="96" red="0" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="3" rowCount="0">
                 <Column editable="false" title="M&#xe3; Gi&#x1ea3;m" type="java.lang.Integer"/>
@@ -548,7 +557,7 @@
               </TableColumnModel>
             </Property>
             <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="64" red="37" type="rgb"/>
+              <Color blue="e0" green="e0" red="e0" type="rgb"/>
             </Property>
             <Property name="selectionMode" type="int" value="0"/>
             <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
@@ -578,6 +587,12 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tbVoucher">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="c8" green="96" red="0" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="S&#x1ed1; voucher" type="java.lang.Object"/>
@@ -611,7 +626,7 @@
               </TableColumnModel>
             </Property>
             <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="9b" green="64" red="37" type="rgb"/>
+              <Color blue="e0" green="e0" red="e0" type="rgb"/>
             </Property>
             <Property name="selectionMode" type="int" value="0"/>
             <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
@@ -627,7 +642,7 @@
     <Component class="GUI.SaleGroup.LoginGui.Component.Button" name="button5">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -670,7 +685,7 @@
     <Container class="GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape" name="shape10">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -1021,7 +1036,7 @@
     <Component class="GUI.SaleGroup.LoginGui.Component.Button" name="button6">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1032,6 +1047,9 @@
         </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button6ActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="730" y="50" width="160" height="30"/>
@@ -1041,7 +1059,7 @@
     <Component class="GUI.SaleGroup.LoginGui.Component.Button" name="button7">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="af" green="c8" red="0" type="rgb"/>
+          <Color blue="c8" green="96" red="0" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
