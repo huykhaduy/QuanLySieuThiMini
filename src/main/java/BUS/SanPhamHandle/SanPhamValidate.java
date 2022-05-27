@@ -25,7 +25,7 @@ public class SanPhamValidate {
         try{
             long gia = Long.valueOf(Gia);
         } catch (NumberFormatException e){
-           // khong chuyen thanh so dc
+            System.out.println("false Gia");
            return false;
         };
          return true;
@@ -37,29 +37,14 @@ public class SanPhamValidate {
      private boolean CheckTen (String Ten){
          return Ten.length()>0;
      }
-     private boolean CheckNCC (String nhaCungCap){
-         NhaCungCapBUS nccBUS = new NhaCungCapBUS();
-         if(nccBUS.get(Integer.valueOf(nhaCungCap))==null)
-         {
-             return false;
-         }
-         return Integer.valueOf(nhaCungCap) > 0; 
-     }
-     private boolean CheckLoai (String Loai)
-     {
-         LoaiSanPhamBUS loaiBUS = new LoaiSanPhamBUS();
-         if(loaiBUS.get(Integer.valueOf(Loai))==null)
-         {
-             return false;
-         }
-        return Integer.valueOf(Loai) > 0; 
-     }
+
+  
      private boolean CheckMota (String Mota){
          return Mota.length()>20;
      }
 
-    public boolean AllValidate(String Gia,String Ten,String nhaCungCap,String Loai,String Mota,String url) {
-       return CheckGia(Gia)&&CheckTen(Ten)&&CheckMota(Mota)&&CheckNCC(nhaCungCap)&&CheckLoai(Loai)&&CheckHinhAnh(url);
+    public boolean AllValidate(String Gia,String Ten,String Mota,String url) {
+       return CheckGia(Gia)&&CheckTen(Ten)&&CheckMota(Mota)&&CheckHinhAnh(url);
     }
 
   

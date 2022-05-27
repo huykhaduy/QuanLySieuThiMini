@@ -4,11 +4,15 @@
  */
 package GUI.ManageGroup.ManageItem.FrameAdd.FrameSua;
 
+import BUS.BusAccessor.LoaiSanPhamBUS;
+import BUS.BusAccessor.NhaCungCapBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SanPhamHandle.SanPhamValidate;
+import DAL.DataModels.NhaCungCap;
 import DAL.DataModels.SanPham;
 import java.awt.Color;
 import java.io.File;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -20,20 +24,37 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class SanPhamSua extends javax.swing.JFrame {
    private String url ;
-   SanPhamValidate spVali = new SanPhamValidate();
-   SanPhamBUS spBUS = new SanPhamBUS();
+      SanPhamValidate spVali = new SanPhamValidate();
+      SanPhamBUS spBUS = new SanPhamBUS();
+      NhaCungCapBUS  nccBUS = new NhaCungCapBUS();
+      LoaiSanPhamBUS maloaiBUS = new LoaiSanPhamBUS();
+      
   
     
     public SanPhamSua() {
         initComponents();
+        Loadcb();
+    }
+      public void Loadcb(){
+         List <NhaCungCap> iNCC =nccBUS.getAll();
+         if (iNCC == null || iNCC.isEmpty()) return;
+        for(int i=0;i< iNCC.size();i++){
+        cbNCC1.addItem(GetNcc(iNCC.get(i).getMaNCC()));
+        }
+       cbLoai.getLoaiSPexAll();
+}
+        public String GetNcc(int NCC){
+        return  nccBUS.get(NCC).getTenNCC();
+    }
+      public String GetLoai(int maLoai){
+        return  maloaiBUS.get(maLoai).getTenLoai();
     }
 public  void Sua(SanPham sp){
-       
-   
+        System.out.println(String.valueOf(GetLoai(sp.getMaLoai())));
         tfMaSanPham.setText(String.valueOf(sp.getMaSP()));
-        tfNhaCC.setText(String.valueOf(sp.getMaNCC()));
+        cbNCC1.setSelectedItem(String.valueOf(GetNcc(sp.getMaNCC())));
         tfSanPham.setText(sp.getTenSP());
-        tfLoai.setText(String.valueOf(sp.getMaLoai()));
+        cbLoai.setSelectedIndex(sp.getMaLoai()-1);
         tfGia.setText(String.valueOf(sp.getGiaTien()));
         tfMoTa.setText(String.valueOf(sp.getMoTa()));
         imagePanel2.setImagePath(sp.getHinhAnh());
@@ -43,6 +64,7 @@ public  void Sua(SanPham sp){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cbNCC = new javax.swing.JComboBox<>();
         sanPhamAddBackground1 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.SanPhamAddBackground();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,14 +75,14 @@ public  void Sua(SanPham sp){
         jLabel6 = new javax.swing.JLabel();
         tfSanPham = new javax.swing.JTextField();
         tfMaSanPham = new javax.swing.JTextField();
-        tfNhaCC = new javax.swing.JTextField();
         tfGia = new javax.swing.JTextField();
-        tfLoai = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tfMoTa = new javax.swing.JTextArea();
         button1 = new GUI.SaleGroup.LoginGui.Component.Button();
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         imagePanel2 = new GUI.ManageGroup.ComponentPanel.ImagePanel();
+        cbNCC1 = new javax.swing.JComboBox<>();
+        cbLoai = new GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,12 +97,12 @@ public  void Sua(SanPham sp){
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Nhà cung cấp");
-        sanPhamAddBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 295, 100, 40));
+        sanPhamAddBackground1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 100, 40));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Giá");
-        sanPhamAddBackground1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 37, 40));
+        sanPhamAddBackground1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 37, 50));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -90,7 +112,7 @@ public  void Sua(SanPham sp){
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Loại");
-        sanPhamAddBackground1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 357, 37, 50));
+        sanPhamAddBackground1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 37, 40));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -108,14 +130,8 @@ public  void Sua(SanPham sp){
         tfMaSanPham.setFocusable(false);
         sanPhamAddBackground1.add(tfMaSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 299, -1));
 
-        tfNhaCC.setBackground(new java.awt.Color(196, 196, 196));
-        sanPhamAddBackground1.add(tfNhaCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 337, 299, -1));
-
         tfGia.setBackground(new java.awt.Color(196, 196, 196));
-        sanPhamAddBackground1.add(tfGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 403, 125, -1));
-
-        tfLoai.setBackground(new java.awt.Color(196, 196, 196));
-        sanPhamAddBackground1.add(tfLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 403, 133, -1));
+        sanPhamAddBackground1.add(tfGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 300, -1));
 
         tfMoTa.setBackground(new java.awt.Color(196, 196, 196));
         tfMoTa.setColumns(20);
@@ -166,6 +182,10 @@ public  void Sua(SanPham sp){
 
         sanPhamAddBackground1.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 150, 100));
 
+        cbNCC1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        sanPhamAddBackground1.add(cbNCC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 130, 30));
+        sanPhamAddBackground1.add(cbLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 130, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,14 +208,15 @@ public  void Sua(SanPham sp){
         System.out.println("Turn");
 
         String maSanPham = tfMaSanPham.getText();
-        String maNhaCC = tfNhaCC.getText();
+        int loai = cbLoai.getSelectedMaLoai();
         String tenSanPham =tfSanPham.getText();
-        String loai = tfLoai.getText();
+         System.out.println(cbNCC1.getSelectedIndex()-1);
+        int maNhaCC = cbNCC1.getSelectedIndex()-1;
         String gia = tfGia.getText();
         String moTa =tfMoTa.getText();
         
         SanPham sp = new SanPham(tenSanPham, moTa, url, Long.valueOf(gia), spBUS.get(Integer.valueOf(maSanPham)).getSoLuong(), Integer.valueOf(loai),  Integer.valueOf(maNhaCC),false);
-        if(!spVali.AllValidate(gia,tenSanPham,maNhaCC,loai,moTa,url)) {
+        if(!spVali.AllValidate(gia,tenSanPham,moTa,url)) {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {
@@ -261,6 +282,9 @@ public  void Sua(SanPham sp){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUI.SaleGroup.LoginGui.Component.Button button1;
     private GUI.SaleGroup.LoginGui.Component.Button button2;
+    private GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox cbLoai;
+    private javax.swing.JComboBox<String> cbNCC;
+    private javax.swing.JComboBox<String> cbNCC1;
     private GUI.ManageGroup.ComponentPanel.ImagePanel imagePanel2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -272,10 +296,8 @@ public  void Sua(SanPham sp){
     private javax.swing.JScrollPane jScrollPane1;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.SanPhamAddBackground sanPhamAddBackground1;
     private javax.swing.JTextField tfGia;
-    private javax.swing.JTextField tfLoai;
     private javax.swing.JTextField tfMaSanPham;
     private javax.swing.JTextArea tfMoTa;
-    private javax.swing.JTextField tfNhaCC;
     private javax.swing.JTextField tfSanPham;
     // End of variables declaration//GEN-END:variables
 }

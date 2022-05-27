@@ -7,7 +7,7 @@ import DAL.DataModels.SanPham;
 
 public class SanPhamToData {
     SanPhamDAO spDao = new SanPhamDAO();
-    public boolean AddSanPham (String Gia,String Ten,String nhaCungCap,String Loai,String Mota,String url)
+    public boolean AddSanPham (String Gia,String Ten,int nhaCungCap,int Loai,String Mota,String url)
             {
                 SanPham sp =new SanPham();
                 Long gia =Long.valueOf(Gia);
