@@ -33,7 +33,7 @@ public class KhachHangDAO extends AbtractAccessDatabase<KhachHang> implements IS
 
     @Override
     public List<KhachHang> selectAll() {
-        return executeQueryList("SELECT * FROM KHACHHANG WHERE IS_DELETED = 0");
+        return executeQueryList("SELECT * FROM KHACHHANG WHERE IS_DELETED = 0 AND MAKH > 0 ");
     }
     
     public KhachHang selectByPhoneNumber(String sdt){

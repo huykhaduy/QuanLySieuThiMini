@@ -33,6 +33,6 @@ public class VoucherDAO extends AbtractAccessDatabase<Voucher> implements ISimpl
 
     @Override
     public List<Voucher> selectAll() {
-        return executeQueryList("SELECT * FROM VOUCHER WHERE IS_DELETED = 0");
+        return executeQueryList("SELECT * FROM VOUCHER WHERE IS_DELETED = 0 AND SOVOUCHER > 0");
     }
 }
