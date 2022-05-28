@@ -4,7 +4,6 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
-import GUI.SaleGroup.SellerGUI.BasicHandle.CustomerHandle.EmailExample;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
