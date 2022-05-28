@@ -18,6 +18,7 @@ public class CustomerBUS {
 
     public boolean AddCustomer(String name, boolean sex, String numberPhone, String email, String address ) {
         KhachHang khachHang = new KhachHang();
+        khachHang.setTenKH(name);
         khachHang.setEmail(email);
         khachHang.setSoDienThoai(numberPhone);
         khachHang.setDiaChi(address);

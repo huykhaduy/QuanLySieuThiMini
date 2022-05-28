@@ -328,7 +328,7 @@ public class AdditionCustomerFrame extends javax.swing.JFrame {
         boolean isCheckName = userRegisterValidate.checkName(name);
         boolean isCheckNumber = userRegisterValidate.checkNumber(numberPhone);
 //        System.out.println(isAccess+" "+isCheckEmail+" "+isCheckSex+" "+isCheckName+" "+isCheckNumber);
-        if (isAccess || isCheckEmail || isCheckName || isCheckNumber) {
+        if (isAccess || !isCheckEmail || isCheckName || isCheckNumber) {
             JOptionPane.showMessageDialog(this, "The customer already exists or illegal");
         } else {
             CustomerBUS themKH = new CustomerBUS();

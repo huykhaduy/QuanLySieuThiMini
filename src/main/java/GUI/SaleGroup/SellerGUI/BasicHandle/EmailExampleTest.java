@@ -16,20 +16,11 @@ import java.util.regex.Pattern;
 
 public class EmailExampleTest {
     
-    	private static EmailExample emailExample;
-	public static final String[] validEmail = new String[] { "a@gmail.com", "ab@yahoo.com", "abc@hotmail.com" };
-	public static final String[] invalidEmail = new String[] { "@gmail.com", "ab@gmail.", "@#abc@gmail.com" };
+    private static EmailExample emailExample;
 
-	public boolean checkEmail() {
-                                            emailExample = new EmailExample();
-                                            boolean isvalid = true;
-		for (String email : validEmail) {
-			 isvalid = emailExample.validate(email);
-		}
-		for (String email : invalidEmail) {
-			 isvalid = emailExample.validate(email);
-		}
-                                            return isvalid;
-	}
+    public boolean checkEmail(String email) {
+        emailExample = new EmailExample();
+        return emailExample.validate(email);
+    }
     
 }

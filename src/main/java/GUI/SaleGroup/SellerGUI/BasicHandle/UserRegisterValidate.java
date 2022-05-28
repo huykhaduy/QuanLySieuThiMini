@@ -20,7 +20,7 @@ public class UserRegisterValidate {
     }
     
     public boolean checkEmail( String email ){
-      return emailExampleTest.checkEmail();
+      return emailExampleTest.checkEmail(email);
     }
     
     public boolean checkSex(String sex){
