@@ -452,7 +452,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         sanphamexcel spexcel = new sanphamexcel();
-        String url ="src\\main\\java\\DAL\\Exel\\sp.xlsx";
+        String url ="src\\main\\java\\BUS\\Excel\\sp.xlsx";
         spexcel.sanPhamtuDataBaseraExcel(url);
         JOptionPane.showMessageDialog(this, "Success");
     }//GEN-LAST:event_button5ActionPerformed

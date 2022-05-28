@@ -63,4 +63,8 @@ public class GiamGiaSPBUS implements IBussAccess<GiamGiaSP, Integer>{
         }
         return datas;
     }
+    
+    public GiamGiaSP getGiamGiaByMaSP(int maSP){
+        return giamgiaSPDAO.selectByMaSP(maSP);
+    }
 }

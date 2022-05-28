@@ -4,8 +4,10 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import BUS.BusAccessor.GiamGiaSPBUS;
 import BUS.SaleServices.CheckInfoSale;
 import BUS.SaleServices.Money;
+import BUS.SaleServices.PayActionBus;
 import DTO.ChiTietHoaDon;
 import DTO.SanPham;
 import javax.swing.JButton;
@@ -25,6 +27,8 @@ public class OrderItem extends RoundPanel{
     private ChiTietHoaDon CTHD;
     private JTextField jtf;
     private final CheckInfoSale check = new CheckInfoSale();
+    private final PayActionBus payBus = new PayActionBus();
+    private final GiamGiaSPBUS giamGiaSP = new GiamGiaSPBUS();
     /**
      * Creates new form OrderItem
      */
@@ -49,8 +53,16 @@ public class OrderItem extends RoundPanel{
     private void setGuiText(String productName, String imgPath, long productPrice){
         this.productOrderName.setText("<html>"+productName);
         this.productOrderImage.setImagePath(imgPath);
-        this.productOrderPrice.setText(Money.format(productPrice));
-        this.productOrderTotal.setText(Money.format(productPrice*getQuantity()));
+        long giaTriCuaSP = productPrice;
+        if (giamGiaSP.getGiamGiaByMaSP(sp.getMaSP()) != null) {
+            double giaTienGiam = payBus.discountProductPrice(sp.getMaSP());
+            giaTriCuaSP = (long) giaTienGiam;
+            this.productOrderOldPrice.setText("<html><s>" + Money.format(sp.getGiaTien()));
+        } else {
+            this.productOrderOldPrice.setText("");
+        }
+        this.productOrderPrice.setText(Money.format(giaTriCuaSP));
+        this.productOrderTotal.setText(Money.format(giaTriCuaSP * getQuantity()));
     }
     
     //Chua bao gom ma hoa don
@@ -92,6 +104,7 @@ public class OrderItem extends RoundPanel{
         btnRemoveOrderItem = new javax.swing.JButton();
         productOrderPrice = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        productOrderOldPrice = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(240, 92));
@@ -124,7 +137,7 @@ public class OrderItem extends RoundPanel{
         productOrderTotal.setForeground(new java.awt.Color(29, 186, 218));
         productOrderTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productOrderTotal.setText("30.000");
-        add(productOrderTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 100, 20));
+        add(productOrderTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 90, 20));
         add(productOrderQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 80, -1));
 
         btnRemoveOrderItem.setBackground(new java.awt.Color(255, 153, 153));
@@ -141,11 +154,15 @@ public class OrderItem extends RoundPanel{
 
         productOrderPrice.setForeground(new java.awt.Color(29, 186, 218));
         productOrderPrice.setText("30.000");
-        add(productOrderPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 140, 20));
+        add(productOrderPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 60, 20));
 
         jLabel4.setForeground(new java.awt.Color(29, 186, 218));
         jLabel4.setText("Giá:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 30, 20));
+
+        productOrderOldPrice.setForeground(new java.awt.Color(185, 213, 240));
+        productOrderOldPrice.setText("<html> <s>30.000</s>");
+        add(productOrderOldPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 70, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRemoveOrderItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveOrderItemActionPerformed
@@ -158,6 +175,7 @@ public class OrderItem extends RoundPanel{
     private javax.swing.JLabel jLabel4;
     private GUI.SaleGroup.SellerGUI.Component.ImagePanel productOrderImage;
     private javax.swing.JLabel productOrderName;
+    private javax.swing.JLabel productOrderOldPrice;
     private javax.swing.JLabel productOrderPrice;
     private javax.swing.JSpinner productOrderQuantity;
     private javax.swing.JLabel productOrderTotal;
