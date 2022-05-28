@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package BUS.Exel;
+package BUS.Excel;
 
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SanPhamHandle.SanPhamValidate;
@@ -37,7 +37,7 @@ public class sanphamexcel {
     private static SanPhamValidate spVali = new SanPhamValidate();
     public static void sanphamtuexcel(File f) {
         try {
-            
+
             FileInputStream file = new FileInputStream(f.getAbsoluteFile());
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
@@ -49,16 +49,15 @@ public class sanphamexcel {
                     if (cell != null) {
                         String value = fmt.formatCellValue(cell);
                         if (!value.trim().isEmpty()) {
-                            
-                            if(spBUS.TrungSanPham(spBUS.getAllSanPham(), value))
-                                {
 
-                            System.out.println("đã add");
-                            }
-                            else {
-                                System.out.println("continue");
-                                continue;
-                            }
+//                            if (spBUS.TrungSanPham(spBUS.getAllSanPham(), value)) {
+//
+//                                System.out.println("đã add");
+//                            } else {
+//                                System.out.println("continue");
+//                                continue;
+//                            }
+                            sp1.setMaSP(Integer.parseInt(value));
                         }
                     }
                 }
@@ -90,7 +89,7 @@ public class sanphamexcel {
                     if (cell != null) {
                         String value = fmt.formatCellValue(cell);
                         if (!value.trim().isEmpty()) {
-                            sp1.setSoLuong(0);
+                            sp1.setSoLuong(Integer.parseInt(value));
                         }
                     }
                 }
@@ -130,27 +129,33 @@ public class sanphamexcel {
                         }
                     }
                 }
-         if(spVali.AllValidate(String.valueOf(sp1.getGiaTien()), sp1.getTenSP(),sp1.getMoTa(), sp1.getHinhAnh())){  
-                System.out.println(" ADD");
-                 spTuExcelList.add(sp1);    
+                if (spVali.AllValidate(String.valueOf(sp1.getGiaTien()), sp1.getTenSP(), sp1.getMoTa(), sp1.getHinhAnh())) {
+//                    System.out.println("Them vao danh sach ");
+                    spTuExcelList.add(sp1);
+                } else {
+                    System.out.println("San pham "+sp1.getTenSP()+" bi sai dinh dang!");
+                }
+
             }
-         else{
-             System.out.println("false");
-         }
-              
-            }
-               
-            for(int i =0 ; i<spTuExcelList.size();i++ )
-                {
-                         System.out.println(spTuExcelList.get(i).toString());
-               }
+
+//            for (int i = 0; i < spTuExcelList.size(); i++) {
+//                System.out.println(spTuExcelList.get(i).toString());
+//            }
+
             for (int i = 0; i < spTuExcelList.size(); i++) {
-                    SanPham s = spTuExcelList.get(i);
+                SanPham s = spTuExcelList.get(i);
+                if (spBUS.get(s.getMaSP()) == null){
                     spBUS.add(s);
+                    System.out.println("Add new "+s.getTenSP()+" ,MaSP: "+s.getMaSP());
+                } else {
+                    spBUS.edit(s.getMaSP(), s);
+                    System.out.println("Edit "+s.getTenSP() +", MaSP: "+s.getMaSP());
+                    
+                }
             }
-           
-           spTuExcelList.clear();
-           sanPhamtuDataBaseraExcel(f.getAbsolutePath());
+
+            spTuExcelList.clear();
+            sanPhamtuDataBaseraExcel(f.getAbsolutePath());
             workbook.close();
             file.close();
         } catch (Exception e) {
@@ -158,7 +163,7 @@ public class sanphamexcel {
         }
 
     }
-    public static void sanPhamtuDataBaseraExcel( String url) {
+    public static void sanPhamtuDataBaseraExcel(String url) {
         try {
             File f = new File(url);
             FileInputStream file = new FileInputStream(f.getAbsoluteFile());
@@ -209,7 +214,7 @@ public class sanphamexcel {
 
     public static void main(String[] args) {
         
-        File f = new File("src\\main\\java\\DAL\\Exel\\sp.xlsx");
+        File f = new File("src\\main\\java\\BUS\\Excel\\sp.xlsx");
         sanphamtuexcel(f);
  
         

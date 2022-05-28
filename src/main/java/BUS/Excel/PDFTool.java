@@ -1,4 +1,4 @@
-package BUS.Exel;
+package BUS.Excel;
 
 import BUS.BusAccessor.CTHoaDonBUS;
 import BUS.BusAccessor.HoaDonBUS;

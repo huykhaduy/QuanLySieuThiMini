@@ -9,7 +9,7 @@ import BUS.BusAccessor.LoaiSanPhamBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import DTO.LoaiSanPham;
 import DTO.SanPham;
-import BUS.Exel.sanphamexcel;
+import BUS.Excel.sanphamexcel;
 import GUI.ManageGroup.ComponentPanel.ProductDetailPanel;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.SanPhamAdd;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameSua.SanPhamSua;
