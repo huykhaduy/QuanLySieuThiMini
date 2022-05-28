@@ -548,7 +548,7 @@ public class SellerMainFrame extends javax.swing.JFrame {
     private OrderPanel scrollPanelOrder;
        
     private void init() {  
-        
+        this.jButton2.setEnabled(true);
         this.scrollPanelOrder = new OrderPanel(271, 350, new ChangePaymentInfo(this.txtPhoneNumber, this.txtVoucher, this.lbTextTotal,this.lbTextDiscount, this.lbTextMoney), jButton2);
         orderContainer.setLayout(null);
         orderContainer.add(this.scrollPanelOrder);

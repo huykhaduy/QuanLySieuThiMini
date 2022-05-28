@@ -28,7 +28,7 @@ public class KhachHangDAO extends AbtractAccessDatabase<KhachHang> implements IS
 
     @Override
     public KhachHang select(Integer maKhachHang) {
-        return executeQuery("SELECT * FROM KHACHHANG WHERE MAKH = ? AND IS_DELETED = 0",maKhachHang);
+        return executeQuery("SELECT * FROM KHACHHANG WHERE MAKH = ?",maKhachHang);
     }
 
     @Override
