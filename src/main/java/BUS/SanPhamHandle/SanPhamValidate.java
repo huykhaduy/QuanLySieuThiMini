@@ -32,6 +32,7 @@ public class SanPhamValidate {
       
 }
     private boolean CheckHinhAnh (String url){
+        if(url ==null) return false;
          return url.length()>0;
      }
      private boolean CheckTen (String Ten){
