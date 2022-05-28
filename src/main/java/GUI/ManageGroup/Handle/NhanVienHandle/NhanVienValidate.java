@@ -20,8 +20,8 @@ public class NhanVienValidate {
         emailExampleTest = new EmailExampleTest();
     }
     
-    public boolean validateAll(String tenNhanVien,String soDienThoai, String cmnd, String diachi  ){
-        return checkTenNhanVien(tenNhanVien) && checkSoDienThoai(soDienThoai) && checkCmnd(cmnd)  && checkDiaChi(diachi);
+    public boolean validateAll(String tenNhanVien,String soDienThoai, String cmnd, String diachi, String email){
+        return checkTenNhanVien(tenNhanVien) && checkSoDienThoai(soDienThoai) && checkCmnd(cmnd)  && checkDiaChi(diachi) && checkEmail(email);
     }
     
     private boolean checkTenNhanVien(String tenNhanVien){
@@ -44,7 +44,7 @@ public class NhanVienValidate {
     }
     
     private boolean checkEmail(String email){
-        return emailExampleTest.checkEmail();
+        return emailExampleTest.checkEmail(email);
     }
     
     private boolean checkDiaChi(String diachi){

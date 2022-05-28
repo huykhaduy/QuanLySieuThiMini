@@ -348,7 +348,7 @@ public class NhanVienAdd extends javax.swing.JFrame {
             Timestamp ktTs = Timestamp.valueOf(kt + " 00:00:00");
             Date date1 = new Date(ktTs.getTime());
 
-            if (!nhanvienValidate.validateAll(tenNhanVien, soDienThoai, cmnd, diachi)) {
+            if (!nhanvienValidate.validateAll(tenNhanVien, soDienThoai, cmnd, diachi, email)) {
                 JOptionPane.showMessageDialog(this, "Sai định dạng");
                 return null;
             } else {
