@@ -4,6 +4,7 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import BUS.BusAccessor.SanPhamBUS;
 import DTO.ChiTietHoaDon;
 import DTO.SanPham;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
@@ -14,6 +15,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -117,7 +119,14 @@ public class OrderPanel extends ScrollPanel{
         OrderItem orderitem = getOrderItem(sp.getMaSP());
         if (orderitem == null){
             this.addToPanel(sp);   
-        }else orderitem.changeQuantity(orderitem.getQuantity()+1L);
+        }else{
+            SanPhamBUS sanphamBus = new SanPhamBUS();
+            if(sanphamBus.get(sp.getMaSP()).getSoLuong() >= (orderitem.getQuantity() + 1L)){
+                orderitem.changeQuantity(orderitem.getQuantity()+1L);
+            }else JOptionPane.showMessageDialog(this, "Số lượng không đủ!", "Chú ý", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        
         
         this.calculatePayment();
     }

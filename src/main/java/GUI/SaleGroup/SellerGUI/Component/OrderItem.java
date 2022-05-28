@@ -202,7 +202,6 @@ public class OrderItem extends RoundPanel{
     public void changeQuantity(long amount){
         try{
             this.productOrderQuantity.setValue(amount);
-            showUpdateTotalPrice();
         } catch (Exception e){
             
         }
