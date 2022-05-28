@@ -1,4 +1,4 @@
-package DAL.DataModels;
+package DTO;
 
 import java.sql.Date;
 import java.sql.Timestamp;

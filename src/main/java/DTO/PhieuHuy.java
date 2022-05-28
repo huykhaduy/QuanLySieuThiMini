@@ -1,24 +1,23 @@
-package DAL.DataModels;
+package DTO;
 
 import java.sql.Timestamp;
 
-public class PhieuNhap extends Phieu {
-    public PhieuNhap() {
+public class PhieuHuy extends Phieu{
+    public PhieuHuy() {
         super();
     }
 
-    public PhieuNhap(int maPhieu, Timestamp ngayLap, int maNV, boolean isDeleted) {
+    public PhieuHuy(int maPhieu, Timestamp ngayLap, int maNV, boolean isDeleted) {
         super(maPhieu, ngayLap, maNV, isDeleted);
     }
 
     @Override
     public String toString() {
-        return "PhieuNhap{" +
+        return "PhieuHuy{" +
                 "maPhieu=" + getMaPhieu() +
                 ", ngayLap=" + getNgayLap() +
                 ", maNV=" + getMaNV() +
                 ", isDeleted=" + isDeleted() +
-                "}";
-    }
-    
+                '}';
+    }    
 }

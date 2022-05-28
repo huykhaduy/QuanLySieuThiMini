@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.TaiKhoan;
+import DTO.TaiKhoan;
 
 import java.util.List;
 

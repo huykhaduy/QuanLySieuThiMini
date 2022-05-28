@@ -8,8 +8,8 @@ import BUS.BusAccessor.LoaiSanPhamBUS;
 import BUS.BusAccessor.NhaCungCapBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SanPhamHandle.SanPhamValidate;
-import DAL.DataModels.NhaCungCap;
-import DAL.DataModels.SanPham;
+import DTO.NhaCungCap;
+import DTO.SanPham;
 import java.awt.Color;
 import java.io.File;
 import java.util.List;
@@ -33,16 +33,17 @@ public class SanPhamSua extends javax.swing.JFrame {
     
     public SanPhamSua() {
         initComponents();
-        Loadcb();
+        nhaCungCapComboBox1.getNCCFromDatabase();
+        cbLoai.getLoaiSPexAll();
     }
-      public void Loadcb(){
-         List <NhaCungCap> iNCC =nccBUS.getAll();
-         if (iNCC == null || iNCC.isEmpty()) return;
-        for(int i=0;i< iNCC.size();i++){
-        cbNCC1.addItem(GetNcc(iNCC.get(i).getMaNCC()));
-        }
-       cbLoai.getLoaiSPexAll();
-}
+//      public void Loadcb(){
+//         List <NhaCungCap> iNCC =nccBUS.getAll();
+//         if (iNCC == null || iNCC.isEmpty()) return;
+//        for(int i=0;i< iNCC.size();i++){
+//        cbNCC1.addItem(GetNcc(iNCC.get(i).getMaNCC()));
+//        }
+//       cbLoai.getLoaiSPexAll();
+//}
         public String GetNcc(int NCC){
         return  nccBUS.get(NCC).getTenNCC();
     }
@@ -52,9 +53,10 @@ public class SanPhamSua extends javax.swing.JFrame {
 public  void Sua(SanPham sp){
         System.out.println(String.valueOf(GetLoai(sp.getMaLoai())));
         tfMaSanPham.setText(String.valueOf(sp.getMaSP()));
-        cbNCC1.setSelectedItem(String.valueOf(GetNcc(sp.getMaNCC())));
+//        cbNCC1.setSelectedItem(String.valueOf(GetNcc(sp.getMaNCC())));
+        nhaCungCapComboBox1.setSelectedItem(sp.getMaNCC());
         tfSanPham.setText(sp.getTenSP());
-        cbLoai.setSelectedIndex(sp.getMaLoai()-1);
+        cbLoai.setSelectedLoai(sp.getMaLoai());
         tfGia.setText(String.valueOf(sp.getGiaTien()));
         tfMoTa.setText(String.valueOf(sp.getMoTa()));
         imagePanel2.setImagePath(sp.getHinhAnh());
@@ -81,10 +83,10 @@ public  void Sua(SanPham sp){
         button1 = new GUI.SaleGroup.LoginGui.Component.Button();
         button2 = new GUI.SaleGroup.LoginGui.Component.Button();
         imagePanel2 = new GUI.ManageGroup.ComponentPanel.ImagePanel();
-        cbNCC1 = new javax.swing.JComboBox<>();
         cbLoai = new GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox();
+        nhaCungCapComboBox1 = new GUI.SaleGroup.SellerGUI.Component.NhaCungCapComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         sanPhamAddBackground1.setBackground(new java.awt.Color(246, 158, 24));
         sanPhamAddBackground1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -119,21 +121,22 @@ public  void Sua(SanPham sp){
         jLabel7.setText("Mô tả");
         sanPhamAddBackground1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 427, 91, 40));
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel6.setText("Sửa sản phẩm");
         sanPhamAddBackground1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, -1));
 
-        tfSanPham.setBackground(new java.awt.Color(196, 196, 196));
+        tfSanPham.setBackground(new java.awt.Color(255, 255, 255));
         sanPhamAddBackground1.add(tfSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 299, -1));
 
-        tfMaSanPham.setBackground(new java.awt.Color(196, 196, 196));
+        tfMaSanPham.setBackground(new java.awt.Color(255, 255, 255));
         tfMaSanPham.setFocusable(false);
         sanPhamAddBackground1.add(tfMaSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 299, -1));
 
-        tfGia.setBackground(new java.awt.Color(196, 196, 196));
+        tfGia.setBackground(new java.awt.Color(255, 255, 255));
         sanPhamAddBackground1.add(tfGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 300, -1));
 
-        tfMoTa.setBackground(new java.awt.Color(196, 196, 196));
+        tfMoTa.setBackground(new java.awt.Color(255, 255, 255));
         tfMoTa.setColumns(20);
         tfMoTa.setLineWrap(true);
         tfMoTa.setRows(5);
@@ -182,9 +185,11 @@ public  void Sua(SanPham sp){
 
         sanPhamAddBackground1.add(imagePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 150, 100));
 
-        cbNCC1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        sanPhamAddBackground1.add(cbNCC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 130, 30));
+        cbLoai.setBackground(new java.awt.Color(255, 255, 255));
         sanPhamAddBackground1.add(cbLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 130, 30));
+
+        nhaCungCapComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        sanPhamAddBackground1.add(nhaCungCapComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 140, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,17 +214,18 @@ public  void Sua(SanPham sp){
 
         String maSanPham = tfMaSanPham.getText();
         int loai = cbLoai.getSelectedMaLoai();
+//        System.out.println(cbLoai.getSelectedItem().getTenLoai());
         String tenSanPham =tfSanPham.getText();
-         System.out.println(cbNCC1.getSelectedIndex()-1);
-        int maNhaCC = cbNCC1.getSelectedIndex()-1;
+        int maNhaCC = nhaCungCapComboBox1.getSelectedMaNCC();
+//        System.out.println(nhaCungCapComboBox1.getSelectedItem().getTenNCC());
         String gia = tfGia.getText();
         String moTa =tfMoTa.getText();
         
-        SanPham sp = new SanPham(tenSanPham, moTa, url, Long.valueOf(gia), spBUS.get(Integer.valueOf(maSanPham)).getSoLuong(), Integer.valueOf(loai),  Integer.valueOf(maNhaCC),false);
         if(!spVali.AllValidate(gia,tenSanPham,moTa,url)) {
             JOptionPane.showMessageDialog(this, "The voucher already exists or illegal");
         }
         else {
+            SanPham sp = new SanPham(tenSanPham, moTa, url, Long.valueOf(gia), spBUS.get(Integer.valueOf(maSanPham)).getSoLuong(), loai, maNhaCC,false);
             spBUS.edit(Integer.valueOf(maSanPham), sp);
             JOptionPane.showMessageDialog(this, "Success");
             this.setVisible(false);
@@ -284,7 +290,6 @@ public  void Sua(SanPham sp){
     private GUI.SaleGroup.LoginGui.Component.Button button2;
     private GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox cbLoai;
     private javax.swing.JComboBox<String> cbNCC;
-    private javax.swing.JComboBox<String> cbNCC1;
     private GUI.ManageGroup.ComponentPanel.ImagePanel imagePanel2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -294,6 +299,7 @@ public  void Sua(SanPham sp){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private GUI.SaleGroup.SellerGUI.Component.NhaCungCapComboBox nhaCungCapComboBox1;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.SanPhamAddBackground sanPhamAddBackground1;
     private javax.swing.JTextField tfGia;
     private javax.swing.JTextField tfMaSanPham;

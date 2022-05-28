@@ -1,6 +1,10 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.*;
+import DTO.NhaCungCap;
+import DTO.HoaDon;
+import DTO.Voucher;
+import DTO.GiamGiaSP;
+import DTO.LoaiSanPham;
 
 import java.sql.Timestamp;
 import java.util.List;

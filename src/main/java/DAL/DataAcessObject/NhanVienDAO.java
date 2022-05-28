@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.NhanVien;
+import DTO.NhanVien;
 
 import java.util.List;
 

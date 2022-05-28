@@ -2,7 +2,7 @@
 package BUS.SanPhamHandle;
 
 import DAL.DataAcessObject.SanPhamDAO;
-import DAL.DataModels.SanPham;
+import DTO.SanPham;
 
 
 public class SanPhamToData {

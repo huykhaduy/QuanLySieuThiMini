@@ -10,12 +10,12 @@ import DAL.DataAcessObject.HoaDonDAO;
 import DAL.DataAcessObject.KhachHangDAO;
 import DAL.DataAcessObject.SanPhamDAO;
 import DAL.DataAcessObject.VoucherDAO;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.GiamGiaSP;
-import DAL.DataModels.HoaDon;
-import DAL.DataModels.KhachHang;
-import DAL.DataModels.SanPham;
-import DAL.DataModels.Voucher;
+import DTO.ChiTietHoaDon;
+import DTO.GiamGiaSP;
+import DTO.HoaDon;
+import DTO.KhachHang;
+import DTO.SanPham;
+import DTO.Voucher;
 import java.sql.Timestamp;
 import java.util.List;
 

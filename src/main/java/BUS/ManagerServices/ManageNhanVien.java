@@ -7,8 +7,8 @@ package BUS.ManagerServices;
 import DAL.DataAcessObject.LoginDetailDAO;
 import DAL.DataAcessObject.NhanVienDAO;
 import DAL.DataAcessObject.SanPhamDAO;
-import DAL.DataModels.NhanVien;
-import DAL.DataModels.SanPham;
+import DTO.NhanVien;
+import DTO.SanPham;
 import GUI.ManageGroup.ManageItem.ManageFrame.ManageFrame;
 
 import java.util.List;

@@ -5,8 +5,8 @@
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 import BUS.BusAccessor.ChucVuBUS;
 import BUS.BusAccessor.NhanVienBUS;
-import DAL.DataModels.ChucVu;
-import DAL.DataModels.NhanVien;
+import DTO.ChucVu;
+import DTO.NhanVien;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.NhanVienAdd;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.SanPhamAdd;
 import java.awt.PopupMenu;

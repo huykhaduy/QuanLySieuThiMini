@@ -1,4 +1,4 @@
-package DAL.DataModels;
+package DTO;
 
 public abstract class ConNguoi {
     protected String hoTen;

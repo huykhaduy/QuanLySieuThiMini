@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.Voucher;
+import DTO.Voucher;
 
 import java.util.List;
 

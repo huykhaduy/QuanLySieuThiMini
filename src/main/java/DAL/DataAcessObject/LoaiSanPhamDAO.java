@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.LoaiSanPham;
+import DTO.LoaiSanPham;
 
 import java.util.List;
 

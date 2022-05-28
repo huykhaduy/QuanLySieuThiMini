@@ -1,17 +1,17 @@
-package DAL.DataModels;
+package DTO;
 
-public class ChiTietPhieuNhap extends ChiTietPhieu {
+public class ChiTietPhieuHuy extends ChiTietPhieu {
 
-    public ChiTietPhieuNhap() {
+    public ChiTietPhieuHuy() {
     }
 
-    public ChiTietPhieuNhap(int maPhieu, int maSP, int soLuong) {
+    public ChiTietPhieuHuy(int maPhieu, int maSP, int soLuong) {
         super(maPhieu, maSP, soLuong);
     }
 
     @Override
     public String toString() {
-        return "ChiTietPhieuNhap{" +
+        return "ChiTietPhieuHuy{" +
                 "maPhieu=" + maPhieu +
                 ", maSP=" + maSP +
                 ", soLuong=" + soLuong +

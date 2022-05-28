@@ -5,14 +5,16 @@
 package GUI.SaleGroup.SellerGUI.Component;
 
 import BUS.SaleServices.CheckInfoSale;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.SanPham;
+import BUS.SaleServices.Money;
+import DTO.ChiTietHoaDon;
+import DTO.SanPham;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -47,8 +49,8 @@ public class OrderItem extends RoundPanel{
     private void setGuiText(String productName, String imgPath, long productPrice){
         this.productOrderName.setText("<html>"+productName);
         this.productOrderImage.setImagePath(imgPath);
-        this.productOrderPrice.setText(Long.toString(productPrice));
-        this.productOrderTotal.setText(Long.toString(productPrice*getQuantity()));
+        this.productOrderPrice.setText(Money.format(productPrice));
+        this.productOrderTotal.setText(Money.format(productPrice*getQuantity()));
     }
     
     //Chua bao gom ma hoa don
@@ -185,7 +187,7 @@ public class OrderItem extends RoundPanel{
     
     public void showUpdateTotalPrice(){
         if(check.isEnoughAmountProduct(CTHD.getMaSP(), (int)getQuantity())){
-            this.productOrderTotal.setText(Long.toString(this.sp.getGiaTien()*getQuantity()));
+            this.productOrderTotal.setText(Money.format(this.sp.getGiaTien()*getQuantity()));
             this.CTHD.setSoLuong((int)getQuantity());
         }else{ 
             JOptionPane.showMessageDialog(productOrderName, "Số lượng không đủ!", "Chú ý", JOptionPane.INFORMATION_MESSAGE);
@@ -198,8 +200,14 @@ public class OrderItem extends RoundPanel{
     }
     
     public void changeQuantity(long amount){
-        this.productOrderQuantity.setValue(amount);
-        showUpdateTotalPrice();
+        try{
+            this.productOrderQuantity.setValue(amount);
+            showUpdateTotalPrice();
+        } catch (Exception e){
+            
+        }
+        
+        
     }
     
     public long getQuantity(){

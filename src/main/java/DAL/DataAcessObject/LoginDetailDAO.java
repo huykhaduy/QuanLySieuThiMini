@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.LoginDetail;
+import DTO.LoginDetail;
 
 import java.util.List;
 

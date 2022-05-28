@@ -5,7 +5,7 @@
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
 import BUS.BusAccessor.SanPhamBUS;
-import DAL.DataModels.SanPham;
+import DTO.SanPham;
 import GUI.SaleGroup.SellerGUI.Component.MenuPanel;
 import GUI.SaleGroup.SellerGUI.Component.MyLoaiSPComboBox;
 import java.util.List;

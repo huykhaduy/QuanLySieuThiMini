@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.PhieuHuy;
+import DTO.PhieuHuy;
 import java.util.List;
 
 public class PhieuHuyDAO extends AbtractAccessDatabase<PhieuHuy> implements ISimpleAccess<PhieuHuy,Integer> {

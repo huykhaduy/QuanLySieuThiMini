@@ -5,8 +5,8 @@
 package GUI.SaleGroup.SellerGUI.Component;
 
 import BUS.BusAccessor.NhaCungCapBUS;
-import DAL.DataModels.LoaiSanPham;
-import DAL.DataModels.NhaCungCap;
+import DTO.LoaiSanPham;
+import DTO.NhaCungCap;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.DefaultListCellRenderer;
@@ -40,6 +40,16 @@ public class NhaCungCapComboBox extends JComboBox<NhaCungCap>{
     
     public int getSelectedMaNCC(){
         return this.getSelectedItem().getMaNCC();
+    }
+    
+    public void setSelectedItem(int maNCC){
+        for (int i=0;i<this.getItemCount();i++){
+            if (getItemAt(i).getMaNCC() == maNCC){
+                this.setSelectedIndex(i);
+//                System.out.println(this.getSelectedItem().getTenNCC());
+                break;
+            }
+        }
     }
 
 //    NhaCungCap(int maNCC, String tenNCC, String diaChi, String sdt, String email, boolean isDeleted)

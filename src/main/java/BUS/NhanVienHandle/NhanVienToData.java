@@ -6,7 +6,7 @@ package BUS.NhanVienHandle;
 
 import BUS.BusAccessor.NhanVienBUS;
 import DAL.DataAcessObject.NhanVienDAO;
-import DAL.DataModels.NhanVien;
+import DTO.NhanVien;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;

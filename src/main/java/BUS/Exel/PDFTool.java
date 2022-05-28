@@ -1,13 +1,13 @@
-package DAL.Exel;
+package BUS.Exel;
 
 import BUS.BusAccessor.CTHoaDonBUS;
 import BUS.BusAccessor.HoaDonBUS;
 import BUS.BusAccessor.KhachHangBUS;
 import BUS.BusAccessor.NhanVienBUS;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.HoaDon;
-import DAL.DataModels.KhachHang;
-import DAL.DataModels.NhanVien;
+import DTO.ChiTietHoaDon;
+import DTO.HoaDon;
+import DTO.KhachHang;
+import DTO.NhanVien;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

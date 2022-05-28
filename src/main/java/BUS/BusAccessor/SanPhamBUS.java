@@ -2,9 +2,9 @@ package BUS.BusAccessor;
 
 import DAL.DataAcessObject.NhanVienDAO;
 import DAL.DataAcessObject.SanPhamDAO;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.NhanVien;
-import DAL.DataModels.SanPham;
+import DTO.ChiTietHoaDon;
+import DTO.NhanVien;
+import DTO.SanPham;
 import java.util.ArrayList;
 import java.util.List;
 

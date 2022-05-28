@@ -5,7 +5,7 @@
 package GUI.ManageGroup.ComponentPanel;
 
 import BUS.BusAccessor.NhaCungCapBUS;
-import DAL.DataModels.SanPham;
+import DTO.SanPham;
 
 /**
  *

@@ -7,10 +7,11 @@ package GUI.ManageGroup.ManageItem.ManagerPanel;
 import BUS.BusAccessor.NhanVienBUS;
 import BUS.BusAccessor.PhieuHuyBUS;
 import BUS.BusAccessor.PhieuNhapBUS;
-import DAL.DataModels.PhieuHuy;
-import DAL.DataModels.PhieuNhap;
+import DTO.PhieuHuy;
+import DTO.PhieuNhap;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.HuyHangSanPham;
 import GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd.NhapHangSanPham;
+import GUI.ManageGroup.ManageItem.ManageFrame.ManageFrame;
 import GUI.ManageGroup.Theme.NhapHuyPanel;
 import com.raven.datechooser.DateChooser;
 import com.raven.datechooser.SelectedDate;
@@ -35,12 +36,11 @@ public class NhapXuatPanel extends javax.swing.JPanel {
     private final PhieuHuyBUS huyBus;
     private final DefaultTableModel nhapModel;
     private final DefaultTableModel huyModel;
-    private final int maNhanVien;
+    public static int maNhanVien;
     /**
      * Creates new form NhapXuatPanel
      */
     public NhapXuatPanel() {
-        maNhanVien = 1;
         NhapHuyPanel.setup();
         initComponents();
         nhapModel = (DefaultTableModel) jTable1.getModel();

@@ -19,7 +19,7 @@ public class VoucherAddBackground extends javax.swing.JPanel {
     }
  protected void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g.create();
-        Color xanh = Color.decode("#00DC80");
+        Color xanh = getBackground();
        g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(xanh);
         g2d.fillRoundRect(0, 0, getWidth(), getHeight()/4, 0, 0);

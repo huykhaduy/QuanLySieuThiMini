@@ -5,7 +5,7 @@
 package GUI.ManageGroup.ManageItem.ManagerPanel;
 
 import BUS.BusAccessor.SanPhamBUS;
-import DAL.DataModels.SanPham;
+import DTO.SanPham;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.util.List;

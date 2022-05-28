@@ -4,8 +4,8 @@
  */
 package BUS.BusAccessor;
 
-import DAL.DataModels.ChiTietPhieuHuy;
-import DAL.DataModels.SanPham;
+import DTO.ChiTietPhieuHuy;
+import DTO.SanPham;
 import java.util.List;
 
 /**

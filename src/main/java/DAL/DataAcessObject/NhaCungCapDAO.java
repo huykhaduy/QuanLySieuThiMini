@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.NhaCungCap;
+import DTO.NhaCungCap;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@
 package BUS.VoucherHandle;
 
 import BUS.SaleServices.CheckInfoSale;
-import DAL.DataModels.Voucher;
+import DTO.Voucher;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 

@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.HoaDon;
+import DTO.HoaDon;
 import java.sql.Timestamp;
 
 import java.util.List;

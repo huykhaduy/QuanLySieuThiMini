@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAL.Exel;
+package BUS.Exel;
 
 import BUS.BusAccessor.CTHoaDonBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SaleServices.Money;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.SanPham;
+import DTO.ChiTietHoaDon;
+import DTO.SanPham;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,8 +148,8 @@ public class HTMLTemplate {
                        <tr>
                          <td>STT</td>
                          <td>T\u00ean s\u1ea3n ph\u1ea9m</td>
-                         <td>S\u1ed1 l\u01b0\u1ee3ng</td>
                          <td>\u0110\u01a1n gi\u00e1</td>
+                         <td>S\u1ed1 l\u01b0\u1ee3ng</td>
                          <td>Th\u00e0nh ti\u1ec1n</td>
                        </tr>
                        %s

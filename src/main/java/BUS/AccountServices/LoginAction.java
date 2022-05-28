@@ -3,11 +3,12 @@ package BUS.AccountServices;
 import DAL.DataAcessObject.LoginDetailDAO;
 import DAL.DataAcessObject.NhanVienDAO;
 import DAL.DataAcessObject.TaiKhoanDAO;
-import DAL.DataModels.ChucVu;
-import DAL.DataModels.LoginDetail;
-import DAL.DataModels.NhanVien;
-import DAL.DataModels.TaiKhoan;
+import DTO.ChucVu;
+import DTO.LoginDetail;
+import DTO.NhanVien;
+import DTO.TaiKhoan;
 import GUI.ManageGroup.ManageItem.ManageFrame.ManageFrame;
+import GUI.ManageGroup.ManageItem.ManagerPanel.NhapXuatPanel;
 import GUI.SaleGroup.LoginGui.LoginFrame.LoginGui;
 import GUI.SaleGroup.SellerGUI.SellerMainFrame;
 //import com.formdev.flatlaf.FlatLightLaf;
@@ -93,7 +94,7 @@ public class LoginAction{
         int maChucVu = getChucVuNguoiDung(soTK);
         if (maChucVu == ChucVu.NHANVIENBANHANG){
             System.out.println("Khoi tao frame nhan vien ban hang");
-            JOptionPane.showMessageDialog(null,"Hiểm thị form nhân viên bán hàng","Auto login success",JOptionPane.CLOSED_OPTION);
+//            JOptionPane.showMessageDialog(null,"Hiểm thị form nhân viên bán hàng","Auto login success",JOptionPane.CLOSED_OPTION);
             SellerMainFrame.maNV = taiKhoanDAO.select(soTK).getMaNV();
             sell.setVisible(true);
         }
@@ -101,8 +102,9 @@ public class LoginAction{
             
         else if (maChucVu == ChucVu.NHANVIENQUANLY){
             System.out.println("Khoi tao frame nhan vien quan ly");
-            JOptionPane.showMessageDialog(null, "Hiển thị form nhân viên quản lý", "Auto login success", JOptionPane.CLOSED_OPTION);
+//            JOptionPane.showMessageDialog(null, "Hiển thị form nhân viên quản lý", "Auto login success", JOptionPane.CLOSED_OPTION);
             ManageFrame.maNV = taiKhoanDAO.select(soTK).getMaNV();
+            NhapXuatPanel.maNhanVien = ManageFrame.maNV;
             manager.setVisible(true);
         }
 

@@ -4,8 +4,9 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
+import BUS.SaleServices.Money;
 import BUS.SaleServices.PayActionBus;
-import DAL.DataModels.ChiTietHoaDon;
+import DTO.ChiTietHoaDon;
 import GUI.SaleGroup.SellerGUI.SellerMainFrame;
 import java.util.List;
 import javax.swing.JLabel;
@@ -42,9 +43,9 @@ public class ChangePaymentInfo {
     public void calculatePayment(List<ChiTietHoaDon> ListCTHD){
         total = pay.totalBill(ListCTHD);
         sdt = txtPhoneNumber.isEnabled() ? txtPhoneNumber.getText() : "";
-        this.lbTextTotal.setText(pay.totalBill(ListCTHD) + "");
-        this.lbTextDiscount.setText((pay.discountBillByPoint(sdt, total) + pay.discountBillByVoucher(txtVoucher.getText(),total)) + "");
-        this.lbTextMoney.setText(pay.payForBillAfterDiscount(txtVoucher.getText(), sdt, total) + "");
+        this.lbTextTotal.setText(pay.totalBill(ListCTHD)+"");
+        this.lbTextDiscount.setText((pay.discountBillByPoint(sdt, total) + pay.discountBillByVoucher(txtVoucher.getText(),total))+"");
+        this.lbTextMoney.setText((pay.payForBillAfterDiscount(txtVoucher.getText(), sdt, total))+"");
 
     }
 }

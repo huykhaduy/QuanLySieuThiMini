@@ -2,7 +2,7 @@ package BUS.BusAccessor;
 
 import DAL.DataAcessObject.CTPhieuNhapDAO;
 import DAL.DataAcessObject.ISimpleAccess;
-import DAL.DataModels.ChiTietPhieuNhap;
+import DTO.ChiTietPhieuNhap;
 import java.util.List;
 
 /*

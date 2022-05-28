@@ -5,7 +5,7 @@
 package BUS.BusAccessor;
 
 import DAL.DataAcessObject.GiamGiaSPDAO;
-import DAL.DataModels.GiamGiaSP;
+import DTO.GiamGiaSP;
 import java.util.ArrayList;
 import java.util.List;
 

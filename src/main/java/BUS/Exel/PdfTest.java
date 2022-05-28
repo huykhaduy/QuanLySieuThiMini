@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAL.Exel;
+package BUS.Exel;
 import DAL.DataAcessObject.ChiTietHoaDonDAO;
 import  DAL.DataAcessObject.HoaDonDAO;
 import DAL.DataAcessObject.NhanVienDAO;
 import DAL.DataAcessObject.SanPhamDAO;
 import com.itextpdf.text.Font;
 
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.HoaDon;
-import DAL.DataModels.NhanVien;
-import DAL.DataModels.SanPham;
+import DTO.ChiTietHoaDon;
+import DTO.HoaDon;
+import DTO.NhanVien;
+import DTO.SanPham;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;

@@ -7,15 +7,15 @@ package BUS.BusAccessor;
 import java.util.List;
 
 import DAL.DataAcessObject.HoaDonDAO;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.ChiTietPhieuHuy;
-import DAL.DataModels.ChiTietPhieuNhap;
-import DAL.DataModels.HoaDon;
-import DAL.DataModels.KhachHang;
-import DAL.DataModels.NhanVien;
-import DAL.DataModels.PhieuHuy;
-import DAL.DataModels.PhieuNhap;
-import DAL.DataModels.SanPham;
+import DTO.ChiTietHoaDon;
+import DTO.ChiTietPhieuHuy;
+import DTO.ChiTietPhieuNhap;
+import DTO.HoaDon;
+import DTO.KhachHang;
+import DTO.NhanVien;
+import DTO.PhieuHuy;
+import DTO.PhieuNhap;
+import DTO.SanPham;
 
 /**
  *

@@ -5,9 +5,9 @@
 package BUS.BusAccessor;
 
 import DAL.DataAcessObject.PhieuNhapDAO;
-import DAL.DataModels.ChiTietPhieuHuy;
-import DAL.DataModels.ChiTietPhieuNhap;
-import DAL.DataModels.PhieuNhap;
+import DTO.ChiTietPhieuHuy;
+import DTO.ChiTietPhieuNhap;
+import DTO.PhieuNhap;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

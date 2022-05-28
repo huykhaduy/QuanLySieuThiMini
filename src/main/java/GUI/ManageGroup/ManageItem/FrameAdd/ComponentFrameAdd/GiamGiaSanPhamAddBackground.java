@@ -22,7 +22,7 @@ public class GiamGiaSanPhamAddBackground extends javax.swing.JPanel {
     }
      protected void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D) g.create();
-        Color xanhlam = new Color(0,255,175);
+        Color xanhlam = getBackground();
        g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(xanhlam);
         g2d.fillRoundRect(0, 0, getWidth(), getHeight()/3, 0, 0);

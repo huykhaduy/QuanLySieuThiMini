@@ -6,7 +6,7 @@ package BUS.BusAccessor;
 
 import DAL.DataAcessObject.ISimpleAccess;
 import DAL.DataAcessObject.LoaiSanPhamDAO;
-import DAL.DataModels.LoaiSanPham;
+import DTO.LoaiSanPham;
 
 /**
  *

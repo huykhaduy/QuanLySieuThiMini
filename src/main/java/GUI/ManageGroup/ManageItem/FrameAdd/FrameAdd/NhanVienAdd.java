@@ -7,7 +7,7 @@ package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 import BUS.BusAccessor.NhanVienBUS;
 import BUS.NhanVienHandle.NhanVienToData;
 import BUS.NhanVienHandle.NhanVienValidate;
-import DAL.DataModels.NhanVien;
+import DTO.NhanVien;
 import GUI.ManageGroup.ManageItem.ManagerPanel.NhanVienPanel;
 import GUI.ManageGroup.Theme.NhanVienAddTheme;
 import GUI.ManageGroup.Theme.NhapHuyPanel;
@@ -165,7 +165,6 @@ public class NhanVienAdd extends javax.swing.JFrame {
         sanPhamAddBackground1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 360, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
         sanPhamAddBackground1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 130, -1));
 
@@ -214,6 +213,8 @@ public class NhanVienAdd extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên bán hàng", "Quản lý cửa hàng" }));
         sanPhamAddBackground1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 130, 30));
 
+        roundButton1.setBackground(new java.awt.Color(255, 153, 153));
+        roundButton1.setForeground(new java.awt.Color(255, 255, 255));
         roundButton1.setText("Hủy");
         roundButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +223,8 @@ public class NhanVienAdd extends javax.swing.JFrame {
         });
         sanPhamAddBackground1.add(roundButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 130, 40));
 
+        roundButton2.setBackground(new java.awt.Color(119, 224, 161));
+        roundButton2.setForeground(new java.awt.Color(255, 255, 255));
         roundButton2.setText("Xác nhận");
         roundButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

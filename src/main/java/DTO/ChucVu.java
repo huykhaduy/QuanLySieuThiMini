@@ -1,4 +1,4 @@
-package DAL.DataModels;
+package DTO;
 
 public class ChucVu {
     private int maChucVu;

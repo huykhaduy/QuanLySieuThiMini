@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.SanPham;
+import DTO.SanPham;
 
 import java.util.List;
 

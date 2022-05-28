@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.GiamGiaSP;
+import DTO.GiamGiaSP;
 import java.util.List;
 
 

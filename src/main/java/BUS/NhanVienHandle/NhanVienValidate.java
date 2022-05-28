@@ -5,7 +5,7 @@
 package BUS.NhanVienHandle;
 
 import BUS.CustomerHandle.EmailExampleTest;
-import DAL.DataModels.NhanVien;
+import DTO.NhanVien;
 
 /**
  *
@@ -31,7 +31,7 @@ public class NhanVienValidate {
     }
     
     private boolean checkSoDienThoai(String soDienThoai){
-        if(soDienThoai.length() != 10) return false;
+        if(soDienThoai.length() != 10 && soDienThoai.length() != 9) return false;
         System.out.println(soDienThoai);
         this.nhanvienValidate.setSoDienThoai(soDienThoai);
         return true;

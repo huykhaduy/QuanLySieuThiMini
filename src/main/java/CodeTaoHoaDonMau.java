@@ -7,17 +7,18 @@ import BUS.BusAccessor.NhanVienBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.BusAccessor.VoucherBUS;
 import DAL.DataAcessObject.GiamGiaSPDAO;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.ChucVu;
-import DAL.DataModels.GiamGiaSP;
-import DAL.DataModels.HoaDon;
-import DAL.DataModels.KhachHang;
-import DAL.DataModels.NhanVien;
-import DAL.DataModels.SanPham;
-import DAL.DataModels.Voucher;
+import DTO.ChiTietHoaDon;
+import DTO.ChucVu;
+import DTO.GiamGiaSP;
+import DTO.HoaDon;
+import DTO.KhachHang;
+import DTO.NhanVien;
+import DTO.SanPham;
+import DTO.Voucher;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -81,8 +82,10 @@ public class CodeTaoHoaDonMau {
                 nv = listNV.get(random(0, listNV.size()-1));
             }
             int maKH = listKH.get(random(0,listKH.size()-1)).getMaKH();
+            Random generator = new Random();
+            Long value = generator.nextLong((1653708571665L - 1650000000000L) + 1) + 1650000000000L;
             //             HoaDon(int maHD, Timestamp ngayHD, String hinhThuc, long tongTien, long tienGiam, int maKH, int maNV, int soKM, boolean isDeleted)
-            HoaDon hd = new HoaDon(0, new Timestamp(System.currentTimeMillis()), "Tien mat", tongTien, tienGiam, maKH, nv.getMaNV(), voucher == null ? 1:voucher.getSoVoucher(), false);
+            HoaDon hd = new HoaDon(0, new Timestamp(value), "Tien mat", tongTien, tienGiam, maKH, nv.getMaNV(), voucher == null ? 1:voucher.getSoVoucher(), false);
             hdBus.add(hd);
             int maHD = hdBus.getNewest().getMaHD();
             thayDoiMaHoaDon(listCTHD, maHD);

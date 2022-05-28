@@ -6,7 +6,7 @@ package GUI.SaleGroup.SellerGUI.Component;
 
 import BUS.BusAccessor.LoaiSanPhamBUS;
 import DAL.DataAcessObject.LoaiSanPhamDAO;
-import DAL.DataModels.LoaiSanPham;
+import DTO.LoaiSanPham;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ComboBoxLoaiSPAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ComboboxLoaiSanPhamRender;
 import java.util.List;
@@ -45,6 +45,15 @@ public class MyLoaiSPComboBox extends JComboBox<LoaiSanPham>{
         for (int i = 0 ; i< list.size();i++){
             if(!list.get(i).getTenLoai().equals("Tất cả"))
                  this.addItem(list.get(i));
+        }
+    }
+     
+    public void setSelectedLoai(int maLoai){
+        for (int i =0 ;i<this.getItemCount();i++){
+            if (this.getItemAt(i).getMaLoai() == maLoai){
+                this.setSelectedIndex(i);
+                break;
+            }
         }
     }
     

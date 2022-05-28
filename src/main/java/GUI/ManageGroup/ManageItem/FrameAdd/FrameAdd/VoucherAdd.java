@@ -4,7 +4,7 @@ package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 import BUS.BusAccessor.VoucherBUS;
 import BUS.VoucherHandle.VoucherHandleBUS;
 import BUS.VoucherHandle.VoucherValidate;
-import DAL.DataModels.Voucher;
+import DTO.Voucher;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
@@ -63,14 +63,18 @@ public class VoucherAdd extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        shape1.setBackground(new java.awt.Color(0, 220, 128));
+        voucherAddBackground1.setBackground(new java.awt.Color(245, 250, 158));
+
+        shape1.setBackground(new java.awt.Color(116, 218, 175));
         shape1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 shape1MouseClicked(evt);
             }
         });
 
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Xác Nhận");
 
         javax.swing.GroupLayout shape1Layout = new javax.swing.GroupLayout(shape1);
@@ -90,7 +94,7 @@ public class VoucherAdd extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        shape2.setBackground(new java.awt.Color(0, 220, 128));
+        shape2.setBackground(new java.awt.Color(225, 109, 120));
         shape2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 shape2MouseClicked(evt);
@@ -98,6 +102,7 @@ public class VoucherAdd extends javax.swing.JFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Hủy");
 
         javax.swing.GroupLayout shape2Layout = new javax.swing.GroupLayout(shape2);
@@ -117,7 +122,7 @@ public class VoucherAdd extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        txtaMoTa.setBackground(new java.awt.Color(196, 196, 196));
+        txtaMoTa.setBackground(new java.awt.Color(255, 255, 255));
         txtaMoTa.setColumns(20);
         txtaMoTa.setLineWrap(true);
         txtaMoTa.setRows(5);
@@ -153,34 +158,36 @@ public class VoucherAdd extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Mô tả");
 
-        txtCodeVoucher.setBackground(new java.awt.Color(196, 196, 196));
+        txtCodeVoucher.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtGiaTriToiDa.setBackground(new java.awt.Color(196, 196, 196));
+        txtGiaTriToiDa.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtGiaTriToiThieu.setBackground(new java.awt.Color(196, 196, 196));
+        txtGiaTriToiThieu.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtNgayBD.setBackground(new java.awt.Color(196, 196, 196));
+        txtNgayBD.setBackground(new java.awt.Color(255, 255, 255));
         txtNgayBD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNgayBDActionPerformed(evt);
             }
         });
 
-        txtNgayKT.setBackground(new java.awt.Color(196, 196, 196));
+        txtNgayKT.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtPtGiam.setBackground(new java.awt.Color(196, 196, 196));
+        txtPtGiam.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtSoLuotSD.setBackground(new java.awt.Color(196, 196, 196));
+        txtSoLuotSD.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Số  lần sử dụng");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Thêm voucher");
 
-        imagePanel1.setBackground(new java.awt.Color(0, 220, 128));
+        imagePanel1.setBackground(new java.awt.Color(245, 250, 158));
         imagePanel1.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManageItem/FrameAdd/ComponentFrameAdd/icons8-voucher-64.png"))); // NOI18N
 
         javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);

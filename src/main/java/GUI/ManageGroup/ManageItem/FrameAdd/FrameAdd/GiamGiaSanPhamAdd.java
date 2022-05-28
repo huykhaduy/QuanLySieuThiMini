@@ -7,8 +7,8 @@ package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 import BUS.BusAccessor.GiamGiaSPBUS;
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SaleServices.CheckInfoSale;
-import DAL.DataModels.GiamGiaSP;
-import DAL.DataModels.SanPham;
+import DTO.GiamGiaSP;
+import DTO.SanPham;
 import GUI.ManageGroup.Theme.NhapXuatTheme;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -66,20 +66,22 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         shape2 = new GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        giamGiaSanPhamAddBackground3.setBackground(new java.awt.Color(255, 255, 255));
+        giamGiaSanPhamAddBackground3.setBackground(new java.awt.Color(0, 204, 255));
         giamGiaSanPhamAddBackground3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THÊM GIẢM GIÁ SẢN PHẨM");
         giamGiaSanPhamAddBackground3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 310, -1));
 
-        imagePanel1.setBackground(new java.awt.Color(0, 255, 175));
+        imagePanel1.setBackground(new java.awt.Color(0, 204, 255));
         imagePanel1.setImage(new javax.swing.ImageIcon(getClass().getResource("/GUI/ManageGroup/ManageItem/FrameAdd/ComponentFrameAdd/icons8-voucher-64.png"))); // NOI18N
 
         javax.swing.GroupLayout imagePanel1Layout = new javax.swing.GroupLayout(imagePanel1);
@@ -90,10 +92,10 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         );
         imagePanel1Layout.setVerticalGroup(
             imagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 90, Short.MAX_VALUE)
         );
 
-        giamGiaSanPhamAddBackground3.add(imagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 110, 100));
+        giamGiaSanPhamAddBackground3.add(imagePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 110, 90));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Ngày bắt đầu");
@@ -111,19 +113,19 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         jLabel5.setText("Mã sản phẩm");
         giamGiaSanPhamAddBackground3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 80, -1));
 
-        txtNgayBD.setBackground(new java.awt.Color(225, 225, 225));
+        txtNgayBD.setBackground(new java.awt.Color(255, 255, 255));
         giamGiaSanPhamAddBackground3.add(txtNgayBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 280, -1));
 
-        txtNgayKT.setBackground(new java.awt.Color(225, 225, 225));
+        txtNgayKT.setBackground(new java.awt.Color(255, 255, 255));
         giamGiaSanPhamAddBackground3.add(txtNgayKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 280, -1));
 
-        txtPtGiam.setBackground(new java.awt.Color(225, 225, 225));
+        txtPtGiam.setBackground(new java.awt.Color(255, 255, 255));
         giamGiaSanPhamAddBackground3.add(txtPtGiam, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 280, -1));
 
-        txtMaSP.setBackground(new java.awt.Color(225, 225, 225));
+        txtMaSP.setBackground(new java.awt.Color(255, 255, 255));
         giamGiaSanPhamAddBackground3.add(txtMaSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 280, -1));
 
-        shape1.setBackground(new java.awt.Color(0, 255, 175));
+        shape1.setBackground(new java.awt.Color(0, 204, 255));
         shape1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 shape1MouseClicked(evt);
@@ -131,6 +133,7 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Xác nhận");
 
@@ -153,14 +156,16 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
 
         giamGiaSanPhamAddBackground3.add(shape1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 100, 60));
 
-        shape2.setBackground(new java.awt.Color(0, 255, 175));
+        shape2.setBackground(new java.awt.Color(246, 228, 146));
         shape2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 shape2MouseClicked(evt);
             }
         });
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Hủy");
 
@@ -182,6 +187,12 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
         );
 
         giamGiaSanPhamAddBackground3.add(shape2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 100, 60));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        giamGiaSanPhamAddBackground3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 290, 20));
 
         getContentPane().add(giamGiaSanPhamAddBackground3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 490));
 
@@ -258,6 +269,7 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape1;
     private GUI.ManageGroup.ManageItem.FrameAdd.ComponentFrameAdd.Shape shape2;
     private javax.swing.JTextField txtMaSP;
@@ -362,11 +374,14 @@ public class GiamGiaSanPhamAdd extends javax.swing.JFrame {
             sanPham = sanPhamBus.get(maSPNumber);
             if(sanPham != null){
                 this.imagePanel1.setPath(sanPham.getHinhAnh());
+                this.jLabel8.setText(sanPham.getTenSP());
                 return;
             }
             this.imagePanel1.setPath("no-product");
+            this.jLabel8.setText("");
         }catch(NumberFormatException e){
             this.imagePanel1.setPath("no-product");
+            this.jLabel8.setText("");
           
         }
         

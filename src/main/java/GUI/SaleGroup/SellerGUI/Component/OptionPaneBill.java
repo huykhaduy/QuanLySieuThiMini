@@ -4,6 +4,7 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
+import BUS.SaleServices.Money;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -17,6 +18,7 @@ import javax.swing.JTable;
  * @author TUANMINH
  */
 public class OptionPaneBill extends javax.swing.JFrame {
+
     private final Point point = new Point();
 //    private final int LOCATION_X = (Toolkit.getDefaultToolkit().getScreenSize().width - this.getSize().width)/2;
 //    private final int LOCATION_Y = (Toolkit.getDefaultToolkit().getScreenSize().height - this.getSize().height)/2;
@@ -368,15 +370,16 @@ public class OptionPaneBill extends javax.swing.JFrame {
         bill.lbTextEmployee.setText(maNV +"");
         bill.lbTextBillNumber.setText(soHD + "");
         bill.lbTextPassengerName.setText(tenKH);
-        bill.lbTextTong.setText(total + "");
-        bill.lbTextGiam.setText(giam + "");
-        bill.lbTextThanhToan.setText((total - giam) + "");
+        bill.lbTextTong.setText(Money.format(total));
+        bill.lbTextGiam.setText(Money.format(giam));
+        bill.lbTextThanhToan.setText(Money.format(total-giam));
         bill.lbTextHinhThuc.setText(hinhthuc);
         
         int panelHeight = bill.PanelTable.getHeight();
         String[] name = {"Tên", "SL", "T.Tiền"};
         bill.table = new JTable(data, name);
         bill.PanelTable.setPreferredSize(new Dimension(bill.table.getPreferredSize()));
+        bill.PanelTable.removeAll();
         bill.PanelTable.add(bill.table);
         bill.PanelTable.revalidate();
         bill.PanelTable.repaint();

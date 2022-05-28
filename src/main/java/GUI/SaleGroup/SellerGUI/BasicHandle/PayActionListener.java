@@ -4,8 +4,10 @@
  */
 package GUI.SaleGroup.SellerGUI.BasicHandle;
 
+import BUS.SaleServices.Money;
 import BUS.SaleServices.PayActionBus;
-import DAL.DataModels.ChiTietHoaDon;
+import DTO.ChiTietHoaDon;
+import BUS.Exel.PDFTool;
 import GUI.SaleGroup.SellerGUI.Component.OptionPaneBill;
 import GUI.SaleGroup.SellerGUI.Component.OrderPanel;
 import GUI.SaleGroup.SellerGUI.SellerMainFrame;
@@ -71,12 +73,13 @@ public class PayActionListener implements java.awt.event.ActionListener{
                     data.clear();
                     data.add(pay.getNameSPFromID(item.getMaSP()));
                     data.add(String.valueOf(item.getSoLuong()));
-                    data.add(String.valueOf(item.getGiaTien()));
+                    data.add(Money.format(item.getGiaTien()));
                     datas[i] = data.toArray(String[]::new);
                     i++;
                 }
-                
-                OptionPaneBill.showBillPane("Tiền mặt", total, maNV, tenKH, discount, pay.getMaHD(), datas);
+                int maHD = pay.getMaHD();
+                OptionPaneBill.showBillPane("Tiền mặt", total, maNV, tenKH, discount, maHD, datas);
+                PDFTool.renderPDF(maHD);
                 
             }
         setBackFirstStatus();

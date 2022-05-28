@@ -5,7 +5,7 @@
 package BUS.BusAccessor;
 
 import DAL.DataAcessObject.VoucherDAO;
-import DAL.DataModels.Voucher;
+import DTO.Voucher;
 import java.util.ArrayList;
 import java.util.List;
 

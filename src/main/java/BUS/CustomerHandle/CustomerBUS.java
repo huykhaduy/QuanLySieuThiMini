@@ -5,7 +5,7 @@
 package BUS.CustomerHandle;
 
 import DAL.DataAcessObject.KhachHangDAO;
-import DAL.DataModels.KhachHang;
+import DTO.KhachHang;
 
 /**
  *

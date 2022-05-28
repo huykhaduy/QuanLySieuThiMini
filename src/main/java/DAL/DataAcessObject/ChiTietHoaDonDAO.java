@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.ChiTietHoaDon;
+import DTO.ChiTietHoaDon;
 
 import java.util.List;
 

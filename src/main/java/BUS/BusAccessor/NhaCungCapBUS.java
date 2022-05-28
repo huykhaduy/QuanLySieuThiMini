@@ -5,7 +5,7 @@
 package BUS.BusAccessor;
 
 import DAL.DataAcessObject.NhaCungCapDAO;
-import DAL.DataModels.NhaCungCap;
+import DTO.NhaCungCap;
 import java.util.List;
 
 

@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DAL.Exel;
+package BUS.Exel;
 
 import BUS.BusAccessor.SanPhamBUS;
 import BUS.SanPhamHandle.SanPhamValidate;
 import DAL.DataAcessObject.SanPhamDAO;
-import DAL.DataModels.GiamGiaSP;
-import DAL.DataModels.SanPham;
+import DTO.GiamGiaSP;
+import DTO.SanPham;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

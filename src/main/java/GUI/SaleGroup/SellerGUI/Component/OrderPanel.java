@@ -4,8 +4,8 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.SanPham;
+import DTO.ChiTietHoaDon;
+import DTO.SanPham;
 import GUI.SaleGroup.SellerGUI.BasicHandle.ChangePaymentInfo;
 import GUI.SaleGroup.SellerGUI.BasicHandle.RemoveOrderItemAction;
 import GUI.SaleGroup.SellerGUI.BasicHandle.SpinQuantityAction;

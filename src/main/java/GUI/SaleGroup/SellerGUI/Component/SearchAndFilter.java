@@ -5,7 +5,7 @@
 package GUI.SaleGroup.SellerGUI.Component;
 
 import BUS.BusAccessor.SanPhamBUS;
-import DAL.DataModels.SanPham;
+import DTO.SanPham;
 import GUI.ManageGroup.Theme.TimKiemNangCaoTheme;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;

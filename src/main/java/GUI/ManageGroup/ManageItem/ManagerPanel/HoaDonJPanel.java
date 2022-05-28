@@ -8,12 +8,13 @@ import BUS.BusAccessor.HoaDonBUS;
 import BUS.BusAccessor.KhachHangBUS;
 import BUS.BusAccessor.NhanVienBUS;
 import BUS.BusAccessor.SanPhamBUS;
+import BUS.SaleServices.Money;
 import DAL.DataAcessObject.ChiTietHoaDonDAO;
-import DAL.DataModels.ChiTietHoaDon;
-import DAL.DataModels.HoaDon;
-import DAL.DataModels.KhachHang;
-import DAL.DataModels.NhanVien;
-import DAL.DataModels.SanPham;
+import DTO.ChiTietHoaDon;
+import DTO.HoaDon;
+import DTO.KhachHang;
+import DTO.NhanVien;
+import DTO.SanPham;
 import GUI.ManageGroup.Theme.NhapXuatTheme;
 import com.raven.datechooser.DateChooser;
 import java.awt.Color;
@@ -104,6 +105,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
     
     public void reFreshTable(){
         hdList = hoaDonBUS.getAll();
+        modelJTABLE2.setRowCount(0);
         DatatoTable();
     }
 
@@ -233,7 +235,7 @@ public class HoaDonJPanel extends javax.swing.JPanel {
 
         jLabel119.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel119.setText("TỔNG :");
-        shape42.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        shape42.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
 
         jLabel121.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel121.setText("Tổng số lượng :");
@@ -242,19 +244,19 @@ public class HoaDonJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("jLabel4");
-        shape42.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
+        shape42.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 120, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("jLabel1");
-        shape42.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 46, 60, 20));
+        shape42.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 46, 140, 20));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("jLabel2");
-        shape42.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 50, 20));
+        shape42.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 120, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("jLabel5");
-        shape42.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 50, 20));
+        shape42.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 160, 20));
 
         shape40.add(shape42, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 290, 220));
 
@@ -382,10 +384,10 @@ public class HoaDonJPanel extends javax.swing.JPanel {
             SanPham sp = sanPhamBUS.get(cthd.getMaSP());
             soluong+=cthd.getSoLuong();
             modelJTABLE1.addRow(new Object[]{cthd.getMaSP(),sp.getTenSP(),cthd.getSoLuong(),cthd.getGiaTien()});
-            jLabel1.setText(String.valueOf(hd.getTongTien()));
-            jLabel5.setText(String.valueOf(hd.getTienGiam()));
+            jLabel1.setText(Money.format(hd.getTongTien()));
+            jLabel5.setText(Money.format(hd.getTienGiam()));
             jLabel2.setText(String.valueOf(soluong));
-            jLabel4.setText(String.valueOf(hd.getTongTien()-hd.getTienGiam()));
+            jLabel4.setText(Money.format(hd.getTongTien()-hd.getTienGiam()));
             
          }
         jTable1.setModel(modelJTABLE1);

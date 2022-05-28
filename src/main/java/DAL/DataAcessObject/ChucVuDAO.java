@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.ChucVu;
+import DTO.ChucVu;
 
 import java.util.List;
 

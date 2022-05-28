@@ -6,8 +6,8 @@ package BUS.BusAccessor;
 
 import DAL.DataAcessObject.ISimpleAccess;
 import DAL.DataAcessObject.PhieuHuyDAO;
-import DAL.DataModels.ChiTietPhieuHuy;
-import DAL.DataModels.PhieuHuy;
+import DTO.ChiTietPhieuHuy;
+import DTO.PhieuHuy;
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 package DAL.DataAcessObject;
 
-import DAL.DataModels.KhachHang;
+import DTO.KhachHang;
 
 import java.util.List;
 

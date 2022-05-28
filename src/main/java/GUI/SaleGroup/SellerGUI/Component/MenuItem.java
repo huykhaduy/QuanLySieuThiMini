@@ -4,7 +4,8 @@
  */
 package GUI.SaleGroup.SellerGUI.Component;
 
-import DAL.DataModels.SanPham;
+import BUS.SaleServices.Money;
+import DTO.SanPham;
 import javax.swing.JButton;
 
 /**
@@ -30,7 +31,7 @@ public class MenuItem extends RoundPanel{
     
     private void setGuiText(SanPham sanpham){
         this.productName.setText("<html>"+sanpham.getTenSP());
-        this.lbPrice.setText(Long.toString(sanpham.getGiaTien()));
+        this.lbPrice.setText(Money.format(sanpham.getGiaTien()));
         this.productImage.setImagePath(sanpham.getHinhAnh());
         this.productImage.setToolTipText("<html><p width=\"300\">"+sanpham.getMoTa()+"</p></html>");
     }
