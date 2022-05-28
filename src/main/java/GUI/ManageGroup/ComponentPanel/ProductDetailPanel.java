@@ -48,10 +48,12 @@ public class ProductDetailPanel extends PanelAdd {
         lbLoai.setText(sanpham.getMaLoai()+"");
         lbSoLuong.setText(sanpham.getSoLuong()+"");
         lbNhaCC.setText(tenNhaCC);
-        String mota = "<html>"+sanpham.getMoTa();
+        String mota = sanpham.getMoTa();
         if (mota.length()>270){
             mota = "<html>" +sanpham.getMoTa().substring(0, 268);
             mota += "...";
+        } else {
+            mota = "<html>"+sanpham.getMoTa();
         }
         lbMoTa.setText(mota);
         imagePanel.setToolTipText("<html> <div style='width:200px'>"+sanpham.getMoTa());
