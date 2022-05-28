@@ -2,8 +2,8 @@
 package GUI.ManageGroup.ManageItem.FrameAdd.FrameAdd;
 
 import BUS.BusAccessor.VoucherBUS;
-import BUS.VoucherHandle.VoucherHandleBUS;
-import BUS.VoucherHandle.VoucherValidate;
+import GUI.ManageGroup.Handle.VoucherHandle.VoucherHandleBUS;
+import GUI.ManageGroup.Handle.VoucherHandle.VoucherValidate;
 import DTO.Voucher;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;

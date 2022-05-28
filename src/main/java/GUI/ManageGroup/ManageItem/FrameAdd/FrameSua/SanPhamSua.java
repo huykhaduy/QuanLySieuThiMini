@@ -7,7 +7,7 @@ package GUI.ManageGroup.ManageItem.FrameAdd.FrameSua;
 import BUS.BusAccessor.LoaiSanPhamBUS;
 import BUS.BusAccessor.NhaCungCapBUS;
 import BUS.BusAccessor.SanPhamBUS;
-import BUS.SanPhamHandle.SanPhamValidate;
+import GUI.ManageGroup.Handle.SanPhamHandle.SanPhamValidate;
 import DTO.NhaCungCap;
 import DTO.SanPham;
 import java.awt.Color;

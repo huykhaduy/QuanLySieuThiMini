@@ -1,5 +1,5 @@
 
-package BUS.SanPhamHandle;
+package GUI.ManageGroup.Handle.SanPhamHandle;
 
 import DAL.DataAcessObject.SanPhamDAO;
 import DTO.SanPham;

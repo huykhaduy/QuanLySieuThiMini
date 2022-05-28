@@ -5,8 +5,8 @@
 package GUI.SaleGroup.AddCustomerGUI;
 
 ;
-import BUS.CustomerHandle.CustomerBUS;
-import BUS.CustomerHandle.UserRegisterValidate;
+import GUI.SaleGroup.SellerGUI.BasicHandle.CustomerBUS;
+import GUI.SaleGroup.SellerGUI.BasicHandle.UserRegisterValidate;
 import BUS.SaleServices.CheckInfoSale;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Point;

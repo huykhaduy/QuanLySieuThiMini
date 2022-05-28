@@ -5,7 +5,7 @@
 package BUS.Excel;
 
 import BUS.BusAccessor.SanPhamBUS;
-import BUS.SanPhamHandle.SanPhamValidate;
+import GUI.ManageGroup.Handle.SanPhamHandle.SanPhamValidate;
 import DAL.DataAcessObject.SanPhamDAO;
 import DTO.GiamGiaSP;
 import DTO.SanPham;
