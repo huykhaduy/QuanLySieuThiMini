@@ -104,7 +104,7 @@ public class PayActionBus {
         voucher = null;
         if(check.hasVoucher(maVoucher)){
             voucher = voucherDAO.select(maVoucher);
-            if(total >= voucher.getGiaTriToiThieu() && voucher.getSoLuotSD() > 0){
+            if(total >= voucher.getGiaTriToiThieu() && voucher.getSoLuotSD() > 0 && new Timestamp(System.currentTimeMillis()).before(voucher.getNgayKT())){
                 //Set lại lượt sử dụng
                 voucher.setSoLuotSD(voucher.getSoLuotSD() - 1);
                 return (long) (long)(voucher.getKmToiDa()) > ((voucher.getPtGiam()*total)/100) ? ((voucher.getPtGiam()*total)/100) : voucher.getKmToiDa();

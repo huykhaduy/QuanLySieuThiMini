@@ -179,7 +179,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setText("TÊN SẢN PHẨM");
-        shape9.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 160, -1));
+        shape9.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 230, -1));
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
@@ -190,12 +190,12 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Ngày kết thúc :");
-        shape9.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 120, -1));
+        shape9.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 120, -1));
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(255, 255, 255));
         jLabel43.setText("Giá gốc :");
-        shape9.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 100, -1));
+        shape9.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 100, -1));
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -215,12 +215,12 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("% Giảm :");
-        shape9.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 70, -1));
+        shape9.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 70, -1));
 
         jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("Giá khuyến mãi:");
-        shape9.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 120, -1));
+        shape9.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 120, -1));
 
         imagePanel2.setBackground(new java.awt.Color(0, 150, 200));
         imagePanel2.setImage(new javax.swing.ImageIcon(getClass().getResource("/Assets/Image/no-product.png"))); // NOI18N
@@ -240,28 +240,28 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(17, 86, 125));
-        shape9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 120, 20));
+        shape9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 110, 20));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(17, 86, 125));
-        shape9.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 120, 20));
+        shape9.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 110, 20));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(17, 86, 125));
-        shape9.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 120, 20));
+        shape9.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 110, 20));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(17, 86, 125));
-        shape9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 120, 20));
+        shape9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 110, 20));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(17, 86, 125));
-        shape9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 120, 20));
+        shape9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 110, 20));
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Ngày bắt đầu :");
-        shape9.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
+        shape9.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setForeground(new java.awt.Color(255, 255, 255));

@@ -386,11 +386,11 @@ INSERT INTO `khachhang`(`MAKH`, `TENKH`, `GIOITINH`, `SODIENTHOAI`, `DIACHI`, `E
 -- Insert voucher
 ALTER TABLE VOUCHER AUTO_INCREMENT = 1;
 INSERT INTO `voucher`(`SOVOUCHER`, `MAVOUCHER`, `MOTA`, `NGAYBD`, `NGAYKT`, `GIATRITOITHIEU`, `KMTOIDA`, `PTGIAM`, `SOLUOTSD`, `IS_DELETED`) VALUES
-    (1,'NOVOUCHER','Không dùng voucher','2022-05-16','2200-06-16',0,0,0,100000,0),
-    (2,'GIAM25K','Giảm 25k cho đơn từ 100k','2022-05-16','2022-06-16',100000,25000,100,5000,0),
-    (3,'GIAM10PT','Giảm 10% tối đa 200k','2022-05-16','2022-06-16',0,200000,10,5000,0),
-    (4,'GIAM25PT','Giảm 25% khi mua đơn tối thiểu 100k, giảm tối đa 100k','2022-05-16','2022-06-16',100000,100000,25,5000,0),
-    (5,'GIAM50K','Giảm 50k khi mua đơn từ 200k','2022-05-16','2022-06-16',200000,50000,100,5000,0);
+    --(0,'NOVOUCHER','Không dùng voucher','2022-05-16','2200-06-16',0,0,0,100000,0), thêm trực tiếp trong database
+    (1,'GIAM25K','Giảm 25k cho đơn từ 100k','2022-05-16','2022-06-16',100000,25000,100,5000,0),
+    (2,'GIAM10PT','Giảm 10% tối đa 200k','2022-05-16','2022-06-16',0,200000,10,5000,0),
+    (3,'GIAM25PT','Giảm 25% khi mua đơn tối thiểu 100k, giảm tối đa 100k','2022-05-16','2022-06-16',100000,100000,25,5000,0),
+    (4,'GIAM50K','Giảm 50k khi mua đơn từ 200k','2022-05-16','2022-06-16',200000,50000,100,5000,0);
 
 -- Insert giamgiasp
 ALTER TABLE GIAMGIASP AUTO_INCREMENT = 1;
